@@ -1,0 +1,32 @@
+{% block element_responsive_image %}
+	{% set config = element.fieldConfig.elements %}
+	{% set mediaDesktop = element.data ? element.data.get('mediaDesktop') : null %}
+	{% set mediaTablet = element.data ? element.data.get('mediaTablet') : null %}
+	{% set mediaMobile = element.data ? element.data.get('mediaMobile') : null %}
+
+	{% set altText = config.altText.value|default('') %}
+	{% set linkUrl = config.linkUrl.value|default('') %}
+	{% set linkTarget = config.linkTarget.value|default('_self') %}
+
+	<div class="cms-element-responsive-image">
+		{% if mediaDesktop %}
+			{% if linkUrl %}
+				<a href="{{ linkUrl }}" target="{{ linkTarget }}" class="responsive-image-link">
+				{% endif %}
+
+				<picture class="responsive-image-picture">
+					{% if mediaMobile %}
+						<source media="(max-width: 576px)" srcset="{{ mediaMobile.url }}">
+					{% endif %}
+					{% if mediaTablet %}
+						<source media="(max-width: 767px)" srcset="{{ mediaTablet.url }}">
+					{% endif %}
+					<img src="{{ mediaDesktop.url }}" alt="{{ altText|default(mediaDesktop.translated.alt|default('')) }}" class="responsive-image-img">
+				</picture>
+
+				{% if linkUrl %}
+				</a>
+			{% endif %}
+		{% endif %}
+	</div>
+{% endblock %}

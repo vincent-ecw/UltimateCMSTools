@@ -1,0 +1,24 @@
+.sw-cms-el-config-cta {
+    &__media-upload {
+        margin-bottom: 20px;
+    }
+
+    &__section {
+        margin-top: 30px;
+        padding-top: 20px;
+        border-top: 1px solid #e2e8f0;
+    }
+
+    &__section-title {
+        margin: 0 0 15px 0;
+        font-size: 14px;
+        font-weight: 600;
+        color: #1f2937;
+    }
+
+    &__section-content {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+}

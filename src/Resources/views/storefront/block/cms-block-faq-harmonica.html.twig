@@ -1,0 +1,22 @@
+{% block block_faq_harmonica %}
+    <div class="cms-block-faq-harmonica">
+        {% set titleElement = block.slots.getSlot('title') %}
+        {% set faqElement = block.slots.getSlot('faq') %}
+
+        {% if titleElement %}
+            <div class="cms-block-faq-harmonica-title" data-cms-element-id="{{ titleElement.id }}">
+                {% sw_include '@Storefront/storefront/element/cms-element-' ~ titleElement.type ~ '.html.twig' ignore missing with {
+                    element: titleElement
+                } %}
+            </div>
+        {% endif %}
+
+        {% if faqElement %}
+            <div class="cms-block-faq-harmonica-content" data-cms-element-id="{{ faqElement.id }}">
+                {% sw_include '@Storefront/storefront/element/cms-element-' ~ faqElement.type ~ '.html.twig' ignore missing with {
+                    element: faqElement
+                } %}
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

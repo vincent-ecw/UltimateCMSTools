@@ -1,0 +1,71 @@
+{% block element_common_slider %}
+    {% set config = element.fieldConfig.elements %}
+    {% set sliderItems = element.data ? element.data.get('sliderItems') : config.sliderItems.value %}
+    {% set effect = config.effect.value|default('slide') %}
+    {% set navigationArrows = config.navigationArrows.value|default(true) %}
+    {% set navigationDots = config.navigationDots.value|default(true) %}
+    {% set autoplaySpeed = config.autoplaySpeed.value|default(5000) %}
+    {% set dotsPosition = config.navigationDotsPosition.value|default('inside') %}
+    {% set maxHeight = config.maxHeight.value|default(null) %}
+
+    <div class="cms-element-common-slider"
+         {% if maxHeight and maxHeight > 0 %}style="--common-slider-max-height: {{ maxHeight }}px; max-height: {{ maxHeight }}px;"{% endif %}
+         data-common-slider="true"
+         data-common-slider-options='{
+             "effect": "{{ effect }}",
+             "arrows": {{ navigationArrows ? "true" : "false" }},
+             "dots": {{ navigationDots ? "true" : "false" }},
+             "autoplaySpeed": {{ autoplaySpeed }}
+         }'>
+        
+        <div class="common-slider-wrapper">
+            {% for item in sliderItems %}
+                <div class="common-slider-item">
+                    <picture class="common-slider-picture">
+                        {% if item.mediaDesktop %}
+                            <source media="(min-width: 992px)" srcset="{{ item.mediaDesktop.url }}">
+                        {% endif %}
+                        {% if item.mediaTablet %}
+                            <source media="(min-width: 768px)" srcset="{{ item.mediaTablet.url }}">
+                        {% endif %}
+                        {% if item.mediaMobile %}
+                            <img src="{{ item.mediaMobile.url }}" alt="{{ item.mediaMobile.translated.alt|default(item.title) }}" class="common-slider-image">
+                        {% elseif item.mediaDesktop %}
+                            <img src="{{ item.mediaDesktop.url }}" alt="{{ item.mediaDesktop.translated.alt|default(item.title) }}" class="common-slider-image">
+                        {% endif %}
+                    </picture>
+
+                    {% if item.title or (item.buttonText and item.buttonUrl) %}
+                        <div class="common-slider-overlay">
+                            <div class="common-slider-overlay-content">
+                                {% if item.title %}
+                                    <h3 class="common-slider-title">{{ item.title }}</h3>
+                                {% endif %}
+                                {% if item.buttonText and item.buttonUrl %}
+                                    <a href="{{ item.buttonUrl }}" target="{{ item.buttonTarget|default('_self') }}" class="btn btn-primary common-slider-btn">{{ item.buttonText }}</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+
+        {% if navigationArrows %}
+            <button class="common-slider-arrow common-slider-prev" aria-label="Previous">
+                {% sw_icon 'arrow-left' %}
+            </button>
+            <button class="common-slider-arrow common-slider-next" aria-label="Next">
+                {% sw_icon 'arrow-right' %}
+            </button>
+        {% endif %}
+
+        {% if navigationDots %}
+            <div class="common-slider-dots dots-{{ dotsPosition }}">
+                {% for item in sliderItems %}
+                    <button class="common-slider-dot {% if loop.first %}active{% endif %}" data-index="{{ loop.index0 }}" aria-label="Go to slide {{ loop.index }}"></button>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

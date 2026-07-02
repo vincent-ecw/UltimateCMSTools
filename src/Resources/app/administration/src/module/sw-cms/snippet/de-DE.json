@@ -1,0 +1,241 @@
+{
+    "sw-cms": {
+        "elements": {
+            "customCode": {
+                "label": "Benutzerdefinierter Code"
+            },
+            "subcategoryCarousel": {
+                "label": "Unterkategorie-Karussell",
+                "placeholder": "Zeigt Unterkategorien der aktiven Kategorie an",
+                "configInfo": "Keine Konfiguration erforderlich. Die Unterkategorien der aktiven Kategorie werden automatisch angezeigt.",
+                "config": {
+                    "showAllSubcategoriesLabel": "Alle Unterkategorien anzeigen"
+                }
+            },
+            "customCarousel": {
+                "label": "Benutzerdefiniertes Karussell",
+                "placeholder": "Wählen Sie eigene Elemente aus oder ziehen Sie sie hierher, um Ihr Karussell zu erstellen.",
+                "itemsCount": "Elemente",
+                "config": {
+                    "titleLabel": "Titel (Pflichtfeld)",
+                    "titlePlaceholder": "Titel eingeben...",
+                    "descriptionLabel": "Beschreibung (optional)",
+                    "descriptionPlaceholder": "Beschreibung eingeben...",
+                    "mediaLabel": "Bild (optional)",
+                    "buttonUrlLabel": "Link-URL (optional)",
+                    "buttonUrlPlaceholder": "z.B. /mein-link",
+                    "buttonTargetLabel": "Link-Ziel",
+                    "targetSelf": "Gleiches Fenster",
+                    "targetBlank": "Neues Fenster",
+                    "addButton": "Karussell-Element hinzufügen"
+                }
+            },
+            "customProductCarousel": {
+                "label": "Produkt-Karussell",
+                "placeholder": "Konfigurieren Sie das Produkt-Karussell.",
+                "config": {
+                    "tabs": {
+                        "content": "Inhalt",
+                        "settings": "Einstellungen"
+                    },
+                    "productSelectionType": "Produktauswahl",
+                    "selectionTypes": {
+                        "manual": "Manuelle Auswahl",
+                        "productStream": "Dynamische Produktgruppe",
+                        "latest": "Neueste Produkte (nach Erstellungsdatum)",
+                        "sale": "Sale-Produkte"
+                    },
+                    "productsLabel": "Produkte",
+                    "productsPlaceholder": "Produkte suchen und hinzufügen...",
+                    "productStreamLabel": "Dynamische Produktgruppe",
+                    "productStreamPlaceholder": "Dynamische Produktgruppe auswählen...",
+                    "limitLabel": "Anzahl der anzuzeigenden Produkte",
+                    "navigationArrows": "Navigationspfeile anzeigen",
+                    "navigationDots": "Navigationspunkte anzeigen",
+                    "navigationDotsPosition": "Position der Navigationspunkte",
+                    "dotsPositions": {
+                        "inside": "Innerhalb des Sliders",
+                        "outside": "Außerhalb des Sliders"
+                    },
+                    "autoplay": "Autoplay",
+                    "autoplaySpeed": "Autoplay-Geschwindigkeit (ms)",
+                    "autoplaySpeedHelp": "Zeit in Millisekunden, die ein Slide sichtbar bleibt (z.B. 5000 = 5 Sekunden). Auf 0 setzen, um Autoplay zu deaktivieren.",
+                    "maxHeight": "Maximale Höhe (px)",
+                    "maxHeightHelp": "Geben Sie eine maximale Höhe in Pixeln für den Slider ein (z.B. 500). Leer lassen für automatische Höhe."
+                }
+            },
+            "faqHarmonica": {
+                "label": "FAQ Harmonika",
+                "emptyState": "Fügen Sie FAQ-Elemente in den Einstellungen hinzu",
+                "config": {
+                    "iconLabel": "Icon",
+                    "iconPlaceholder": "z.B. regular-comments",
+                    "iconHelpText": "Geben Sie einen gültigen Shopware-Icon-Namen ein.",
+                    "titleLabel": "Frage",
+                    "titlePlaceholder": "Frage eingeben...",
+                    "contentLabel": "Antwort",
+                    "contentPlaceholder": "Antwort eingeben...",
+                    "addButton": "FAQ-Element hinzufügen"
+                }
+            },
+            "ultimateCmsTools": {
+                "commonSlider": {
+                    "label": "Allgemeiner Slider",
+                    "config": {
+                        "tabs": {
+                            "content": "Inhalt",
+                            "settings": "Einstellungen"
+                        },
+                        "slideLabel": "Slide",
+                        "mediaDesktop": "Desktop Bild (>= 992px)",
+                        "mediaTablet": "Tablet Bild (>= 768px)",
+                        "mediaMobile": "Mobile Bild (< 768px)",
+                        "selectMedia": "Bild auswählen",
+                        "title": "Titel (optional)",
+                        "buttonText": "Button Text (optional)",
+                        "buttonUrl": "Button URL (optional)",
+                        "addSlide": "Slide hinzufügen",
+                        "navigationArrows": "Navigationspfeile anzeigen",
+                        "navigationDots": "Navigationspunkte anzeigen",
+                        "effect": "Slider Effekt",
+                        "effectSlide": "Slide (Gleiten)",
+                        "effectFade": "Fade (Überblenden)",
+                        "effectZoomOut": "Überraschung (Herauszoomen)",
+                        "buttonTarget": "Button-Ziel",
+                        "targetSelf": "Gleiches Fenster",
+                        "targetBlank": "Neues Fenster",
+                        "navigationDotsPosition": "Position der Navigationspunkte",
+                        "positionInside": "Innerhalb des Sliders",
+                        "positionOutside": "Außerhalb des Sliders",
+                        "autoplaySpeed": "Autoplay-Geschwindigkeit (ms)",
+                        "autoplaySpeedHelp": "Zeit in Millisekunden, die ein Slide sichtbar bleibt (z.B. 5000 = 5 Sekunden). Auf 0 setzen, um Autoplay zu deaktivieren.",
+                        "maxHeight": "Maximale Höhe (px)",
+                        "maxHeightHelp": "Geben Sie eine maximale Höhe in Pixeln für den Slider ein (z.B. 500). Leer lassen, damit sich die Höhe automatisch an das Bild anpasst."
+                    }
+                },
+                "responsiveImage": {
+                    "label": "Responsives Bild",
+                    "placeholder": "Laden Sie responsive Bilder für Desktop, Tablet und Mobile herunter."
+                },
+                "magazineQuote": {
+                    "label": "Magazin Zitat / Titel",
+                    "placeholder": "Fügen Sie Titel und Zitate in verschiedenen Magazin-Stilen hinzu.",
+                    "config": {
+                        "quoteLabel": "Titel / Zitat",
+                        "quotePlaceholder": "Titel oder Zitat eingeben...",
+                        "authorNameLabel": "Name des Autors",
+                        "authorNamePlaceholder": "Name des Autors eingeben...",
+                        "authorImageLabel": "Bild des Autors",
+                        "styleLabel": "Layout-Stil",
+                        "styles": {
+                            "provia": "Provia (Clean & Modern)",
+                            "velvia": "Velvia (Vibrant & Bold)",
+                            "classicChrome": "Classic Chrome (Retro & Cinematic)",
+                            "astia": "Astia (Soft & Minimalist)",
+                            "acros": "Acros (High Contrast Monochrome)"
+                        }
+                    }
+                },
+                "cta": {
+                    "label": "CTA (Call to Action)",
+                    "placeholder": "Attraktiver Call-to-Action-Block mit benutzerdefinierten Aktionen und Hintergrundbild.",
+                    "config": {
+                        "titleLabel": "Titel",
+                        "titlePlaceholder": "Titel eingeben...",
+                        "subtitleLabel": "Untertitel (optional)",
+                        "subtitlePlaceholder": "Untertitel eingeben...",
+                        "backgroundImageLabel": "Hintergrundbild (optional)",
+                        "styleLabel": "Layout-Stil",
+                        "styles": {
+                            "split-minimal": "Minimalistischer Split",
+                            "neo-brutal": "Neo-Brutalistischer Pop",
+                            "glassmorphic": "Frosted Glassmorphismus",
+                            "hero-spotlight": "Hero-Spotlight",
+                            "interactive-card": "Interaktive schwebende Karte"
+                        },
+                        "textColorLabel": "Textstil",
+                        "textColors": {
+                            "dark": "Dunkler Text (Optimiert für helle Hintergründe)",
+                            "light": "Heller Text (Optimiert für dunkle Hintergründe)"
+                        },
+                        "primaryButtonSection": "Primärer Button",
+                        "secondaryButtonSection": "Sekundärer Button (optional)",
+                        "buttonTextLabel": "Button-Text",
+                        "buttonTextPlaceholder": "z.B. Jetzt einkaufen",
+                        "buttonUrlLabel": "Link-URL",
+                        "buttonUrlPlaceholder": "z.B. /kategorie-link",
+                        "buttonTargetLabel": "Link-Ziel",
+                        "targetSelf": "Gleiches Fenster",
+                        "targetBlank": "Neues Fenster"
+                    }
+                },
+                "imageTextQuartet": {
+                    "label": "Bild und Text Quartett",
+                    "placeholder": "Ein zweizeiliges Layout mit abwechselnden Bild- und Textspalten, das sich auf Mobilgeräten optimal anordnet.",
+                    "config": {
+                        "tabs": {
+                            "row1": "Zeile 1",
+                            "row2": "Zeile 2"
+                        },
+                        "mediaDesktop": "Desktop Bild (>= 992px)",
+                        "mediaTablet": "Tablet Bild (>= 768px)",
+                        "mediaMobile": "Mobiles Bild (< 768px)",
+                        "altText": "ALT-Text",
+                        "altTextPlaceholder": "ALT-Text für das Bild eingeben...",
+                        "content": "Textinhalt",
+                        "ratio": "Spaltenverhältnis (Desktop)",
+                        "ratioLabel": "Verhältnis",
+                        "ratio50_50": "50% - 50%",
+                        "ratio70_30": "70% - 30%",
+                        "ratio30_70": "30% - 70%"
+                    }
+                }
+            }
+        },
+        "blocks": {
+            "ultimateCmsTools": {
+                "subcategoryCarousel": {
+                    "label": "Unterkategorie-Karussell"
+                },
+                "customCarousel": {
+                    "label": "Benutzerdefiniertes Karussell"
+                },
+                "customProductCarousel": {
+                    "label": "Produkt-Karussell"
+                },
+                "customCode": {
+                    "label": "Benutzerdefinierter Code-Block"
+                },
+                "faqHarmonica": {
+                    "label": "FAQ Harmonika"
+                },
+                "commonSlider": {
+                    "label": "Allgemeiner Slider"
+                },
+                "responsiveImage": {
+                    "label": "Responsives Bild"
+                },
+                "magazineQuote": {
+                    "label": "Magazin Zitat / Titel"
+                },
+                "cta": {
+                    "label": "CTA (Call to Action)"
+                },
+                "imageTextQuartet": {
+                    "label": "Bild und Text Quartett"
+                }
+            }
+        }
+    },
+    "apps": {
+        "sw-cms": {
+            "detail": {
+                "label": {
+                    "blockCategory": {
+                        "ultimate-cms-tools": "Ultimate CMS Tools"
+                    }
+                }
+            }
+        }
+    }
+}

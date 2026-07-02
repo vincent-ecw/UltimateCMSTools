@@ -1,0 +1,80 @@
+.cms-block-faq-harmonica {
+    .cms-block-faq-harmonica-title {
+        margin-bottom: 2rem;
+    }
+}
+
+.cms-element-faq-harmonica {
+    .accordion {
+        border: none;
+    }
+
+    .faq-harmonica-item {
+        border: none;
+        border-bottom: 1px solid $border-color;
+        border-radius: 0;
+        background: transparent;
+
+        &:last-child {
+            border-bottom: none;
+        }
+
+        .faq-harmonica-header {
+            margin: 0;
+            padding: 0;
+            
+            .faq-harmonica-button {
+                padding: 1.5rem 1rem;
+                font-weight: 600;
+                color: $headings-color;
+                background-color: transparent;
+                box-shadow: none;
+                display: flex;
+                align-items: center;
+
+                &:not(.collapsed) {
+                    color: $primary;
+                    background-color: rgba($primary, 0.05);
+                }
+
+                .faq-harmonica-icon-wrapper {
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 24px;
+                    height: 24px;
+                    margin-right: 1rem;
+                    flex-shrink: 0;
+
+                    .faq-harmonica-icon {
+                        width: 100%;
+                        height: 100%;
+                        color: inherit;
+                    }
+
+                    .faq-harmonica-image-icon {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: contain;
+                    }
+                }
+
+                .faq-harmonica-title {
+                    flex-grow: 1;
+                    font-size: 1.1rem;
+                }
+            }
+        }
+
+        .faq-harmonica-body {
+            padding: 0 1rem 1.5rem 1rem;
+            color: $body-color;
+            line-height: 1.6;
+            
+            // Indent the body so it aligns with the title text
+            @media (min-width: 768px) {
+                padding-left: 3.5rem; // 1rem padding + 24px icon + 1rem margin = ~3.5rem
+            }
+        }
+    }
+}

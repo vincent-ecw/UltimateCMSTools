@@ -1,0 +1,55 @@
+.sw-cms-el-config-common-slider {
+    .sw-cms-el-config-common-slider__slide-list {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        margin-bottom: 20px;
+    }
+
+    .sw-cms-el-config-common-slider__slide-item {
+        border: 1px solid #d1d9e0;
+        border-radius: 4px;
+        padding: 16px;
+        background: #f9fafb;
+    }
+
+    .sw-cms-el-config-common-slider__slide-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 16px;
+        font-weight: bold;
+        border-bottom: 1px solid #e2e8f0;
+        padding-bottom: 8px;
+    }
+
+    .sw-cms-el-config-common-slider__slide-media-group {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 16px;
+        margin-bottom: 16px;
+    }
+
+    .sw-cms-el-config-common-slider__media-item {
+        display: flex;
+        flex-direction: column;
+        
+        label {
+            margin-bottom: 8px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .sw-media-list-selection-v2 {
+            margin-bottom: 0;
+        }
+    }
+
+    .sw-cms-el-config-common-slider__add-btn {
+        width: 100%;
+    }
+
+    .sw-cms-el-config-common-slider__tab-settings {
+        padding-top: 20px;
+    }
+}

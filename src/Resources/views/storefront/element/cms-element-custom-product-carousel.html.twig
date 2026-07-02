@@ -1,0 +1,56 @@
+{% block element_custom_product_carousel %}
+    {% set config = element.fieldConfig.elements %}
+    {% set products = element.data ? element.data.get('products') : null %}
+    {% set navigationArrows = config.navigationArrows.value|default(true) %}
+    {% set navigationDots = config.navigationDots.value|default(true) %}
+    {% set autoplay = config.autoplay.value is not null ? config.autoplay.value : true %}
+    {% set autoplaySpeed = config.autoplaySpeed.value|default(5000) %}
+    {% set dotsPosition = config.navigationDotsPosition.value|default('inside') %}
+    {% set maxHeight = config.maxHeight.value|default(null) %}
+
+    {% if products and products|length > 0 %}
+        <div class="cms-element-custom-product-carousel"
+             {% if maxHeight and maxHeight > 0 %}style="--custom-product-carousel-max-height: {{ maxHeight }}px; max-height: {{ maxHeight }}px;"{% endif %}
+             data-custom-product-carousel="true"
+             data-custom-product-carousel-options='{
+                 "arrows": {{ navigationArrows ? "true" : "false" }},
+                 "dots": {{ navigationDots ? "true" : "false" }},
+                 "autoplay": {{ autoplay ? "true" : "false" }},
+                 "autoplaySpeed": {{ autoplaySpeed }}
+             }'>
+            
+            <div class="custom-product-carousel-wrapper">
+                {% if navigationArrows %}
+                    <button class="custom-product-carousel-control prev" aria-label="Previous">
+                        {% sw_icon 'arrow-left' %}
+                    </button>
+                {% endif %}
+
+                <div class="custom-product-carousel-container" {% if maxHeight and maxHeight > 0 %}style="max-height: {{ maxHeight }}px;"{% endif %}>
+                    {% for product in products %}
+                        <div class="custom-product-card product-slider-item" {% if maxHeight and maxHeight > 0 %}style="max-height: {{ maxHeight }}px;"{% endif %}>
+                            {% sw_include '@Storefront/storefront/component/product/card/box.html.twig' with {
+                                'layout': 'standard',
+                                'displayMode': 'standard'
+                            } %}
+                        </div>
+                    {% endfor %}
+                </div>
+
+                {% if navigationArrows %}
+                    <button class="custom-product-carousel-control next" aria-label="Next">
+                        {% sw_icon 'arrow-right' %}
+                    </button>
+                {% endif %}
+            </div>
+
+            {% if navigationDots %}
+                <div class="custom-product-carousel-indicators dots-{{ dotsPosition }}">
+                    {% for product in products %}
+                        <button class="custom-product-carousel-dot {% if loop.first %}active{% endif %}" data-index="{{ loop.index0 }}" aria-label="Go to slide {{ loop.index }}"></button>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    {% endif %}
+{% endblock %}

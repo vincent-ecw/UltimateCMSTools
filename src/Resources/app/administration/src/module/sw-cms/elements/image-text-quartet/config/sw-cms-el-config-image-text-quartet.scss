@@ -1,0 +1,30 @@
+.sw-cms-el-config-image-text-quartet {
+    .sw-cms-el-config-image-text-quartet__tabs {
+        margin-bottom: 20px;
+    }
+
+    .sw-cms-el-config-image-text-quartet__tab-content {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .sw-cms-el-config-image-text-quartet__media-group {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-bottom: 10px;
+
+        .sw-cms-el-config-image-text-quartet__media-item {
+            flex: 1 1 calc(33.333% - 8px);
+            min-width: 130px;
+        }
+    }
+
+    .sw-cms-el-config-image-text-quartet__editor-label {
+        font-size: 14px;
+        font-weight: 500;
+        color: #52667a;
+        margin-bottom: -10px;
+    }
+}

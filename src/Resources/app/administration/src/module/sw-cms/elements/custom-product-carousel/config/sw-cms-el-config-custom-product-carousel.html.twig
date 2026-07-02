@@ -1,0 +1,117 @@
+<div class="sw-cms-el-config-custom-product-carousel">
+    <sw-tabs class="sw-cms-el-config-custom-product-carousel__tabs" defaultItem="content">
+        <template #default="{ active }">
+            <sw-tabs-item name="content" :activeTab="active">
+                {{ $tc('sw-cms.elements.customProductCarousel.config.tabs.content') }}
+            </sw-tabs-item>
+            <sw-tabs-item name="settings" :activeTab="active">
+                {{ $tc('sw-cms.elements.customProductCarousel.config.tabs.settings') }}
+            </sw-tabs-item>
+        </template>
+
+        <template #content="{ active }">
+            <div v-if="active === 'content'" class="sw-cms-el-config-custom-product-carousel__tab-content">
+                <!-- Selection Type dropdown -->
+                <sw-single-select
+                    v-model:value="productSelectionType"
+                    :label="$tc('sw-cms.elements.customProductCarousel.config.productSelectionType')"
+                    :options="productSelectionTypeOptions"
+                />
+
+                <!-- Manual Selection -->
+                <div v-if="productSelectionType === 'manual'" class="sw-cms-el-config-custom-product-carousel__manual-selection">
+                    <sw-entity-multi-select
+                        v-model:entity-collection="productCollection"
+                        :label="$tc('sw-cms.elements.customProductCarousel.config.productsLabel')"
+                        :placeholder="$tc('sw-cms.elements.customProductCarousel.config.productsPlaceholder')"
+                        :context="productMultiSelectContext"
+                        :criteria="productMediaFilter"
+                        @update:entity-collection="onProductsChange"
+                    >
+                        <template #selection-label-property="{ item }">
+                            <sw-product-variant-info :variations="item.variation">
+                                {{ item.translated.name || item.name }}
+                            </sw-product-variant-info>
+                        </template>
+                        <template #result-item="{ item, index }">
+                            <slot name="result-item" v-bind="{ item, index }">
+                                <sw-select-result v-bind="{ item, index, selected: isSelected(item.id) }">
+                                    <span class="sw-select-result__result-item-text">
+                                        <sw-product-variant-info :variations="item.variation">
+                                            {{ item.translated.name || item.name }}
+                                        </sw-product-variant-info>
+                                    </span>
+                                </sw-select-result>
+                            </slot>
+                        </template>
+                    </sw-entity-multi-select>
+                </div>
+
+                <!-- Product Stream Selection -->
+                <div v-if="productSelectionType === 'product_stream'" class="sw-cms-el-config-custom-product-carousel__stream-selection">
+                    <sw-entity-single-select
+                        v-model:value="productStreamId"
+                        entity="product_stream"
+                        :label="$tc('sw-cms.elements.customProductCarousel.config.productStreamLabel')"
+                        :placeholder="$tc('sw-cms.elements.customProductCarousel.config.productStreamPlaceholder')"
+                        show-clearable-button
+                    />
+                </div>
+
+                <!-- Limit Configuration for non-manual selections -->
+                <div v-if="productSelectionType !== 'manual'" class="sw-cms-el-config-custom-product-carousel__limit">
+                    <sw-number-field
+                        v-model:value="limit"
+                        :label="$tc('sw-cms.elements.customProductCarousel.config.limitLabel')"
+                        :min="1"
+                    />
+                </div>
+            </div>
+
+            <div v-if="active === 'settings'" class="sw-cms-el-config-custom-product-carousel__tab-settings">
+                <!-- Navigation Arrows Switch -->
+                <sw-switch-field
+                    v-model:value="navigationArrows"
+                    :label="$tc('sw-cms.elements.customProductCarousel.config.navigationArrows')"
+                />
+
+                <!-- Navigation Dots Switch -->
+                <sw-switch-field
+                    v-model:value="navigationDots"
+                    :label="$tc('sw-cms.elements.customProductCarousel.config.navigationDots')"
+                />
+
+                <!-- Navigation Dots Position (visible if navigation dots is on) -->
+                <sw-single-select
+                    v-if="navigationDots"
+                    v-model:value="navigationDotsPosition"
+                    :label="$tc('sw-cms.elements.customProductCarousel.config.navigationDotsPosition')"
+                    :options="dotsPositionOptions"
+                />
+
+                <!-- Autoplay Switch -->
+                <sw-switch-field
+                    v-model:value="autoplay"
+                    :label="$tc('sw-cms.elements.customProductCarousel.config.autoplay')"
+                />
+
+                <!-- Autoplay Speed -->
+                <sw-number-field
+                    v-if="autoplay"
+                    v-model:value="autoplaySpeed"
+                    :label="$tc('sw-cms.elements.customProductCarousel.config.autoplaySpeed')"
+                    :helpText="$tc('sw-cms.elements.customProductCarousel.config.autoplaySpeedHelp')"
+                    :min="0"
+                />
+
+                <!-- Max Height -->
+                <sw-number-field
+                    v-model:value="maxHeight"
+                    :label="$tc('sw-cms.elements.customProductCarousel.config.maxHeight')"
+                    :helpText="$tc('sw-cms.elements.customProductCarousel.config.maxHeightHelp')"
+                    :min="0"
+                />
+            </div>
+        </template>
+    </sw-tabs>
+</div>

@@ -1,0 +1,9 @@
+<div class="sw-cms-el-common-slider">
+    <div class="sw-cms-el-common-slider__preview">
+        <sw-icon name="regular-image" v-if="!firstImage"></sw-icon>
+        <sw-media-preview-v2 :source="firstImage" v-if="firstImage"></sw-media-preview-v2>
+        <div class="sw-cms-el-common-slider__info">
+            {{ $tc('sw-cms.elements.ultimateCmsTools.commonSlider.label') }} ({{ sliderItems.length }} slides)
+        </div>
+    </div>
+</div>

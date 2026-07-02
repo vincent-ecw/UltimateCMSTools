@@ -1,0 +1,39 @@
+{% block element_faq_harmonica %}
+    {% set faqs = element.config.faqs.value %}
+    {% set accordionId = 'faqAccordion-' ~ element.id %}
+
+    <div class="cms-element-faq-harmonica">
+        {% if faqs and faqs|length > 0 %}
+            <div class="accordion" id="{{ accordionId }}">
+                {% for faq in faqs %}
+                    {% set collapseId = accordionId ~ '-collapse-' ~ loop.index %}
+                    {% set headingId = accordionId ~ '-heading-' ~ loop.index %}
+
+                    <div class="accordion-item faq-harmonica-item">
+                        <h3 class="accordion-header faq-harmonica-header" id="{{ headingId }}">
+                            <button class="accordion-button faq-harmonica-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#{{ collapseId }}" aria-expanded="false" aria-controls="{{ collapseId }}">
+                                {% if faq.mediaUrl %}
+                                    <span class="faq-harmonica-icon-wrapper">
+                                        <img src="{{ faq.mediaUrl }}" alt="Icon" width="24" height="24" class="faq-harmonica-image-icon" />
+                                    </span>
+                                {% elseif faq.icon %}
+                                    <span class="faq-harmonica-icon-wrapper">
+                                        {% sw_icon faq.icon style { 'class': 'faq-harmonica-icon' } %}
+                                    </span>
+                                {% else %}
+                                    <span class="faq-harmonica-icon-wrapper empty-icon"></span>
+                                {% endif %}
+                                <span class="faq-harmonica-title">{{ faq.title }}</span>
+                            </button>
+                        </h3>
+                        <div id="{{ collapseId }}" class="accordion-collapse collapse" aria-labelledby="{{ headingId }}" data-bs-parent="#{{ accordionId }}">
+                            <div class="accordion-body faq-harmonica-body">
+                                {{ faq.content|raw }}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

@@ -1,0 +1,50 @@
+.sw-cms-el-config-custom-carousel {
+    &__items {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        margin-bottom: 20px;
+    }
+
+    &__item {
+        border: 1px solid #e1e6eb;
+        border-radius: 4px;
+        background: #fdfdfd;
+        overflow: hidden;
+    }
+
+    &__item-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 15px;
+        background: #f5f7fa;
+        border-bottom: 1px solid #e1e6eb;
+        font-weight: bold;
+        font-size: 13px;
+        color: #333;
+    }
+
+    &__item-content {
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    &__button-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+
+    &__actions {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+    }
+
+    &__add-button {
+        width: 100%;
+    }
+}

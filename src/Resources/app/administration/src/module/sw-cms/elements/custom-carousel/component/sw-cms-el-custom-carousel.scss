@@ -1,0 +1,44 @@
+.sw-cms-el-custom-carousel {
+    border: 1px dashed #ccd4dd;
+    border-radius: 4px;
+    background-color: #f9fafb;
+    padding: 20px;
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &__placeholder {
+        text-align: center;
+        color: #7a8c9e;
+
+        .icon {
+            margin-bottom: 10px;
+            color: #a2b2c3;
+        }
+    }
+
+    &__preview {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        gap: 10px;
+    }
+
+    &__image-preview {
+        max-height: 150px;
+        border-radius: 4px;
+        overflow: hidden;
+    }
+
+    &__no-image {
+        color: #ced4da;
+    }
+
+    &__info {
+        font-size: 14px;
+        color: #52667a;
+        text-align: center;
+    }
+}

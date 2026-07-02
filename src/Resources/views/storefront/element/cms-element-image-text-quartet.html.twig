@@ -1,0 +1,74 @@
+{% block element_image_text_quartet %}
+    {% set config = element.fieldConfig.elements %}
+    {% set media1Desktop = element.data ? element.data.get('media1Desktop') : null %}
+    {% set media1Tablet = element.data ? element.data.get('media1Tablet') : null %}
+    {% set media1Mobile = element.data ? element.data.get('media1Mobile') : null %}
+
+    {% set media2Desktop = element.data ? element.data.get('media2Desktop') : null %}
+    {% set media2Tablet = element.data ? element.data.get('media2Tablet') : null %}
+    {% set media2Mobile = element.data ? element.data.get('media2Mobile') : null %}
+
+    {% set altText1 = config.altText1.value|default('') %}
+    {% set altText2 = config.altText2.value|default('') %}
+    {% set text1 = config.text1.value|default('') %}
+    {% set text2 = config.text2.value|default('') %}
+
+    {% set ratio1 = config.ratio1.value|default('50-50') %}
+    {% set ratio2 = config.ratio2.value|default('50-50') %}
+
+    <div class="cms-element-image-text-quartet">
+        <!-- Row 1 -->
+        <div class="image-text-quartet__row image-text-quartet__row--1 image-text-quartet__row--ratio-{{ ratio1 }}">
+            <!-- Row 1 Column 1: Image -->
+            <div class="image-text-quartet__col image-text-quartet__col--image">
+                {% if media1Desktop %}
+                    <picture class="image-text-quartet__picture">
+                        {% if media1Mobile %}
+                            <source media="(max-width: 576px)" srcset="{{ media1Mobile.url }}">
+                        {% endif %}
+                        {% if media1Tablet %}
+                            <source media="(max-width: 767px)" srcset="{{ media1Tablet.url }}">
+                        {% endif %}
+                        <img src="{{ media1Desktop.url }}" alt="{{ altText1|default(media1Desktop.translated.alt|default('')) }}" class="image-text-quartet__img">
+                    </picture>
+                {% endif %}
+            </div>
+
+            <!-- Row 1 Column 2: Text -->
+            <div class="image-text-quartet__col image-text-quartet__col--text">
+                {% if text1 %}
+                    <div class="image-text-quartet__text">
+                        {{ text1|raw }}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Row 2 -->
+        <div class="image-text-quartet__row image-text-quartet__row--2 image-text-quartet__row--ratio-{{ ratio2 }}">
+            <!-- Row 2 Column 1: Text -->
+            <div class="image-text-quartet__col image-text-quartet__col--text">
+                {% if text2 %}
+                    <div class="image-text-quartet__text">
+                        {{ text2|raw }}
+                    </div>
+                {% endif %}
+            </div>
+
+            <!-- Row 2 Column 2: Image -->
+            <div class="image-text-quartet__col image-text-quartet__col--image">
+                {% if media2Desktop %}
+                    <picture class="image-text-quartet__picture">
+                        {% if media2Mobile %}
+                            <source media="(max-width: 576px)" srcset="{{ media2Mobile.url }}">
+                        {% endif %}
+                        {% if media2Tablet %}
+                            <source media="(max-width: 767px)" srcset="{{ media2Tablet.url }}">
+                        {% endif %}
+                        <img src="{{ media2Desktop.url }}" alt="{{ altText2|default(media2Desktop.translated.alt|default('')) }}" class="image-text-quartet__img">
+                    </picture>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

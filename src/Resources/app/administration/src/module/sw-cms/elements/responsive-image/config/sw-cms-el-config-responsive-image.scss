@@ -1,0 +1,27 @@
+.sw-cms-el-config-responsive-image {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    .sw-cms-el-config-responsive-image__media-group {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 16px;
+        margin-bottom: 8px;
+    }
+
+    .sw-cms-el-config-responsive-image__media-item {
+        display: flex;
+        flex-direction: column;
+
+        label {
+            margin-bottom: 8px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .sw-media-list-selection-v2 {
+            margin-bottom: 0;
+        }
+    }
+}

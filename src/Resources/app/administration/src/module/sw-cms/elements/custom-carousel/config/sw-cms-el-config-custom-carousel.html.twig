@@ -1,0 +1,65 @@
+<div class="sw-cms-el-config-custom-carousel">
+    <div class="sw-cms-el-config-custom-carousel__items">
+        <div v-for="(item, index) in carouselItems" :key="item.id || index" class="sw-cms-el-config-custom-carousel__item">
+            <div class="sw-cms-el-config-custom-carousel__item-header">
+                <span class="item-number">Item {{ index + 1 }}</span>
+                <sw-button @click="onRemoveItem(index)" size="small" variant="danger">
+                    {{ $tc('global.default.delete') }}
+                </sw-button>
+            </div>
+            
+            <div class="sw-cms-el-config-custom-carousel__item-content">
+                <sw-text-field 
+                    v-model="item.title"
+                    required
+                    :label="$tc('sw-cms.elements.customCarousel.config.titleLabel')" 
+                    :placeholder="$tc('sw-cms.elements.customCarousel.config.titlePlaceholder')">
+                </sw-text-field>
+
+                <sw-textarea-field
+                    v-model="item.description"
+                    :label="$tc('sw-cms.elements.customCarousel.config.descriptionLabel')" 
+                    :placeholder="$tc('sw-cms.elements.customCarousel.config.descriptionPlaceholder')">
+                </sw-textarea-field>
+
+                <sw-media-compact-upload-v2
+                    :source="item.mediaId"
+                    :upload-tag="'custom-carousel-media-upload-' + element.id + '-' + index"
+                    :allowMultiSelect="false"
+                    :label="$tc('sw-cms.elements.customCarousel.config.mediaLabel')"
+                    @selection-change="onImageSelect(item, $event)"
+                    @media-upload-remove-image="onImageRemove(item)">
+                </sw-media-compact-upload-v2>
+
+                <sw-upload-listener
+                    :upload-tag="'custom-carousel-media-upload-' + element.id + '-' + index"
+                    auto-upload
+                    @media-upload-finish="onImageUpload(item, $event)">
+                </sw-upload-listener>
+
+                <div class="sw-cms-el-config-custom-carousel__button-row">
+                    <sw-text-field 
+                        v-model="item.buttonUrl"
+                        :label="$tc('sw-cms.elements.customCarousel.config.buttonUrlLabel')" 
+                        :placeholder="$tc('sw-cms.elements.customCarousel.config.buttonUrlPlaceholder')">
+                    </sw-text-field>
+
+                    <sw-single-select
+                        v-model="item.buttonTarget"
+                        :label="$tc('sw-cms.elements.customCarousel.config.buttonTargetLabel')"
+                        :options="[
+                            { value: '_self', label: $tc('sw-cms.elements.customCarousel.config.targetSelf') },
+                            { value: '_blank', label: $tc('sw-cms.elements.customCarousel.config.targetBlank') }
+                        ]">
+                    </sw-single-select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="sw-cms-el-config-custom-carousel__actions">
+        <sw-button @click="onAddItem" variant="ghost" class="sw-cms-el-config-custom-carousel__add-button">
+            {{ $tc('sw-cms.elements.customCarousel.config.addButton') }}
+        </sw-button>
+    </div>
+</div>

@@ -1,0 +1,34 @@
+{% block element_magazine_quote %}
+    {% set config = element.config %}
+    {% set authorImage = element.data ? element.data.get('authorImage') : null %}
+
+    {% set quote = config.quote.value|default('') %}
+    {% set authorName = config.authorName.value|default('') %}
+    {% set style = config.style.value|default('provia') %}
+
+    {% if quote or authorName or authorImage %}
+        <div class="cms-element-magazine-quote style-{{ style }}">
+            <div class="magazine-quote-container">
+                {% if quote %}
+                    <div class="magazine-quote-text-wrapper">
+                        <p class="magazine-quote-text">{{ quote|nl2br }}</p>
+                    </div>
+                {% endif %}
+
+                {% if authorName %}
+                    <div class="magazine-quote-author-name-wrapper">
+                        <span class="magazine-quote-author-name">{{ authorName }}</span>
+                    </div>
+                {% endif %}
+
+                {% if authorImage %}
+                    <div class="magazine-quote-author-image-wrapper">
+                        <img src="{{ authorImage.url }}" 
+                             class="magazine-quote-author-image" 
+                             alt="{{ authorName|default('Author') }}">
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

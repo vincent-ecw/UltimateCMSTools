@@ -1,0 +1,61 @@
+{% block element_custom_carousel %}
+    {% set items = element.data.carouselItems %}
+
+    {% if items and items|length > 0 %}
+        <div class="cms-element-custom-carousel" data-custom-carousel="true">
+            <div class="custom-carousel-wrapper">
+                <button type="button" class="btn btn-light custom-carousel-control prev" aria-label="Previous">
+                    {% sw_icon 'arrow-left' %}
+                </button>
+
+                <div class="custom-carousel-container">
+                    {% for item in items %}
+                        {% set media = item.media %}
+                        
+                        {% set hasLink = item.buttonUrl is not empty %}
+                        
+                        <{% if hasLink %}a href="{{ item.buttonUrl }}" target="{{ item.buttonTarget|default('_self') }}"{% else %}div{% endif %} class="custom-card">
+                            <div class="custom-card-image-wrapper">
+                                {% if media %}
+                                    {% set attributes = {
+                                        'class': 'custom-card-image',
+                                        'alt': (media.translated.alt ?: item.title),
+                                        'title': (media.translated.title ?: item.title),
+                                        'loading': 'lazy'
+                                    } %}
+                                    {% sw_thumbnails 'custom-card-thumbnails' with {
+                                        media: media,
+                                        attributes: attributes
+                                    } %}
+                                {% else %}
+                                    <div class="custom-card-image-placeholder">
+                                        {% sw_icon 'image' style { 'size': 'lg' } %}
+                                    </div>
+                                {% endif %}
+                            </div>
+
+                            <div class="custom-card-content">
+                                <h3 class="custom-card-title">{{ item.title }}</h3>
+                                {% if item.description %}
+                                    <div class="custom-card-description">
+                                        {{ item.description|striptags|u.truncate(80, '...', false) }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </{% if hasLink %}a{% else %}div{% endif %}>
+                    {% endfor %}
+                </div>
+
+                <button type="button" class="btn btn-light custom-carousel-control next" aria-label="Next">
+                    {% sw_icon 'arrow-right' %}
+                </button>
+            </div>
+
+            <div class="custom-carousel-indicators">
+                {% for i in 0..(items|length - 1) %}
+                    <button type="button" class="custom-carousel-dot {% if loop.first %}active{% endif %}" data-index="{{ i }}" aria-label="Slide {{ i + 1 }}"></button>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

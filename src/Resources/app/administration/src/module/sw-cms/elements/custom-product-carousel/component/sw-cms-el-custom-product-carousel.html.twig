@@ -1,0 +1,36 @@
+<div class="sw-cms-el-custom-product-carousel">
+    <div class="sw-cms-el-custom-product-carousel__title-label">
+        {{ $tc('sw-cms.elements.customProductCarousel.label') }}
+    </div>
+
+    <div class="sw-cms-el-custom-product-carousel__content">
+        <div v-if="hasNavigationArrows" class="sw-cms-el-custom-product-carousel__navigation is--left-arrow">
+            <sw-icon name="regular-chevron-left" size="20px"></sw-icon>
+        </div>
+
+        <div class="sw-cms-el-custom-product-carousel__product-holder">
+            <template v-if="!products || products.length === 0">
+                <sw-cms-el-product-box
+                    v-for="index in 3"
+                    :key="index"
+                    :element="demoProductElement"
+                />
+            </template>
+            <template v-else>
+                <sw-cms-el-product-box
+                    v-for="(product, index) in products"
+                    :key="product.id || index"
+                    :element="getProductEl(product)"
+                />
+            </template>
+        </div>
+
+        <div v-if="hasNavigationArrows" class="sw-cms-el-custom-product-carousel__navigation is--right-arrow">
+            <sw-icon name="regular-chevron-right" size="20px"></sw-icon>
+        </div>
+    </div>
+
+    <div v-if="hasNavigationDots" :class="'sw-cms-el-custom-product-carousel__dots dots-' + dotsPosition">
+        <span v-for="index in (products ? products.length : 3)" :key="index" class="dot"></span>
+    </div>
+</div>

@@ -1,0 +1,170 @@
+<div class="sw-cms-el-config-image-text-quartet">
+    <sw-tabs class="sw-cms-el-config-image-text-quartet__tabs" defaultItem="row1">
+        <template #default="{ active }">
+            <sw-tabs-item name="row1" :activeTab="active">
+                {{ $tc('sw-cms.elements.ultimateCmsTools.imageTextQuartet.config.tabs.row1') }}
+            </sw-tabs-item>
+            <sw-tabs-item name="row2" :activeTab="active">
+                {{ $tc('sw-cms.elements.ultimateCmsTools.imageTextQuartet.config.tabs.row2') }}
+            </sw-tabs-item>
+        </template>
+
+        <template #content="{ active }">
+            <!-- Row 1 Tab -->
+            <div v-if="active === 'row1'" class="sw-cms-el-config-image-text-quartet__tab-content">
+                <div class="sw-cms-el-config-image-text-quartet__media-group">
+                    <!-- Row 1 Desktop Media -->
+                    <div class="sw-cms-el-config-image-text-quartet__media-item">
+                        <sw-media-compact-upload-v2
+                            :source="media1DesktopId"
+                            :upload-tag="'image-text-quartet-r1-desktop-' + element.id"
+                            :allowMultiSelect="false"
+                            :label="$tc('sw-cms.elements.ultimateCmsTools.imageTextQuartet.config.mediaDesktop')"
+                            @selection-change="onImageSelect('1', 'desktop', $event)"
+                            @media-upload-remove-image="onImageRemove('1', 'desktop')">
+                        </sw-media-compact-upload-v2>
+                        <sw-upload-listener
+                            :upload-tag="'image-text-quartet-r1-desktop-' + element.id"
+                            auto-upload
+                            @media-upload-finish="onImageUpload('1', 'desktop', $event)">
+                        </sw-upload-listener>
+                    </div>
+
+                    <!-- Row 1 Tablet Media -->
+                    <div class="sw-cms-el-config-image-text-quartet__media-item">
+                        <sw-media-compact-upload-v2
+                            :source="media1TabletId"
+                            :upload-tag="'image-text-quartet-r1-tablet-' + element.id"
+                            :allowMultiSelect="false"
+                            :label="$tc('sw-cms.elements.ultimateCmsTools.imageTextQuartet.config.mediaTablet')"
+                            @selection-change="onImageSelect('1', 'tablet', $event)"
+                            @media-upload-remove-image="onImageRemove('1', 'tablet')">
+                        </sw-media-compact-upload-v2>
+                        <sw-upload-listener
+                            :upload-tag="'image-text-quartet-r1-tablet-' + element.id"
+                            auto-upload
+                            @media-upload-finish="onImageUpload('1', 'tablet', $event)">
+                        </sw-upload-listener>
+                    </div>
+
+                    <!-- Row 1 Mobile Media -->
+                    <div class="sw-cms-el-config-image-text-quartet__media-item">
+                        <sw-media-compact-upload-v2
+                            :source="media1MobileId"
+                            :upload-tag="'image-text-quartet-r1-mobile-' + element.id"
+                            :allowMultiSelect="false"
+                            :label="$tc('sw-cms.elements.ultimateCmsTools.imageTextQuartet.config.mediaMobile')"
+                            @selection-change="onImageSelect('1', 'mobile', $event)"
+                            @media-upload-remove-image="onImageRemove('1', 'mobile')">
+                        </sw-media-compact-upload-v2>
+                        <sw-upload-listener
+                            :upload-tag="'image-text-quartet-r1-mobile-' + element.id"
+                            auto-upload
+                            @media-upload-finish="onImageUpload('1', 'mobile', $event)">
+                        </sw-upload-listener>
+                    </div>
+                </div>
+
+                <!-- Row 1 ALT Text -->
+                <sw-text-field
+                    v-model="altText1"
+                    :label="$tc('sw-cms.elements.ultimateCmsTools.imageTextQuartet.config.altText')"
+                    :placeholder="$tc('sw-cms.elements.ultimateCmsTools.imageTextQuartet.config.altTextPlaceholder')">
+                </sw-text-field>
+
+                <!-- Row 1 Ratio Selector -->
+                <sw-single-select
+                    v-model:value="ratio1"
+                    :label="$tc('sw-cms.elements.ultimateCmsTools.imageTextQuartet.config.ratio')"
+                    :options="ratioOptions">
+                </sw-single-select>
+
+                <!-- Row 1 WYSIWYG Text Editor -->
+                <div class="sw-cms-el-config-image-text-quartet__editor-label">
+                    {{ $tc('sw-cms.elements.ultimateCmsTools.imageTextQuartet.config.content') }}
+                </div>
+                <sw-text-editor
+                    v-model:value="text1">
+                </sw-text-editor>
+            </div>
+
+            <!-- Row 2 Tab -->
+            <div v-if="active === 'row2'" class="sw-cms-el-config-image-text-quartet__tab-content">
+                <div class="sw-cms-el-config-image-text-quartet__media-group">
+                    <!-- Row 2 Desktop Media -->
+                    <div class="sw-cms-el-config-image-text-quartet__media-item">
+                        <sw-media-compact-upload-v2
+                            :source="media2DesktopId"
+                            :upload-tag="'image-text-quartet-r2-desktop-' + element.id"
+                            :allowMultiSelect="false"
+                            :label="$tc('sw-cms.elements.ultimateCmsTools.imageTextQuartet.config.mediaDesktop')"
+                            @selection-change="onImageSelect('2', 'desktop', $event)"
+                            @media-upload-remove-image="onImageRemove('2', 'desktop')">
+                        </sw-media-compact-upload-v2>
+                        <sw-upload-listener
+                            :upload-tag="'image-text-quartet-r2-desktop-' + element.id"
+                            auto-upload
+                            @media-upload-finish="onImageUpload('2', 'desktop', $event)">
+                        </sw-upload-listener>
+                    </div>
+
+                    <!-- Row 2 Tablet Media -->
+                    <div class="sw-cms-el-config-image-text-quartet__media-item">
+                        <sw-media-compact-upload-v2
+                            :source="media2TabletId"
+                            :upload-tag="'image-text-quartet-r2-tablet-' + element.id"
+                            :allowMultiSelect="false"
+                            :label="$tc('sw-cms.elements.ultimateCmsTools.imageTextQuartet.config.mediaTablet')"
+                            @selection-change="onImageSelect('2', 'tablet', $event)"
+                            @media-upload-remove-image="onImageRemove('2', 'tablet')">
+                        </sw-media-compact-upload-v2>
+                        <sw-upload-listener
+                            :upload-tag="'image-text-quartet-r2-tablet-' + element.id"
+                            auto-upload
+                            @media-upload-finish="onImageUpload('2', 'tablet', $event)">
+                        </sw-upload-listener>
+                    </div>
+
+                    <!-- Row 2 Mobile Media -->
+                    <div class="sw-cms-el-config-image-text-quartet__media-item">
+                        <sw-media-compact-upload-v2
+                            :source="media2MobileId"
+                            :upload-tag="'image-text-quartet-r2-mobile-' + element.id"
+                            :allowMultiSelect="false"
+                            :label="$tc('sw-cms.elements.ultimateCmsTools.imageTextQuartet.config.mediaMobile')"
+                            @selection-change="onImageSelect('2', 'mobile', $event)"
+                            @media-upload-remove-image="onImageRemove('2', 'mobile')">
+                        </sw-media-compact-upload-v2>
+                        <sw-upload-listener
+                            :upload-tag="'image-text-quartet-r2-mobile-' + element.id"
+                            auto-upload
+                            @media-upload-finish="onImageUpload('2', 'mobile', $event)">
+                        </sw-upload-listener>
+                    </div>
+                </div>
+
+                <!-- Row 2 ALT Text -->
+                <sw-text-field
+                    v-model="altText2"
+                    :label="$tc('sw-cms.elements.ultimateCmsTools.imageTextQuartet.config.altText')"
+                    :placeholder="$tc('sw-cms.elements.ultimateCmsTools.imageTextQuartet.config.altTextPlaceholder')">
+                </sw-text-field>
+
+                <!-- Row 2 Ratio Selector -->
+                <sw-single-select
+                    v-model:value="ratio2"
+                    :label="$tc('sw-cms.elements.ultimateCmsTools.imageTextQuartet.config.ratio')"
+                    :options="ratioOptions">
+                </sw-single-select>
+
+                <!-- Row 2 WYSIWYG Text Editor -->
+                <div class="sw-cms-el-config-image-text-quartet__editor-label">
+                    {{ $tc('sw-cms.elements.ultimateCmsTools.imageTextQuartet.config.content') }}
+                </div>
+                <sw-text-editor
+                    v-model:value="text2">
+                </sw-text-editor>
+            </div>
+        </template>
+    </sw-tabs>
+</div>

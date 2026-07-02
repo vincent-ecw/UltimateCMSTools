@@ -1,0 +1,25 @@
+.cms-element-responsive-image {
+    width: 100%;
+    height: auto;
+    display: block;
+
+    .responsive-image-link {
+        display: block;
+        width: 100%;
+        height: auto;
+        text-decoration: none;
+    }
+
+    .responsive-image-picture {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    .responsive-image-img {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: var(--bs-border-radius);
+    }
+}

@@ -1,0 +1,16 @@
+.sw-cms-el-preview-custom-code {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    width: 100%;
+    background-color: #f0f2f5;
+    border: 1px solid #d1d9e0;
+    color: #758ca3;
+
+    p {
+        margin-top: 10px;
+        font-weight: 600;
+    }
+}

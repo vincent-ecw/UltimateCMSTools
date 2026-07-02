@@ -1,0 +1,15 @@
+<div class="sw-cms-el-faq-harmonica">
+    <div v-if="element.config.faqs.value && element.config.faqs.value.length > 0" class="faq-harmonica-preview">
+        <div class="faq-item" v-for="(faq, index) in element.config.faqs.value" :key="index">
+            <div class="faq-header">
+                <sw-icon v-if="faq.icon" :name="faq.icon"></sw-icon>
+                <span class="faq-title">{{ faq.title }}</span>
+                <sw-icon name="regular-chevron-down" class="faq-toggle-icon"></sw-icon>
+            </div>
+        </div>
+    </div>
+    <div v-else class="sw-cms-el-faq-harmonica-empty">
+        <sw-icon name="regular-question-circle" />
+        <p>{{ $tc('sw-cms.elements.faqHarmonica.emptyState') }}</p>
+    </div>
+</div>

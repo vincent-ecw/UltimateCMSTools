@@ -1,0 +1,25 @@
+{
+  "base": "/bundles/ultimatecmstools/administration/",
+  "entryPoints": {
+    "ultimate-cms-tools": {
+      "css": [
+        "/bundles/ultimatecmstools/administration/assets/ultimate-cms-tools-Dp8wfweg.css"
+      ],
+      "dynamic": [],
+      "js": [
+        "/bundles/ultimatecmstools/administration/assets/ultimate-cms-tools-CxS2NyYA.js"
+      ],
+      "legacy": false,
+      "preload": []
+    }
+  },
+  "legacy": false,
+  "metadatas": {},
+  "version": [
+    "7.1.0",
+    7,
+    1,
+    0
+  ],
+  "viteServer": null
+}

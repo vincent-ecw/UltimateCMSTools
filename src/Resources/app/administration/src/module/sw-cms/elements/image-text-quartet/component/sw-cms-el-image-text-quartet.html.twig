@@ -1,0 +1,43 @@
+<div class="sw-cms-el-image-text-quartet">
+    <!-- Row 1 -->
+    <div :class="['sw-cms-el-image-text-quartet__row', 'sw-cms-el-image-text-quartet__row--ratio-' + ratio1]">
+        <!-- Col 1: Image 1 -->
+        <div class="sw-cms-el-image-text-quartet__col sw-cms-el-image-text-quartet__col--image">
+            <div v-if="!media1Url" class="sw-cms-el-image-text-quartet__placeholder">
+                <sw-icon name="regular-image" size="32px"></sw-icon>
+                <p>{{ $tc('sw-cms.elements.ultimateCmsTools.imageTextQuartet.config.tabs.row1') }} - {{ $tc('sw-cms.elements.ultimateCmsTools.commonSlider.config.selectMedia') }}</p>
+            </div>
+            <div v-else class="sw-cms-el-image-text-quartet__image-wrapper">
+                <img :src="media1Url" :alt="altText1" class="sw-cms-el-image-text-quartet__image" />
+            </div>
+        </div>
+        <!-- Col 2: Text 1 -->
+        <div class="sw-cms-el-image-text-quartet__col sw-cms-el-image-text-quartet__col--text">
+            <div v-if="!text1" class="sw-cms-el-image-text-quartet__text-placeholder">
+                <p><strong>{{ $tc('sw-cms.elements.ultimateCmsTools.imageTextQuartet.config.tabs.row1') }}</strong> - {{ $tc('sw-cms.elements.faqHarmonica.config.contentPlaceholder') }}</p>
+            </div>
+            <div v-else class="sw-cms-el-image-text-quartet__text-content" v-html="text1"></div>
+        </div>
+    </div>
+
+    <!-- Row 2 -->
+    <div :class="['sw-cms-el-image-text-quartet__row', 'sw-cms-el-image-text-quartet__row--ratio-' + ratio2]">
+        <!-- Col 1: Text 2 -->
+        <div class="sw-cms-el-image-text-quartet__col sw-cms-el-image-text-quartet__col--text">
+            <div v-if="!text2" class="sw-cms-el-image-text-quartet__text-placeholder">
+                <p><strong>{{ $tc('sw-cms.elements.ultimateCmsTools.imageTextQuartet.config.tabs.row2') }}</strong> - {{ $tc('sw-cms.elements.faqHarmonica.config.contentPlaceholder') }}</p>
+            </div>
+            <div v-else class="sw-cms-el-image-text-quartet__text-content" v-html="text2"></div>
+        </div>
+        <!-- Col 2: Image 2 -->
+        <div class="sw-cms-el-image-text-quartet__col sw-cms-el-image-text-quartet__col--image">
+            <div v-if="!media2Url" class="sw-cms-el-image-text-quartet__placeholder">
+                <sw-icon name="regular-image" size="32px"></sw-icon>
+                <p>{{ $tc('sw-cms.elements.ultimateCmsTools.imageTextQuartet.config.tabs.row2') }} - {{ $tc('sw-cms.elements.ultimateCmsTools.commonSlider.config.selectMedia') }}</p>
+            </div>
+            <div v-else class="sw-cms-el-image-text-quartet__image-wrapper">
+                <img :src="media2Url" :alt="altText2" class="sw-cms-el-image-text-quartet__image" />
+            </div>
+        </div>
+    </div>
+</div>

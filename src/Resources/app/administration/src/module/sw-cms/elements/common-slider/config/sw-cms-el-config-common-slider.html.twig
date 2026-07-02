@@ -1,0 +1,164 @@
+<div class="sw-cms-el-config-common-slider">
+
+    <sw-tabs class="sw-cms-el-config-common-slider__tabs" defaultItem="content">
+        <template #default="{ active }" >
+            <sw-tabs-item name="content" :activeTab="active">
+                {{ $tc('sw-cms.elements.ultimateCmsTools.commonSlider.config.tabs.content') }}
+            </sw-tabs-item>
+            <sw-tabs-item name="settings" :activeTab="active">
+                {{ $tc('sw-cms.elements.ultimateCmsTools.commonSlider.config.tabs.settings') }}
+            </sw-tabs-item>
+        </template>
+
+        <template #content="{ active }">
+            <div v-if="active === 'content'" class="sw-cms-el-config-common-slider__tab-content">
+                
+                <div class="sw-cms-el-config-common-slider__slide-list">
+                    <div v-for="(slide, index) in sliderItems" :key="slide.id" class="sw-cms-el-config-common-slider__slide-item">
+                        <div class="sw-cms-el-config-common-slider__slide-header">
+                            <span>{{ $tc('sw-cms.elements.ultimateCmsTools.commonSlider.config.slideLabel') }} {{ index + 1 }}</span>
+                            <sw-button @click="removeSlide(index)" size="small" variant="danger">
+                                {{ $tc('global.default.delete') }}
+                            </sw-button>
+                        </div>
+                        
+                        <div class="sw-cms-el-config-common-slider__slide-media-group">
+                            <!-- Desktop Media -->
+                            <div class="sw-cms-el-config-common-slider__media-item">
+                                <sw-media-compact-upload-v2
+                                    :source="slide.mediaIdDesktop"
+                                    :upload-tag="'common-slider-desktop-' + element.id + '-' + index"
+                                    :allowMultiSelect="false"
+                                    :label="$tc('sw-cms.elements.ultimateCmsTools.commonSlider.config.mediaDesktop')"
+                                    @selection-change="onImageSelect(slide, 'desktop', $event)"
+                                    @media-upload-remove-image="onImageRemove(slide, 'desktop')">
+                                </sw-media-compact-upload-v2>
+                                <sw-upload-listener
+                                    :upload-tag="'common-slider-desktop-' + element.id + '-' + index"
+                                    auto-upload
+                                    @media-upload-finish="onImageUpload(slide, 'desktop', $event)">
+                                </sw-upload-listener>
+                            </div>
+
+                            <!-- Tablet Media -->
+                            <div class="sw-cms-el-config-common-slider__media-item">
+                                <sw-media-compact-upload-v2
+                                    :source="slide.mediaIdTablet"
+                                    :upload-tag="'common-slider-tablet-' + element.id + '-' + index"
+                                    :allowMultiSelect="false"
+                                    :label="$tc('sw-cms.elements.ultimateCmsTools.commonSlider.config.mediaTablet')"
+                                    @selection-change="onImageSelect(slide, 'tablet', $event)"
+                                    @media-upload-remove-image="onImageRemove(slide, 'tablet')">
+                                </sw-media-compact-upload-v2>
+                                <sw-upload-listener
+                                    :upload-tag="'common-slider-tablet-' + element.id + '-' + index"
+                                    auto-upload
+                                    @media-upload-finish="onImageUpload(slide, 'tablet', $event)">
+                                </sw-upload-listener>
+                            </div>
+
+                            <!-- Mobile Media -->
+                            <div class="sw-cms-el-config-common-slider__media-item">
+                                <sw-media-compact-upload-v2
+                                    :source="slide.mediaIdMobile"
+                                    :upload-tag="'common-slider-mobile-' + element.id + '-' + index"
+                                    :allowMultiSelect="false"
+                                    :label="$tc('sw-cms.elements.ultimateCmsTools.commonSlider.config.mediaMobile')"
+                                    @selection-change="onImageSelect(slide, 'mobile', $event)"
+                                    @media-upload-remove-image="onImageRemove(slide, 'mobile')">
+                                </sw-media-compact-upload-v2>
+                                <sw-upload-listener
+                                    :upload-tag="'common-slider-mobile-' + element.id + '-' + index"
+                                    auto-upload
+                                    @media-upload-finish="onImageUpload(slide, 'mobile', $event)">
+                                </sw-upload-listener>
+                            </div>
+                        </div>
+
+                        <!-- Text content -->
+                        <sw-text-field
+                            v-model:value="slide.title"
+                            :label="$tc('sw-cms.elements.ultimateCmsTools.commonSlider.config.title')"
+                            @change="onChange">
+                        </sw-text-field>
+                        
+                        <sw-text-field
+                            v-model:value="slide.buttonText"
+                            :label="$tc('sw-cms.elements.ultimateCmsTools.commonSlider.config.buttonText')"
+                            @change="onChange">
+                        </sw-text-field>
+                        
+                        <sw-text-field
+                            v-model:value="slide.buttonUrl"
+                            :label="$tc('sw-cms.elements.ultimateCmsTools.commonSlider.config.buttonUrl')">
+                        </sw-text-field>
+
+                        <sw-single-select
+                            v-model:value="slide.buttonTarget"
+                            :label="$tc('sw-cms.elements.ultimateCmsTools.commonSlider.config.buttonTarget')"
+                            :options="[
+                                { value: '_self', label: $tc('sw-cms.elements.ultimateCmsTools.commonSlider.config.targetSelf') },
+                                { value: '_blank', label: $tc('sw-cms.elements.ultimateCmsTools.commonSlider.config.targetBlank') }
+                            ]">
+                        </sw-single-select>
+                    </div>
+                </div>
+
+                <sw-button @click="addSlide" variant="ghost" class="sw-cms-el-config-common-slider__add-btn">
+                    {{ $tc('sw-cms.elements.ultimateCmsTools.commonSlider.config.addSlide') }}
+                </sw-button>
+
+            </div>
+
+            <div v-if="active === 'settings'" class="sw-cms-el-config-common-slider__tab-settings">
+                <sw-switch-field
+                    v-model:value="element.config.navigationArrows.value"
+                    :label="$tc('sw-cms.elements.ultimateCmsTools.commonSlider.config.navigationArrows')"
+                    @change="onChange">
+                </sw-switch-field>
+
+                <sw-switch-field
+                    v-model:value="element.config.navigationDots.value"
+                    :label="$tc('sw-cms.elements.ultimateCmsTools.commonSlider.config.navigationDots')">
+                </sw-switch-field>
+
+                <sw-single-select
+                    v-if="element.config.navigationDots.value"
+                    v-model:value="element.config.navigationDotsPosition.value"
+                    :label="$tc('sw-cms.elements.ultimateCmsTools.commonSlider.config.navigationDotsPosition')"
+                    :options="[
+                        { value: 'inside', label: $tc('sw-cms.elements.ultimateCmsTools.commonSlider.config.positionInside') },
+                        { value: 'outside', label: $tc('sw-cms.elements.ultimateCmsTools.commonSlider.config.positionOutside') }
+                    ]">
+                </sw-single-select>
+
+                <sw-single-select
+                    v-model:value="element.config.effect.value"
+                    :label="$tc('sw-cms.elements.ultimateCmsTools.commonSlider.config.effect')"
+                    :options="[
+                        { value: 'slide', label: $tc('sw-cms.elements.ultimateCmsTools.commonSlider.config.effectSlide') },
+                        { value: 'fade', label: $tc('sw-cms.elements.ultimateCmsTools.commonSlider.config.effectFade') },
+                        { value: 'zoom-out', label: $tc('sw-cms.elements.ultimateCmsTools.commonSlider.config.effectZoomOut') }
+                    ]">
+                </sw-single-select>
+
+                <sw-number-field
+                    v-model:value="element.config.autoplaySpeed.value"
+                    :label="$tc('sw-cms.elements.ultimateCmsTools.commonSlider.config.autoplaySpeed')"
+                    :helpText="$tc('sw-cms.elements.ultimateCmsTools.commonSlider.config.autoplaySpeedHelp')"
+                    :min="0">
+                </sw-number-field>
+
+                <sw-number-field
+                    v-model:value="element.config.maxHeight.value"
+                    :label="$tc('sw-cms.elements.ultimateCmsTools.commonSlider.config.maxHeight')"
+                    :helpText="$tc('sw-cms.elements.ultimateCmsTools.commonSlider.config.maxHeightHelp')"
+                    :min="0">
+                </sw-number-field>
+            </div>
+        </template>
+    </sw-tabs>
+
+
+
+</div>

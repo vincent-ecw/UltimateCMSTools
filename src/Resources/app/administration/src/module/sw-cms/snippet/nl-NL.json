@@ -1,0 +1,241 @@
+{
+    "sw-cms": {
+        "elements": {
+            "customCode": {
+                "label": "Aangepaste code"
+            },
+            "subcategoryCarousel": {
+                "label": "Subcategorieën-carrousel",
+                "placeholder": "Toont subcategorieën van de actieve categorie",
+                "configInfo": "Geen configuratie vereist. De subcategorieën van de actieve categorie worden automatisch weergegeven.",
+                "config": {
+                    "showAllSubcategoriesLabel": "Toon alle subcategorieën"
+                }
+            },
+            "customCarousel": {
+                "label": "Aangepaste carrousel",
+                "placeholder": "Selecteer of sleep aangepaste items om uw carrousel op te bouwen.",
+                "itemsCount": "items",
+                "config": {
+                    "titleLabel": "Titel (verplicht)",
+                    "titlePlaceholder": "Voer titel van item in...",
+                    "descriptionLabel": "Omschrijving (optioneel)",
+                    "descriptionPlaceholder": "Voer omschrijving van item in...",
+                    "mediaLabel": "Afbeelding (optioneel)",
+                    "buttonUrlLabel": "Link-URL (optioneel)",
+                    "buttonUrlPlaceholder": "bijv. /mijn-link",
+                    "buttonTargetLabel": "Linkdoel",
+                    "targetSelf": "Hetzelfde venster",
+                    "targetBlank": "Nieuw venster",
+                    "addButton": "Carrousel-item toevoegen"
+                }
+            },
+            "customProductCarousel": {
+                "label": "Productcarrousel",
+                "placeholder": "Configureer de aangepaste productcarrousel.",
+                "config": {
+                    "tabs": {
+                        "content": "Inhoud",
+                        "settings": "Instellingen"
+                    },
+                    "productSelectionType": "Productselectie",
+                    "selectionTypes": {
+                        "manual": "Handmatige selectie",
+                        "productStream": "Dynamische productgroep",
+                        "latest": "Nieuwste producten (op datum)",
+                        "sale": "Sale-producten"
+                    },
+                    "productsLabel": "Producten",
+                    "productsPlaceholder": "Zoek en voeg producten toe...",
+                    "productStreamLabel": "Dynamische productgroep",
+                    "productStreamPlaceholder": "Selecteer dynamische productgroep...",
+                    "limitLabel": "Aantal te tonen producten",
+                    "navigationArrows": "Navigatiepijlen tonen",
+                    "navigationDots": "Navigatiepunten tonen",
+                    "navigationDotsPosition": "Positie van punten",
+                    "dotsPositions": {
+                        "inside": "Binnen slider",
+                        "outside": "Buiten slider"
+                    },
+                    "autoplay": "Automatisch afspelen",
+                    "autoplaySpeed": "Snelheid automatisch afspelen (ms)",
+                    "autoplaySpeedHelp": "Tijd in milliseconden dat een dia zichtbaar blijft (bijv. 5000 = 5 seconden). Stel in op 0 om automatisch afspelen uit te schakelen.",
+                    "maxHeight": "Maximale hoogte (px)",
+                    "maxHeightHelp": "Definieer een maximale hoogte in pixels voor de slider (bijv. 500). Laat leeg om automatisch aan te passen."
+                }
+            },
+            "faqHarmonica": {
+                "label": "FAQ Accordeon",
+                "emptyState": "Voeg FAQ-items toe in de instellingen",
+                "config": {
+                    "iconLabel": "Icoon",
+                    "iconPlaceholder": "bijv. regular-comments",
+                    "iconHelpText": "Voer een geldige Shopware-icoonnaam in.",
+                    "titleLabel": "Vraag",
+                    "titlePlaceholder": "Voer de vraag in...",
+                    "contentLabel": "Antwoord",
+                    "contentPlaceholder": "Voer het antwoord in...",
+                    "addButton": "FAQ-item toevoegen"
+                }
+            },
+            "ultimateCmsTools": {
+                "commonSlider": {
+                    "label": "Algemene slider",
+                    "config": {
+                        "tabs": {
+                            "content": "Inhoud",
+                            "settings": "Instellingen"
+                        },
+                        "slideLabel": "Dia",
+                        "mediaDesktop": "Desktop afbeelding (>= 992px)",
+                        "mediaTablet": "Tablet afbeelding (>= 768px)",
+                        "mediaMobile": "Mobiele afbeelding (< 768px)",
+                        "selectMedia": "Afbeelding selecteren",
+                        "title": "Titel (optioneel)",
+                        "buttonText": "Knoptekst (optioneel)",
+                        "buttonUrl": "Knop-URL (optioneel)",
+                        "addSlide": "Dia toevoegen",
+                        "navigationArrows": "Navigatiepijlen tonen",
+                        "navigationDots": "Navigatiepunten tonen",
+                        "effect": "Slider effect",
+                        "effectSlide": "Dia (Schuiven)",
+                        "effectFade": "Fade (Vervagen)",
+                        "effectZoomOut": "Verrassing (Uitzoomen)",
+                        "buttonTarget": "Knopdoel",
+                        "targetSelf": "Hetzelfde venster",
+                        "targetBlank": "Nieuw venster",
+                        "navigationDotsPosition": "Positie van punten",
+                        "positionInside": "Binnen slider",
+                        "positionOutside": "Buiten slider",
+                        "autoplaySpeed": "Snelheid automatisch afspelen (ms)",
+                        "autoplaySpeedHelp": "Tijd in milliseconden dat een dia zichtbaar blijft (bijv. 5000 = 5 seconden). Stel in op 0 om automatisch afspelen uit te schakelen.",
+                        "maxHeight": "Maximale hoogte (px)",
+                        "maxHeightHelp": "Definieer een maximale hoogte in pixels voor de slider (bijv. 500). Laat leeg om automatisch aan te passen aan de hoogte van de afbeelding."
+                    }
+                },
+                "responsiveImage": {
+                    "label": "Responsieve afbeelding",
+                    "placeholder": "Upload responsieve afbeeldingen voor desktop-, tablet- en mobiele breekpunten."
+                },
+                "magazineQuote": {
+                    "label": "Tijdschriftcitaat",
+                    "placeholder": "Voeg titels en citaten toe in verschillende tijdschriftstijlen.",
+                    "config": {
+                        "quoteLabel": "Titel / Citaat",
+                        "quotePlaceholder": "Voer titel of citaat in...",
+                        "authorNameLabel": "Naam van auteur",
+                        "authorNamePlaceholder": "Voer auteursnaam in...",
+                        "authorImageLabel": "Afbeelding van auteur",
+                        "styleLabel": "Lay-outstijl",
+                        "styles": {
+                            "provia": "Provia (Strak & Modern)",
+                            "velvia": "Velvia (Levendig & Gedurfd)",
+                            "classicChrome": "Classic Chrome (Retro & Filmisch)",
+                            "astia": "Astia (Zacht & Minimalistisch)",
+                            "acros": "Acros (Monochroom met hoog contrast)"
+                        }
+                    }
+                },
+                "cta": {
+                    "label": "CTA (Call to Action)",
+                    "placeholder": "Aantrekkelijk call-to-action-blok met aangepaste acties en achtergrondafbeelding.",
+                    "config": {
+                        "titleLabel": "Titel",
+                        "titlePlaceholder": "Voer titel in...",
+                        "subtitleLabel": "Subtitel (optioneel)",
+                        "subtitlePlaceholder": "Voer subtitel in...",
+                        "backgroundImageLabel": "Achtergrondafbeelding (optioneel)",
+                        "styleLabel": "Lay-outstijl",
+                        "styles": {
+                            "split-minimal": "Minimalistische split",
+                            "neo-brutal": "Neo-brutalistischer pop",
+                            "glassmorphic": "Frosted glassmorphism",
+                            "hero-spotlight": "Hero spotlight",
+                            "interactive-card": "Interactieve zwevende kaart"
+                        },
+                        "textColorLabel": "Tekststijl",
+                        "textColors": {
+                            "dark": "Donkere tekst (Geoptimaliseerd voor lichte achtergronden)",
+                            "light": "Lichte tekst (Geoptimaliseerd voor donkere achtergronden)"
+                        },
+                        "primaryButtonSection": "Primaire knop",
+                        "secondaryButtonSection": "Secundaire knop (optioneel)",
+                        "buttonTextLabel": "Knoptekst",
+                        "buttonTextPlaceholder": "bijv. Nu winkelen",
+                        "buttonUrlLabel": "Link-URL",
+                        "buttonUrlPlaceholder": "bijv. /categorie-link",
+                        "buttonTargetLabel": "Linkdoel",
+                        "targetSelf": "Hetzelfde venster",
+                        "targetBlank": "Nieuw venster"
+                    }
+                },
+                "imageTextQuartet": {
+                    "label": "Kwartet van afbeelding en tekst",
+                    "placeholder": "Een lay-out met twee rijen met afwisselend afbeeldings- en tekstkolommen die prachtig stapelen op mobiel.",
+                    "config": {
+                        "tabs": {
+                            "row1": "Rij 1",
+                            "row2": "Rij 2"
+                        },
+                        "mediaDesktop": "Desktop afbeelding (>= 992px)",
+                        "mediaTablet": "Tablet afbeelding (>= 768px)",
+                        "mediaMobile": "Mobiele afbeelding (< 768px)",
+                        "altText": "ALT-tekst",
+                        "altTextPlaceholder": "Voer ALT-tekst voor afbeelding in...",
+                        "content": "Tekstinhoud",
+                        "ratio": "Kolomverhouding (Desktop)",
+                        "ratioLabel": "Verhouding",
+                        "ratio50_50": "50% - 50%",
+                        "ratio70_30": "70% - 30%",
+                        "ratio30_70": "30% - 70%"
+                    }
+                }
+            }
+        },
+        "blocks": {
+            "ultimateCmsTools": {
+                "subcategoryCarousel": {
+                    "label": "Subcategorieën-carrousel"
+                },
+                "customCarousel": {
+                    "label": "Aangepaste carrousel"
+                },
+                "customProductCarousel": {
+                    "label": "Productcarrousel"
+                },
+                "customCode": {
+                    "label": "Aangepast codeblok"
+                },
+                "faqHarmonica": {
+                    "label": "FAQ Accordeon"
+                },
+                "commonSlider": {
+                    "label": "Algemene slider"
+                },
+                "responsiveImage": {
+                    "label": "Responsieve afbeelding"
+                },
+                "magazineQuote": {
+                    "label": "Tijdschriftcitaat"
+                },
+                "cta": {
+                    "label": "CTA (Call to Action)"
+                },
+                "imageTextQuartet": {
+                    "label": "Kwartet van afbeelding en tekst"
+                }
+            }
+        }
+    },
+    "apps": {
+        "sw-cms": {
+            "detail": {
+                "label": {
+                    "blockCategory": {
+                        "ultimate-cms-tools": "Ultimate CMS Tools"
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,65 @@
+{% block element_cta %}
+    {% set config = element.config %}
+    {% set backgroundImage = element.data ? element.data.get('backgroundImage') : null %}
+
+    {% set title = config.title.value|default('') %}
+    {% set subtitle = config.subtitle.value|default('') %}
+    {% set buttonText = config.buttonText.value|default('') %}
+    {% set buttonUrl = config.buttonUrl.value|default('') %}
+    {% set buttonTarget = config.buttonTarget.value|default('_self') %}
+    {% set buttonSecondaryText = config.buttonSecondaryText.value|default('') %}
+    {% set buttonSecondaryUrl = config.buttonSecondaryUrl.value|default('') %}
+    {% set buttonSecondaryTarget = config.buttonSecondaryTarget.value|default('_self') %}
+    {% set style = config.style.value|default('split-minimal') %}
+    {% set textColor = config.textColor.value|default('dark') %}
+
+    {% if title or subtitle or buttonText or buttonSecondaryText %}
+        <div class="cms-element-cta style-{{ style }} text-{{ textColor }}"
+             {% if backgroundImage %}
+                 style="background-image: url('{{ backgroundImage.url }}'); background-size: cover; background-position: center;"
+             {% endif %}>
+            
+            {% if backgroundImage %}
+                <div class="cta-overlay"></div>
+            {% endif %}
+
+            <div class="cta-container">
+                <div class="cta-content">
+                    {% if title %}
+                        <div class="cta-title-wrapper">
+                            <h2 class="cta-title">{{ title }}</h2>
+                        </div>
+                    {% endif %}
+
+                    {% if subtitle %}
+                        <div class="cta-subtitle-wrapper">
+                            <p class="cta-subtitle">{{ subtitle|nl2br }}</p>
+                        </div>
+                    {% endif %}
+                </div>
+
+                {% if buttonText or buttonSecondaryText %}
+                    <div class="cta-actions">
+                        {% if buttonText and buttonUrl %}
+                            <a href="{{ buttonUrl }}"
+                               class="btn cta-btn cta-btn-primary"
+                               target="{{ buttonTarget }}"
+                               {% if buttonTarget == '_blank' %}rel="noopener noreferrer"{% endif %}>
+                                {{ buttonText }}
+                            </a>
+                        {% endif %}
+
+                        {% if buttonSecondaryText and buttonSecondaryUrl %}
+                            <a href="{{ buttonSecondaryUrl }}"
+                               class="btn cta-btn cta-btn-secondary"
+                               target="{{ buttonSecondaryTarget }}"
+                               {% if buttonSecondaryTarget == '_blank' %}rel="noopener noreferrer"{% endif %}>
+                                {{ buttonSecondaryText }}
+                            </a>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

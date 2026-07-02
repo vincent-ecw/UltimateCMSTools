@@ -1,0 +1,19 @@
+.sw-cms-preview-custom-code {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #d1d9e0;
+    background-color: #f0f2f5;
+    height: 100px;
+    color: #758ca3;
+
+    &__content {
+        text-align: center;
+
+        p {
+            margin-top: 5px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+    }
+}

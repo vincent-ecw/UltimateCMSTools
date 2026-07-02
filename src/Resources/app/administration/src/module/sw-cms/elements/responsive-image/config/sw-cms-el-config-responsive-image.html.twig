@@ -1,0 +1,82 @@
+<div class="sw-cms-el-config-responsive-image">
+
+    <div class="sw-cms-el-config-responsive-image__media-group">
+        <!-- Desktop Media -->
+        <div class="sw-cms-el-config-responsive-image__media-item">
+            <sw-media-compact-upload-v2
+                :source="mediaDesktopId"
+                :upload-tag="'responsive-image-desktop-' + element.id"
+                :allowMultiSelect="false"
+                :label="$tc('sw-cms.elements.ultimateCmsTools.commonSlider.config.mediaDesktop')"
+                @selection-change="onImageSelect('desktop', $event)"
+                @media-upload-remove-image="onImageRemove('desktop')">
+            </sw-media-compact-upload-v2>
+            <sw-upload-listener
+                :upload-tag="'responsive-image-desktop-' + element.id"
+                auto-upload
+                @media-upload-finish="onImageUpload('desktop', $event)">
+            </sw-upload-listener>
+        </div>
+
+        <!-- Tablet Media -->
+        <div class="sw-cms-el-config-responsive-image__media-item">
+            <sw-media-compact-upload-v2
+                :source="mediaTabletId"
+                :upload-tag="'responsive-image-tablet-' + element.id"
+                :allowMultiSelect="false"
+                :label="$tc('sw-cms.elements.ultimateCmsTools.commonSlider.config.mediaTablet')"
+                @selection-change="onImageSelect('tablet', $event)"
+                @media-upload-remove-image="onImageRemove('tablet')">
+            </sw-media-compact-upload-v2>
+            <sw-upload-listener
+                :upload-tag="'responsive-image-tablet-' + element.id"
+                auto-upload
+                @media-upload-finish="onImageUpload('tablet', $event)">
+            </sw-upload-listener>
+        </div>
+
+        <!-- Mobile Media -->
+        <div class="sw-cms-el-config-responsive-image__media-item">
+            <sw-media-compact-upload-v2
+                :source="mediaMobileId"
+                :upload-tag="'responsive-image-mobile-' + element.id"
+                :allowMultiSelect="false"
+                :label="$tc('sw-cms.elements.ultimateCmsTools.commonSlider.config.mediaMobile')"
+                @selection-change="onImageSelect('mobile', $event)"
+                @media-upload-remove-image="onImageRemove('mobile')">
+            </sw-media-compact-upload-v2>
+            <sw-upload-listener
+                :upload-tag="'responsive-image-mobile-' + element.id"
+                auto-upload
+                @media-upload-finish="onImageUpload('mobile', $event)">
+            </sw-upload-listener>
+        </div>
+    </div>
+
+    <!-- Text content for ALT -->
+    <sw-text-field
+        v-model:value="element.config.altText.value"
+        :label="$tc('sw-cms.elements.customCarousel.config.mediaLabel') + ' ALT Text'"
+        placeholder="Enter ALT text..."
+        @change="onChange">
+    </sw-text-field>
+
+    <!-- Link URL -->
+    <sw-text-field
+        v-model:value="element.config.linkUrl.value"
+        :label="$tc('sw-cms.elements.customCarousel.config.buttonUrlLabel')"
+        :placeholder="$tc('sw-cms.elements.customCarousel.config.buttonUrlPlaceholder')"
+        @change="onChange">
+    </sw-text-field>
+
+    <!-- Link Target -->
+    <sw-single-select
+        v-model:value="element.config.linkTarget.value"
+        :label="$tc('sw-cms.elements.customCarousel.config.buttonTargetLabel')"
+        :options="[
+            { value: '_self', label: $tc('sw-cms.elements.customCarousel.config.targetSelf') },
+            { value: '_blank', label: $tc('sw-cms.elements.customCarousel.config.targetBlank') }
+        ]"
+        @change="onChange">
+    </sw-single-select>
+</div>

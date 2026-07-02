@@ -1,0 +1,13 @@
+{% block block_common_slider %}
+    <div class="cms-block-common-slider">
+        {% set element = block.slots.getSlot('content') %}
+
+        {% if element %}
+            <div data-cms-element-id="{{ element.id }}">
+                {% sw_include '@Storefront/storefront/element/cms-element-' ~ element.type ~ '.html.twig' ignore missing with {
+                    element: element
+                } %}
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

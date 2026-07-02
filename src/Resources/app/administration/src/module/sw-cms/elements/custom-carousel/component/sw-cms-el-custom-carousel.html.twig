@@ -1,0 +1,16 @@
+<div class="sw-cms-el-custom-carousel">
+    <div v-if="carouselItems.length === 0" class="sw-cms-el-custom-carousel__placeholder">
+        <sw-icon name="regular-images" size="40px"></sw-icon>
+        <p>{{ $tc('sw-cms.elements.customCarousel.placeholder') }}</p>
+    </div>
+    <div v-else class="sw-cms-el-custom-carousel__preview">
+        <sw-media-preview-v2 :source="firstImage" v-if="firstImage" class="sw-cms-el-custom-carousel__image-preview"></sw-media-preview-v2>
+        <div v-else class="sw-cms-el-custom-carousel__no-image">
+            <sw-icon name="regular-image" size="40px"></sw-icon>
+        </div>
+        <div class="sw-cms-el-custom-carousel__info">
+            <strong>{{ firstTitle }}</strong>
+            <span v-if="carouselItems.length > 1"> (+ {{ carouselItems.length - 1 }} {{ $tc('sw-cms.elements.customCarousel.itemsCount') }})</span>
+        </div>
+    </div>
+</div>

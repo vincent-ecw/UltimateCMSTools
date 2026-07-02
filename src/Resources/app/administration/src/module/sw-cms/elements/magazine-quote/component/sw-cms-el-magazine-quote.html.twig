@@ -1,0 +1,20 @@
+<div class="sw-cms-el-magazine-quote" :class="styleClass">
+    <div v-if="!quote && !authorName && !authorImageUrl" class="sw-cms-el-magazine-quote__placeholder">
+        <sw-icon name="regular-comments" size="40px"></sw-icon>
+        <p>{{ $tc('sw-cms.elements.ultimateCmsTools.magazineQuote.placeholder') }}</p>
+    </div>
+    
+    <div v-else class="sw-cms-el-magazine-quote__container">
+        <div v-if="quote" class="sw-cms-el-magazine-quote__text-wrapper">
+            <p class="sw-cms-el-magazine-quote__text">{{ quote }}</p>
+        </div>
+        
+        <div v-if="authorName" class="sw-cms-el-magazine-quote__author-name-wrapper">
+            <span class="sw-cms-el-magazine-quote__author-name">{{ authorName }}</span>
+        </div>
+        
+        <div v-if="authorImageUrl" class="sw-cms-el-magazine-quote__author-image-wrapper">
+            <img :src="authorImageUrl" class="sw-cms-el-magazine-quote__author-image" alt="Author Image" />
+        </div>
+    </div>
+</div>

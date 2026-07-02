@@ -1,0 +1,90 @@
+.sw-cms-el-image-text-quartet {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 20px;
+    background: #ffffff;
+    border: 1px solid #d1d9e0;
+    border-radius: 6px;
+
+    .sw-cms-el-image-text-quartet__row {
+        display: grid;
+        gap: 30px;
+        align-items: center;
+
+        &--ratio-50-50 {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        &--ratio-70-30 {
+            grid-template-columns: 7fr 3fr;
+        }
+
+        &--ratio-30-70 {
+            grid-template-columns: 3fr 7fr;
+        }
+    }
+
+    .sw-cms-el-image-text-quartet__col {
+        min-height: 120px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        border-radius: 4px;
+        overflow: hidden;
+
+        &--image {
+            background: #f8fafc;
+            border: 1px dashed #e2e8f0;
+        }
+
+        &--text {
+            background: #ffffff;
+            border: 1px solid #f1f5f9;
+            padding: 15px;
+        }
+    }
+
+    .sw-cms-el-image-text-quartet__placeholder {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: #94a3b8;
+        padding: 20px;
+
+        p {
+            margin-top: 8px;
+            font-size: 13px;
+        }
+    }
+
+    .sw-cms-el-image-text-quartet__text-placeholder {
+        color: #94a3b8;
+        font-size: 13px;
+        text-align: center;
+    }
+
+    .sw-cms-el-image-text-quartet__image-wrapper {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        img {
+            max-width: 100%;
+            max-height: 300px;
+            object-fit: contain;
+            border-radius: 4px;
+        }
+    }
+
+    .sw-cms-el-image-text-quartet__text-content {
+        font-size: 14px;
+        line-height: 1.5;
+        color: #334155;
+        word-break: break-word;
+    }
+}

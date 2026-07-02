@@ -1,0 +1,39 @@
+<div class="sw-cms-el-config-magazine-quote">
+    <!-- Title / Quote Textarea -->
+    <sw-textarea-field
+        v-model="quote"
+        :label="$tc('sw-cms.elements.ultimateCmsTools.magazineQuote.config.quoteLabel')"
+        :placeholder="$tc('sw-cms.elements.ultimateCmsTools.magazineQuote.config.quotePlaceholder')">
+    </sw-textarea-field>
+
+    <!-- Author Name -->
+    <sw-text-field
+        v-model="authorName"
+        :label="$tc('sw-cms.elements.ultimateCmsTools.magazineQuote.config.authorNameLabel')"
+        :placeholder="$tc('sw-cms.elements.ultimateCmsTools.magazineQuote.config.authorNamePlaceholder')">
+    </sw-text-field>
+
+    <!-- Author Profile Image -->
+    <div class="sw-cms-el-config-magazine-quote__media-upload">
+        <sw-media-compact-upload-v2
+            :source="authorImageId"
+            :upload-tag="'magazine-quote-author-' + element.id"
+            :allowMultiSelect="false"
+            :label="$tc('sw-cms.elements.ultimateCmsTools.magazineQuote.config.authorImageLabel')"
+            @selection-change="onImageSelect"
+            @media-upload-remove-image="onImageRemove">
+        </sw-media-compact-upload-v2>
+        <sw-upload-listener
+            :upload-tag="'magazine-quote-author-' + element.id"
+            auto-upload
+            @media-upload-finish="onImageUpload">
+        </sw-upload-listener>
+    </div>
+
+    <!-- Style Selector -->
+    <sw-single-select
+        v-model:value="style"
+        :label="$tc('sw-cms.elements.ultimateCmsTools.magazineQuote.config.styleLabel')"
+        :options="styleOptions">
+    </sw-single-select>
+</div>

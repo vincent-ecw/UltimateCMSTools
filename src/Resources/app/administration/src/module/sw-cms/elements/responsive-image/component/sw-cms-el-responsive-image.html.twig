@@ -1,0 +1,14 @@
+<div class="sw-cms-el-responsive-image">
+    <div class="sw-cms-el-responsive-image__preview">
+        <div v-if="!mediaUrl" class="sw-cms-el-responsive-image__placeholder">
+            <sw-icon name="regular-image" size="40px"></sw-icon>
+            <p>{{ $tc('sw-cms.elements.ultimateCmsTools.responsiveImage.placeholder') }}</p>
+        </div>
+        <div v-else class="sw-cms-el-responsive-image__preview-image-wrapper">
+            <img :src="mediaUrl" class="sw-cms-el-responsive-image__preview-image" :alt="altText" />
+            <div class="sw-cms-el-responsive-image__info">
+                {{ altText || $tc('sw-cms.elements.ultimateCmsTools.responsiveImage.label') }}
+            </div>
+        </div>
+    </div>
+</div>

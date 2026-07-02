@@ -1,0 +1,184 @@
+.sw-cms-el-cta {
+    position: relative;
+    width: 100%;
+    min-height: 120px;
+    box-sizing: border-box;
+    border-radius: 8px;
+    overflow: hidden;
+
+    &__placeholder {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 30px;
+        background-color: #f9fafb;
+        border: 2px dashed #d1d5db;
+        border-radius: 8px;
+        color: #9ca3af;
+        text-align: center;
+
+        p {
+            margin: 10px 0 0 0;
+            font-size: 14px;
+        }
+    }
+
+    &__container {
+        position: relative;
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        box-sizing: border-box;
+        z-index: 1;
+    }
+
+    &__overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.4);
+        z-index: -1;
+    }
+
+    &__title {
+        margin: 0 0 5px 0;
+        font-size: 20px;
+        font-weight: 600;
+        color: #1f2937;
+    }
+
+    &__subtitle {
+        margin: 0;
+        font-size: 14px;
+        color: #4b5563;
+    }
+
+    &__actions {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    &__btn {
+        display: inline-block;
+        padding: 10px 20px;
+        border-radius: 6px;
+        font-size: 14px;
+        font-weight: 600;
+        text-decoration: none;
+        text-align: center;
+        cursor: pointer;
+
+        &--primary {
+            background-color: #189eff;
+            color: #ffffff;
+        }
+
+        &--secondary {
+            background-color: #f3f4f6;
+            color: #374151;
+            border: 1px solid #d1d5db;
+        }
+    }
+
+    /* Administration Style Previews */
+    &.style-split-minimal {
+        background-color: #f8fafc;
+        border: 1px solid #e2e8f0;
+
+        .sw-cms-el-cta__container {
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .sw-cms-el-cta__content {
+            flex: 1;
+        }
+    }
+
+    &.style-neo-brutal {
+        background-color: #fef08a;
+        border: 3px solid #000000;
+        box-shadow: 6px 6px 0px #000000;
+
+        .sw-cms-el-cta__title {
+            color: #000000;
+            font-weight: 800;
+        }
+        .sw-cms-el-cta__subtitle {
+            color: #000000;
+        }
+        .sw-cms-el-cta__btn--primary {
+            background-color: #ffffff;
+            color: #000000;
+            border: 2px solid #000000;
+            box-shadow: 3px 3px 0px #000000;
+        }
+        .sw-cms-el-cta__btn--secondary {
+            background-color: #000000;
+            color: #ffffff;
+            border: 2px solid #000000;
+            box-shadow: 3px 3px 0px #ffffff;
+        }
+    }
+
+    &.style-glassmorphic {
+        background: #e2e8f0;
+
+        .sw-cms-el-cta__container {
+            align-items: center;
+            text-align: center;
+        }
+
+        .sw-cms-el-cta__content {
+            background: rgba(255, 255, 255, 0.7);
+            padding: 20px;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            width: 100%;
+        }
+
+        .sw-cms-el-cta__actions {
+            justify-content: center;
+        }
+    }
+
+    &.style-hero-spotlight {
+        background-color: #111827;
+        color: #ffffff;
+
+        .sw-cms-el-cta__container {
+            align-items: center;
+            text-align: center;
+            padding: 50px 30px;
+        }
+
+        .sw-cms-el-cta__title {
+            color: #ffffff;
+            font-size: 24px;
+        }
+
+        .sw-cms-el-cta__subtitle {
+            color: #9ca3af;
+        }
+
+        .sw-cms-el-cta__actions {
+            justify-content: center;
+        }
+    }
+
+    &.style-interactive-card {
+        background-color: #ffffff;
+        border: 1px solid #e5e7eb;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+
+        .sw-cms-el-cta__container {
+            border-top: 4px solid #189eff;
+        }
+    }
+}

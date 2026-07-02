@@ -1,0 +1,29 @@
+{
+    "name": "vincentbourgonje/ultimate-cms-tools",
+    "description": "A collection of CMS blocks that should have been included in Shopware by default.",
+    "version": "1.0.2",
+    "type": "shopware-platform-plugin",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Vincent Bourgonje",
+            "email": "vincent@bourgonje.me"
+        }
+    ],
+    "require": {
+        "shopware/core": "6.7.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "VincentBourgonje\\UltimateCmsTools\\": "src/"
+        }
+    },
+    "extra": {
+        "shopware-plugin-class": "VincentBourgonje\\UltimateCmsTools\\UltimateCmsTools",
+        "label": {
+            "de-DE": "Ultimate CMS Tools",
+            "en-GB": "Ultimate CMS Tools",
+            "nl-NL": "Ultimate CMS Tools"
+        }
+    }
+}

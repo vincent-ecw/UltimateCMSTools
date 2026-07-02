@@ -1,0 +1,241 @@
+{
+    "sw-cms": {
+        "elements": {
+            "customCode": {
+                "label": "Custom Code"
+            },
+            "subcategoryCarousel": {
+                "label": "Subcategory Carousel",
+                "placeholder": "Shows subcategories of the active category",
+                "configInfo": "No configuration required. The subcategories of the active category are displayed automatically.",
+                "config": {
+                    "showAllSubcategoriesLabel": "Show all subcategories"
+                }
+            },
+            "customCarousel": {
+                "label": "Custom Carousel",
+                "placeholder": "Select or drag custom items to build your carousel.",
+                "itemsCount": "items",
+                "config": {
+                    "titleLabel": "Title (mandatory)",
+                    "titlePlaceholder": "Enter item title...",
+                    "descriptionLabel": "Description (optional)",
+                    "descriptionPlaceholder": "Enter item description...",
+                    "mediaLabel": "Image (optional)",
+                    "buttonUrlLabel": "Link URL (optional)",
+                    "buttonUrlPlaceholder": "e.g. /my-link",
+                    "buttonTargetLabel": "Link Target",
+                    "targetSelf": "Same Window",
+                    "targetBlank": "New Window",
+                    "addButton": "Add Carousel Item"
+                }
+            },
+            "customProductCarousel": {
+                "label": "Custom Product Carousel",
+                "placeholder": "Configure custom product carousel.",
+                "config": {
+                    "tabs": {
+                        "content": "Content",
+                        "settings": "Settings"
+                    },
+                    "productSelectionType": "Product Selection",
+                    "selectionTypes": {
+                        "manual": "Manual Selection",
+                        "productStream": "Dynamic Product Group",
+                        "latest": "Latest Products (by Date)",
+                        "sale": "Sale Products"
+                    },
+                    "productsLabel": "Products",
+                    "productsPlaceholder": "Search and add products...",
+                    "productStreamLabel": "Dynamic Product Group",
+                    "productStreamPlaceholder": "Select dynamic product group...",
+                    "limitLabel": "Show amount of products",
+                    "navigationArrows": "Show Navigation Arrows",
+                    "navigationDots": "Show Navigation Dots",
+                    "navigationDotsPosition": "Dots Position",
+                    "dotsPositions": {
+                        "inside": "Inside Slider",
+                        "outside": "Outside Slider"
+                    },
+                    "autoplay": "Autoplay",
+                    "autoplaySpeed": "Autoplay Speed (ms)",
+                    "autoplaySpeedHelp": "Time in milliseconds a slide stays visible (e.g., 5000 = 5 seconds). Set to 0 to disable autoplay.",
+                    "maxHeight": "Max Height (px)",
+                    "maxHeightHelp": "Define a maximum height in pixels for the slider (e.g. 500). Leave empty to auto-adapt."
+                }
+            },
+            "faqHarmonica": {
+                "label": "FAQ Harmonica",
+                "emptyState": "Add FAQ items in the settings",
+                "config": {
+                    "iconLabel": "Icon",
+                    "iconPlaceholder": "e.g. regular-comments",
+                    "iconHelpText": "Enter a valid Shopware icon name.",
+                    "titleLabel": "Question",
+                    "titlePlaceholder": "Enter the question...",
+                    "contentLabel": "Answer",
+                    "contentPlaceholder": "Enter the answer...",
+                    "addButton": "Add FAQ Item"
+                }
+            },
+            "ultimateCmsTools": {
+                "commonSlider": {
+                    "label": "Common Slider",
+                    "config": {
+                        "tabs": {
+                            "content": "Content",
+                            "settings": "Settings"
+                        },
+                        "slideLabel": "Slide",
+                        "mediaDesktop": "Desktop Image (>= 992px)",
+                        "mediaTablet": "Tablet Image (>= 768px)",
+                        "mediaMobile": "Mobile Image (< 768px)",
+                        "selectMedia": "Select image",
+                        "title": "Title (optional)",
+                        "buttonText": "Button Text (optional)",
+                        "buttonUrl": "Button URL (optional)",
+                        "addSlide": "Add slide",
+                        "navigationArrows": "Show Navigation Arrows",
+                        "navigationDots": "Show Navigation Dots",
+                        "effect": "Slider Effect",
+                        "effectSlide": "Slide",
+                        "effectFade": "Fade",
+                        "effectZoomOut": "Surprise (Zoom Out)",
+                        "buttonTarget": "Button Target",
+                        "targetSelf": "Same Window",
+                        "targetBlank": "New Window",
+                        "navigationDotsPosition": "Dots Position",
+                        "positionInside": "Inside Slider",
+                        "positionOutside": "Outside Slider",
+                        "autoplaySpeed": "Autoplay Speed (ms)",
+                        "autoplaySpeedHelp": "Time in milliseconds a slide stays visible (e.g., 5000 = 5 seconds). Set to 0 to disable autoplay.",
+                        "maxHeight": "Max Height (px)",
+                        "maxHeightHelp": "Define a maximum height in pixels for the slider (e.g. 500). Leave empty to auto-adapt to image height."
+                    }
+                },
+                "responsiveImage": {
+                    "label": "Responsive Image",
+                    "placeholder": "Upload responsive images for desktop, tablet, and mobile breakpoints."
+                },
+                "magazineQuote": {
+                    "label": "Magazine Quote",
+                    "placeholder": "Add titles and quotes in various magazine styles.",
+                    "config": {
+                        "quoteLabel": "Title / Quote",
+                        "quotePlaceholder": "Enter title or quote...",
+                        "authorNameLabel": "Author Name",
+                        "authorNamePlaceholder": "Enter author name...",
+                        "authorImageLabel": "Author Image",
+                        "styleLabel": "Layout Style",
+                        "styles": {
+                            "provia": "Provia (Clean & Modern)",
+                            "velvia": "Velvia (Vibrant & Bold)",
+                            "classicChrome": "Classic Chrome (Retro & Cinematic)",
+                            "astia": "Astia (Soft & Minimalist)",
+                            "acros": "Acros (High Contrast Monochrome)"
+                        }
+                    }
+                },
+                "cta": {
+                    "label": "CTA (Call to Action)",
+                    "placeholder": "Attractive call-to-action block with custom actions and background image.",
+                    "config": {
+                        "titleLabel": "Title",
+                        "titlePlaceholder": "Enter title...",
+                        "subtitleLabel": "Subtitle (optional)",
+                        "subtitlePlaceholder": "Enter subtitle...",
+                        "backgroundImageLabel": "Background Image (optional)",
+                        "styleLabel": "Layout Style",
+                        "styles": {
+                            "split-minimal": "Minimalist Split",
+                            "neo-brutal": "Neo-Brutalist Pop",
+                            "glassmorphic": "Frosted Glassmorphism",
+                            "hero-spotlight": "Hero Spotlight",
+                            "interactive-card": "Interactive Floating Card"
+                        },
+                        "textColorLabel": "Text Style",
+                        "textColors": {
+                            "dark": "Dark Text (Optimized for light backgrounds)",
+                            "light": "Light Text (Optimized for dark backgrounds)"
+                        },
+                        "primaryButtonSection": "Primary Button",
+                        "secondaryButtonSection": "Secondary Button (optional)",
+                        "buttonTextLabel": "Button Text",
+                        "buttonTextPlaceholder": "e.g. Shop Now",
+                        "buttonUrlLabel": "Link URL",
+                        "buttonUrlPlaceholder": "e.g. /category-link",
+                        "buttonTargetLabel": "Link Target",
+                        "targetSelf": "Same Window",
+                        "targetBlank": "New Window"
+                    }
+                },
+                "imageTextQuartet": {
+                    "label": "Image and Text Quartet",
+                    "placeholder": "A two-row layout alternating image and text columns that stack beautifully on mobile.",
+                    "config": {
+                        "tabs": {
+                            "row1": "Row 1",
+                            "row2": "Row 2"
+                        },
+                        "mediaDesktop": "Desktop Image (>= 992px)",
+                        "mediaTablet": "Tablet Image (>= 768px)",
+                        "mediaMobile": "Mobile Image (< 768px)",
+                        "altText": "ALT Text",
+                        "altTextPlaceholder": "Enter ALT text for image...",
+                        "content": "Text Content",
+                        "ratio": "Column Ratio (Desktop)",
+                        "ratioLabel": "Ratio",
+                        "ratio50_50": "50% - 50%",
+                        "ratio70_30": "70% - 30%",
+                        "ratio30_70": "30% - 70%"
+                    }
+                }
+            }
+        },
+        "blocks": {
+            "ultimateCmsTools": {
+                "subcategoryCarousel": {
+                    "label": "Subcategory Carousel"
+                },
+                "customCarousel": {
+                    "label": "Custom Carousel"
+                },
+                "customProductCarousel": {
+                    "label": "Custom Product Carousel"
+                },
+                "customCode": {
+                    "label": "Custom Code Block"
+                },
+                "faqHarmonica": {
+                    "label": "FAQ Harmonika"
+                },
+                "commonSlider": {
+                    "label": "Common Slider"
+                },
+                "responsiveImage": {
+                    "label": "Responsive Image"
+                },
+                "magazineQuote": {
+                    "label": "Magazine Quote"
+                },
+                "cta": {
+                    "label": "CTA (Call to Action)"
+                },
+                "imageTextQuartet": {
+                    "label": "Image and Text Quartet"
+                }
+            }
+        }
+    },
+    "apps": {
+        "sw-cms": {
+            "detail": {
+                "label": {
+                    "blockCategory": {
+                        "ultimate-cms-tools": "Ultimate CMS Tools"
+                    }
+                }
+            }
+        }
+    }
+}

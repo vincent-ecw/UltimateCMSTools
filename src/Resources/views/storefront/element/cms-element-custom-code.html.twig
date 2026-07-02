@@ -1,0 +1,15 @@
+{% block element_custom_code %}
+    <div class="cms-element-custom-code">
+        {% if element.config.cssCode.value %}
+            <style>
+                {{ element.config.cssCode.value|raw }}
+            </style>
+        {% endif %}
+
+        {% if element.config.jsCode.value %}
+            <script>
+                {{ element.config.jsCode.value|raw }}
+            </script>
+        {% endif %}
+    </div>
+{% endblock %}

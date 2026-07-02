@@ -1,0 +1,46 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="VincentBourgonje\UltimateCmsTools\DataResolver\CustomCodeCmsElementResolver">
+            <tag name="shopware.cms.data_resolver" />
+        </service>
+
+        <service id="VincentBourgonje\UltimateCmsTools\DataResolver\SubcategoryCarouselCmsElementResolver">
+            <tag name="shopware.cms.data_resolver" />
+        </service>
+
+        <service id="VincentBourgonje\UltimateCmsTools\DataResolver\CommonSliderCmsElementResolver">
+            <tag name="shopware.cms.data_resolver" />
+        </service>
+
+        <service id="VincentBourgonje\UltimateCmsTools\DataResolver\CustomCarouselCmsElementResolver">
+            <tag name="shopware.cms.data_resolver" />
+        </service>
+
+        <service id="VincentBourgonje\UltimateCmsTools\DataResolver\CustomProductCarouselCmsElementResolver">
+            <argument type="service" id="sales_channel.product.repository" />
+            <argument type="service" id="Shopware\Core\Content\ProductStream\Service\ProductStreamBuilder" />
+            <tag name="shopware.cms.data_resolver" />
+        </service>
+
+        <service id="VincentBourgonje\UltimateCmsTools\DataResolver\ResponsiveImageCmsElementResolver">
+            <tag name="shopware.cms.data_resolver" />
+        </service>
+
+        <service id="VincentBourgonje\UltimateCmsTools\DataResolver\MagazineQuoteCmsElementResolver">
+            <tag name="shopware.cms.data_resolver" />
+        </service>
+
+        <service id="VincentBourgonje\UltimateCmsTools\DataResolver\CtaCmsElementResolver">
+            <tag name="shopware.cms.data_resolver" />
+        </service>
+
+        <service id="VincentBourgonje\UltimateCmsTools\DataResolver\ImageTextQuartetCmsElementResolver">
+            <tag name="shopware.cms.data_resolver" />
+        </service>
+    </services>
+</container>

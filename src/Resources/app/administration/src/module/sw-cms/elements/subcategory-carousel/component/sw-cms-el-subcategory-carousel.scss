@@ -1,0 +1,24 @@
+.sw-cms-el-subcategory-carousel {
+    height: 100%;
+    min-height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f9fafb;
+    border: 1px dashed #d1d9e0;
+    border-radius: 4px;
+
+    .sw-cms-el-subcategory-carousel__placeholder {
+        text-align: center;
+        color: #758ca3;
+
+        sw-icon {
+            margin-bottom: 15px;
+        }
+
+        p {
+            margin: 0;
+            font-weight: 600;
+        }
+    }
+}

@@ -1,0 +1,42 @@
+.sw-cms-el-config-faq-harmonica {
+    .sw-cms-el-config-faq-harmonica__faq-items {
+        margin-bottom: 20px;
+    }
+
+    .sw-cms-el-config-faq-harmonica__faq-item {
+        border: 1px solid #d1d9e0;
+        border-radius: 4px;
+        margin-bottom: 20px;
+        background-color: #f9fafb;
+
+        .sw-cms-el-config-faq-harmonica__faq-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            border-bottom: 1px solid #d1d9e0;
+            background-color: #f1f5f8;
+            font-weight: bold;
+            border-top-left-radius: 4px;
+            border-top-right-radius: 4px;
+        }
+
+        .sw-cms-el-config-faq-harmonica__faq-item-content {
+            padding: 20px;
+            
+            .sw-text-editor {
+                margin-top: 15px;
+            }
+        }
+    }
+
+    .sw-cms-el-config-faq-harmonica__add-button {
+        width: 100%;
+        border: 1px dashed #d1d9e0;
+        color: #189eff;
+        
+        &:hover {
+            border-color: #189eff;
+        }
+    }
+}

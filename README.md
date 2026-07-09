@@ -7,13 +7,15 @@ A collection of CMS blocks and elements that enhance Shopware's Shopping Experie
 - [Available CMS Blocks](#available-cms-blocks)
   - [1. Common Slider](#1-common-slider)
   - [2. Subcategory Carousel](#2-subcategory-carousel)
-  - [3. FAQ Harmonica](#3-faq-harmonica)
-  - [4. Custom Code Block](#4-custom-code-block)
-  - [5. Custom Carousel](#5-custom-carousel)
-  - [6. Responsive Image](#6-responsive-image)
-  - [7. Call to Action (CTA)](#7-call-to-action-cta)
-  - [8. Magazine Quote](#8-magazine-quote)
-  - [9. Image and Text Quartet](#9-image-and-text-quartet)
+  - [3. Subcategory Grid](#3-subcategory-grid)
+  - [4. FAQ Harmonica](#4-faq-harmonica)
+  - [5. Custom Code Block](#5-custom-code-block)
+  - [6. Custom Carousel](#6-custom-carousel)
+  - [7. Custom Product Carousel](#7-custom-product-carousel)
+  - [8. Responsive Image](#8-responsive-image)
+  - [9. Call to Action (CTA)](#9-call-to-action-cta)
+  - [10. Magazine Quote](#10-magazine-quote)
+  - [11. Image and Text Quartet](#11-image-and-text-quartet)
 - [Development and Compilation](#development-and-compilation)
 
 ---
@@ -24,13 +26,13 @@ To install and activate the plugin within the Docker environment:
 
 ```bash
 # Refresh the plugin list
-docker exec -it shopware67 bin/console plugin:refresh
+docker exec -it sw67adev bin/console plugin:refresh
 
 # Install and activate the plugin
-docker exec -it shopware67 bin/console plugin:install --activate UltimateCmsTools
+docker exec -it sw67adev bin/console plugin:install --activate UltimateCmsTools
 
 # Clear the cache
-docker exec -it shopware67 bin/console cache:clear
+docker exec -it sw67adev bin/console cache:clear
 ```
 
 ---
@@ -86,11 +88,29 @@ A carousel displaying the subcategories of the active category. It is ideal for 
 * **Show all subcategories (`showAllSubcategories`):**
   * **Disabled (default):** Fetches only the direct children (immediate subcategories) of the active category.
   * **Enabled:** Recursively fetches all descendant subcategories deep down the catalog tree by matching the active category ID within the category path.
+* **Display image (`displayImage` - default enabled):** Toggles rendering of the category image/placeholder on each carousel card. When disabled, only the title and description are shown.
 * *Note: This element automatically resolves the subcategory structure in the backend using a custom CMS element data resolver and displays the category image/placeholder, title, and a truncated description.*
 
 ---
 
-### 3. FAQ Harmonica
+### 3. Subcategory Grid
+
+A responsive grid that displays the subcategories of the active category. It shares the same data resolver and configuration as the Subcategory Carousel, but renders the subcategories as a wrapping grid layout instead of a horizontally scrolling carousel. It is well suited for category landing pages where all subcategories should be visible at once.
+
+* **Block Name:** `subcategory-grid`
+* **Element Name:** `subcategory-grid`
+
+#### Configuration Options
+
+* **Show all subcategories (`showAllSubcategories`):**
+  * **Disabled (default):** Fetches only the direct children (immediate subcategories) of the active category.
+  * **Enabled:** Recursively fetches all descendant subcategories deep down the catalog tree by matching the active category ID within the category path.
+* **Display image (`displayImage` - default enabled):** Toggles rendering of the category image/placeholder on each grid card. When disabled, only the title and description are shown.
+* *Note: This element automatically resolves the subcategory structure in the backend using a custom CMS element data resolver and displays the category image/placeholder, title, and a truncated description.*
+
+---
+
+### 4. FAQ Harmonica
 
 A collapsible Bootstrap accordion designed for Frequently Asked Questions (FAQs). It features support for custom uploaded image icons or built-in Shopware vector icons.
 
@@ -106,7 +126,7 @@ Manage a dynamic list of collapsible FAQ items. For each item:
 
 ---
 
-### 4. Custom Code Block
+### 5. Custom Code Block
 
 An advanced layout tool enabling developers and administrators to inject custom, inline CSS and JavaScript directly into a specific CMS page.
 
@@ -122,7 +142,7 @@ Contains two code editors powered by the Shopware admin code component:
 
 ---
 
-### 5. Custom Carousel
+### 6. Custom Carousel
 
 A fully custom carousel that matches the look and feel of the subcategories carousel, allowing website managers to manually configure individual slides.
 
@@ -141,7 +161,38 @@ Manage a dynamic list of carousel items. For each item:
 
 ---
 
-### 6. Responsive Image
+### 7. Custom Product Carousel
+
+A product carousel that displays store products using several selection strategies, with full carousel navigation and autoplay controls. It reuses the same slider look and feel as the other carousels in this plugin.
+
+* **Block Name:** `custom-product-carousel`
+* **Element Name:** `custom-product-carousel`
+
+#### Configuration Options
+
+The configuration modal is split into two tabs:
+
+##### Content Tab
+* **Product Selection (`productSelectionType` - default `manual`):** Determines how products are collected:
+  * `Manual Selection`: Hand-pick individual products via a product multi-select (`products`).
+  * `Dynamic Product Group`: Populate the carousel from a dynamic product group / product stream (`productStreamId`).
+  * `Latest Products (by Date)`: Automatically show the most recently added products.
+  * `Sale Products`: Automatically show products that are on sale.
+* **Category Filter (`categoryId` - Optional):** When using the `Latest` or `Sale` selection types, limits the products to a chosen category.
+* **Also look in subcategories (`includeSubcategories` - Optional):** When a category filter is set, also includes products from its subcategories.
+* **Show amount of products (`limit` - default `10`):** Maximum number of products rendered in the carousel.
+
+##### Settings Tab
+* **Show Navigation Arrows (`navigationArrows` - default enabled):** Toggles the left and right navigation arrows.
+* **Show Navigation Dots (`navigationDots` - default enabled):** Toggles the pagination dots.
+* **Dots Position (`navigationDotsPosition` - default `inside`):** Positions the dots inside (`inside`) or below (`outside`) the slider area.
+* **Autoplay (`autoplay` - default enabled):** Enables automatic advancing of slides.
+* **Autoplay Speed (ms) (`autoplaySpeed` - default `5000`):** Time in milliseconds each slide stays visible. Set to `0` to disable autoplay.
+* **Max Height (px) (`maxHeight` - Optional):** Limits the height of the slider to a maximum value in pixels. Leave empty to auto-adapt.
+
+---
+
+### 8. Responsive Image
 
 A CMS element providing high-performance responsive image rendering using a semantic HTML5 `<picture>` tag. It allows target-specific image assets to be selected for desktop, tablet, and mobile viewport sizes to ensure fast page loads and correct aspect ratios.
 
@@ -159,7 +210,7 @@ A CMS element providing high-performance responsive image rendering using a sema
 
 ---
 
-### 7. Call to Action (CTA)
+### 9. Call to Action (CTA)
 
 A highly flexible Call to Action banner card designed to capture user engagement. It supports rich typography, secondary styling buttons, and background images with modern, interactive style presets.
 
@@ -187,7 +238,7 @@ A highly flexible Call to Action banner card designed to capture user engagement
 
 ---
 
-### 8. Magazine Quote
+### 10. Magazine Quote
 
 A dedicated layout component designed for editorial blocks, magazine articles, or quotes. It allows highlighting significant quotes alongside optional author profiles and stylized typography.
 
@@ -208,7 +259,7 @@ A dedicated layout component designed for editorial blocks, magazine articles, o
 
 ---
 
-### 9. Image and Text Quartet
+### 11. Image and Text Quartet
 
 A structured element displaying content in two distinct rows, alternating image and text blocks for a balanced layout. It features deep responsive image customization per breakpoint, custom ratios, and built-in mobile layout optimization.
 
@@ -236,16 +287,16 @@ If you modify the administration interface (Vue/Vite) or the storefront scripts/
 
 ### Build Administration (Vue 3 / Vite)
 ```bash
-docker exec -it shopware67 ./bin/build-administration.sh
+docker exec -it sw67adev ./bin/build-administration.sh
 ```
 
 ### Build Storefront (JS & SCSS)
 ```bash
-docker exec -it shopware67 ./bin/build-storefront.sh
+docker exec -it sw67adev ./bin/build-storefront.sh
 ```
 
 ### Compile Theme & Clear Cache
 ```bash
-docker exec -it shopware67 bin/console theme:compile
-docker exec -it shopware67 bin/console cache:clear
+docker exec -it sw67adev bin/console theme:compile
+docker exec -it sw67adev bin/console cache:clear
 ```

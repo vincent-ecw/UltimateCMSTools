@@ -2,6 +2,8 @@ import './module/sw-cms/elements/custom-code';
 import './module/sw-cms/blocks/ultimate-cms-tools/custom-code';
 import './module/sw-cms/elements/subcategory-carousel';
 import './module/sw-cms/blocks/ultimate-cms-tools/subcategory-carousel';
+import './module/sw-cms/elements/subcategory-grid';
+import './module/sw-cms/blocks/ultimate-cms-tools/subcategory-grid';
 import './module/sw-cms/elements/faq-harmonica';
 import './module/sw-cms/blocks/ultimate-cms-tools/faq-harmonica';
 import './module/sw-cms/elements/common-slider';

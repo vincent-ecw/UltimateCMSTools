@@ -1,5 +1,6 @@
 {% block element_subcategory_carousel %}
     {% set categories = element.data.categories %}
+    {% set displayImage = element.config.displayImage.value ?? true %}
 
     {% if categories and categories.count > 0 %}
         <div class="cms-element-subcategory-carousel" data-subcategory-carousel="true">
@@ -14,24 +15,26 @@
                         {% set media = category.media %}
                         
                         <a href="{{ categoryUrl }}" class="subcategory-card" title="{{ category.translated.name }}">
-                            <div class="subcategory-card-image-wrapper">
-                                {% if media %}
-                                    {% set attributes = {
-                                        'class': 'subcategory-card-image',
-                                        'alt': (media.translated.alt ?: category.translated.name),
-                                        'title': (media.translated.title ?: category.translated.name),
-                                        'loading': 'lazy'
-                                    } %}
-                                    {% sw_thumbnails 'subcategory-card-thumbnails' with {
-                                        media: media,
-                                        attributes: attributes
-                                    } %}
-                                {% else %}
-                                    <div class="subcategory-card-image-placeholder">
-                                        {% sw_icon 'image' style { 'size': 'lg' } %}
-                                    </div>
-                                {% endif %}
-                            </div>
+                            {% if displayImage %}
+                                <div class="subcategory-card-image-wrapper">
+                                    {% if media %}
+                                        {% set attributes = {
+                                            'class': 'subcategory-card-image',
+                                            'alt': (media.translated.alt ?: category.translated.name),
+                                            'title': (media.translated.title ?: category.translated.name),
+                                            'loading': 'lazy'
+                                        } %}
+                                        {% sw_thumbnails 'subcategory-card-thumbnails' with {
+                                            media: media,
+                                            attributes: attributes
+                                        } %}
+                                    {% else %}
+                                        <div class="subcategory-card-image-placeholder">
+                                            {% sw_icon 'image' style { 'size': 'lg' } %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            {% endif %}
 
                             <div class="subcategory-card-content">
                                 <h3 class="subcategory-card-title">{{ category.translated.name }}</h3>

@@ -9,7 +9,8 @@
                 "placeholder": "Shows subcategories of the active category",
                 "configInfo": "No configuration required. The subcategories of the active category are displayed automatically.",
                 "config": {
-                    "showAllSubcategoriesLabel": "Show all subcategories"
+                    "showAllSubcategoriesLabel": "Show all subcategories",
+                    "displayImageLabel": "Display image"
                 }
             },
             "customCarousel": {
@@ -49,6 +50,9 @@
                     "productsPlaceholder": "Search and add products...",
                     "productStreamLabel": "Dynamic Product Group",
                     "productStreamPlaceholder": "Select dynamic product group...",
+                    "categoryLabel": "Category Filter",
+                    "categoryPlaceholder": "Select a category to limit products...",
+                    "includeSubcategoriesLabel": "Also look in subcategories",
                     "limitLabel": "Show amount of products",
                     "navigationArrows": "Show Navigation Arrows",
                     "navigationDots": "Show Navigation Dots",
@@ -189,6 +193,15 @@
                         "ratio70_30": "70% - 30%",
                         "ratio30_70": "30% - 70%"
                     }
+                },
+                "subcategoryGrid": {
+                    "label": "Subcategory Grid",
+                    "placeholder": "Shows subcategories of the active category in a grid",
+                    "configInfo": "No configuration required. The subcategories of the active category are displayed automatically.",
+                    "config": {
+                        "showAllSubcategoriesLabel": "Show all subcategories",
+                        "displayImageLabel": "Display image"
+                    }
                 }
             }
         },
@@ -196,6 +209,9 @@
             "ultimateCmsTools": {
                 "subcategoryCarousel": {
                     "label": "Subcategory Carousel"
+                },
+                "subcategoryGrid": {
+                    "label": "Subcategory Grid"
                 },
                 "customCarousel": {
                     "label": "Custom Carousel"

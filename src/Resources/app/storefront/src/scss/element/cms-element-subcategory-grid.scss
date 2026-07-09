@@ -1,0 +1,100 @@
+.cms-element-subcategory-grid {
+    margin-bottom: 30px;
+    position: relative;
+
+    .subcategory-grid-container {
+        display: grid;
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+        gap: 20px;
+        padding: 10px 0 20px;
+        width: 100%;
+
+        @include media-breakpoint-up(sm) {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        @include media-breakpoint-up(md) {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        @include media-breakpoint-up(lg) {
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
+    }
+
+    .subcategory-card {
+        display: flex;
+        flex-direction: column;
+        background: #ffffff;
+        border-radius: 12px;
+        overflow: hidden;
+        text-decoration: none;
+        color: inherit;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: 1px solid rgba(0,0,0,0.03);
+        height: 100%;
+
+        &:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            color: inherit;
+            text-decoration: none;
+        }
+    }
+
+    .subcategory-card-image-wrapper {
+        position: relative;
+        width: 100%;
+        padding-top: 75%; /* 4:3 Aspect Ratio */
+        background: #f8f9fa;
+        overflow: hidden;
+    }
+
+    .subcategory-card-image,
+    .subcategory-card-image-placeholder {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+    }
+
+    .subcategory-card:hover .subcategory-card-image {
+        transform: scale(1.05);
+    }
+
+    .subcategory-card-image-placeholder {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #ced4da;
+    }
+
+    .subcategory-card-content {
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+    }
+
+    .subcategory-card-title {
+        font-size: 1.125rem;
+        font-weight: 600;
+        margin: 0 0 10px;
+        color: #212529;
+        line-height: 1.3;
+    }
+
+    .subcategory-card-description {
+        font-size: 0.9rem;
+        color: #6c757d;
+        line-height: 1.5;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+}

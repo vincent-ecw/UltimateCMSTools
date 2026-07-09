@@ -58,6 +58,22 @@
                     />
                 </div>
 
+                <!-- Category Filter Selection -->
+                <sw-entity-single-select
+                    v-if="productSelectionType === 'latest' || productSelectionType === 'sale'"
+                    v-model:value="categoryId"
+                    entity="category"
+                    :label="$tc('sw-cms.elements.customProductCarousel.config.categoryLabel')"
+                    :placeholder="$tc('sw-cms.elements.customProductCarousel.config.categoryPlaceholder')"
+                    show-clearable-button
+                />
+
+                <sw-switch-field
+                    v-if="(productSelectionType === 'latest' || productSelectionType === 'sale') && categoryId"
+                    v-model:value="includeSubcategories"
+                    :label="$tc('sw-cms.elements.customProductCarousel.config.includeSubcategoriesLabel')"
+                />
+
                 <!-- Limit Configuration for non-manual selections -->
                 <div v-if="productSelectionType !== 'manual'" class="sw-cms-el-config-custom-product-carousel__limit">
                     <sw-number-field

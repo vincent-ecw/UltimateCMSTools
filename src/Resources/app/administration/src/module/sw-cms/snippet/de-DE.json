@@ -9,7 +9,8 @@
                 "placeholder": "Zeigt Unterkategorien der aktiven Kategorie an",
                 "configInfo": "Keine Konfiguration erforderlich. Die Unterkategorien der aktiven Kategorie werden automatisch angezeigt.",
                 "config": {
-                    "showAllSubcategoriesLabel": "Alle Unterkategorien anzeigen"
+                    "showAllSubcategoriesLabel": "Alle Unterkategorien anzeigen",
+                    "displayImageLabel": "Bild anzeigen"
                 }
             },
             "customCarousel": {
@@ -49,6 +50,9 @@
                     "productsPlaceholder": "Produkte suchen und hinzufügen...",
                     "productStreamLabel": "Dynamische Produktgruppe",
                     "productStreamPlaceholder": "Dynamische Produktgruppe auswählen...",
+                    "categoryLabel": "Kategorie-Filter",
+                    "categoryPlaceholder": "Kategorie wählen, um Produkte zu begrenzen...",
+                    "includeSubcategoriesLabel": "Auch in Unterkategorien suchen",
                     "limitLabel": "Anzahl der anzuzeigenden Produkte",
                     "navigationArrows": "Navigationspfeile anzeigen",
                     "navigationDots": "Navigationspunkte anzeigen",
@@ -189,6 +193,15 @@
                         "ratio70_30": "70% - 30%",
                         "ratio30_70": "30% - 70%"
                     }
+                },
+                "subcategoryGrid": {
+                    "label": "Unterkategorie-Raster",
+                    "placeholder": "Zeigt Unterkategorien der aktiven Kategorie in einem Raster an",
+                    "configInfo": "Keine Konfiguration erforderlich. Die Unterkategorien der aktiven Kategorie werden automatisch angezeigt.",
+                    "config": {
+                        "showAllSubcategoriesLabel": "Alle Unterkategorien anzeigen",
+                        "displayImageLabel": "Bild anzeigen"
+                    }
                 }
             }
         },
@@ -196,6 +209,9 @@
             "ultimateCmsTools": {
                 "subcategoryCarousel": {
                     "label": "Unterkategorie-Karussell"
+                },
+                "subcategoryGrid": {
+                    "label": "Unterkategorie-Raster"
                 },
                 "customCarousel": {
                     "label": "Benutzerdefiniertes Karussell"

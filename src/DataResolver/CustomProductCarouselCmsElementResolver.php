@@ -12,6 +12,7 @@ use Shopware\Core\Framework\DataAbstractionLayer\Search\Filter\RangeFilter;
 use Shopware\Core\Framework\DataAbstractionLayer\Search\Sorting\FieldSorting;
 use Shopware\Core\Framework\DataAbstractionLayer\Search\Grouping\FieldGrouping;
 use Shopware\Core\Framework\DataAbstractionLayer\Search\Filter\NotEqualsFilter;
+use Shopware\Core\Framework\DataAbstractionLayer\Search\Filter\EqualsFilter;
 use Shopware\Core\Content\Product\ProductDefinition;
 use Shopware\Core\Content\ProductStream\Service\ProductStreamBuilderInterface;
 use Shopware\Core\System\SalesChannel\Entity\SalesChannelRepository;
@@ -39,6 +40,12 @@ class CustomProductCarouselCmsElementResolver extends AbstractCmsElementResolver
         $config = $slot->getFieldConfig();
         $selectionType = $config->get('productSelectionType') ? $config->get('productSelectionType')->getValue() : 'manual';
         $limit = $config->get('limit') ? (int) $config->get('limit')->getValue() : 10;
+
+        $categoryConfig = $config->get('categoryId');
+        $categoryId = $categoryConfig ? $categoryConfig->getValue() : null;
+
+        $includeSubcategoriesConfig = $config->get('includeSubcategories');
+        $includeSubcategories = $includeSubcategoriesConfig ? (bool) $includeSubcategoriesConfig->getValue() : false;
 
         $criteria = new Criteria();
         $criteria->addState(Criteria::STATE_ELASTICSEARCH_AWARE);
@@ -76,6 +83,14 @@ class CustomProductCarouselCmsElementResolver extends AbstractCmsElementResolver
         } elseif ($selectionType === 'sale') {
             $criteria->addFilter(new RangeFilter('cheapestPrice.percentage', [RangeFilter::GT => 0]));
             $criteria->setLimit($limit);
+        }
+
+        if (($selectionType === 'latest' || $selectionType === 'sale') && $categoryId) {
+            if ($includeSubcategories) {
+                $criteria->addFilter(new EqualsFilter('categoriesRo.id', $categoryId));
+            } else {
+                $criteria->addFilter(new EqualsFilter('categories.id', $categoryId));
+            }
         }
 
         $criteriaCollection = new CriteriaCollection();

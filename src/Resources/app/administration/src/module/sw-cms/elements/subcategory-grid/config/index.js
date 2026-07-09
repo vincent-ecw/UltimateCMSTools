@@ -1,6 +1,6 @@
-import template from './sw-cms-el-config-subcategory-carousel.html.twig';
+import template from './sw-cms-el-config-subcategory-grid.html.twig';
 
-Shopware.Component.register('sw-cms-el-config-subcategory-carousel', {
+Shopware.Component.register('sw-cms-el-config-subcategory-grid', {
     template,
 
     mixins: [
@@ -34,7 +34,7 @@ Shopware.Component.register('sw-cms-el-config-subcategory-carousel', {
 
     methods: {
         createdComponent() {
-            this.initElementConfig('subcategory-carousel');
+            this.initElementConfig('subcategory-grid');
         },
         onChange() {
             this.$emit('element-update', this.element);

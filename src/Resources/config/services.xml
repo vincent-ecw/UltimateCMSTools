@@ -13,6 +13,10 @@
             <tag name="shopware.cms.data_resolver" />
         </service>
 
+        <service id="VincentBourgonje\UltimateCmsTools\DataResolver\SubcategoryGridCmsElementResolver">
+            <tag name="shopware.cms.data_resolver" />
+        </service>
+
         <service id="VincentBourgonje\UltimateCmsTools\DataResolver\CommonSliderCmsElementResolver">
             <tag name="shopware.cms.data_resolver" />
         </service>

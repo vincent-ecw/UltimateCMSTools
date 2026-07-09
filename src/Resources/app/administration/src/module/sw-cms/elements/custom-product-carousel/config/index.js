@@ -74,6 +74,38 @@ Component.register('sw-cms-el-config-custom-product-carousel', {
             }
         },
 
+        categoryId: {
+            get() {
+                return this.element?.config?.categoryId?.value || null;
+            },
+            set(value) {
+                if (!this.element.config) {
+                    this.element.config = {};
+                }
+                if (!this.element.config.categoryId) {
+                    this.element.config.categoryId = { source: 'static', value: null };
+                }
+                this.element.config.categoryId.value = value;
+                this.onChange();
+            }
+        },
+
+        includeSubcategories: {
+            get() {
+                return this.element?.config?.includeSubcategories?.value ?? false;
+            },
+            set(value) {
+                if (!this.element.config) {
+                    this.element.config = {};
+                }
+                if (!this.element.config.includeSubcategories) {
+                    this.element.config.includeSubcategories = { source: 'static', value: false };
+                }
+                this.element.config.includeSubcategories.value = value;
+                this.onChange();
+            }
+        },
+
         limit: {
             get() {
                 return this.element?.config?.limit?.value || 10;

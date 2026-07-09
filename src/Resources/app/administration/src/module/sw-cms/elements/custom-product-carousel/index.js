@@ -21,6 +21,14 @@ Shopware.Service('cmsService').registerCmsElement({
             source: 'static',
             value: null
         },
+        categoryId: {
+            source: 'static',
+            value: null
+        },
+        includeSubcategories: {
+            source: 'static',
+            value: false
+        },
         limit: {
             source: 'static',
             value: 10

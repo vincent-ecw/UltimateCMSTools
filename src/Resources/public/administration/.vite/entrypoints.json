@@ -3,11 +3,11 @@
   "entryPoints": {
     "ultimate-cms-tools": {
       "css": [
-        "/bundles/ultimatecmstools/administration/assets/ultimate-cms-tools-Dp8wfweg.css"
+        "/bundles/ultimatecmstools/administration/assets/ultimate-cms-tools-C0xCdO4J.css"
       ],
       "dynamic": [],
       "js": [
-        "/bundles/ultimatecmstools/administration/assets/ultimate-cms-tools-CxS2NyYA.js"
+        "/bundles/ultimatecmstools/administration/assets/ultimate-cms-tools-DNCjxEtt.js"
       ],
       "legacy": false,
       "preload": []

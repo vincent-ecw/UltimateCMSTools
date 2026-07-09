@@ -9,7 +9,8 @@
                 "placeholder": "Toont subcategorieën van de actieve categorie",
                 "configInfo": "Geen configuratie vereist. De subcategorieën van de actieve categorie worden automatisch weergegeven.",
                 "config": {
-                    "showAllSubcategoriesLabel": "Toon alle subcategorieën"
+                    "showAllSubcategoriesLabel": "Toon alle subcategorieën",
+                    "displayImageLabel": "Afbeelding weergeven"
                 }
             },
             "customCarousel": {
@@ -49,6 +50,9 @@
                     "productsPlaceholder": "Zoek en voeg producten toe...",
                     "productStreamLabel": "Dynamische productgroep",
                     "productStreamPlaceholder": "Selecteer dynamische productgroep...",
+                    "categoryLabel": "Categoriefilter",
+                    "categoryPlaceholder": "Selecteer een categorie om producten te beperken...",
+                    "includeSubcategoriesLabel": "Ook in subcategorieën zoeken",
                     "limitLabel": "Aantal te tonen producten",
                     "navigationArrows": "Navigatiepijlen tonen",
                     "navigationDots": "Navigatiepunten tonen",
@@ -189,6 +193,15 @@
                         "ratio70_30": "70% - 30%",
                         "ratio30_70": "30% - 70%"
                     }
+                },
+                "subcategoryGrid": {
+                    "label": "Subcategorieën-raster",
+                    "placeholder": "Toont subcategorieën van de actieve categorie in een raster",
+                    "configInfo": "Geen configuratie vereist. De subcategorieën van de actieve categorie worden automatisch weergegeven.",
+                    "config": {
+                        "showAllSubcategoriesLabel": "Toon alle subcategorieën",
+                        "displayImageLabel": "Afbeelding weergeven"
+                    }
                 }
             }
         },
@@ -196,6 +209,9 @@
             "ultimateCmsTools": {
                 "subcategoryCarousel": {
                     "label": "Subcategorieën-carrousel"
+                },
+                "subcategoryGrid": {
+                    "label": "Subcategorieën-raster"
                 },
                 "customCarousel": {
                     "label": "Aangepaste carrousel"

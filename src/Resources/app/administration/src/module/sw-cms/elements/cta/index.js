@@ -53,6 +53,10 @@ Shopware.Service('cmsService').registerCmsElement({
         textColor: {
             source: 'static',
             value: 'dark'
+        },
+        minHeight: {
+            source: 'static',
+            value: ''
         }
     }
 });

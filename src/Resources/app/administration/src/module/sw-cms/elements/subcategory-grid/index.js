@@ -16,6 +16,10 @@ Shopware.Service('cmsService').registerCmsElement({
         displayImage: {
             source: 'static',
             value: true
+        },
+        columnsMobile: {
+            source: 'static',
+            value: '1'
         }
     }
 });

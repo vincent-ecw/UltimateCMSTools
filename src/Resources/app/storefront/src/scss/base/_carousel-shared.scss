@@ -1,0 +1,201 @@
+// Shared Carousel Styles for Ultimate CMS Tools
+
+.cms-element-common-slider,
+.cms-element-custom-carousel,
+.cms-element-custom-product-carousel,
+.cms-element-manufacturer-carousel,
+.cms-element-subcategory-carousel {
+    position: relative;
+    width: 100%;
+    margin-bottom: 30px;
+
+    // Responsive Max-height adaptation
+    &[style*="max-height"],
+    &[style*="--"] {
+        max-height: var(--uct-carousel-max-height, none);
+
+        .common-slider-wrapper,
+        .custom-carousel-wrapper,
+        .custom-product-carousel-wrapper,
+        .manufacturer-carousel-wrapper,
+        .subcategory-carousel-wrapper {
+            max-height: inherit;
+        }
+
+        .common-slider-item,
+        .custom-carousel-container,
+        .custom-product-carousel-container,
+        .manufacturer-carousel-container,
+        .subcategory-carousel-container {
+            max-height: inherit;
+        }
+
+        // Fit images & card wrappers within max-height without cropping
+        img,
+        picture,
+        .common-slider-image,
+        .custom-card-image,
+        .manufacturer-card-logo,
+        .subcategory-card-image,
+        .product-image-wrapper img {
+            max-height: var(--uct-carousel-max-height, 100%);
+            object-fit: contain;
+        }
+
+        .custom-card-image-wrapper,
+        .manufacturer-card-image-wrapper,
+        .subcategory-card-image-wrapper {
+            max-height: calc(var(--uct-carousel-max-height, 100vh) - 80px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            img {
+                position: static;
+                height: auto;
+                max-height: 100%;
+                width: auto;
+                max-width: 100%;
+                object-fit: contain;
+            }
+        }
+
+        .custom-card,
+        .manufacturer-card,
+        .subcategory-card,
+        .custom-product-card {
+            max-height: inherit;
+            display: flex;
+            flex-direction: column;
+        }
+    }
+}
+
+// Shared Navigation Controls (Arrows)
+.uct-carousel-control,
+.uct-slider-arrow,
+.common-slider-arrow,
+.custom-carousel-control,
+.custom-product-carousel-control,
+.manufacturer-carousel-control,
+.subcategory-carousel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    line-height: 0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    background: var(--colors-ecw-alias-white, #ffffff);
+    color: var(--colors-ecw-map-text-normal, #333333);
+    transition: all 0.2s ease;
+    cursor: pointer;
+
+    @include media-breakpoint-up(md) {
+        display: flex;
+    }
+
+    &.prev,
+    &.common-slider-prev {
+        left: -22px;
+    }
+
+    &.next,
+    &.common-slider-next {
+        right: -22px;
+    }
+
+    &:hover:not(:disabled) {
+        background: var(--colors-ecw-alias-white, #f8f9fa);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        color: var(--colors-ecw-map-button-navigation-active, --primary, #007bff);
+    }
+
+    &:disabled {
+        opacity: 0;
+        pointer-events: none;
+        cursor: default;
+    }
+
+    .icon {
+        width: 20px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 0;
+
+        > svg {
+            width: 100%;
+            height: 100%;
+            top: 0 !important;
+        }
+    }
+}
+
+// Shared Navigation Indicators (Dots)
+.uct-carousel-indicators,
+.uct-slider-dots,
+.common-slider-dots,
+.custom-carousel-indicators,
+.custom-product-carousel-indicators,
+.manufacturer-carousel-indicators,
+.subcategory-carousel-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    align-items: center;
+    z-index: 10;
+
+    // Dots position inside (overlay over slider bottom)
+    &.uct-dots-inside,
+    &.dots-inside {
+        position: absolute;
+        bottom: 15px;
+        left: 50%;
+        transform: translateX(-50%);
+        margin-top: 0;
+    }
+
+    // Dots position outside (below slider)
+    &.uct-dots-outside,
+    &.dots-outside {
+        position: relative;
+        margin-top: 15px;
+    }
+}
+
+// Shared Navigation Dot Item
+.uct-carousel-dot,
+.uct-slider-dot,
+.common-slider-dot,
+.custom-carousel-dot,
+.custom-product-carousel-dot,
+.manufacturer-carousel-dot,
+.subcategory-carousel-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: none;
+    background-color: #dee2e6;
+    padding: 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &.active {
+        background-color: var(--colors-ecw-map-button-navigation-active, --primary, #007bff);
+        width: 24px;
+        border-radius: 5px;
+    }
+
+    &:hover:not(.active) {
+        background-color: var(--colors-ecw-map-button-navigation-disabled, #adb5bd);
+    }
+}

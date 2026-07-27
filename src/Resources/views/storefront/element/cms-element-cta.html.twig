@@ -12,12 +12,15 @@
     {% set buttonSecondaryTarget = config.buttonSecondaryTarget.value|default('_self') %}
     {% set style = config.style.value|default('split-minimal') %}
     {% set textColor = config.textColor.value|default('dark') %}
+    {% set minHeight = config.minHeight.value|default('') %}
+
+    {% if minHeight and minHeight matches '/^\\\\d+$/' %}
+        {% set minHeight = minHeight ~ 'px' %}
+    {% endif %}
 
     {% if title or subtitle or buttonText or buttonSecondaryText %}
         <div class="cms-element-cta style-{{ style }} text-{{ textColor }}"
-             {% if backgroundImage %}
-                 style="background-image: url('{{ backgroundImage.url }}'); background-size: cover; background-position: center;"
-             {% endif %}>
+             style="{% if backgroundImage %}background-image: url('{{ backgroundImage.url }}'); background-size: cover; background-position: center;{% endif %}{% if minHeight %} min-height: {{ minHeight }};{% endif %}">
             
             {% if backgroundImage %}
                 <div class="cta-overlay"></div>

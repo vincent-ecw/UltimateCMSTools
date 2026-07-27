@@ -29,6 +29,10 @@ Shopware.Service('cmsService').registerCmsElement({
             source: 'static',
             value: 'inside'
         },
+        autoplay: {
+            source: 'static',
+            value: true
+        },
         autoplaySpeed: {
             source: 'static',
             value: 5000

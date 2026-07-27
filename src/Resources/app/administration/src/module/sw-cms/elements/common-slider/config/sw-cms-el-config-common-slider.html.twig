@@ -142,7 +142,13 @@
                     ]">
                 </sw-single-select>
 
+                <sw-switch-field
+                    v-model:value="element.config.autoplay.value"
+                    :label="$tc('sw-cms.elements.ultimateCmsTools.commonSlider.config.autoplay')">
+                </sw-switch-field>
+
                 <sw-number-field
+                    v-if="element.config.autoplay.value"
                     v-model:value="element.config.autoplaySpeed.value"
                     :label="$tc('sw-cms.elements.ultimateCmsTools.commonSlider.config.autoplaySpeed')"
                     :helpText="$tc('sw-cms.elements.ultimateCmsTools.commonSlider.config.autoplaySpeedHelp')"

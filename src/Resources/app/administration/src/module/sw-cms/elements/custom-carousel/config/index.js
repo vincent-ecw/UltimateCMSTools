@@ -21,11 +21,23 @@ Component.register('sw-cms-el-config-custom-carousel', {
                 return this.element.config.carouselItems.value;
             }
             return [];
+        },
+        dotsPositionOptions() {
+            return [
+                {
+                    value: 'inside',
+                    label: this.$tc('sw-cms.elements.customCarousel.config.dotsPositions.inside')
+                },
+                {
+                    value: 'outside',
+                    label: this.$tc('sw-cms.elements.customCarousel.config.dotsPositions.outside')
+                }
+            ];
         }
     },
 
     watch: {
-        'element.config.carouselItems.value': {
+        'element.config': {
             handler() {
                 this.$emit('element-update', this.element);
             },

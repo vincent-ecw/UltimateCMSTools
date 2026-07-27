@@ -1,10 +1,12 @@
 import template from './sw-cms-el-config-subcategory-carousel.html.twig';
 
-Shopware.Component.register('sw-cms-el-config-subcategory-carousel', {
+const { Component, Mixin } = Shopware;
+
+Component.register('sw-cms-el-config-subcategory-carousel', {
     template,
 
     mixins: [
-        Shopware.Mixin.getByName('cms-element')
+        Mixin.getByName('cms-element')
     ],
 
     computed: {
@@ -25,6 +27,27 @@ Shopware.Component.register('sw-cms-el-config-subcategory-carousel', {
                 this.element.config.displayImage.value = value;
                 this.onChange();
             }
+        },
+        dotsPositionOptions() {
+            return [
+                {
+                    value: 'inside',
+                    label: this.$tc('sw-cms.elements.ultimateCmsTools.commonSlider.config.positionInside')
+                },
+                {
+                    value: 'outside',
+                    label: this.$tc('sw-cms.elements.ultimateCmsTools.commonSlider.config.positionOutside')
+                }
+            ];
+        }
+    },
+
+    watch: {
+        'element.config': {
+            handler() {
+                this.onChange();
+            },
+            deep: true
         }
     },
 

@@ -9,6 +9,13 @@
         padding: 10px 0 20px;
         width: 100%;
 
+        @media (max-width: 575.98px) {
+            &.columns-mobile-2 {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 12px;
+            }
+        }
+
         @include media-breakpoint-up(sm) {
             grid-template-columns: repeat(2, minmax(0, 1fr));
         }

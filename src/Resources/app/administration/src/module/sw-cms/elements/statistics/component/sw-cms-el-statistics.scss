@@ -1,0 +1,98 @@
+.sw-cms-el-statistics {
+    width: 100%;
+    padding: 1.5rem;
+
+    &__intro {
+        text-align: center;
+        font-size: 1.125rem;
+        font-weight: 500;
+        line-height: 1.6;
+        color: #1e293b;
+        margin-bottom: 2rem;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    &__grid {
+        display: grid;
+        gap: 1.5rem;
+        align-items: stretch;
+    }
+
+    &__item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 0.5rem;
+    }
+
+    &__item-icon {
+        color: #2563eb;
+        margin-bottom: 0.25rem;
+    }
+
+    &__item-number {
+        font-size: 2rem;
+        font-weight: 800;
+        color: #2563eb;
+        line-height: 1.1;
+    }
+
+    &__item-title {
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: #1e293b;
+    }
+
+    &__item-subline {
+        font-size: 0.85rem;
+        color: #64748b;
+    }
+
+    &--theme-boxed {
+        .sw-cms-el-statistics__grid {
+            background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 2rem 1.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+        }
+
+        .sw-cms-el-statistics__item {
+            position: relative;
+
+            &:not(:last-child)::after {
+                content: '';
+                position: absolute;
+                right: -0.75rem;
+                top: 10%;
+                height: 80%;
+                width: 1px;
+                background-color: #cbd5e1;
+                transform: rotate(12deg);
+            }
+
+            .sw-cms-el-statistics__item-number {
+                color: #0f172a;
+            }
+        }
+    }
+
+    &--theme-clean-divided {
+        .sw-cms-el-statistics__item {
+            position: relative;
+
+            &:not(:last-child)::after {
+                content: '';
+                position: absolute;
+                right: -0.75rem;
+                top: 15%;
+                height: 70%;
+                width: 1px;
+                background-color: #e2e8f0;
+            }
+        }
+    }
+}

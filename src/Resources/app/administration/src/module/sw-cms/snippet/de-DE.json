@@ -18,6 +18,10 @@
                 "placeholder": "Wählen Sie eigene Elemente aus oder ziehen Sie sie hierher, um Ihr Karussell zu erstellen.",
                 "itemsCount": "Elemente",
                 "config": {
+                    "tabs": {
+                        "content": "Inhalt",
+                        "settings": "Einstellungen"
+                    },
                     "titleLabel": "Titel (Pflichtfeld)",
                     "titlePlaceholder": "Titel eingeben...",
                     "descriptionLabel": "Beschreibung (optional)",
@@ -28,7 +32,19 @@
                     "buttonTargetLabel": "Link-Ziel",
                     "targetSelf": "Gleiches Fenster",
                     "targetBlank": "Neues Fenster",
-                    "addButton": "Karussell-Element hinzufügen"
+                    "addButton": "Karussell-Element hinzufügen",
+                    "navigationArrows": "Navigationspfeile anzeigen",
+                    "navigationDots": "Navigationspunkte anzeigen",
+                    "navigationDotsPosition": "Position der Punkte",
+                    "dotsPositions": {
+                        "inside": "Innerhalb des Sliders",
+                        "outside": "Außerhalb des Sliders"
+                    },
+                    "autoplay": "Automatische Wiedergabe",
+                    "autoplaySpeed": "Autoplay-Geschwindigkeit (ms)",
+                    "autoplaySpeedHelp": "Zeit in Millisekunden, die ein Slide sichtbar bleibt (z.B. 5000 = 5 Sekunden). 0 setzt Autoplay außer Kraft.",
+                    "maxHeight": "Max. Höhe (px)",
+                    "maxHeightHelp": "Legen Sie eine maximale Höhe in Pixeln für den Slider fest (z.B. 500). Leer lassen für automatische Anpassung."
                 }
             },
             "customProductCarousel": {
@@ -111,6 +127,7 @@
                         "navigationDotsPosition": "Position der Navigationspunkte",
                         "positionInside": "Innerhalb des Sliders",
                         "positionOutside": "Außerhalb des Sliders",
+                        "autoplay": "Automatische Wiedergabe",
                         "autoplaySpeed": "Autoplay-Geschwindigkeit (ms)",
                         "autoplaySpeedHelp": "Zeit in Millisekunden, die ein Slide sichtbar bleibt (z.B. 5000 = 5 Sekunden). Auf 0 setzen, um Autoplay zu deaktivieren.",
                         "maxHeight": "Maximale Höhe (px)",
@@ -149,6 +166,9 @@
                         "subtitleLabel": "Untertitel (optional)",
                         "subtitlePlaceholder": "Untertitel eingeben...",
                         "backgroundImageLabel": "Hintergrundbild (optional)",
+                        "minHeightLabel": "Mindesthöhe (z. B. 400px)",
+                        "minHeightPlaceholder": "z. B. 400px",
+                        "minHeightHelp": "Mindesthöhe für den Block festlegen (z. B. 400px oder 400). Leer lassen für Standardhöhe.",
                         "styleLabel": "Layout-Stil",
                         "styles": {
                             "split-minimal": "Minimalistischer Split",
@@ -200,18 +220,107 @@
                     "configInfo": "Keine Konfiguration erforderlich. Die Unterkategorien der aktiven Kategorie werden automatisch angezeigt.",
                     "config": {
                         "showAllSubcategoriesLabel": "Alle Unterkategorien anzeigen",
-                        "displayImageLabel": "Bild anzeigen"
+                        "displayImageLabel": "Bild anzeigen",
+                        "columnsMobileLabel": "Anzeige auf Mobilgeräten",
+                        "columnsMobile1": "1 Spalte",
+                        "columnsMobile2": "2 Spalten"
+                    }
+                },
+                "manufacturerGrid": {
+                    "label": "Hersteller-Raster",
+                    "placeholder": "Zeigt Hersteller mit aktivierter Option 'Im Raster anzeigen' in einem Raster an",
+                    "configInfo": "Hersteller, bei denen der Schalter 'Im Raster anzeigen' im Admin aktiviert ist, werden automatisch angezeigt.",
+                    "config": {
+                        "displayLogoLabel": "Logo anzeigen",
+                        "displayTitleLabel": "Titel anzeigen",
+                        "displayDescriptionLabel": "Beschreibung anzeigen",
+                        "columnsMobileLabel": "Anzeige auf Mobilgeräten",
+                        "columnsMobile1": "1 Spalte",
+                        "columnsMobile2": "2 Spalten"
+                    }
+                },
+                "manufacturerCarousel": {
+                    "label": "Hersteller-Karussell",
+                    "placeholder": "Zeigt Hersteller mit aktivierter Option 'Im Karussell anzeigen' in einem Karussell an",
+                    "configInfo": "Hersteller, bei denen der Schalter 'Im Karussell anzeigen' im Admin aktiviert ist, werden automatisch angezeigt.",
+                    "config": {
+                        "displayLogoLabel": "Logo anzeigen",
+                        "displayTitleLabel": "Titel anzeigen",
+                        "displayDescriptionLabel": "Beschreibung anzeigen"
+                    }
+                },
+                "categoryHeader": {
+                    "label": "Kategorie-Header",
+                    "placeholder": "Zeigt den Header der aktuellen Kategorie mit Titel, Untertitel, Beschreibung und Bild an",
+                    "config": {
+                        "designLabel": "Design-Stil",
+                        "designPlaceholder": "Design-Stil auswählen...",
+                        "designs": {
+                            "design1": "Design 1 - Minimale Karte",
+                            "design2": "Design 2 - Akzentrahmen",
+                            "design3": "Design 3 - Dunkles Overlay",
+                            "design4": "Design 4 - Kreisrahmen",
+                            "design5": "Design 5 - Diagonaler Split"
+                        },
+                        "titleLabel": "Titel-Überschreibung (optional)",
+                        "titlePlaceholder": "Leer lassen, um den Kategorienamen zu verwenden...",
+                        "subtitleLabel": "Untertitel-Überschreibung (optional)",
+                        "subtitlePlaceholder": "Leer lassen, um den Kategorie-Untertitel zu verwenden...",
+                        "descriptionLabel": "Beschreibungs-Überschreibung (optional)",
+                        "descriptionPlaceholder": "Leer lassen, um die Kategoriebeschreibung zu verwenden...",
+                        "mediaLabel": "Bild-Überschreibung (optional)"
+                    }
+                },
+                "statistics": {
+                    "label": "Statistiken",
+                    "placeholder": "Animiertes Statistik-Raster mit Icons, Zahlen und Unterzeilen anzeigen.",
+                    "config": {
+                        "tabs": {
+                            "content": "Inhalt",
+                            "settings": "Einstellungen"
+                        },
+                        "introTextLabel": "Einleitungstext (optional)",
+                        "introTextPlaceholder": "Einleitungstext oder Absatz eingeben...",
+                        "itemsTitle": "Statistik-Einträge",
+                        "itemLabel": "Eintrag",
+                        "iconLabel": "Icon",
+                        "titleLabel": "Titel / Bezeichnung",
+                        "titlePlaceholder": "z.B. Zufriedene Kunden",
+                        "numberLabel": "Zahlenwert",
+                        "numberPlaceholder": "z.B. 99,95%, 2.000+, $55M+",
+                        "sublineLabel": "Unterzeile (optional)",
+                        "sublinePlaceholder": "z.B. bei der Auftragsabwicklung",
+                        "addItem": "Statistik-Eintrag hinzufügen",
+                        "themeLabel": "Design-Variante",
+                        "themes": {
+                            "clean": "Clean Design (Spalten, kein Hintergrund)",
+                            "boxed": "Boxed Design (Verlaufskarte & Trennlinien)",
+                            "cleanDivided": "Clean Divided (Spalten mit dezenten Trennlinien)"
+                        },
+                        "columnsLabel": "Spalten (Desktop)"
                     }
                 }
             }
         },
         "blocks": {
             "ultimateCmsTools": {
+                "statistics": {
+                    "label": "Statistiken"
+                },
+                "categoryHeader": {
+                    "label": "Kategorie-Header"
+                },
                 "subcategoryCarousel": {
                     "label": "Unterkategorie-Karussell"
                 },
                 "subcategoryGrid": {
                     "label": "Unterkategorie-Raster"
+                },
+                "manufacturerCarousel": {
+                    "label": "Hersteller-Karussell"
+                },
+                "manufacturerGrid": {
+                    "label": "Hersteller-Raster"
                 },
                 "customCarousel": {
                     "label": "Benutzerdefiniertes Karussell"

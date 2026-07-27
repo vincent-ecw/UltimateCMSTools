@@ -25,6 +25,27 @@ Shopware.Component.register('sw-cms-el-config-subcategory-grid', {
                 this.element.config.displayImage.value = value;
                 this.onChange();
             }
+        },
+        columnsMobileOptions() {
+            return [
+                {
+                    value: '1',
+                    label: this.$tc('sw-cms.elements.ultimateCmsTools.subcategoryGrid.config.columnsMobile1')
+                },
+                {
+                    value: '2',
+                    label: this.$tc('sw-cms.elements.ultimateCmsTools.subcategoryGrid.config.columnsMobile2')
+                }
+            ];
+        },
+        columnsMobile: {
+            get() {
+                return this.element.config?.columnsMobile?.value ?? '1';
+            },
+            set(value) {
+                this.element.config.columnsMobile.value = value;
+                this.onChange();
+            }
         }
     },
 

@@ -1,15 +1,32 @@
 {% block element_subcategory_carousel %}
+    {% set config = element.fieldConfig.elements %}
     {% set categories = element.data.categories %}
-    {% set displayImage = element.config.displayImage.value ?? true %}
+    {% set displayImage = config.displayImage.value ?? true %}
+    {% set navigationArrows = config.navigationArrows.value is not null ? config.navigationArrows.value : true %}
+    {% set navigationDots = config.navigationDots.value is not null ? config.navigationDots.value : true %}
+    {% set autoplay = config.autoplay.value is not null ? config.autoplay.value : true %}
+    {% set autoplaySpeed = config.autoplaySpeed.value|default(5000) %}
+    {% set dotsPosition = config.navigationDotsPosition.value|default('inside') %}
+    {% set maxHeight = config.maxHeight.value|default(null) %}
 
     {% if categories and categories.count > 0 %}
-        <div class="cms-element-subcategory-carousel" data-subcategory-carousel="true">
+        <div class="cms-element-subcategory-carousel"
+             {% if maxHeight and maxHeight > 0 %}style="--uct-carousel-max-height: {{ maxHeight }}px; max-height: {{ maxHeight }}px;"{% endif %}
+             data-subcategory-carousel="true"
+             data-subcategory-carousel-options='{
+                 "arrows": {{ navigationArrows ? "true" : "false" }},
+                 "dots": {{ navigationDots ? "true" : "false" }},
+                 "autoplay": {{ autoplay ? "true" : "false" }},
+                 "autoplaySpeed": {{ autoplaySpeed }}
+             }'>
             <div class="subcategory-carousel-wrapper">
-                <button type="button" class="btn btn-light subcategory-carousel-control prev" aria-label="Previous">
-                    {% sw_icon 'arrow-left' %}
-                </button>
+                {% if navigationArrows %}
+                    <button type="button" class="btn btn-light uct-carousel-control subcategory-carousel-control prev" aria-label="Previous">
+                        {% sw_icon 'arrow-left' %}
+                    </button>
+                {% endif %}
 
-                <div class="subcategory-carousel-container">
+                <div class="subcategory-carousel-container" {% if maxHeight and maxHeight > 0 %}style="max-height: {{ maxHeight }}px;"{% endif %}>
                     {% for category in categories %}
                         {% set categoryUrl = seoUrl('frontend.navigation.page', { navigationId: category.id }) %}
                         {% set media = category.media %}
@@ -48,16 +65,20 @@
                     {% endfor %}
                 </div>
 
-                <button type="button" class="btn btn-light subcategory-carousel-control next" aria-label="Next">
-                    {% sw_icon 'arrow-right' %}
-                </button>
+                {% if navigationArrows %}
+                    <button type="button" class="btn btn-light uct-carousel-control subcategory-carousel-control next" aria-label="Next">
+                        {% sw_icon 'arrow-right' %}
+                    </button>
+                {% endif %}
             </div>
 
-            <div class="subcategory-carousel-indicators">
-                {% for i in 0..(categories.count - 1) %}
-                    <button type="button" class="subcategory-carousel-dot {% if loop.first %}active{% endif %}" data-index="{{ i }}" aria-label="Slide {{ i + 1 }}"></button>
-                {% endfor %}
-            </div>
+            {% if navigationDots %}
+                <div class="uct-carousel-indicators subcategory-carousel-indicators uct-dots-{{ dotsPosition }} dots-{{ dotsPosition }}">
+                    {% for i in 0..(categories.count - 1) %}
+                        <button type="button" class="uct-carousel-dot subcategory-carousel-dot {% if loop.first %}active{% endif %}" data-index="{{ i }}" aria-label="Slide {{ i + 1 }}"></button>
+                    {% endfor %}
+                </div>
+            {% endif %}
         </div>
     {% endif %}
 {% endblock %}

@@ -30,6 +30,14 @@
         </sw-upload-listener>
     </div>
 
+    <!-- Min Height -->
+    <sw-text-field
+        v-model="minHeight"
+        :label="$tc('sw-cms.elements.ultimateCmsTools.cta.config.minHeightLabel')"
+        :placeholder="$tc('sw-cms.elements.ultimateCmsTools.cta.config.minHeightPlaceholder')"
+        :help-text="$tc('sw-cms.elements.ultimateCmsTools.cta.config.minHeightHelp')">
+    </sw-text-field>
+
     <!-- Style Selector -->
     <sw-single-select
         v-model:value="style"

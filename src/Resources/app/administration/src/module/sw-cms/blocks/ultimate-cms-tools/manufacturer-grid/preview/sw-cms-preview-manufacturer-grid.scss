@@ -1,0 +1,12 @@
+.sw-cms-preview-manufacturer-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    padding: 10px;
+
+    &__card {
+        height: 60px;
+        background-color: #e9ecef;
+        border-radius: 4px;
+    }
+}

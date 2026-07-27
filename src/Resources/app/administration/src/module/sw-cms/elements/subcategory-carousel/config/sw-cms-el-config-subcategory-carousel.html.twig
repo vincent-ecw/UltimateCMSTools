@@ -1,15 +1,75 @@
 <div class="sw-cms-el-config-subcategory-carousel">
-    <sw-alert variant="info">
-        {{ $tc('sw-cms.elements.subcategoryCarousel.configInfo') }}
-    </sw-alert>
+    <sw-tabs class="sw-cms-el-config-subcategory-carousel__tabs" defaultItem="content">
+        <template #default="{ active }">
+            <sw-tabs-item name="content" :activeTab="active">
+                {{ $tc('sw-cms.elements.customProductCarousel.config.tabs.content') }}
+            </sw-tabs-item>
+            <sw-tabs-item name="settings" :activeTab="active">
+                {{ $tc('sw-cms.elements.customProductCarousel.config.tabs.settings') }}
+            </sw-tabs-item>
+        </template>
 
-    <sw-switch-field
-        v-model:value="showAllSubcategories"
-        :label="$tc('sw-cms.elements.subcategoryCarousel.config.showAllSubcategoriesLabel')">
-    </sw-switch-field>
+        <template #content="{ active }">
+            <div v-if="active === 'content'" class="sw-cms-el-config-subcategory-carousel__tab-content">
+                <sw-alert variant="info">
+                    {{ $tc('sw-cms.elements.subcategoryCarousel.configInfo') }}
+                </sw-alert>
 
-    <sw-switch-field
-        v-model:value="displayImage"
-        :label="$tc('sw-cms.elements.subcategoryCarousel.config.displayImageLabel')">
-    </sw-switch-field>
+                <sw-switch-field
+                    v-model:value="showAllSubcategories"
+                    :label="$tc('sw-cms.elements.subcategoryCarousel.config.showAllSubcategoriesLabel')">
+                </sw-switch-field>
+
+                <sw-switch-field
+                    v-model:value="displayImage"
+                    :label="$tc('sw-cms.elements.subcategoryCarousel.config.displayImageLabel')">
+                </sw-switch-field>
+            </div>
+
+            <div v-if="active === 'settings'" class="sw-cms-el-config-subcategory-carousel__tab-settings">
+                <sw-switch-field
+                    v-model:value="element.config.navigationArrows.value"
+                    :label="$tc('sw-cms.elements.customProductCarousel.config.navigationArrows')"
+                    @change="onChange">
+                </sw-switch-field>
+
+                <sw-switch-field
+                    v-model:value="element.config.navigationDots.value"
+                    :label="$tc('sw-cms.elements.customProductCarousel.config.navigationDots')"
+                    @change="onChange">
+                </sw-switch-field>
+
+                <sw-single-select
+                    v-if="element.config.navigationDots.value"
+                    v-model:value="element.config.navigationDotsPosition.value"
+                    :label="$tc('sw-cms.elements.customProductCarousel.config.navigationDotsPosition')"
+                    :options="dotsPositionOptions"
+                    @change="onChange">
+                </sw-single-select>
+
+                <sw-switch-field
+                    v-model:value="element.config.autoplay.value"
+                    :label="$tc('sw-cms.elements.customProductCarousel.config.autoplay')"
+                    @change="onChange">
+                </sw-switch-field>
+
+                <sw-number-field
+                    v-if="element.config.autoplay.value"
+                    v-model:value="element.config.autoplaySpeed.value"
+                    :label="$tc('sw-cms.elements.customProductCarousel.config.autoplaySpeed')"
+                    :helpText="$tc('sw-cms.elements.customProductCarousel.config.autoplaySpeedHelp')"
+                    :min="0"
+                    @change="onChange">
+                </sw-number-field>
+
+                <sw-number-field
+                    v-model:value="element.config.maxHeight.value"
+                    :label="$tc('sw-cms.elements.customProductCarousel.config.maxHeight')"
+                    :helpText="$tc('sw-cms.elements.customProductCarousel.config.maxHeightHelp')"
+                    :min="0"
+                    @change="onChange">
+                </sw-number-field>
+            </div>
+        </template>
+    </sw-tabs>
 </div>

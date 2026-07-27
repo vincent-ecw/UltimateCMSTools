@@ -1,0 +1,29 @@
+<div class="sw-cms-el-statistics" :class="themeClass">
+    <div v-if="introText" class="sw-cms-el-statistics__intro">
+        {{ introText }}
+    </div>
+
+    <div class="sw-cms-el-statistics__grid" :style="gridStyle">
+        <div v-for="(item, index) in items" :key="index" class="sw-cms-el-statistics__item">
+            <div v-if="item.title && theme === 'clean'" class="sw-cms-el-statistics__item-title">
+                {{ item.title }}
+            </div>
+
+            <div v-if="item.icon" class="sw-cms-el-statistics__item-icon">
+                <sw-icon :name="item.icon" size="28px"></sw-icon>
+            </div>
+
+            <div class="sw-cms-el-statistics__item-number">
+                {{ item.number }}
+            </div>
+
+            <div v-if="item.title && theme !== 'clean'" class="sw-cms-el-statistics__item-title">
+                {{ item.title }}
+            </div>
+
+            <div v-if="item.subline" class="sw-cms-el-statistics__item-subline">
+                {{ item.subline }}
+            </div>
+        </div>
+    </div>
+</div>

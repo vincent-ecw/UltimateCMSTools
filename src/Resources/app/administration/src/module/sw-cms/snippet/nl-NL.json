@@ -18,6 +18,10 @@
                 "placeholder": "Selecteer of sleep aangepaste items om uw carrousel op te bouwen.",
                 "itemsCount": "items",
                 "config": {
+                    "tabs": {
+                        "content": "Inhoud",
+                        "settings": "Instellingen"
+                    },
                     "titleLabel": "Titel (verplicht)",
                     "titlePlaceholder": "Voer titel van item in...",
                     "descriptionLabel": "Omschrijving (optioneel)",
@@ -28,7 +32,19 @@
                     "buttonTargetLabel": "Linkdoel",
                     "targetSelf": "Hetzelfde venster",
                     "targetBlank": "Nieuw venster",
-                    "addButton": "Carrousel-item toevoegen"
+                    "addButton": "Carrousel-item toevoegen",
+                    "navigationArrows": "Navigatiepijlen tonen",
+                    "navigationDots": "Navigatiepunten tonen",
+                    "navigationDotsPosition": "Positie navigatiepunten",
+                    "dotsPositions": {
+                        "inside": "Binnen de slider",
+                        "outside": "Buiten de slider"
+                    },
+                    "autoplay": "Automatisch afspelen",
+                    "autoplaySpeed": "Autoplay-snelheid (ms)",
+                    "autoplaySpeedHelp": "Tijd in milliseconden dat een slide zichtbaar blijft (bijv. 5000 = 5 seconden). Zelf op 0 zetten om uit te schakelen.",
+                    "maxHeight": "Max. hoogte (px)",
+                    "maxHeightHelp": "Stel een maximale hoogte in pixels in voor de slider (bijv. 500). Laat leeg voor automatische aanpassing."
                 }
             },
             "customProductCarousel": {
@@ -109,8 +125,9 @@
                         "targetSelf": "Hetzelfde venster",
                         "targetBlank": "Nieuw venster",
                         "navigationDotsPosition": "Positie van punten",
-                        "positionInside": "Binnen slider",
-                        "positionOutside": "Buiten slider",
+                        "positionInside": "Binnen de slider",
+                        "positionOutside": "Buiten de slider",
+                        "autoplay": "Automatisch afspelen",
                         "autoplaySpeed": "Snelheid automatisch afspelen (ms)",
                         "autoplaySpeedHelp": "Tijd in milliseconden dat een dia zichtbaar blijft (bijv. 5000 = 5 seconden). Stel in op 0 om automatisch afspelen uit te schakelen.",
                         "maxHeight": "Maximale hoogte (px)",
@@ -149,6 +166,9 @@
                         "subtitleLabel": "Subtitel (optioneel)",
                         "subtitlePlaceholder": "Voer subtitel in...",
                         "backgroundImageLabel": "Achtergrondafbeelding (optioneel)",
+                        "minHeightLabel": "Minimale hoogte (bijv. 400px)",
+                        "minHeightPlaceholder": "bijv. 400px",
+                        "minHeightHelp": "Stel een minimale hoogte in voor het blok (bijv. 400px of 400). Laat leeg voor standaardhoogte.",
                         "styleLabel": "Lay-outstijl",
                         "styles": {
                             "split-minimal": "Minimalistische split",
@@ -200,13 +220,96 @@
                     "configInfo": "Geen configuratie vereist. De subcategorieën van de actieve categorie worden automatisch weergegeven.",
                     "config": {
                         "showAllSubcategoriesLabel": "Toon alle subcategorieën",
-                        "displayImageLabel": "Afbeelding weergeven"
+                        "displayImageLabel": "Afbeelding weergeven",
+                        "columnsMobileLabel": "Weergave op mobiele apparaten",
+                        "columnsMobile1": "1 kolom",
+                        "columnsMobile2": "2 kolommen"
+                    }
+                },
+                "manufacturerGrid": {
+                    "label": "Fabrikanten-raster",
+                    "placeholder": "Toont fabrikanten met optie 'In raster tonen' ingeschakeld in een raster",
+                    "configInfo": "Fabrikanten met de schakelaar 'In raster tonen' ingeschakeld in Admin worden automatisch weergegeven.",
+                    "config": {
+                        "displayLogoLabel": "Logo weergeven",
+                        "displayTitleLabel": "Titel weergeven",
+                        "displayDescriptionLabel": "Beschrijving weergeven",
+                        "columnsMobileLabel": "Weergave op mobiele apparaten",
+                        "columnsMobile1": "1 kolom",
+                        "columnsMobile2": "2 kolommen"
+                    }
+                },
+                "manufacturerCarousel": {
+                    "label": "Fabrikanten-carrousel",
+                    "placeholder": "Toont fabrikanten met optie 'In carrousel tonen' ingeschakeld in een carrousel",
+                    "configInfo": "Fabrikanten met de schakelaar 'In carrousel tonen' ingeschakeld in Admin worden automatisch weergegeven.",
+                    "config": {
+                        "displayLogoLabel": "Logo weergeven",
+                        "displayTitleLabel": "Titel weergeven",
+                        "displayDescriptionLabel": "Beschrijving weergeven"
+                    }
+                },
+                "categoryHeader": {
+                    "label": "Categorie Header",
+                    "placeholder": "Toont de header van de huidige categorie met titel, subtitel, beschrijving en afbeelding",
+                    "config": {
+                        "designLabel": "Design stijl",
+                        "designPlaceholder": "Selecteer design stijl...",
+                        "designs": {
+                            "design1": "Design 1 - Minimale Kaart",
+                            "design2": "Design 2 - Accent Frame",
+                            "design3": "Design 3 - Donkere Overlay",
+                            "design4": "Design 4 - Cirkel Frame",
+                            "design5": "Design 5 - Diagonale Split"
+                        },
+                        "titleLabel": "Titel overschrijven (optioneel)",
+                        "titlePlaceholder": "Laat leeg om categorienaam te gebruiken...",
+                        "subtitleLabel": "Subtitel overschrijven (optioneel)",
+                        "subtitlePlaceholder": "Laat leeg om categorie subtitel te gebruiken...",
+                        "descriptionLabel": "Beschrijving overschrijven (optioneel)",
+                        "descriptionPlaceholder": "Laat leeg om categoriebeschrijving te gebruiken...",
+                        "mediaLabel": "Afbeelding overschrijven (optioneel)"
+                    }
+                },
+                "statistics": {
+                    "label": "Statistieken",
+                    "placeholder": "Toon geanimeerd statistieken-raster met iconen, getallen en subregels.",
+                    "config": {
+                        "tabs": {
+                            "content": "Inhoud",
+                            "settings": "Instellingen"
+                        },
+                        "introTextLabel": "Introductietekst (optioneel)",
+                        "introTextPlaceholder": "Voer introductiekop of paragaaftekst in...",
+                        "itemsTitle": "Statistieken items",
+                        "itemLabel": "Item",
+                        "iconLabel": "Icoon",
+                        "titleLabel": "Titel / Label",
+                        "titlePlaceholder": "bijv. Tevreden klanten",
+                        "numberLabel": "Getalwaarde",
+                        "numberPlaceholder": "bijv. 99,95%, 2.000+, $55M+",
+                        "sublineLabel": "Subregel (optioneel)",
+                        "sublinePlaceholder": "bijv. bij het verwerken van bestellingen",
+                        "addItem": "Statistiek-item toevoegen",
+                        "themeLabel": "Thema-variant",
+                        "themes": {
+                            "clean": "Clean Design (Kolommen, geen achtergrond)",
+                            "boxed": "Boxed Design (Verloopkaart & scheidingslijnen)",
+                            "cleanDivided": "Clean Divided (Kolommen met subtiele scheidingslijnen)"
+                        },
+                        "columnsLabel": "Kolommen (Desktop)"
                     }
                 }
             }
         },
         "blocks": {
             "ultimateCmsTools": {
+                "statistics": {
+                    "label": "Statistieken"
+                },
+                "categoryHeader": {
+                    "label": "Categorie Header"
+                },
                 "subcategoryCarousel": {
                     "label": "Subcategorieën-carrousel"
                 },

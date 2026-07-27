@@ -1,0 +1,64 @@
+<div class="sw-cms-el-category-header" :class="designClass">
+    <!-- Design 1: Minimal Card -->
+    <div v-if="design === 'design-1'" class="header-card card-design-1">
+        <div class="header-content">
+            <h1 class="header-title">{{ title }}</h1>
+            <p class="header-description">{{ description }}</p>
+        </div>
+        <div class="header-media">
+            <img :src="mediaUrl" alt="Category Image" />
+        </div>
+    </div>
+
+    <!-- Design 2: Accent Frame -->
+    <div v-else-if="design === 'design-2'" class="header-card card-design-2">
+        <div class="header-content">
+            <div v-if="subtitle" class="header-subtitle-badge">
+                <span class="badge-dot"></span>
+                <span class="badge-text">{{ subtitle }}</span>
+            </div>
+            <h1 class="header-title">{{ title }}</h1>
+            <p class="header-description">{{ description }}</p>
+        </div>
+        <div class="header-media-wrap">
+            <div class="header-media-frame">
+                <img :src="mediaUrl" alt="Category Image" />
+            </div>
+        </div>
+    </div>
+
+    <!-- Design 3: Dark Overlay -->
+    <div v-else-if="design === 'design-3'" class="header-card card-design-3" :style="{ backgroundImage: `linear-gradient(90deg, #0b1329 0%, #0b1329 45%, rgba(11, 19, 41, 0.45) 100%), url('${mediaUrl}')` }">
+        <div class="header-content">
+            <div v-if="subtitle" class="header-subtitle">{{ subtitle }}</div>
+            <h1 class="header-title">{{ title }}</h1>
+            <p class="header-description">{{ description }}</p>
+        </div>
+    </div>
+
+    <!-- Design 4: Circle Frame -->
+    <div v-else-if="design === 'design-4'" class="header-card card-design-4">
+        <div class="header-content">
+            <div v-if="subtitle" class="header-subtitle-line">
+                <span class="line"></span>
+                <span class="subtitle-text">{{ subtitle }}</span>
+            </div>
+            <h1 class="header-title">{{ title }}</h1>
+            <p class="header-description">{{ description }}</p>
+        </div>
+        <div class="header-media-circle">
+            <img :src="mediaUrl" alt="Category Image" />
+        </div>
+    </div>
+
+    <!-- Design 5: Diagonal Split -->
+    <div v-else-if="design === 'design-5'" class="header-card card-design-5">
+        <div class="header-left">
+            <div v-if="subtitle" class="header-subtitle">{{ subtitle }}</div>
+            <h1 class="header-title">{{ title }}</h1>
+            <p class="header-description">{{ description }}</p>
+        </div>
+        <div class="header-divider"></div>
+        <div class="header-right" :style="{ backgroundImage: `url('${mediaUrl}')` }"></div>
+    </div>
+</div>

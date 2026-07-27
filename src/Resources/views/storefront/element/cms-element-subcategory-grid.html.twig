@@ -1,10 +1,11 @@
 {% block element_subcategory_grid %}
     {% set categories = element.data.categories %}
     {% set displayImage = element.config.displayImage.value ?? true %}
+    {% set columnsMobile = element.config.columnsMobile.value ?? '1' %}
 
     {% if categories and categories.count > 0 %}
         <div class="cms-element-subcategory-grid">
-            <div class="subcategory-grid-container">
+            <div class="subcategory-grid-container columns-mobile-{{ columnsMobile }}">
                 {% for category in categories %}
                     {% set categoryUrl = seoUrl('frontend.navigation.page', { navigationId: category.id }) %}
                     {% set media = category.media %}

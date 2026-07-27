@@ -1,0 +1,73 @@
+{% block element_statistics %}
+    {% set config = element.config %}
+    {% set theme = config.theme.value|default('boxed') %}
+    {% set introText = config.introText.value|default('') %}
+    {% set columns = config.columns.value|default('3') %}
+    {% set items = config.items.value|default([]) %}
+
+    <div class="cms-element-statistics statistics-theme-{{ theme }}" data-statistics-counter>
+        {% if introText %}
+            <div class="statistics-intro">
+                {% if introText matches '/<[^>]+>/' %}
+                    {{ introText|raw }}
+                {% else %}
+                    <p>{{ introText|nl2br }}</p>
+                {% endif %}
+            </div>
+        {% endif %}
+
+        {% if items|length > 0 %}
+            <div class="statistics-grid statistics-grid-cols-{{ columns }}">
+                {% for item in items %}
+                    {% set rawIcon = item.icon|default('') %}
+                    {% set iconName = rawIcon|replace({'regular-': '', 'solid-': ''}) %}
+                    {% if iconName == 'handshake' or iconName == 'users' or iconName == 'user-group' %}
+                        {% set iconName = 'avatar-multiple' %}
+                    {% elseif iconName == 'user' %}
+                        {% set iconName = 'avatar' %}
+                    {% elseif iconName == 'credit-card' or iconName == 'dollar' or iconName == 'euro' %}
+                        {% set iconName = 'money-card' %}
+                    {% elseif iconName == 'comments' %}
+                        {% set iconName = 'speech-bubbles' %}
+                    {% elseif iconName == 'award' %}
+                        {% set iconName = 'trophy' %}
+                    {% elseif iconName == 'trending-up' or iconName == 'growth' %}
+                        {% set iconName = 'chart' %}
+                    {% elseif iconName == 'thumbs-up' %}
+                        {% set iconName = 'thumb-up' %}
+                    {% endif %}
+
+                    <div class="statistics-item">
+                        {% if item.title and theme == 'clean' %}
+                            <div class="statistics-item-title statistics-item-title-top">
+                                {{ item.title }}
+                            </div>
+                        {% endif %}
+
+                        {% if iconName %}
+                            <div class="statistics-item-icon">
+                                {% sw_icon iconName %}
+                            </div>
+                        {% endif %}
+
+                        <div class="statistics-item-number js-statistics-number" data-target-number="{{ item.number }}">
+                            {{ item.number }}
+                        </div>
+
+                        {% if item.title and theme != 'clean' %}
+                            <div class="statistics-item-title">
+                                {{ item.title }}
+                            </div>
+                        {% endif %}
+
+                        {% if item.subline %}
+                            <div class="statistics-item-subline">
+                                {{ item.subline }}
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

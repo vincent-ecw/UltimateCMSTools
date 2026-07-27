@@ -20,6 +20,9 @@
         width: 100%;
         height: auto;
         display: block;
-        border-radius: var(--bs-border-radius);
+        border-radius: var(
+            --ecw-mapped-number-border-radius-md,
+            var(--ecw-border-radius-normal, var(--cta-border-radius, var(--bs-border-radius, 12px)))
+        );
     }
 }

@@ -1,0 +1,39 @@
+<div class="sw-cms-el-config-category-header">
+    <sw-container gap="20px">
+        <sw-single-select
+            v-model:value="design"
+            :options="designOptions"
+            :label="$tc('sw-cms.elements.ultimateCmsTools.categoryHeader.config.designLabel')"
+            :placeholder="$tc('sw-cms.elements.ultimateCmsTools.categoryHeader.config.designPlaceholder')">
+        </sw-single-select>
+
+        <sw-text-field
+            v-model="title"
+            :label="$tc('sw-cms.elements.ultimateCmsTools.categoryHeader.config.titleLabel')"
+            :placeholder="$tc('sw-cms.elements.ultimateCmsTools.categoryHeader.config.titlePlaceholder')">
+        </sw-text-field>
+
+        <sw-text-field
+            v-model="subtitle"
+            :label="$tc('sw-cms.elements.ultimateCmsTools.categoryHeader.config.subtitleLabel')"
+            :placeholder="$tc('sw-cms.elements.ultimateCmsTools.categoryHeader.config.subtitlePlaceholder')">
+        </sw-text-field>
+
+        <sw-textarea-field
+            v-model="description"
+            :label="$tc('sw-cms.elements.ultimateCmsTools.categoryHeader.config.descriptionLabel')"
+            :placeholder="$tc('sw-cms.elements.ultimateCmsTools.categoryHeader.config.descriptionPlaceholder')">
+        </sw-textarea-field>
+
+        <sw-media-upload-v2
+            variant="regular"
+            :upload-tag="'cms-element-category-header-' + element.id"
+            :label="$tc('sw-cms.elements.ultimateCmsTools.categoryHeader.config.mediaLabel')"
+            :default-folder="'category'"
+            :media-id="mediaId"
+            @media-upload-finish="onImageUpload"
+            @media-drop="onImageSelect"
+            @media-upload-remove="onImageRemove">
+        </sw-media-upload-v2>
+    </sw-container>
+</div>

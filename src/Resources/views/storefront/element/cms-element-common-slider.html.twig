@@ -2,19 +2,21 @@
     {% set config = element.fieldConfig.elements %}
     {% set sliderItems = element.data ? element.data.get('sliderItems') : config.sliderItems.value %}
     {% set effect = config.effect.value|default('slide') %}
-    {% set navigationArrows = config.navigationArrows.value|default(true) %}
-    {% set navigationDots = config.navigationDots.value|default(true) %}
+    {% set navigationArrows = config.navigationArrows.value is not null ? config.navigationArrows.value : true %}
+    {% set navigationDots = config.navigationDots.value is not null ? config.navigationDots.value : true %}
+    {% set autoplay = config.autoplay.value is not null ? config.autoplay.value : true %}
     {% set autoplaySpeed = config.autoplaySpeed.value|default(5000) %}
     {% set dotsPosition = config.navigationDotsPosition.value|default('inside') %}
     {% set maxHeight = config.maxHeight.value|default(null) %}
 
     <div class="cms-element-common-slider"
-         {% if maxHeight and maxHeight > 0 %}style="--common-slider-max-height: {{ maxHeight }}px; max-height: {{ maxHeight }}px;"{% endif %}
+         {% if maxHeight and maxHeight > 0 %}style="--uct-carousel-max-height: {{ maxHeight }}px; --common-slider-max-height: {{ maxHeight }}px; max-height: {{ maxHeight }}px;"{% endif %}
          data-common-slider="true"
          data-common-slider-options='{
              "effect": "{{ effect }}",
              "arrows": {{ navigationArrows ? "true" : "false" }},
              "dots": {{ navigationDots ? "true" : "false" }},
+             "autoplay": {{ autoplay ? "true" : "false" }},
              "autoplaySpeed": {{ autoplaySpeed }}
          }'>
         
@@ -52,18 +54,18 @@
         </div>
 
         {% if navigationArrows %}
-            <button class="common-slider-arrow common-slider-prev" aria-label="Previous">
+            <button class="uct-carousel-control common-slider-arrow common-slider-prev" aria-label="Previous">
                 {% sw_icon 'arrow-left' %}
             </button>
-            <button class="common-slider-arrow common-slider-next" aria-label="Next">
+            <button class="uct-carousel-control common-slider-arrow common-slider-next" aria-label="Next">
                 {% sw_icon 'arrow-right' %}
             </button>
         {% endif %}
 
         {% if navigationDots %}
-            <div class="common-slider-dots dots-{{ dotsPosition }}">
+            <div class="uct-carousel-indicators common-slider-dots uct-dots-{{ dotsPosition }} dots-{{ dotsPosition }}">
                 {% for item in sliderItems %}
-                    <button class="common-slider-dot {% if loop.first %}active{% endif %}" data-index="{{ loop.index0 }}" aria-label="Go to slide {{ loop.index }}"></button>
+                    <button class="uct-carousel-dot common-slider-dot {% if loop.first %}active{% endif %}" data-index="{{ loop.index0 }}" aria-label="Go to slide {{ loop.index }}"></button>
                 {% endfor %}
             </div>
         {% endif %}

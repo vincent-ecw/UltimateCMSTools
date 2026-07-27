@@ -4,6 +4,10 @@ import './module/sw-cms/elements/subcategory-carousel';
 import './module/sw-cms/blocks/ultimate-cms-tools/subcategory-carousel';
 import './module/sw-cms/elements/subcategory-grid';
 import './module/sw-cms/blocks/ultimate-cms-tools/subcategory-grid';
+import './module/sw-cms/elements/manufacturer-carousel';
+import './module/sw-cms/blocks/ultimate-cms-tools/manufacturer-carousel';
+import './module/sw-cms/elements/manufacturer-grid';
+import './module/sw-cms/blocks/ultimate-cms-tools/manufacturer-grid';
 import './module/sw-cms/elements/faq-harmonica';
 import './module/sw-cms/blocks/ultimate-cms-tools/faq-harmonica';
 import './module/sw-cms/elements/common-slider';
@@ -20,9 +24,15 @@ import './module/sw-cms/elements/cta';
 import './module/sw-cms/blocks/ultimate-cms-tools/cta';
 import './module/sw-cms/elements/image-text-quartet';
 import './module/sw-cms/blocks/ultimate-cms-tools/image-text-quartet';
+import './module/sw-cms/elements/category-header';
+import './module/sw-cms/blocks/ultimate-cms-tools/category-header';
+import './module/sw-cms/elements/statistics';
+import './module/sw-cms/blocks/ultimate-cms-tools/statistics';
 import deDE from './module/sw-cms/snippet/de-DE.json';
 import enGB from './module/sw-cms/snippet/en-GB.json';
+import nlNL from './module/sw-cms/snippet/nl-NL.json';
 
 Shopware.Locale.register('de-DE', deDE);
 Shopware.Locale.register('en-GB', enGB);
+Shopware.Locale.register('nl-NL', nlNL);
 

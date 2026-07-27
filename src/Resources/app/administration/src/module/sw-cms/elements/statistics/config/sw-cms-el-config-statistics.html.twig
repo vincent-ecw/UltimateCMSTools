@@ -1,0 +1,88 @@
+<div class="sw-cms-el-config-statistics">
+    <sw-tabs default-item="content" position="top">
+        <template #default="{ active }">
+            <sw-tabs-item name="content" :active-tab="active" @click="activeTab = 'content'">
+                {{ $tc('sw-cms.elements.ultimateCmsTools.statistics.config.tabs.content') }}
+            </sw-tabs-item>
+            <sw-tabs-item name="settings" :active-tab="active" @click="activeTab = 'settings'">
+                {{ $tc('sw-cms.elements.ultimateCmsTools.statistics.config.tabs.settings') }}
+            </sw-tabs-item>
+        </template>
+    </sw-tabs>
+
+    <div v-if="activeTab === 'content'" class="sw-cms-el-config-statistics__content-tab">
+        <sw-textarea-field
+            v-model="introText"
+            :label="$tc('sw-cms.elements.ultimateCmsTools.statistics.config.introTextLabel')"
+            :placeholder="$tc('sw-cms.elements.ultimateCmsTools.statistics.config.introTextPlaceholder')">
+        </sw-textarea-field>
+
+        <div class="sw-cms-el-config-statistics__items-header">
+            <h4 class="sw-cms-el-config-statistics__items-title">
+                {{ $tc('sw-cms.elements.ultimateCmsTools.statistics.config.itemsTitle') }}
+            </h4>
+        </div>
+
+        <div v-for="(item, index) in items" :key="index" class="sw-cms-el-config-statistics__item-card">
+            <div class="sw-cms-el-config-statistics__item-header">
+                <span class="sw-cms-el-config-statistics__item-number-label">
+                    {{ $tc('sw-cms.elements.ultimateCmsTools.statistics.config.itemLabel') }} #{{ index + 1 }}
+                </span>
+                <sw-button @click="onRemoveItem(index)" size="small" variant="danger">
+                    {{ $tc('global.default.delete') }}
+                </sw-button>
+            </div>
+
+            <div class="sw-cms-el-config-statistics__item-grid">
+                <sw-single-select
+                    v-model:value="item.icon"
+                    :options="iconOptions"
+                    :label="$tc('sw-cms.elements.ultimateCmsTools.statistics.config.iconLabel')"
+                    @update:value="onItemChange">
+                </sw-single-select>
+
+                <sw-text-field
+                    v-model="item.title"
+                    :label="$tc('sw-cms.elements.ultimateCmsTools.statistics.config.titleLabel')"
+                    :placeholder="$tc('sw-cms.elements.ultimateCmsTools.statistics.config.titlePlaceholder')"
+                    @change="onItemChange">
+                </sw-text-field>
+
+                <sw-text-field
+                    v-model="item.number"
+                    :label="$tc('sw-cms.elements.ultimateCmsTools.statistics.config.numberLabel')"
+                    :placeholder="$tc('sw-cms.elements.ultimateCmsTools.statistics.config.numberPlaceholder')"
+                    @change="onItemChange">
+                </sw-text-field>
+
+                <sw-text-field
+                    v-model="item.subline"
+                    :label="$tc('sw-cms.elements.ultimateCmsTools.statistics.config.sublineLabel')"
+                    :placeholder="$tc('sw-cms.elements.ultimateCmsTools.statistics.config.sublinePlaceholder')"
+                    @change="onItemChange">
+                </sw-text-field>
+            </div>
+        </div>
+
+        <div class="sw-cms-el-config-statistics__actions">
+            <sw-button @click="onAddItem" variant="ghost" class="sw-cms-el-config-statistics__add-btn">
+                <sw-icon name="regular-plus-s" size="14px"></sw-icon>
+                {{ $tc('sw-cms.elements.ultimateCmsTools.statistics.config.addItem') }}
+            </sw-button>
+        </div>
+    </div>
+
+    <div v-if="activeTab === 'settings'" class="sw-cms-el-config-statistics__settings-tab">
+        <sw-single-select
+            v-model:value="theme"
+            :options="themeOptions"
+            :label="$tc('sw-cms.elements.ultimateCmsTools.statistics.config.themeLabel')">
+        </sw-single-select>
+
+        <sw-single-select
+            v-model:value="columns"
+            :options="columnOptions"
+            :label="$tc('sw-cms.elements.ultimateCmsTools.statistics.config.columnsLabel')">
+        </sw-single-select>
+    </div>
+</div>

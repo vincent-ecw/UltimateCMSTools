@@ -16,6 +16,30 @@ Shopware.Service('cmsService').registerCmsElement({
         displayImage: {
             source: 'static',
             value: true
+        },
+        navigationArrows: {
+            source: 'static',
+            value: true
+        },
+        navigationDots: {
+            source: 'static',
+            value: true
+        },
+        navigationDotsPosition: {
+            source: 'static',
+            value: 'inside'
+        },
+        autoplay: {
+            source: 'static',
+            value: true
+        },
+        autoplaySpeed: {
+            source: 'static',
+            value: 5000
+        },
+        maxHeight: {
+            source: 'static',
+            value: null
         }
     }
 });

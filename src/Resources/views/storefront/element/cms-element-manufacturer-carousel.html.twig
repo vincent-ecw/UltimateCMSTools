@@ -1,0 +1,131 @@
+{% block element_manufacturer_carousel %}
+    {% set config = element.fieldConfig.elements %}
+    {% set manufacturers = element.data.manufacturers %}
+    {% set navigationArrows = config.navigationArrows.value is not null ? config.navigationArrows.value : true %}
+    {% set navigationDots = config.navigationDots.value is not null ? config.navigationDots.value : true %}
+    {% set autoplay = config.autoplay.value is not null ? config.autoplay.value : true %}
+    {% set autoplaySpeed = config.autoplaySpeed.value|default(5000) %}
+    {% set dotsPosition = config.navigationDotsPosition.value|default('inside') %}
+    {% set maxHeight = config.maxHeight.value|default(null) %}
+
+    {% set displayLogo = config.displayLogo.value is not null ? config.displayLogo.value : true %}
+    {% set displayTitle = config.displayTitle.value is not null ? config.displayTitle.value : true %}
+    {% set displayDescription = config.displayDescription.value is not null ? config.displayDescription.value : true %}
+
+    {% if manufacturers and manufacturers.count > 0 %}
+        <div class="cms-element-manufacturer-carousel"
+             {% if maxHeight and maxHeight > 0 %}style="--uct-carousel-max-height: {{ maxHeight }}px; max-height: {{ maxHeight }}px;"{% endif %}
+             data-manufacturer-carousel="true"
+             data-manufacturer-carousel-options='{
+                 "arrows": {{ navigationArrows ? "true" : "false" }},
+                 "dots": {{ navigationDots ? "true" : "false" }},
+                 "autoplay": {{ autoplay ? "true" : "false" }},
+                 "autoplaySpeed": {{ autoplaySpeed }}
+             }'>
+            <div class="manufacturer-carousel-wrapper">
+                {% if navigationArrows %}
+                    <button type="button" class="btn btn-light uct-carousel-control manufacturer-carousel-control prev" aria-label="Previous">
+                        {% sw_icon 'arrow-left' %}
+                    </button>
+                {% endif %}
+
+                <div class="manufacturer-carousel-container" {% if maxHeight and maxHeight > 0 %}style="max-height: {{ maxHeight }}px;"{% endif %}>
+                    {% for manufacturer in manufacturers %}
+                        {% set manufacturerUrl = manufacturer.link %}
+                        {% set extStruct = manufacturer.extension('ultimateCmsTools') %}
+                        {% set isExternal = extStruct ? extStruct.isExternal : false %}
+                        {% set media = manufacturer.media %}
+                        
+                        {% if manufacturerUrl %}
+                            <a href="{{ manufacturerUrl }}" class="manufacturer-card" title="{{ manufacturer.translated.name }}" {% if isExternal %}target="_blank" rel="noopener"{% else %}target="_self"{% endif %}>
+                                {% if displayLogo %}
+                                    <div class="manufacturer-card-image-wrapper">
+                                        {% if media %}
+                                            {% set attributes = {
+                                                'class': 'manufacturer-card-logo',
+                                                'alt': (media.translated.alt ?: manufacturer.translated.name),
+                                                'title': (media.translated.title ?: manufacturer.translated.name),
+                                                'loading': 'lazy'
+                                            } %}
+                                            {% sw_thumbnails 'manufacturer-card-thumbnails' with {
+                                                media: media,
+                                                attributes: attributes
+                                            } %}
+                                        {% else %}
+                                            <div class="manufacturer-card-image-placeholder">
+                                                <span class="manufacturer-card-placeholder-text">{{ manufacturer.translated.name }}</span>
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                {% endif %}
+
+                                {% if displayTitle or displayDescription %}
+                                    <div class="manufacturer-card-content">
+                                        {% if displayTitle %}
+                                            <h3 class="manufacturer-card-title">{{ manufacturer.translated.name }}</h3>
+                                        {% endif %}
+                                        {% if displayDescription and manufacturer.translated.description %}
+                                            <div class="manufacturer-card-description">
+                                                {{ manufacturer.translated.description|striptags|u.truncate(80, '...', false) }}
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                {% endif %}
+                            </a>
+                        {% else %}
+                            <div class="manufacturer-card" title="{{ manufacturer.translated.name }}">
+                                {% if displayLogo %}
+                                    <div class="manufacturer-card-image-wrapper">
+                                        {% if media %}
+                                            {% set attributes = {
+                                                'class': 'manufacturer-card-logo',
+                                                'alt': (media.translated.alt ?: manufacturer.translated.name),
+                                                'title': (media.translated.title ?: manufacturer.translated.name),
+                                                'loading': 'lazy'
+                                            } %}
+                                            {% sw_thumbnails 'manufacturer-card-thumbnails' with {
+                                                media: media,
+                                                attributes: attributes
+                                            } %}
+                                        {% else %}
+                                            <div class="manufacturer-card-image-placeholder">
+                                                <span class="manufacturer-card-placeholder-text">{{ manufacturer.translated.name }}</span>
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                {% endif %}
+
+                                {% if displayTitle or displayDescription %}
+                                    <div class="manufacturer-card-content">
+                                        {% if displayTitle %}
+                                            <h3 class="manufacturer-card-title">{{ manufacturer.translated.name }}</h3>
+                                        {% endif %}
+                                        {% if displayDescription and manufacturer.translated.description %}
+                                            <div class="manufacturer-card-description">
+                                                {{ manufacturer.translated.description|striptags|u.truncate(80, '...', false) }}
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+
+                {% if navigationArrows %}
+                    <button type="button" class="btn btn-light uct-carousel-control manufacturer-carousel-control next" aria-label="Next">
+                        {% sw_icon 'arrow-right' %}
+                    </button>
+                {% endif %}
+            </div>
+
+            {% if navigationDots %}
+                <div class="uct-carousel-indicators manufacturer-carousel-indicators uct-dots-{{ dotsPosition }} dots-{{ dotsPosition }}">
+                    {% for i in 0..(manufacturers.count - 1) %}
+                        <button type="button" class="uct-carousel-dot manufacturer-carousel-dot {% if loop.first %}active{% endif %}" data-index="{{ i }}" aria-label="Slide {{ i + 1 }}"></button>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    {% endif %}
+{% endblock %}

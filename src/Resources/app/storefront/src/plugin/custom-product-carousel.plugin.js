@@ -12,12 +12,25 @@ export default class CustomProductCarouselPlugin extends Plugin {
     init() {
         try {
             this.container = DomAccess.querySelector(this.el, '.custom-product-carousel-container');
-            this.prevBtn = this.options.arrows ? DomAccess.querySelector(this.el, '.custom-product-carousel-control.prev') : null;
-            this.nextBtn = this.options.arrows ? DomAccess.querySelector(this.el, '.custom-product-carousel-control.next') : null;
-            this.dots = this.options.dots ? DomAccess.querySelectorAll(this.el, '.custom-product-carousel-dot') : [];
-            this.cards = DomAccess.querySelectorAll(this.container, '.product-slider-item');
+            this.prevBtn = this.options.arrows ? DomAccess.querySelector(this.el, '.custom-product-carousel-control.prev', false) : null;
+            this.nextBtn = this.options.arrows ? DomAccess.querySelector(this.el, '.custom-product-carousel-control.next', false) : null;
+            this.dots = this.options.dots ? DomAccess.querySelectorAll(this.el, '.custom-product-carousel-dot', false) : [];
+            this.cards = DomAccess.querySelectorAll(this.container, '.product-slider-item', false);
         } catch (e) {
             return;
+        }
+
+        if (!this.cards || this.cards.length === 0) return;
+
+        this.originalCount = this.cards.length;
+
+        if (this.originalCount > 1) {
+            this.setupClones();
+            this.cards = DomAccess.querySelectorAll(this.container, '.product-slider-item', false);
+            const itemWidth = this.getItemWidth();
+            if (itemWidth > 0) {
+                this.container.scrollLeft = this.originalCount * itemWidth;
+            }
         }
 
         this.autoplayInterval = null;
@@ -26,6 +39,47 @@ export default class CustomProductCarouselPlugin extends Plugin {
         this.registerEvents();
         this.updateControls();
         this.startAutoplay();
+    }
+
+    setupClones() {
+        if (this.container.querySelector('[data-clone]')) return;
+
+        const originalCards = Array.from(this.cards);
+        const preFragment = document.createDocumentFragment();
+        const postFragment = document.createDocumentFragment();
+
+        originalCards.forEach(card => {
+            const preClone = card.cloneNode(true);
+            this.cleanClone(preClone, 'pre');
+            preFragment.appendChild(preClone);
+
+            const postClone = card.cloneNode(true);
+            this.cleanClone(postClone, 'post');
+            postFragment.appendChild(postClone);
+        });
+
+        this.container.insertBefore(preFragment, originalCards[0]);
+        this.container.appendChild(postFragment);
+    }
+
+    cleanClone(clone, type) {
+        if (clone.id) clone.removeAttribute('id');
+        clone.querySelectorAll('[id]').forEach(el => el.removeAttribute('id'));
+        clone.setAttribute('aria-hidden', 'true');
+        clone.setAttribute('data-clone', type);
+        clone.querySelectorAll('a, button, input, select, textarea, [tabindex]').forEach(el => {
+            el.setAttribute('tabindex', '-1');
+        });
+        if (clone.matches('a, button, input, select, textarea, [tabindex]')) {
+            clone.setAttribute('tabindex', '-1');
+        }
+    }
+
+    getItemWidth() {
+        if (!this.cards || this.cards.length === 0) return 0;
+        const cardWidth = this.cards[0].offsetWidth;
+        const gap = parseInt(window.getComputedStyle(this.container).gap, 10) || 20;
+        return cardWidth + gap;
     }
 
     registerEvents() {
@@ -47,9 +101,10 @@ export default class CustomProductCarouselPlugin extends Plugin {
         }
 
         this.container.addEventListener('scroll', this.onScroll.bind(this), { passive: true });
+        this.container.addEventListener('scrollend', () => this.checkScrollLoop(true));
         window.addEventListener('resize', this._onResize);
 
-        if (this.options.dots && this.dots.length > 0) {
+        if (this.options.dots && this.dots && this.dots.length > 0) {
             this.dots.forEach(dot => {
                 dot.addEventListener('click', (e) => {
                     this.stopAutoplay();
@@ -60,58 +115,92 @@ export default class CustomProductCarouselPlugin extends Plugin {
             });
         }
 
-        // Pause on hover
         this.el.addEventListener('mouseenter', () => this.stopAutoplay());
         this.el.addEventListener('mouseleave', () => this.startAutoplay());
     }
 
     scrollPrev() {
-        if (this.cards.length === 0) return;
-        const cardWidth = this.cards[0].offsetWidth;
-        const gap = parseInt(window.getComputedStyle(this.container).gap) || 20;
-        this.container.scrollBy({ left: -(cardWidth + gap), behavior: 'smooth' });
+        if (!this.cards || this.cards.length === 0) return;
+        const itemWidth = this.getItemWidth();
+        if (itemWidth <= 0) return;
+
+        let currentIdx = Math.round(this.container.scrollLeft / itemWidth);
+        if (this.originalCount && currentIdx < this.originalCount) {
+            this.container.scrollLeft += this.originalCount * itemWidth;
+            currentIdx += this.originalCount;
+        }
+
+        const targetScroll = (currentIdx - 1) * itemWidth;
+        this.container.scrollTo({ left: targetScroll, behavior: 'smooth' });
     }
 
     scrollNext() {
-        if (this.cards.length === 0) return;
-        const cardWidth = this.cards[0].offsetWidth;
-        const gap = parseInt(window.getComputedStyle(this.container).gap) || 20;
-        this.container.scrollBy({ left: cardWidth + gap, behavior: 'smooth' });
+        if (!this.cards || this.cards.length === 0) return;
+        const itemWidth = this.getItemWidth();
+        if (itemWidth <= 0) return;
+
+        let currentIdx = Math.round(this.container.scrollLeft / itemWidth);
+        if (this.originalCount && currentIdx >= 2 * this.originalCount) {
+            this.container.scrollLeft -= this.originalCount * itemWidth;
+            currentIdx -= this.originalCount;
+        }
+
+        const targetScroll = (currentIdx + 1) * itemWidth;
+        this.container.scrollTo({ left: targetScroll, behavior: 'smooth' });
     }
 
     scrollToIndex(index) {
-        if (this.cards[index]) {
-            const cardWidth = this.cards[0].offsetWidth;
-            const gap = parseInt(window.getComputedStyle(this.container).gap) || 20;
-            const targetScroll = index * (cardWidth + gap);
-            this.container.scrollTo({ left: targetScroll, behavior: 'smooth' });
-        }
+        if (!this.cards || this.cards.length === 0) return;
+        const itemWidth = this.getItemWidth();
+        if (itemWidth <= 0) return;
+
+        const baseIndex = this.originalCount ? this.originalCount : 0;
+        const targetScroll = (baseIndex + index) * itemWidth;
+        this.container.scrollTo({ left: targetScroll, behavior: 'smooth' });
     }
 
     onScroll() {
         this.updateControls();
+        this.checkScrollLoop(false);
+    }
+
+    checkScrollLoop(force = false) {
+        if (!this.originalCount || this.originalCount <= 1) return;
+        const itemWidth = this.getItemWidth();
+        if (itemWidth <= 0) return;
+
+        const scrollLeft = this.container.scrollLeft;
+        const currentIdx = Math.round(scrollLeft / itemWidth);
+        const targetOffset = currentIdx * itemWidth;
+
+        if (force || Math.abs(scrollLeft - targetOffset) < 5) {
+            if (currentIdx >= 2 * this.originalCount) {
+                this.container.scrollLeft -= this.originalCount * itemWidth;
+            } else if (currentIdx < this.originalCount) {
+                this.container.scrollLeft += this.originalCount * itemWidth;
+            }
+        }
     }
 
     updateControls() {
-        if (this.cards.length === 0) return;
-        
+        if (!this.cards || this.cards.length === 0) return;
+        const itemWidth = this.getItemWidth();
+        if (itemWidth <= 0) return;
+
         const scrollLeft = this.container.scrollLeft;
-        const maxScroll = this.container.scrollWidth - this.container.clientWidth;
-        
-        if (this.prevBtn) {
-            this.prevBtn.disabled = scrollLeft <= 1;
-        }
-        if (this.nextBtn) {
-            this.nextBtn.disabled = scrollLeft >= (maxScroll - 1);
+        const currentIdx = Math.round(scrollLeft / itemWidth);
+
+        if (this.originalCount && this.originalCount <= 1) {
+            if (this.prevBtn) this.prevBtn.disabled = true;
+            if (this.nextBtn) this.nextBtn.disabled = true;
+        } else {
+            if (this.prevBtn) this.prevBtn.disabled = false;
+            if (this.nextBtn) this.nextBtn.disabled = false;
         }
 
-        const cardWidth = this.cards[0].offsetWidth;
-        const gap = parseInt(window.getComputedStyle(this.container).gap) || 20;
-        const itemWidth = cardWidth + gap;
-        
-        const activeIndex = Math.round(scrollLeft / itemWidth);
-
-        if (this.options.dots && this.dots.length > 0) {
+        if (this.options.dots && this.dots && this.dots.length > 0) {
+            const N = this.originalCount || this.cards.length;
+            const activeIndex = ((currentIdx % N) + N) % N;
             this.dots.forEach((dot, index) => {
                 if (index === activeIndex) {
                     dot.classList.add('active');
@@ -126,16 +215,9 @@ export default class CustomProductCarouselPlugin extends Plugin {
         if (!this.options.autoplay) return;
         this.stopAutoplay();
 
-        if (this.options.autoplaySpeed && this.options.autoplaySpeed > 0 && this.cards.length > 1) {
+        if (this.options.autoplaySpeed && this.options.autoplaySpeed > 0 && this.originalCount && this.originalCount > 1) {
             this.autoplayInterval = setInterval(() => {
-                const scrollLeft = this.container.scrollLeft;
-                const maxScroll = this.container.scrollWidth - this.container.clientWidth;
-                
-                if (scrollLeft >= (maxScroll - 1)) {
-                    this.container.scrollTo({ left: 0, behavior: 'smooth' });
-                } else {
-                    this.scrollNext();
-                }
+                this.scrollNext();
             }, this.options.autoplaySpeed);
         }
     }

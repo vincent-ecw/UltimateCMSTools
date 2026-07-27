@@ -54,15 +54,27 @@ Component.register('sw-cms-el-cta', {
             return `text-${this.textColor}`;
         },
 
+        minHeight() {
+            return this.element?.config?.minHeight?.value || '';
+        },
+
         containerStyles() {
+            const styles = {};
+
             if (this.backgroundImageUrl) {
-                return {
-                    backgroundImage: `url(${this.backgroundImageUrl})`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center'
-                };
+                styles.backgroundImage = `url(${this.backgroundImageUrl})`;
+                styles.backgroundSize = 'cover';
+                styles.backgroundPosition = 'center';
             }
-            return {};
+
+            if (this.minHeight) {
+                const minHeightValue = /^\d+$/.test(String(this.minHeight).trim())
+                    ? `${this.minHeight.trim()}px`
+                    : this.minHeight;
+                styles.minHeight = minHeightValue;
+            }
+
+            return styles;
         }
     },
 

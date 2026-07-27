@@ -1,0 +1,27 @@
+<div class="sw-cms-el-config-manufacturer-grid">
+    <sw-alert variant="info">
+        {{ $tc('sw-cms.elements.ultimateCmsTools.manufacturerGrid.configInfo') }}
+    </sw-alert>
+    <div class="sw-cms-el-config-manufacturer-grid__settings" style="margin-top: 15px;">
+        <sw-switch-field
+            v-model:value="displayLogo"
+            :label="$tc('sw-cms.elements.ultimateCmsTools.manufacturerGrid.config.displayLogoLabel')">
+        </sw-switch-field>
+
+        <sw-switch-field
+            v-model:value="displayTitle"
+            :label="$tc('sw-cms.elements.ultimateCmsTools.manufacturerGrid.config.displayTitleLabel')">
+        </sw-switch-field>
+
+        <sw-switch-field
+            v-model:value="displayDescription"
+            :label="$tc('sw-cms.elements.ultimateCmsTools.manufacturerGrid.config.displayDescriptionLabel')">
+        </sw-switch-field>
+
+        <sw-single-select
+            v-model:value="columnsMobile"
+            :label="$tc('sw-cms.elements.ultimateCmsTools.manufacturerGrid.config.columnsMobileLabel')"
+            :options="columnsMobileOptions">
+        </sw-single-select>
+    </div>
+</div>

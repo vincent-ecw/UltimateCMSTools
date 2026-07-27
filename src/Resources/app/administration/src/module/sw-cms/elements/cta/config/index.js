@@ -143,6 +143,16 @@ Component.register('sw-cms-el-config-cta', {
                 this.element.config.textColor.value = value;
                 this.onChange();
             }
+        },
+
+        minHeight: {
+            get() {
+                return this.element?.config?.minHeight?.value || '';
+            },
+            set(value) {
+                this.element.config.minHeight.value = value;
+                this.onChange();
+            }
         }
     },
 

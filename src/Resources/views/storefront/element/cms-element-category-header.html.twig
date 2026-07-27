@@ -1,0 +1,189 @@
+{% block element_category_header %}
+    {% set config = element.config %}
+    {% set rawDesign = config.design.value|default('design-1') %}
+    {% set designClass = rawDesign starts with 'design-' ? rawDesign : 'design-' ~ rawDesign %}
+
+    {% set titleOverride = config.title.value|default('') %}
+    {% set subtitleOverride = config.subtitle.value|default('') %}
+    {% set descriptionOverride = config.description.value|default('') %}
+    {% set mediaOverride = element.data ? element.data.get('media') : null %}
+
+    {% set category = element.data ? element.data.get('category') : null %}
+    {% if not category and page is defined %}
+        {% set category = page.header.navigation.active|default(page.cmsPage.category|default(null)) %}
+    {% endif %}
+
+    {% set pageTitleCustomField = category and category.customFields ? category.customFields.ultimate_cms_tools_page_title|default('') : '' %}
+    {% set categoryName = category ? category.translated.name|default(category.name) : 'Category Title' %}
+
+    {% set title = titleOverride ?: (pageTitleCustomField ?: categoryName) %}
+    {% set subtitle = subtitleOverride ?: (category and category.customFields ? category.customFields.ultimate_cms_tools_subtitle|default('') : '') %}
+    {% set description = descriptionOverride ?: (category ? category.translated.description|default(category.description) : '') %}
+    {% set media = mediaOverride ?: (category ? category.media : null) %}
+
+    <div class="cms-element-category-header {{ designClass }}">
+        {# Design 1: Minimal Card #}
+        {% if rawDesign == 'design-1' %}
+            <div class="category-header-card card-design-1">
+                <div class="category-header-content">
+                    {% if title %}
+                        <h1 class="category-header-title">{{ title }}</h1>
+                    {% endif %}
+
+                    {% if description %}
+                        <div class="category-header-description">
+                            {% if description matches '/<[^>]+>/' %}
+                                {{ description|raw }}
+                            {% else %}
+                                <p>{{ description|nl2br }}</p>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                </div>
+
+                {% if media %}
+                    <div class="category-header-media">
+                        {% sw_thumbnails 'category-header-img' with {
+                            media: media,
+                            sizes: {
+                                'default': '400px'
+                            }
+                        } %}
+                    </div>
+                {% endif %}
+            </div>
+
+        {# Design 2: Accent Frame #}
+        {% elseif rawDesign == 'design-2' %}
+            <div class="category-header-card card-design-2">
+                <div class="category-header-content">
+                    {% if subtitle %}
+                        <div class="category-header-subtitle-badge">
+                            <span class="badge-dot"></span>
+                            <span class="badge-text">{{ subtitle }}</span>
+                        </div>
+                    {% endif %}
+
+                    {% if title %}
+                        <h1 class="category-header-title">{{ title }}</h1>
+                    {% endif %}
+
+                    {% if description %}
+                        <div class="category-header-description">
+                            {% if description matches '/<[^>]+>/' %}
+                                {{ description|raw }}
+                            {% else %}
+                                <p>{{ description|nl2br }}</p>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                </div>
+
+                {% if media %}
+                    <div class="category-header-media-wrap">
+                        <div class="category-header-media-frame">
+                            {% sw_thumbnails 'category-header-img' with {
+                                media: media,
+                                sizes: {
+                                    'default': '400px'
+                                }
+                            } %}
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+
+        {# Design 3: Dark Overlay #}
+        {% elseif rawDesign == 'design-3' %}
+            <div class="category-header-card card-design-3"
+                 {% if media %}style="background-image: linear-gradient(90deg, #0b1329 0%, #0b1329 45%, rgba(11, 19, 41, 0.3) 100%), url('{{ media.url }}');"{% endif %}>
+                <div class="category-header-content">
+                    {% if subtitle %}
+                        <div class="category-header-subtitle">{{ subtitle }}</div>
+                    {% endif %}
+
+                    {% if title %}
+                        <h1 class="category-header-title">{{ title }}</h1>
+                    {% endif %}
+
+                    {% if description %}
+                        <div class="category-header-description">
+                            {% if description matches '/<[^>]+>/' %}
+                                {{ description|raw }}
+                            {% else %}
+                                <p>{{ description|nl2br }}</p>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+
+        {# Design 4: Circle Frame #}
+        {% elseif rawDesign == 'design-4' %}
+            <div class="category-header-card card-design-4">
+                <div class="category-header-content">
+                    {% if subtitle %}
+                        <div class="category-header-subtitle-line">
+                            <span class="line"></span>
+                            <span class="subtitle-text">{{ subtitle }}</span>
+                        </div>
+                    {% endif %}
+
+                    {% if title %}
+                        <h1 class="category-header-title">{{ title }}</h1>
+                    {% endif %}
+
+                    {% if description %}
+                        <div class="category-header-description">
+                            {% if description matches '/<[^>]+>/' %}
+                                {{ description|raw }}
+                            {% else %}
+                                <p>{{ description|nl2br }}</p>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                </div>
+
+                {% if media %}
+                    <div class="category-header-media-circle">
+                        {% sw_thumbnails 'category-header-img' with {
+                            media: media,
+                            sizes: {
+                                'default': '300px'
+                            }
+                        } %}
+                    </div>
+                {% endif %}
+            </div>
+
+        {# Design 5: Diagonal Split #}
+        {% elseif rawDesign == 'design-5' %}
+            <div class="category-header-card card-design-5">
+                <div class="category-header-left">
+                    {% if subtitle %}
+                        <div class="category-header-subtitle">{{ subtitle }}</div>
+                    {% endif %}
+
+                    {% if title %}
+                        <h1 class="category-header-title">{{ title }}</h1>
+                    {% endif %}
+
+                    {% if description %}
+                        <div class="category-header-description">
+                            {% if description matches '/<[^>]+>/' %}
+                                {{ description|raw }}
+                            {% else %}
+                                <p>{{ description|nl2br }}</p>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                </div>
+
+                {% if media %}
+                    <div class="category-header-divider"></div>
+                    <div class="category-header-right" style="background-image: url('{{ media.url }}');"></div>
+                {% endif %}
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

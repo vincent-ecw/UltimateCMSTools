@@ -18,6 +18,10 @@
                 "placeholder": "Select or drag custom items to build your carousel.",
                 "itemsCount": "items",
                 "config": {
+                    "tabs": {
+                        "content": "Content",
+                        "settings": "Settings"
+                    },
                     "titleLabel": "Title (mandatory)",
                     "titlePlaceholder": "Enter item title...",
                     "descriptionLabel": "Description (optional)",
@@ -28,7 +32,19 @@
                     "buttonTargetLabel": "Link Target",
                     "targetSelf": "Same Window",
                     "targetBlank": "New Window",
-                    "addButton": "Add Carousel Item"
+                    "addButton": "Add Carousel Item",
+                    "navigationArrows": "Show Navigation Arrows",
+                    "navigationDots": "Show Navigation Dots",
+                    "navigationDotsPosition": "Dots Position",
+                    "dotsPositions": {
+                        "inside": "Inside Slider",
+                        "outside": "Outside Slider"
+                    },
+                    "autoplay": "Autoplay",
+                    "autoplaySpeed": "Autoplay Speed (ms)",
+                    "autoplaySpeedHelp": "Time in milliseconds a slide stays visible (e.g., 5000 = 5 seconds). Set to 0 to disable autoplay.",
+                    "maxHeight": "Max Height (px)",
+                    "maxHeightHelp": "Define a maximum height in pixels for the slider (e.g. 500). Leave empty to auto-adapt."
                 }
             },
             "customProductCarousel": {
@@ -111,6 +127,7 @@
                         "navigationDotsPosition": "Dots Position",
                         "positionInside": "Inside Slider",
                         "positionOutside": "Outside Slider",
+                        "autoplay": "Autoplay",
                         "autoplaySpeed": "Autoplay Speed (ms)",
                         "autoplaySpeedHelp": "Time in milliseconds a slide stays visible (e.g., 5000 = 5 seconds). Set to 0 to disable autoplay.",
                         "maxHeight": "Max Height (px)",
@@ -149,6 +166,9 @@
                         "subtitleLabel": "Subtitle (optional)",
                         "subtitlePlaceholder": "Enter subtitle...",
                         "backgroundImageLabel": "Background Image (optional)",
+                        "minHeightLabel": "Minimum Height (e.g. 400px)",
+                        "minHeightPlaceholder": "e.g. 400px",
+                        "minHeightHelp": "Define a minimum height for the block (e.g. 400px or 400). Leave empty for default height.",
                         "styleLabel": "Layout Style",
                         "styles": {
                             "split-minimal": "Minimalist Split",
@@ -200,18 +220,107 @@
                     "configInfo": "No configuration required. The subcategories of the active category are displayed automatically.",
                     "config": {
                         "showAllSubcategoriesLabel": "Show all subcategories",
-                        "displayImageLabel": "Display image"
+                        "displayImageLabel": "Display image",
+                        "columnsMobileLabel": "Display on mobile device",
+                        "columnsMobile1": "1 column",
+                        "columnsMobile2": "2 columns"
+                    }
+                },
+                "manufacturerGrid": {
+                    "label": "Manufacturer Grid",
+                    "placeholder": "Shows manufacturers with 'Show in Grid' custom field enabled in a grid",
+                    "configInfo": "Manufacturers with 'Show in Grid' switch turned on in Admin are displayed automatically.",
+                    "config": {
+                        "displayLogoLabel": "Display logo",
+                        "displayTitleLabel": "Display title",
+                        "displayDescriptionLabel": "Display description",
+                        "columnsMobileLabel": "Display on mobile device",
+                        "columnsMobile1": "1 column",
+                        "columnsMobile2": "2 columns"
+                    }
+                },
+                "manufacturerCarousel": {
+                    "label": "Manufacturer Carousel",
+                    "placeholder": "Shows manufacturers with 'Show in Carousel' custom field enabled in a carousel",
+                    "configInfo": "Manufacturers with 'Show in Carousel' switch turned on in Admin are displayed automatically.",
+                    "config": {
+                        "displayLogoLabel": "Display logo",
+                        "displayTitleLabel": "Display title",
+                        "displayDescriptionLabel": "Display description"
+                    }
+                },
+                "categoryHeader": {
+                    "label": "Category Header",
+                    "placeholder": "Displays current category header with title, subtitle, description and image",
+                    "config": {
+                        "designLabel": "Design Style",
+                        "designPlaceholder": "Select design style...",
+                        "designs": {
+                            "design1": "Design 1 - Minimal Card",
+                            "design2": "Design 2 - Accent Frame",
+                            "design3": "Design 3 - Dark Overlay",
+                            "design4": "Design 4 - Circle Frame",
+                            "design5": "Design 5 - Diagonal Split"
+                        },
+                        "titleLabel": "Title Override (optional)",
+                        "titlePlaceholder": "Leave empty to use category name...",
+                        "subtitleLabel": "Subtitle Override (optional)",
+                        "subtitlePlaceholder": "Leave empty to use category subtitle...",
+                        "descriptionLabel": "Description Override (optional)",
+                        "descriptionPlaceholder": "Leave empty to use category description...",
+                        "mediaLabel": "Image Override (optional)"
+                    }
+                },
+                "statistics": {
+                    "label": "Statistics",
+                    "placeholder": "Display animated statistics grid with icons, numbers and sublines.",
+                    "config": {
+                        "tabs": {
+                            "content": "Content",
+                            "settings": "Settings"
+                        },
+                        "introTextLabel": "Intro Text (optional)",
+                        "introTextPlaceholder": "Enter intro headline or paragraph text...",
+                        "itemsTitle": "Statistics Items",
+                        "itemLabel": "Item",
+                        "iconLabel": "Icon",
+                        "titleLabel": "Title / Label",
+                        "titlePlaceholder": "e.g. Happy Customers",
+                        "numberLabel": "Number Value",
+                        "numberPlaceholder": "e.g. 99.95%, 2,000+, $55M+",
+                        "sublineLabel": "Subline (optional)",
+                        "sublinePlaceholder": "e.g. in fulfilling orders",
+                        "addItem": "Add Statistic Item",
+                        "themeLabel": "Theme Variation",
+                        "themes": {
+                            "clean": "Clean Design (Columns, no background)",
+                            "boxed": "Boxed Design (Gradient card & dividers)",
+                            "cleanDivided": "Clean Divided (Columns with subtle dividers)"
+                        },
+                        "columnsLabel": "Columns (Desktop)"
                     }
                 }
             }
         },
         "blocks": {
             "ultimateCmsTools": {
+                "statistics": {
+                    "label": "Statistics"
+                },
+                "categoryHeader": {
+                    "label": "Category Header"
+                },
                 "subcategoryCarousel": {
                     "label": "Subcategory Carousel"
                 },
                 "subcategoryGrid": {
                     "label": "Subcategory Grid"
+                },
+                "manufacturerCarousel": {
+                    "label": "Manufacturer Carousel"
+                },
+                "manufacturerGrid": {
+                    "label": "Manufacturer Grid"
                 },
                 "customCarousel": {
                     "label": "Custom Carousel"

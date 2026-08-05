@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.7] - 2026-08-05
+
+### Added
+- Added extra item properties to `Custom Carousel`: item date, show start date, show end date, category text, and category pill style (`primary`, `secondary`, `tertiary`).
+- Added drag-and-drop reordering as well as up/down movement controls for carousel items in the Administration configuration panel.
+- Added 5 themes for custom carousel: `Classic` (card with shadow), `Minimal` (clean background with no border or shadow), `Category` (category accent), `Horizontal` (horizontal split card layout), and `Media` (overlay title with readability drop-shadow).
+- Added `Number of items to display` setting (`itemsToDisplay`) to cap displayed active items while permitting generic fallback items.
+- Added `Highlight active item` setting to enlarge the active visible card with the primary brand border color.
+- Updated Administration layout editor component to display the first 3 items in the preview grid reflecting the selected theme.
+
 ## [1.2.6] - 2026-07-26
 
 ### Added

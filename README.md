@@ -153,13 +153,25 @@ A fully custom carousel that matches the look and feel of the subcategories caro
 
 #### Configuration Options
 
-Manage a dynamic list of carousel items. For each item:
+Manage a dynamic list of carousel items with drag-and-drop reordering. For each item:
 * **Title (`title` - Mandatory):** Heading text for the item card.
 * **Description (`description` - Optional):** Multi-line text block shown on the item card.
-* **Image (`mediaId` - Optional):** Upload an image file or choose one from the media manager.
-* **Button Text (`buttonText` - Optional):** Text label for the CTA button on the card.
-* **Button URL (`buttonUrl` - Optional):** Destination URL link for the button or entire card.
+* **Category (`category` - Optional):** Text tag displayed as a pill badge (`Primary`, `Secondary`, or `Tertiary` style).
+* **Item Date (`itemDate` - Optional):** Display date formatted according to storefront localization settings.
+* **Show Start / End Date (`showStartDate` / `showEndDate` - Optional):** Time-sensitive visibility window for automated publishing and expiration.
+* **Image (`mediaId` - Optional):** Upload an image file or choose one from the media manager (defaults to Shopware placeholder if omitted).
+* **Button URL (`buttonUrl` - Optional):** Destination URL link for the card.
 * **Button Target (`buttonTarget` - Optional):** Opens the URL in the same window (`_self`) or in a new tab/window (`_blank`).
+
+#### Carousel Theme & Display Settings:
+* **Carousel Theme (`theme`):** Select between 5 distinct design styles:
+  1. `Classic`: Card layout with rounded corners and subtle shadow.
+  2. `Minimal`: Clean background layout without borders or shadows.
+  3. `Category`: Layout prioritizing category pill and date meta info.
+  4. `Horizontal`: Side-by-side image and text layout on desktop viewports.
+  5. `Media`: Image-focused overlay layout with title drop-shadow for high contrast readability.
+* **Number of items to display (`itemsToDisplay`):** Caps the maximum visible active items (allowing generic fallback items to auto-fill as time-sensitive posts expire).
+* **Highlight active item (`highlightActiveItem`):** Enlarges the active slide card with a 2px primary brand border.
 * Standard carousel settings (Arrows, Dots, Autoplay, Max-Height).
 
 ---

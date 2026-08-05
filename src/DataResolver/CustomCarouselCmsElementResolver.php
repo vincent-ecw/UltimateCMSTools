@@ -62,14 +62,49 @@ class CustomCarouselCmsElementResolver extends AbstractCmsElementResolver
         $mediaCollection = $searchResult ? $searchResult->getEntities() : null;
 
         $items = $carouselItemsConfig->getValue();
-        foreach ($items as &$item) {
+        $now = new \DateTimeImmutable();
+        $activeItems = [];
+
+        foreach ($items as $item) {
+            if (!empty($item['showStartDate'])) {
+                try {
+                    $startDate = new \DateTimeImmutable($item['showStartDate']);
+                    if ($now < $startDate) {
+                        continue;
+                    }
+                } catch (\Throwable $e) {
+                    // Ignore date parse failure
+                }
+            }
+
+            if (!empty($item['showEndDate'])) {
+                try {
+                    $endDate = new \DateTimeImmutable($item['showEndDate']);
+                    if ($now > $endDate) {
+                        continue;
+                    }
+                } catch (\Throwable $e) {
+                    // Ignore date parse failure
+                }
+            }
+
             if (!empty($item['mediaId']) && $mediaCollection) {
                 $item['media'] = $mediaCollection->get($item['mediaId']);
+            }
+
+            $activeItems[] = $item;
+        }
+
+        $itemsToDisplayConfig = $config->get('itemsToDisplay');
+        if ($itemsToDisplayConfig && $itemsToDisplayConfig->getValue() !== null) {
+            $limit = (int) $itemsToDisplayConfig->getValue();
+            if ($limit > 0) {
+                $activeItems = array_slice($activeItems, 0, $limit);
             }
         }
 
         $data = new \Shopware\Core\Framework\Struct\ArrayStruct([
-            'carouselItems' => $items
+            'carouselItems' => $activeItems
         ]);
 
         $slot->setData($data);

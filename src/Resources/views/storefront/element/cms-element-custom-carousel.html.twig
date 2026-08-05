@@ -7,16 +7,19 @@
     {% set autoplaySpeed = config.autoplaySpeed.value|default(5000) %}
     {% set dotsPosition = config.navigationDotsPosition.value|default('inside') %}
     {% set maxHeight = config.maxHeight.value|default(null) %}
+    {% set theme = config.theme.value|default('classic') %}
+    {% set highlightActiveItem = config.highlightActiveItem.value is not null ? config.highlightActiveItem.value : false %}
 
     {% if items and items|length > 0 %}
-        <div class="cms-element-custom-carousel"
+        <div class="cms-element-custom-carousel uct-theme-{{ theme }} {% if highlightActiveItem %}uct-highlight-active{% endif %}"
              {% if maxHeight and maxHeight > 0 %}style="--uct-carousel-max-height: {{ maxHeight }}px; max-height: {{ maxHeight }}px;"{% endif %}
              data-custom-carousel="true"
              data-custom-carousel-options='{
                  "arrows": {{ navigationArrows ? "true" : "false" }},
                  "dots": {{ navigationDots ? "true" : "false" }},
                  "autoplay": {{ autoplay ? "true" : "false" }},
-                 "autoplaySpeed": {{ autoplaySpeed }}
+                 "autoplaySpeed": {{ autoplaySpeed }},
+                 "highlightActiveItem": {{ highlightActiveItem ? "true" : "false" }}
              }'>
             <div class="custom-carousel-wrapper">
                 {% if navigationArrows %}
@@ -29,8 +32,11 @@
                     {% for item in items %}
                         {% set media = item.media %}
                         {% set hasLink = item.buttonUrl is not empty %}
+                        {% set categoryStyle = item.categoryStyle|default('primary') %}
                         
-                        <{% if hasLink %}a href="{{ item.buttonUrl }}" target="{{ item.buttonTarget|default('_self') }}"{% else %}div{% endif %} class="custom-card">
+                        <{% if hasLink %}a href="{{ item.buttonUrl }}" target="{{ item.buttonTarget|default('_self') }}"{% else %}div{% endif %}
+                           class="custom-card {% if highlightActiveItem and loop.first %}active{% endif %}">
+                            
                             <div class="custom-card-image-wrapper">
                                 {% if media %}
                                     {% set attributes = {
@@ -41,6 +47,11 @@
                                     } %}
                                     {% sw_thumbnails 'custom-card-thumbnails' with {
                                         media: media,
+                                        sizes: {
+                                            'default': '360px',
+                                            'md': '320px',
+                                            'sm': '100vw'
+                                        },
                                         attributes: attributes
                                     } %}
                                 {% else %}
@@ -48,11 +59,56 @@
                                         {% sw_icon 'image' style { 'size': 'lg' } %}
                                     </div>
                                 {% endif %}
+
+                                {% if theme == 'media' %}
+                                    <div class="custom-card-media-overlay">
+                                        {% if item.category is not empty %}
+                                            <span class="custom-card-category custom-card-category--{{ categoryStyle }}">
+                                                {{ item.category }}
+                                            </span>
+                                        {% endif %}
+                                        {% if item.title is not empty %}
+                                            <h3 class="custom-card-title custom-card-title--overlay">{{ item.title }}</h3>
+                                        {% endif %}
+                                    </div>
+                                {% endif %}
                             </div>
 
                             <div class="custom-card-content">
-                                <h3 class="custom-card-title">{{ item.title }}</h3>
-                                {% if item.description %}
+                                {% if theme != 'media' %}
+                                    <div class="custom-card-meta">
+                                        {% if item.category is not empty %}
+                                            <span class="custom-card-category custom-card-category--{{ categoryStyle }}">
+                                                {{ item.category }}
+                                            </span>
+                                        {% endif %}
+                                        {% if item.itemDate is not empty %}
+                                            <span class="custom-card-date">
+                                                {% if item.itemDate matches '/^\\d{4}-\\d{2}-\\d{2}/' %}
+                                                    {{ item.itemDate|date('d-m-Y') }}
+                                                {% else %}
+                                                    {{ item.itemDate }}
+                                                {% endif %}
+                                            </span>
+                                        {% endif %}
+                                    </div>
+
+                                    <h3 class="custom-card-title">{{ item.title }}</h3>
+                                {% else %}
+                                    {% if item.itemDate is not empty %}
+                                        <div class="custom-card-meta">
+                                            <span class="custom-card-date">
+                                                {% if item.itemDate matches '/^\\d{4}-\\d{2}-\\d{2}/' %}
+                                                    {{ item.itemDate|date('d-m-Y') }}
+                                                {% else %}
+                                                    {{ item.itemDate }}
+                                                {% endif %}
+                                            </span>
+                                        </div>
+                                    {% endif %}
+                                {% endif %}
+
+                                {% if item.description is not empty %}
                                     <div class="custom-card-description">
                                         {{ item.description|striptags|u.truncate(80, '...', false) }}
                                     </div>

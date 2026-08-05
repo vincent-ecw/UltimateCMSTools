@@ -1,16 +1,40 @@
-<div class="sw-cms-el-custom-carousel">
-    <div v-if="carouselItems.length === 0" class="sw-cms-el-custom-carousel__placeholder">
-        <sw-icon name="regular-images" size="40px"></sw-icon>
-        <p>{{ $tc('sw-cms.elements.customCarousel.placeholder') }}</p>
-    </div>
-    <div v-else class="sw-cms-el-custom-carousel__preview">
-        <sw-media-preview-v2 :source="firstImage" v-if="firstImage" class="sw-cms-el-custom-carousel__image-preview"></sw-media-preview-v2>
-        <div v-else class="sw-cms-el-custom-carousel__no-image">
-            <sw-icon name="regular-image" size="40px"></sw-icon>
-        </div>
-        <div class="sw-cms-el-custom-carousel__info">
-            <strong>{{ firstTitle }}</strong>
-            <span v-if="carouselItems.length > 1"> (+ {{ carouselItems.length - 1 }} {{ $tc('sw-cms.elements.customCarousel.itemsCount') }})</span>
+<div class="sw-cms-el-custom-carousel" :class="[`uct-theme-${currentTheme}`, { 'uct-highlight-active': highlightActiveItem }]">
+    <div class="sw-cms-el-custom-carousel__preview-grid">
+        <div v-for="(item, index) in previewItems" 
+             :key="item.id || index" 
+             class="sw-cms-el-custom-carousel__preview-card" 
+             :class="{ 'is-active': highlightActiveItem && index === 0 }">
+            
+            <div class="sw-cms-el-custom-carousel__card-media">
+                <sw-media-preview-v2 :source="item.mediaId" v-if="item.mediaId" class="sw-cms-el-custom-carousel__image-preview"></sw-media-preview-v2>
+                <div v-else class="sw-cms-el-custom-carousel__no-image">
+                    <sw-icon name="regular-image" size="32px"></sw-icon>
+                </div>
+
+                <div v-if="currentTheme === 'media' && (item.category || item.title)" class="sw-cms-el-custom-carousel__media-overlay">
+                    <span v-if="item.category" class="sw-cms-el-custom-carousel__category-pill" :class="`pill--${item.categoryStyle || 'primary'}`">
+                        {{ item.category }}
+                    </span>
+                    <strong v-if="item.title" class="sw-cms-el-custom-carousel__overlay-title">{{ item.title }}</strong>
+                </div>
+            </div>
+
+            <div class="sw-cms-el-custom-carousel__card-body">
+                <div v-if="currentTheme !== 'media'" class="sw-cms-el-custom-carousel__meta-row">
+                    <span v-if="item.category" class="sw-cms-el-custom-carousel__category-pill" :class="`pill--${item.categoryStyle || 'primary'}`">
+                        {{ item.category }}
+                    </span>
+                    <span v-if="item.itemDate" class="sw-cms-el-custom-carousel__date">{{ item.itemDate }}</span>
+                </div>
+
+                <div v-if="currentTheme === 'media' && item.itemDate" class="sw-cms-el-custom-carousel__meta-row">
+                    <span class="sw-cms-el-custom-carousel__date">{{ item.itemDate }}</span>
+                </div>
+
+                <strong v-if="currentTheme !== 'media'" class="sw-cms-el-custom-carousel__title">{{ item.title || 'Untitled Item' }}</strong>
+
+                <p v-if="item.description" class="sw-cms-el-custom-carousel__description">{{ item.description }}</p>
+            </div>
         </div>
     </div>
 </div>

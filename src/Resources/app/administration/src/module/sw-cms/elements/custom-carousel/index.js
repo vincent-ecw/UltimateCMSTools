@@ -36,6 +36,18 @@ Shopware.Service('cmsService').registerCmsElement({
         maxHeight: {
             source: 'static',
             value: null
+        },
+        theme: {
+            source: 'static',
+            value: 'classic'
+        },
+        itemsToDisplay: {
+            source: 'static',
+            value: null
+        },
+        highlightActiveItem: {
+            source: 'static',
+            value: false
         }
     }
 });

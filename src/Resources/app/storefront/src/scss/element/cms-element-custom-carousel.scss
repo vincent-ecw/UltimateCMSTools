@@ -12,7 +12,7 @@
         overflow-x: auto;
         scroll-snap-type: x mandatory;
         gap: 20px;
-        padding: 10px 0 20px;
+        padding: 25px 15px 35px 15px; /* Ample space for active card scaling and box-shadows */
         scrollbar-width: none; /* Firefox */
         width: 100%;
 
@@ -25,7 +25,7 @@
         flex: 0 0 calc(85% - 20px); /* 1.x elements on mobile */
         min-width: 200px;
         max-width: 320px;
-        scroll-snap-align: start;
+        scroll-snap-align: center; /* Center snap active card in container */
         display: flex;
         flex-direction: column;
         background: #ffffff;
@@ -34,11 +34,13 @@
         text-decoration: none;
         color: inherit;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        border: 1px solid rgba(0,0,0,0.03);
+        transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+        border: 1px solid rgba(0, 0, 0, 0.04);
+        position: relative;
+        z-index: 1;
 
         &:hover {
-            transform: translateY(-5px);
+            transform: translateY(-4px);
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
             color: inherit;
             text-decoration: none;
@@ -94,12 +96,62 @@
         flex-grow: 1;
     }
 
+    .custom-card-meta {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .custom-card-category {
+        display: inline-block;
+        padding: 3px 9px;
+        border-radius: 12px;
+        font-size: 0.72rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        line-height: 1.2;
+
+        &--primary {
+            background-color: var(--colors-light-green-700, #5da36d);
+            color: #ffffff;
+        }
+
+        &--secondary {
+            background-color: var(--colors-blue-300, #1d4e89);
+            color: #ffffff;
+        }
+
+        &--tertiary {
+            background-color: var(--colors-blue-900, #0a1b30);
+            color: #ffffff;
+        }
+    }
+
+    .custom-card-date {
+        font-size: 0.8rem;
+        color: var(--colors-ecw-map-text-meta, #6c757d);
+        font-weight: 400;
+        white-space: nowrap;
+    }
+
     .custom-card-title {
         font-size: 1.125rem;
         font-weight: 600;
         margin: 0 0 10px;
         color: #212529;
         line-height: 1.3;
+
+        &--overlay {
+            color: #ffffff;
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin: 0;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8), 0 1px 3px rgba(0, 0, 0, 0.9);
+        }
     }
 
     .custom-card-description {
@@ -111,5 +163,122 @@
         -webkit-box-orient: vertical;
         overflow: hidden;
         margin-bottom: 0;
+    }
+
+    .custom-card-media-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 15px;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.4) 60%, transparent 100%);
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+        z-index: 2;
+    }
+
+    // Active item highlight feature: 2px border and scale effect, keeping the same shadow as non-active items
+    &.uct-highlight-active {
+        .custom-card.active {
+            border: 2px solid var(--colors-ecw-map-button-navigation-active, var(--primary, #007bff)) !important;
+            transform: scale(1.06);
+            z-index: 5;
+        }
+    }
+
+    // Themes
+    // 1. Classic Theme (default)
+    &.uct-theme-classic {
+        .custom-card {
+            background: #ffffff;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.04);
+        }
+    }
+
+    // 2. Minimal Theme (no borders, no shadows, no border-radius, white background)
+    &.uct-theme-minimal {
+        .custom-card {
+            border: none !important;
+            border-radius: 0 !important;
+            box-shadow: none !important;
+            background-color: #ffffff !important;
+
+            .custom-card-image-wrapper,
+            .custom-card-image,
+            .custom-card-image-placeholder {
+                border-radius: 0 !important;
+            }
+
+            &:hover {
+                box-shadow: none !important;
+                background-color: #ffffff !important;
+            }
+
+            &.active {
+                border: none !important;
+                box-shadow: none !important;
+            }
+        }
+    }
+
+    // 3. Category Theme
+    &.uct-theme-category {
+        .custom-card {
+            background: #ffffff;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+        }
+
+        .custom-card-meta {
+            border-bottom: 1px solid #f1f3f5;
+            padding-bottom: 8px;
+            margin-bottom: 12px;
+        }
+    }
+
+    // 4. Horizontal Theme
+    &.uct-theme-horizontal {
+        @include media-breakpoint-up(md) {
+            .custom-card {
+                flex-direction: row;
+                flex: 0 0 calc(50% - 20px);
+                max-width: 500px;
+            }
+
+            .custom-card-image-wrapper {
+                width: 42%;
+                padding-top: 0;
+                min-height: 160px;
+            }
+
+            .custom-card-content {
+                width: 58%;
+                padding: 16px;
+            }
+        }
+    }
+
+    // 5. Media Theme (Overlay style)
+    &.uct-theme-media {
+        .custom-card {
+            background: #ffffff;
+            border-radius: 12px;
+        }
+
+        .custom-card-image-wrapper {
+            padding-top: 85%; /* Slightly taller aspect ratio */
+        }
+
+        .custom-card-title--overlay {
+            font-size: 1.35rem;
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -0.01em;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9), 0 1px 3px rgba(0, 0, 0, 0.95);
+        }
     }
 }

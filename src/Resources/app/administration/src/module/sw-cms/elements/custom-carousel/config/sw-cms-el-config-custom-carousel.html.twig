@@ -12,12 +12,29 @@
         <template #content="{ active }">
             <div v-if="active === 'content'" class="sw-cms-el-config-custom-carousel__tab-content">
                 <div class="sw-cms-el-config-custom-carousel__items">
-                    <div v-for="(item, index) in carouselItems" :key="item.id || index" class="sw-cms-el-config-custom-carousel__item">
+                    <div v-for="(item, index) in carouselItems"
+                         :key="item.id || index"
+                         class="sw-cms-el-config-custom-carousel__item"
+                         draggable="true"
+                         @dragstart="onDragStart($event, index)"
+                         @dragover="onDragOver($event)"
+                         @drop="onDrop($event, index)">
                         <div class="sw-cms-el-config-custom-carousel__item-header">
-                            <span class="item-number">Item {{ index + 1 }}</span>
-                            <sw-button @click="onRemoveItem(index)" size="small" variant="danger">
-                                {{ $tc('global.default.delete') }}
-                            </sw-button>
+                            <div class="item-drag-handle">
+                                <sw-icon name="regular-grip-dots-vertical" size="14px"></sw-icon>
+                                <span class="item-number">Item {{ index + 1 }}</span>
+                            </div>
+                            <div class="item-actions">
+                                <sw-button @click="onMoveItemUp(index)" :disabled="index === 0" size="small" variant="action" square>
+                                    <sw-icon name="regular-chevron-up" size="12px"></sw-icon>
+                                </sw-button>
+                                <sw-button @click="onMoveItemDown(index)" :disabled="index === carouselItems.length - 1" size="small" variant="action" square>
+                                    <sw-icon name="regular-chevron-down" size="12px"></sw-icon>
+                                </sw-button>
+                                <sw-button @click="onRemoveItem(index)" size="small" variant="danger">
+                                    {{ $tc('global.default.delete') }}
+                                </sw-button>
+                            </div>
                         </div>
                         
                         <div class="sw-cms-el-config-custom-carousel__item-content">
@@ -33,6 +50,41 @@
                                 :label="$tc('sw-cms.elements.customCarousel.config.descriptionLabel')" 
                                 :placeholder="$tc('sw-cms.elements.customCarousel.config.descriptionPlaceholder')">
                             </sw-textarea-field>
+
+                            <div class="sw-cms-el-config-custom-carousel__category-row">
+                                <sw-text-field 
+                                    v-model="item.category"
+                                    :label="$tc('sw-cms.elements.customCarousel.config.categoryLabel')" 
+                                    :placeholder="$tc('sw-cms.elements.customCarousel.config.categoryPlaceholder')">
+                                </sw-text-field>
+
+                                <sw-single-select
+                                    v-model:value="item.categoryStyle"
+                                    :label="$tc('sw-cms.elements.customCarousel.config.categoryStyleLabel')"
+                                    :options="categoryStyleOptions"
+                                    @update:value="$emit('element-update', element)">
+                                </sw-single-select>
+                            </div>
+
+                            <div class="sw-cms-el-config-custom-carousel__dates-row">
+                                <sw-datepicker
+                                    v-model:value="item.itemDate"
+                                    dateType="date"
+                                    :label="$tc('sw-cms.elements.customCarousel.config.itemDateLabel')">
+                                </sw-datepicker>
+
+                                <sw-datepicker
+                                    v-model:value="item.showStartDate"
+                                    dateType="datetime"
+                                    :label="$tc('sw-cms.elements.customCarousel.config.showStartDateLabel')">
+                                </sw-datepicker>
+
+                                <sw-datepicker
+                                    v-model:value="item.showEndDate"
+                                    dateType="datetime"
+                                    :label="$tc('sw-cms.elements.customCarousel.config.showEndDateLabel')">
+                                </sw-datepicker>
+                            </div>
 
                             <sw-media-compact-upload-v2
                                 :source="item.mediaId"
@@ -57,12 +109,13 @@
                                 </sw-text-field>
 
                                 <sw-single-select
-                                    v-model="item.buttonTarget"
+                                    v-model:value="item.buttonTarget"
                                     :label="$tc('sw-cms.elements.customCarousel.config.buttonTargetLabel')"
                                     :options="[
                                         { value: '_self', label: $tc('sw-cms.elements.customCarousel.config.targetSelf') },
                                         { value: '_blank', label: $tc('sw-cms.elements.customCarousel.config.targetBlank') }
-                                    ]">
+                                    ]"
+                                    @update:value="$emit('element-update', element)">
                                 </sw-single-select>
                             </div>
                         </div>
@@ -77,6 +130,25 @@
             </div>
 
             <div v-if="active === 'settings'" class="sw-cms-el-config-custom-carousel__tab-settings">
+                <sw-single-select
+                    v-model:value="element.config.theme.value"
+                    :label="$tc('sw-cms.elements.customCarousel.config.themeLabel')"
+                    :options="themeOptions">
+                </sw-single-select>
+
+                <sw-number-field
+                    v-model:value="element.config.itemsToDisplay.value"
+                    :label="$tc('sw-cms.elements.customCarousel.config.itemsToDisplayLabel')"
+                    :helpText="$tc('sw-cms.elements.customCarousel.config.itemsToDisplayHelp')"
+                    :min="0">
+                </sw-number-field>
+
+                <sw-switch-field
+                    v-model:value="element.config.highlightActiveItem.value"
+                    :label="$tc('sw-cms.elements.customCarousel.config.highlightActiveItemLabel')"
+                    :helpText="$tc('sw-cms.elements.customCarousel.config.highlightActiveItemHelp')">
+                </sw-switch-field>
+
                 <sw-switch-field
                     v-model:value="element.config.navigationArrows.value"
                     :label="$tc('sw-cms.elements.customCarousel.config.navigationArrows')">

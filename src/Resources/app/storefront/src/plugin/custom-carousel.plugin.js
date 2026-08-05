@@ -6,7 +6,8 @@ export default class CustomCarouselPlugin extends Plugin {
         arrows: true,
         dots: true,
         autoplay: true,
-        autoplaySpeed: 5000
+        autoplaySpeed: 5000,
+        highlightActiveItem: false
     };
 
     init() {
@@ -23,18 +24,22 @@ export default class CustomCarouselPlugin extends Plugin {
         if (!this.cards || this.cards.length === 0) return;
 
         this.originalCount = this.cards.length;
+        this.currentCardIndex = 0;
 
         if (this.originalCount > 1) {
             this.setupClones();
             this.cards = DomAccess.querySelectorAll(this.container, '.custom-card', false);
-            const itemWidth = this.getItemWidth();
-            if (itemWidth > 0) {
-                this.container.scrollLeft = this.originalCount * itemWidth;
-            }
+            this.currentCardIndex = 2 * this.originalCount;
+            this.scrollToCard(this.currentCardIndex, false);
+        } else {
+            this.scrollToCard(0, false);
         }
 
         this.autoplayInterval = null;
-        this._onResize = this.updateControls.bind(this);
+        this._onResize = () => {
+            this.scrollToCard(this.currentCardIndex, false);
+            this.updateControls();
+        };
 
         this.registerEvents();
         this.updateControls();
@@ -48,14 +53,20 @@ export default class CustomCarouselPlugin extends Plugin {
         const preFragment = document.createDocumentFragment();
         const postFragment = document.createDocumentFragment();
 
-        originalCards.forEach(card => {
-            const preClone = card.cloneNode(true);
-            this.cleanClone(preClone, 'pre');
-            preFragment.appendChild(preClone);
+        [1, 2].forEach(() => {
+            originalCards.forEach(card => {
+                const preClone = card.cloneNode(true);
+                this.cleanClone(preClone, 'pre');
+                preFragment.appendChild(preClone);
+            });
+        });
 
-            const postClone = card.cloneNode(true);
-            this.cleanClone(postClone, 'post');
-            postFragment.appendChild(postClone);
+        [1, 2].forEach(() => {
+            originalCards.forEach(card => {
+                const postClone = card.cloneNode(true);
+                this.cleanClone(postClone, 'post');
+                postFragment.appendChild(postClone);
+            });
         });
 
         this.container.insertBefore(preFragment, originalCards[0]);
@@ -75,11 +86,17 @@ export default class CustomCarouselPlugin extends Plugin {
         }
     }
 
-    getItemWidth() {
-        if (!this.cards || this.cards.length === 0) return 0;
-        const cardWidth = this.cards[0].offsetWidth;
-        const gap = parseInt(window.getComputedStyle(this.container).gap, 10) || 20;
-        return cardWidth + gap;
+    scrollToCard(index, smooth = true) {
+        if (!this.cards || !this.cards[index]) return;
+        this.currentCardIndex = index;
+        const card = this.cards[index];
+        const containerWidth = this.container.clientWidth;
+        const targetScroll = card.offsetLeft - (containerWidth / 2) + (card.offsetWidth / 2);
+
+        this.container.scrollTo({
+            left: Math.max(0, targetScroll),
+            behavior: smooth ? 'smooth' : 'auto'
+        });
     }
 
     registerEvents() {
@@ -109,7 +126,8 @@ export default class CustomCarouselPlugin extends Plugin {
                 dot.addEventListener('click', (e) => {
                     this.stopAutoplay();
                     const index = parseInt(e.target.dataset.index, 10);
-                    this.scrollToIndex(index);
+                    const targetIndex = (this.originalCount * 2) + index;
+                    this.scrollToCard(targetIndex, true);
                     this.startAutoplay();
                 });
             });
@@ -121,42 +139,12 @@ export default class CustomCarouselPlugin extends Plugin {
 
     scrollPrev() {
         if (!this.cards || this.cards.length === 0) return;
-        const itemWidth = this.getItemWidth();
-        if (itemWidth <= 0) return;
-
-        let currentIdx = Math.round(this.container.scrollLeft / itemWidth);
-        if (this.originalCount && currentIdx < this.originalCount) {
-            this.container.scrollLeft += this.originalCount * itemWidth;
-            currentIdx += this.originalCount;
-        }
-
-        const targetScroll = (currentIdx - 1) * itemWidth;
-        this.container.scrollTo({ left: targetScroll, behavior: 'smooth' });
+        this.scrollToCard(this.currentCardIndex - 1, true);
     }
 
     scrollNext() {
         if (!this.cards || this.cards.length === 0) return;
-        const itemWidth = this.getItemWidth();
-        if (itemWidth <= 0) return;
-
-        let currentIdx = Math.round(this.container.scrollLeft / itemWidth);
-        if (this.originalCount && currentIdx >= 2 * this.originalCount) {
-            this.container.scrollLeft -= this.originalCount * itemWidth;
-            currentIdx -= this.originalCount;
-        }
-
-        const targetScroll = (currentIdx + 1) * itemWidth;
-        this.container.scrollTo({ left: targetScroll, behavior: 'smooth' });
-    }
-
-    scrollToIndex(index) {
-        if (!this.cards || this.cards.length === 0) return;
-        const itemWidth = this.getItemWidth();
-        if (itemWidth <= 0) return;
-
-        const baseIndex = this.originalCount ? this.originalCount : 0;
-        const targetScroll = (baseIndex + index) * itemWidth;
-        this.container.scrollTo({ left: targetScroll, behavior: 'smooth' });
+        this.scrollToCard(this.currentCardIndex + 1, true);
     }
 
     onScroll() {
@@ -164,48 +152,62 @@ export default class CustomCarouselPlugin extends Plugin {
         this.checkScrollLoop(false);
     }
 
+    getClosestCardIndex() {
+        if (!this.cards || this.cards.length === 0) return 0;
+        const containerCenter = this.container.scrollLeft + (this.container.clientWidth / 2);
+        let minDiff = Infinity;
+        let closestIndex = 0;
+
+        this.cards.forEach((card, index) => {
+            const cardCenter = card.offsetLeft + (card.offsetWidth / 2);
+            const diff = Math.abs(containerCenter - cardCenter);
+            if (diff < minDiff) {
+                minDiff = diff;
+                closestIndex = index;
+            }
+        });
+
+        return closestIndex;
+    }
+
     checkScrollLoop(force = false) {
         if (!this.originalCount || this.originalCount <= 1) return;
-        const itemWidth = this.getItemWidth();
-        if (itemWidth <= 0) return;
+        const N = this.originalCount;
+        const closestIndex = this.getClosestCardIndex();
 
-        const scrollLeft = this.container.scrollLeft;
-        const currentIdx = Math.round(scrollLeft / itemWidth);
-        const targetOffset = currentIdx * itemWidth;
-
-        if (force || Math.abs(scrollLeft - targetOffset) < 5) {
-            if (currentIdx >= 2 * this.originalCount) {
-                this.container.scrollLeft -= this.originalCount * itemWidth;
-            } else if (currentIdx < this.originalCount) {
-                this.container.scrollLeft += this.originalCount * itemWidth;
-            }
+        if (closestIndex >= 3 * N) {
+            const jumpIndex = closestIndex - N;
+            this.scrollToCard(jumpIndex, false);
+        } else if (closestIndex < 2 * N) {
+            const jumpIndex = closestIndex + N;
+            this.scrollToCard(jumpIndex, false);
         }
     }
 
     updateControls() {
         if (!this.cards || this.cards.length === 0) return;
-        const itemWidth = this.getItemWidth();
-        if (itemWidth <= 0) return;
 
-        const scrollLeft = this.container.scrollLeft;
-        const currentIdx = Math.round(scrollLeft / itemWidth);
-
-        if (this.originalCount && this.originalCount <= 1) {
-            if (this.prevBtn) this.prevBtn.disabled = true;
-            if (this.nextBtn) this.nextBtn.disabled = true;
-        } else {
-            if (this.prevBtn) this.prevBtn.disabled = false;
-            if (this.nextBtn) this.nextBtn.disabled = false;
-        }
+        const N = this.originalCount || this.cards.length;
+        const closestIndex = this.getClosestCardIndex();
+        this.currentCardIndex = closestIndex;
+        const activeIndex = ((closestIndex % N) + N) % N;
 
         if (this.options.dots && this.dots && this.dots.length > 0) {
-            const N = this.originalCount || this.cards.length;
-            const activeIndex = ((currentIdx % N) + N) % N;
             this.dots.forEach((dot, index) => {
                 if (index === activeIndex) {
                     dot.classList.add('active');
                 } else {
                     dot.classList.remove('active');
+                }
+            });
+        }
+
+        if (this.cards && this.cards.length > 0) {
+            this.cards.forEach((card, index) => {
+                if (index === closestIndex) {
+                    card.classList.add('active');
+                } else {
+                    card.classList.remove('active');
                 }
             });
         }

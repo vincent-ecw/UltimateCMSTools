@@ -18,18 +18,26 @@ Component.register('sw-cms-el-custom-carousel', {
             return [];
         },
 
-        firstImage() {
-            if (this.carouselItems.length > 0 && this.carouselItems[0].mediaId) {
-                return this.carouselItems[0].mediaId;
+        previewItems() {
+            if (this.carouselItems.length > 0) {
+                return this.carouselItems.slice(0, 3);
             }
-            return null;
+            return [
+                { id: '1', title: 'Our Bestsellers', description: 'Sample description text...', category: 'POPULAR', categoryStyle: 'primary', itemDate: 'dd-mm-yyyy' },
+                { id: '2', title: 'Dining options', description: 'Sample description text...', category: 'TIP', categoryStyle: 'secondary', itemDate: 'dd-mm-yyyy' },
+                { id: '3', title: 'Escape to the country', description: 'Sample description text...', category: 'NEW', categoryStyle: 'tertiary', itemDate: 'dd-mm-yyyy' }
+            ];
         },
 
-        firstTitle() {
-            if (this.carouselItems.length > 0 && this.carouselItems[0].title) {
-                return this.carouselItems[0].title;
+        currentTheme() {
+            if (this.element.config && this.element.config.theme && this.element.config.theme.value) {
+                return this.element.config.theme.value;
             }
-            return '';
+            return 'classic';
+        },
+
+        highlightActiveItem() {
+            return !!(this.element.config && this.element.config.highlightActiveItem && this.element.config.highlightActiveItem.value);
         }
     },
 

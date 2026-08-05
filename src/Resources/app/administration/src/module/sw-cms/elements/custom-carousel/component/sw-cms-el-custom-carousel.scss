@@ -1,44 +1,159 @@
 .sw-cms-el-custom-carousel {
-    border: 1px dashed #ccd4dd;
-    border-radius: 4px;
+    width: 100%;
+    padding: 15px;
     background-color: #f9fafb;
-    padding: 20px;
-    min-height: 120px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    border-radius: 6px;
 
-    &__placeholder {
-        text-align: center;
-        color: #7a8c9e;
+    &__preview-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+        width: 100%;
+    }
 
-        .icon {
-            margin-bottom: 10px;
-            color: #a2b2c3;
+    &__preview-card {
+        background: #ffffff;
+        border-radius: 8px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        border: 1px solid #e2e8f0;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        transition: all 0.2s ease;
+
+        &.is-active {
+            border: 2px solid var(--colors-ecw-alias-primary, #1d4e89);
         }
     }
 
-    &__preview {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+    &__card-media {
+        position: relative;
         width: 100%;
-        gap: 10px;
-    }
-
-    &__image-preview {
-        max-height: 150px;
-        border-radius: 4px;
+        height: 110px;
+        background: #edf2f7;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         overflow: hidden;
     }
 
-    &__no-image {
-        color: #ced4da;
+    &__image-preview {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
     }
 
-    &__info {
+    &__no-image {
+        color: #a0aec0;
+    }
+
+    &__media-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 10px;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.75) 0%, transparent 100%);
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        color: #ffffff;
+    }
+
+    &__overlay-title {
         font-size: 14px;
-        color: #52667a;
-        text-align: center;
+        font-weight: 800;
+        line-height: 1.2;
+        text-shadow: 0 1px 5px rgba(0,0,0,0.9);
+        color: #ffffff;
+    }
+
+    &__card-body {
+        padding: 12px;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    &__meta-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 6px;
+    }
+
+    &__category-pill {
+        display: inline-block;
+        padding: 2px 8px;
+        border-radius: 12px;
+        font-size: 10px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: #ffffff;
+
+        &.pill--primary {
+            background-color: var(--colors-light-green-700, #5da36d);
+        }
+        &.pill--secondary {
+            background-color: var(--colors-blue-300, #1d4e89);
+        }
+        &.pill--tertiary {
+            background-color: var(--colors-blue-900, #0a1b30);
+        }
+    }
+
+    &__date {
+        font-size: 11px;
+        color: var(--colors-ecw-map-text-meta, #718096);
+    }
+
+    &__title {
+        font-size: 13px;
+        font-weight: 600;
+        color: #2d3748;
+        line-height: 1.2;
+    }
+
+    &__description {
+        font-size: 11px;
+        color: #718096;
+        margin: 0;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    // Theme variations in preview
+    &.uct-theme-minimal {
+        .sw-cms-el-custom-carousel__preview-card {
+            border: none !important;
+            border-radius: 0 !important;
+            box-shadow: none !important;
+            background: #ffffff !important;
+
+            .sw-cms-el-custom-carousel__card-media,
+            .sw-cms-el-custom-carousel__image-preview {
+                border-radius: 0 !important;
+            }
+
+            &.is-active {
+                border: none !important;
+            }
+        }
+    }
+
+    &.uct-theme-horizontal {
+        .sw-cms-el-custom-carousel__preview-card {
+            flex-direction: row;
+        }
+        .sw-cms-el-custom-carousel__card-media {
+            width: 40%;
+            height: 100%;
+        }
+        .sw-cms-el-custom-carousel__card-body {
+            width: 60%;
+        }
     }
 }

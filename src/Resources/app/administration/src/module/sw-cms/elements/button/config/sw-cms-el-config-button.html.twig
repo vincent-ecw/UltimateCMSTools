@@ -1,0 +1,76 @@
+<div class="sw-cms-el-config-button">
+    <sw-tabs default-item="content" position="top">
+        <template #default="{ active }">
+            <sw-tabs-item name="content" :active-tab="active">
+                {{ $tc('sw-cms.elements.ultimateCmsTools.button.config.tabs.content') }}
+            </sw-tabs-item>
+            <sw-tabs-item name="styling" :active-tab="active">
+                {{ $tc('sw-cms.elements.ultimateCmsTools.button.config.tabs.styling') }}
+            </sw-tabs-item>
+        </template>
+
+        <template #content="{ active }">
+            <div v-if="active === 'content'" class="sw-cms-el-config-button__tab-content">
+                <sw-text-field
+                    v-model="title"
+                    :label="$tc('sw-cms.elements.ultimateCmsTools.button.config.titleLabel')"
+                    :placeholder="$tc('sw-cms.elements.ultimateCmsTools.button.config.titlePlaceholder')">
+                </sw-text-field>
+
+                <sw-text-field
+                    v-model="linkUrl"
+                    :label="$tc('sw-cms.elements.ultimateCmsTools.button.config.linkUrlLabel')"
+                    :placeholder="$tc('sw-cms.elements.ultimateCmsTools.button.config.linkUrlPlaceholder')">
+                </sw-text-field>
+
+                <sw-single-select
+                    v-model:value="linkTarget"
+                    :options="targetOptions"
+                    :label="$tc('sw-cms.elements.ultimateCmsTools.button.config.linkTargetLabel')">
+                </sw-single-select>
+
+                <sw-text-field
+                    v-model="linkTitle"
+                    :label="$tc('sw-cms.elements.ultimateCmsTools.button.config.linkTitleLabel')"
+                    :placeholder="$tc('sw-cms.elements.ultimateCmsTools.button.config.linkTitlePlaceholder')"
+                    :help-text="$tc('sw-cms.elements.ultimateCmsTools.button.config.linkTitleHelp')">
+                </sw-text-field>
+            </div>
+
+            <div v-if="active === 'styling'" class="sw-cms-el-config-button__tab-styling">
+                <sw-single-select
+                    v-model:value="variant"
+                    :options="variantOptions"
+                    :label="$tc('sw-cms.elements.ultimateCmsTools.button.config.variantLabel')">
+                </sw-single-select>
+
+                <sw-single-select
+                    v-model:value="width"
+                    :options="widthOptions"
+                    :label="$tc('sw-cms.elements.ultimateCmsTools.button.config.widthLabel')">
+                </sw-single-select>
+
+                <sw-single-select
+                    v-if="width === 'auto'"
+                    v-model:value="alignment"
+                    :options="alignmentOptions"
+                    :label="$tc('sw-cms.elements.ultimateCmsTools.button.config.alignmentLabel')">
+                </sw-single-select>
+
+                <div class="sw-cms-el-config-button__icons-group">
+                    <sw-single-select
+                        v-model:value="iconBefore"
+                        :options="iconOptions"
+                        :label="$tc('sw-cms.elements.ultimateCmsTools.button.config.iconBeforeLabel')">
+                    </sw-single-select>
+
+                    <sw-single-select
+                        v-model:value="iconAfter"
+                        :options="iconOptions"
+                        :label="$tc('sw-cms.elements.ultimateCmsTools.button.config.iconAfterLabel')">
+                    </sw-single-select>
+                </div>
+            </div>
+        </template>
+    </sw-tabs>
+</div>

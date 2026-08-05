@@ -1,0 +1,22 @@
+.sw-cms-el-preview-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    background-color: #f9fafb;
+    border-radius: 4px;
+    width: 100%;
+    min-height: 80px;
+
+    &__btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 12px;
+        background-color: #189eff;
+        color: #ffffff;
+        border-radius: 4px;
+        font-size: 12px;
+        font-weight: 600;
+    }
+}

@@ -1,0 +1,7 @@
+<div :class="containerClasses">
+    <button type="button" :class="buttonClasses">
+        <sw-icon v-if="iconBefore" :name="iconBefore" size="16px" class="sw-cms-el-button__icon-before"></sw-icon>
+        <span class="sw-cms-el-button__text">{{ title }}</span>
+        <sw-icon v-if="iconAfter" :name="iconAfter" size="16px" class="sw-cms-el-button__icon-after"></sw-icon>
+    </button>
+</div>

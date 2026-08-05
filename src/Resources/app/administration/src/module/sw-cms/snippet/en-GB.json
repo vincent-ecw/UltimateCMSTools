@@ -322,11 +322,60 @@
                         },
                         "columnsLabel": "Columns (Desktop)"
                     }
+                },
+                "button": {
+                    "label": "Button",
+                    "placeholder": "Render a customizable action button with link, icon and style options.",
+                    "config": {
+                        "tabs": {
+                            "content": "Content & Link",
+                            "styling": "Styling & Icons"
+                        },
+                        "titleLabel": "Button Label",
+                        "titlePlaceholder": "e.g. Click Here, Learn More",
+                        "linkUrlLabel": "Target Link URL",
+                        "linkUrlPlaceholder": "e.g. /my-category, https://example.com",
+                        "linkTargetLabel": "Open Link In",
+                        "targets": {
+                            "self": "Same Tab (_self)",
+                            "blank": "New Tab (_blank)"
+                        },
+                        "linkTitleLabel": "Link Title / Tooltip (optional)",
+                        "linkTitlePlaceholder": "e.g. Navigate to target page",
+                        "linkTitleHelp": "Populates title and aria-label attributes for accessibility.",
+                        "variantLabel": "Button Style",
+                        "variants": {
+                            "primary": "Primary Button",
+                            "secondary": "Secondary Button",
+                            "outlinePrimary": "Outline Primary",
+                            "outlineSecondary": "Outline Secondary",
+                            "link": "Link Style"
+                        },
+                        "widthLabel": "Button Width",
+                        "widths": {
+                            "auto": "Content Width (Auto)",
+                            "full": "Full Width (100%)"
+                        },
+                        "alignmentLabel": "Button Alignment",
+                        "alignments": {
+                            "left": "Left",
+                            "center": "Center",
+                            "right": "Right"
+                        },
+                        "iconBeforeLabel": "Icon Before Label",
+                        "iconAfterLabel": "Icon After Label",
+                        "icons": {
+                            "none": "No Icon"
+                        }
+                    }
                 }
             }
         },
         "blocks": {
             "ultimateCmsTools": {
+                "button": {
+                    "label": "Button"
+                },
                 "statistics": {
                     "label": "Statistics"
                 },

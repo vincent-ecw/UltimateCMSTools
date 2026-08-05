@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.8] - 2026-08-05
+
+### Added
+- Added new **Button** CMS block and element (`cms-element-button` / `cms-block-button`).
+- Added button variant selection: Primary (`btn-primary`), Secondary (`btn-secondary`), Outline Primary (`btn-outline-primary`), Outline Secondary (`btn-outline-secondary`), and Link (`btn-link`).
+- Added width configuration: Content Width (`auto`) vs Full Width (`100%`).
+- Added alignment setting (Left, Center, Right) for content-width buttons.
+- Integrated Shopware icon selector for optional icons before and/or after the button label.
+- Added link configuration options (URL, Target `_self`/`_blank`, and Title/Aria-label for accessibility).
+
 ## [1.2.7] - 2026-08-05
 
 ### Added

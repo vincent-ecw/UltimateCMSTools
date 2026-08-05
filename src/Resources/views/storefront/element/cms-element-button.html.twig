@@ -1,0 +1,37 @@
+{% block element_button %}
+    {% set config = element.config %}
+    {% set title = config.title.value|default('Click here') %}
+    {% set variant = config.variant.value|default('primary') %}
+    {% set width = config.width.value|default('auto') %}
+    {% set alignment = config.alignment.value|default('left') %}
+    {% set linkUrl = config.linkUrl.value|default('') %}
+    {% set linkTarget = config.linkTarget.value|default('_self') %}
+    {% set linkTitle = config.linkTitle.value|default('') %}
+
+    {% set rawIconBefore = config.iconBefore.value|default('none') %}
+    {% set iconBeforeName = (rawIconBefore and rawIconBefore != 'none') ? rawIconBefore|replace({'regular-': '', 'solid-': ''}) : null %}
+
+    {% set rawIconAfter = config.iconAfter.value|default('none') %}
+    {% set iconAfterName = (rawIconAfter and rawIconAfter != 'none') ? rawIconAfter|replace({'regular-': '', 'solid-': ''}) : null %}
+
+    {% set btnClasses = ['btn', 'btn-' ~ variant, 'cms-element-button'] %}
+    {% if width == 'full' or width == '100%' %}
+        {% set btnClasses = btnClasses|merge(['w-100']) %}
+    {% endif %}
+
+    <div class="cms-element-button-container cms-element-button-align-{{ alignment }}">
+        <a href="{{ linkUrl|default('#') }}"
+           class="{{ btnClasses|join(' ') }}"
+           {% if linkTarget %}target="{{ linkTarget }}"{% endif %}
+           {% if linkTarget == '_blank' %}rel="noopener noreferrer"{% endif %}
+           {% if linkTitle %}title="{{ linkTitle }}" aria-label="{{ linkTitle }}"{% else %}aria-label="{{ title }}"{% endif %}>
+            {% if iconBeforeName %}
+                {% sw_icon iconBeforeName style { class: 'btn-icon-before' } %}
+            {% endif %}
+            <span class="btn-text">{{ title }}</span>
+            {% if iconAfterName %}
+                {% sw_icon iconAfterName style { class: 'btn-icon-after' } %}
+            {% endif %}
+        </a>
+    </div>
+{% endblock %}

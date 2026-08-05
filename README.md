@@ -20,6 +20,7 @@ A collection of CMS blocks and elements that enhance Shopware's Shopping Experie
   - [13. Custom Product Carousel](#13-custom-product-carousel)
   - [14. Category Header](#14-category-header)
   - [15. Statistics](#15-statistics)
+  - [16. Button](#16-button)
 - [Development and Compilation](#development-and-compilation)
 
 ---
@@ -358,6 +359,32 @@ Displays an animated statistics grid featuring custom icons, titles, numbers wit
   * **Title (`title`):** Label or statistic title.
   * **Number Value (`number`):** Formatted numeric value (e.g. `99.95%`, `2,000+`, `$55M+`, `85%`).
   * **Subline (`subline`):** Explanatory text under the number.
+
+---
+
+### 16. Button
+
+Renders a theme-styled action button with flexible width, alignment, icon pickers (before/after), and link target options.
+
+* **Block Name:** `button`
+* **Element Name:** `button`
+
+#### Configuration Options
+
+* **Button Label (`title`):** Text displayed on the button.
+* **Target Link URL (`linkUrl`):** Target URL destination.
+* **Link Target (`linkTarget`):** Choice of Same Tab (`_self`) or New Tab (`_blank`).
+* **Link Title / Tooltip (`linkTitle` - Optional):** Sets `title` and `aria-label` accessibility attributes.
+* **Button Style (`variant`):** Choice of 5 theme button styles:
+  * `primary`: Primary theme button (`btn-primary`).
+  * `secondary`: Secondary theme button (`btn-secondary`).
+  * `outline-primary`: Outline primary theme button (`btn-outline-primary`).
+  * `outline-secondary`: Outline secondary theme button (`btn-outline-secondary`).
+  * `link`: Text link style (`btn-link`).
+* **Button Width (`width`):** Choice of Content Width (`auto`) or Full Width (`100%` / `w-100`).
+* **Button Alignment (`alignment`):** Alignment when using Content Width (`left`, `center`, `right`).
+* **Icon Before Label (`iconBefore`):** Icon from dropdown picker displayed before text (or `none`).
+* **Icon After Label (`iconAfter`):** Icon from dropdown picker displayed after text (or `none`).
 
 ---
 

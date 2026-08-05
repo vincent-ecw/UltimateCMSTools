@@ -1,0 +1,15 @@
+.sw-cms-el-config-button {
+    &__tab-content,
+    &__tab-styling {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        padding-top: 16px;
+    }
+
+    &__icons-group {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+    }
+}

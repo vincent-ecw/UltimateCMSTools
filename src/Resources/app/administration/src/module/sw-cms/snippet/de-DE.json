@@ -322,11 +322,60 @@
                         },
                         "columnsLabel": "Spalten (Desktop)"
                     }
+                },
+                "button": {
+                    "label": "Button",
+                    "placeholder": "Erstellt einen anpassbaren Action-Button mit Link, Icon- und Styling-Optionen.",
+                    "config": {
+                        "tabs": {
+                            "content": "Inhalt & Link",
+                            "styling": "Styling & Icons"
+                        },
+                        "titleLabel": "Button-Beschriftung",
+                        "titlePlaceholder": "z.B. Hier klicken, Mehr erfahren",
+                        "linkUrlLabel": "Ziel-Link-URL",
+                        "linkUrlPlaceholder": "z.B. /meine-kategorie, https://example.com",
+                        "linkTargetLabel": "Link öffnen in",
+                        "targets": {
+                            "self": "Gleichem Tab (_self)",
+                            "blank": "Neuem Tab (_blank)"
+                        },
+                        "linkTitleLabel": "Link-Titel / Tooltip (optional)",
+                        "linkTitlePlaceholder": "z.B. Zur Zielseite navigieren",
+                        "linkTitleHelp": "Füllt title- und aria-label-Attribute für Barrierefreiheit.",
+                        "variantLabel": "Button-Stil",
+                        "variants": {
+                            "primary": "Primär-Button",
+                            "secondary": "Sekundär-Button",
+                            "outlinePrimary": "Kontur Primär",
+                            "outlineSecondary": "Kontur Sekundär",
+                            "link": "Link-Stil"
+                        },
+                        "widthLabel": "Button-Breite",
+                        "widths": {
+                            "auto": "Inhaltsbreite (Auto)",
+                            "full": "Volle Breite (100%)"
+                        },
+                        "alignmentLabel": "Button-Ausrichtung",
+                        "alignments": {
+                            "left": "Links",
+                            "center": "Zentriert",
+                            "right": "Rechts"
+                        },
+                        "iconBeforeLabel": "Icon vor dem Text",
+                        "iconAfterLabel": "Icon nach dem Text",
+                        "icons": {
+                            "none": "Kein Icon"
+                        }
+                    }
                 }
             }
         },
         "blocks": {
             "ultimateCmsTools": {
+                "button": {
+                    "label": "Button"
+                },
                 "statistics": {
                     "label": "Statistiken"
                 },

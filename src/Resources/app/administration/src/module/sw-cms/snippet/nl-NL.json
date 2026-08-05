@@ -322,11 +322,60 @@
                         },
                         "columnsLabel": "Kolommen (Desktop)"
                     }
+                },
+                "button": {
+                    "label": "Knop (Button)",
+                    "placeholder": "Toon een aanpasbare actieknop met link, icoon- en stijlopties.",
+                    "config": {
+                        "tabs": {
+                            "content": "Inhoud & Link",
+                            "styling": "Styling & Iconen"
+                        },
+                        "titleLabel": "Knoptekst",
+                        "titlePlaceholder": "bijv. Klik hier, Lees meer",
+                        "linkUrlLabel": "Doel-link URL",
+                        "linkUrlPlaceholder": "bijv. /mijn-categorie, https://example.com",
+                        "linkTargetLabel": "Link openen in",
+                        "targets": {
+                            "self": "Zelfde tabblad (_self)",
+                            "blank": "Nieuw tabblad (_blank)"
+                        },
+                        "linkTitleLabel": "Link titel / Tooltip (optioneel)",
+                        "linkTitlePlaceholder": "bijv. Navigeer naar doelpagina",
+                        "linkTitleHelp": "Vult title- en aria-label-attributen in voor toegankelijkheid.",
+                        "variantLabel": "Knopstijl",
+                        "variants": {
+                            "primary": "Primaire knop",
+                            "secondary": "Secundaire knop",
+                            "outlinePrimary": "Omkaderd primair",
+                            "outlineSecondary": "Omkaderd secundair",
+                            "link": "Linkstijl"
+                        },
+                        "widthLabel": "Knopbreedte",
+                        "widths": {
+                            "auto": "Inhoudsbreedte (Auto)",
+                            "full": "Volledige breedte (100%)"
+                        },
+                        "alignmentLabel": "Knopuitlijning",
+                        "alignments": {
+                            "left": "Links",
+                            "center": "Midden",
+                            "right": "Rechts"
+                        },
+                        "iconBeforeLabel": "Icoon voor tekst",
+                        "iconAfterLabel": "Icoon na tekst",
+                        "icons": {
+                            "none": "Geen icoon"
+                        }
+                    }
                 }
             }
         },
         "blocks": {
             "ultimateCmsTools": {
+                "button": {
+                    "label": "Knop (Button)"
+                },
                 "statistics": {
                     "label": "Statistieken"
                 },

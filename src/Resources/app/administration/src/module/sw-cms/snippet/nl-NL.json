@@ -384,11 +384,58 @@
                             "none": "Geen icoon"
                         }
                     }
+                },
+                "iconList": {
+                    "label": "Icoonlijst",
+                    "placeholder": "Toon een lijst met items met iconen, vetgedrukte titels, beschrijvingsteksten en optionele animaties.",
+                    "config": {
+                        "tabs": {
+                            "content": "Inhoud",
+                            "settings": "Instellingen"
+                        },
+                        "itemsTitle": "Icoonlijst Items",
+                        "itemLabel": "Item",
+                        "iconLabel": "Icoon",
+                        "customIconClassLabel": "Aangepaste icoon class",
+                        "customIconClassPlaceholder": "bijv. fa-solid fa-rocket of bi bi-star",
+                        "customIconClassHelp": "Gefinieer aangepaste CSS-classes voor icoon-lettertypen (bijv. FontAwesome of Bootstrap Icons).",
+                        "titleLabel": "Titel",
+                        "titlePlaceholder": "bijv. Start binnen 1 week",
+                        "textLabel": "Beschrijvingstekst",
+                        "textPlaceholder": "bijv. U kunt binnen een week na bestelling starten...",
+                        "urlLabel": "Link URL (optioneel)",
+                        "urlPlaceholder": "bijv. /mijn-link",
+                        "targetLabel": "Link doel",
+                        "addItem": "Item toevoegen",
+                        "layoutLabel": "Layout modus",
+                        "layouts": {
+                            "horizontal": "Horizontale lijst",
+                            "vertical": "Verticale lijst"
+                        },
+                        "animationLabel": "Animatie bij weergave",
+                        "animations": {
+                            "none": "Geen",
+                            "fade": "Eén voor één invoegen (fade)",
+                            "slideRight": "Eén voor één inschuiven vanaf rechts",
+                            "slideLeft": "Eén voor één inschuiven vanaf links"
+                        },
+                        "icons": {
+                            "none": "Geen icoon",
+                            "custom": "Voer icoon class in..."
+                        },
+                        "targets": {
+                            "self": "Zelfde venster (_self)",
+                            "blank": "Nieuw tabblad (_blank)"
+                        }
+                    }
                 }
             }
         },
         "blocks": {
             "ultimateCmsTools": {
+                "iconList": {
+                    "label": "Icoonlijst"
+                },
                 "button": {
                     "label": "Knop (Button)"
                 },

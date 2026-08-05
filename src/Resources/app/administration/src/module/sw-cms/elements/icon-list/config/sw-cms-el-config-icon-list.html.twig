@@ -1,0 +1,118 @@
+<div class="sw-cms-el-config-icon-list">
+    <sw-tabs default-item="content" position="top">
+        <template #default="{ active }">
+            <sw-tabs-item name="content" :active-tab="active" @click="activeTab = 'content'">
+                {{ $tc('sw-cms.elements.ultimateCmsTools.iconList.config.tabs.content') }}
+            </sw-tabs-item>
+            <sw-tabs-item name="settings" :active-tab="active" @click="activeTab = 'settings'">
+                {{ $tc('sw-cms.elements.ultimateCmsTools.iconList.config.tabs.settings') }}
+            </sw-tabs-item>
+        </template>
+    </sw-tabs>
+
+    <div v-if="activeTab === 'content'" class="sw-cms-el-config-icon-list__content-tab">
+        <div class="sw-cms-el-config-icon-list__items-header">
+            <h4 class="sw-cms-el-config-icon-list__items-title">
+                {{ $tc('sw-cms.elements.ultimateCmsTools.iconList.config.itemsTitle') }}
+            </h4>
+        </div>
+
+        <div v-for="(item, index) in items" :key="index" class="sw-cms-el-config-icon-list__item-card">
+            <div class="sw-cms-el-config-icon-list__item-header">
+                <span class="sw-cms-el-config-icon-list__item-number-label">
+                    {{ $tc('sw-cms.elements.ultimateCmsTools.iconList.config.itemLabel') }} #{{ index + 1 }}
+                </span>
+                <div class="sw-cms-el-config-icon-list__item-actions">
+                    <sw-button
+                        :disabled="index === 0"
+                        size="small"
+                        variant="square"
+                        @click="onMoveItemUp(index)">
+                        <sw-icon name="regular-chevron-up-s" size="14px"></sw-icon>
+                    </sw-button>
+                    <sw-button
+                        :disabled="index === items.length - 1"
+                        size="small"
+                        variant="square"
+                        @click="onMoveItemDown(index)">
+                        <sw-icon name="regular-chevron-down-s" size="14px"></sw-icon>
+                    </sw-button>
+                    <sw-button
+                        size="small"
+                        variant="danger"
+                        @click="onRemoveItem(index)">
+                        {{ $tc('global.default.delete') }}
+                    </sw-button>
+                </div>
+            </div>
+
+            <div class="sw-cms-el-config-icon-list__item-grid">
+                <sw-single-select
+                    v-model:value="item.icon"
+                    :options="iconOptions"
+                    :label="$tc('sw-cms.elements.ultimateCmsTools.iconList.config.iconLabel')"
+                    @update:value="onItemChange">
+                </sw-single-select>
+
+                <sw-text-field
+                    v-if="item.icon === 'custom'"
+                    v-model="item.customIconClass"
+                    :label="$tc('sw-cms.elements.ultimateCmsTools.iconList.config.customIconClassLabel')"
+                    :placeholder="$tc('sw-cms.elements.ultimateCmsTools.iconList.config.customIconClassPlaceholder')"
+                    :help-text="$tc('sw-cms.elements.ultimateCmsTools.iconList.config.customIconClassHelp')"
+                    @change="onItemChange">
+                </sw-text-field>
+
+                <sw-text-field
+                    v-model="item.title"
+                    :label="$tc('sw-cms.elements.ultimateCmsTools.iconList.config.titleLabel')"
+                    :placeholder="$tc('sw-cms.elements.ultimateCmsTools.iconList.config.titlePlaceholder')"
+                    @change="onItemChange">
+                </sw-text-field>
+
+                <sw-textarea-field
+                    v-model="item.text"
+                    :label="$tc('sw-cms.elements.ultimateCmsTools.iconList.config.textLabel')"
+                    :placeholder="$tc('sw-cms.elements.ultimateCmsTools.iconList.config.textPlaceholder')"
+                    @change="onItemChange">
+                </sw-textarea-field>
+
+                <sw-text-field
+                    v-model="item.url"
+                    :label="$tc('sw-cms.elements.ultimateCmsTools.iconList.config.urlLabel')"
+                    :placeholder="$tc('sw-cms.elements.ultimateCmsTools.iconList.config.urlPlaceholder')"
+                    @change="onItemChange">
+                </sw-text-field>
+
+                <sw-single-select
+                    v-if="item.url"
+                    v-model:value="item.target"
+                    :options="targetOptions"
+                    :label="$tc('sw-cms.elements.ultimateCmsTools.iconList.config.targetLabel')"
+                    @update:value="onItemChange">
+                </sw-single-select>
+            </div>
+        </div>
+
+        <div class="sw-cms-el-config-icon-list__actions">
+            <sw-button @click="onAddItem" variant="ghost" class="sw-cms-el-config-icon-list__add-btn">
+                <sw-icon name="regular-plus-s" size="14px"></sw-icon>
+                {{ $tc('sw-cms.elements.ultimateCmsTools.iconList.config.addItem') }}
+            </sw-button>
+        </div>
+    </div>
+
+    <div v-if="activeTab === 'settings'" class="sw-cms-el-config-icon-list__settings-tab">
+        <sw-single-select
+            v-model:value="layout"
+            :options="layoutOptions"
+            :label="$tc('sw-cms.elements.ultimateCmsTools.iconList.config.layoutLabel')">
+        </sw-single-select>
+
+        <sw-single-select
+            v-model:value="animation"
+            :options="animationOptions"
+            :label="$tc('sw-cms.elements.ultimateCmsTools.iconList.config.animationLabel')">
+        </sw-single-select>
+    </div>
+</div>

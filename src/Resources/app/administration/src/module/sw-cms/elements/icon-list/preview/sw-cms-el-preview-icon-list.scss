@@ -1,0 +1,31 @@
+.sw-cms-el-preview-icon-list {
+    padding: 10px;
+    background: #f9fafb;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    &__item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: #189efc;
+    }
+
+    &__text {
+        display: flex;
+        flex-direction: column;
+        font-size: 10px;
+        color: #374151;
+
+        strong {
+            font-weight: 700;
+        }
+
+        span {
+            font-size: 9px;
+            color: #6b7280;
+        }
+    }
+}

@@ -1,0 +1,19 @@
+<div class="sw-cms-el-icon-list" :class="layoutClass">
+    <div class="sw-cms-el-icon-list__items">
+        <div v-for="(item, index) in items" :key="index" class="sw-cms-el-icon-list__item">
+            <div v-if="item.icon && item.icon !== 'none'" class="sw-cms-el-icon-list__icon-wrapper">
+                <i v-if="item.icon === 'custom'" :class="item.customIconClass || 'sw-icon'" class="sw-cms-el-icon-list__custom-icon"></i>
+                <sw-icon v-else :name="item.icon" size="24px"></sw-icon>
+            </div>
+
+            <div class="sw-cms-el-icon-list__content">
+                <div v-if="item.title" class="sw-cms-el-icon-list__title">
+                    {{ item.title }}
+                </div>
+                <div v-if="item.text" class="sw-cms-el-icon-list__text">
+                    {{ item.text }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

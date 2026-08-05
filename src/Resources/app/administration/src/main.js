@@ -30,6 +30,8 @@ import './module/sw-cms/elements/statistics';
 import './module/sw-cms/blocks/ultimate-cms-tools/statistics';
 import './module/sw-cms/elements/button';
 import './module/sw-cms/blocks/ultimate-cms-tools/button';
+import './module/sw-cms/elements/icon-list';
+import './module/sw-cms/blocks/ultimate-cms-tools/icon-list';
 import deDE from './module/sw-cms/snippet/de-DE.json';
 import enGB from './module/sw-cms/snippet/en-GB.json';
 import nlNL from './module/sw-cms/snippet/nl-NL.json';

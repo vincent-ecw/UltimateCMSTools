@@ -21,6 +21,7 @@ A collection of CMS blocks and elements that enhance Shopware's Shopping Experie
   - [14. Category Header](#14-category-header)
   - [15. Statistics](#15-statistics)
   - [16. Button](#16-button)
+  - [17. Icon List](#17-icon-list)
 - [Development and Compilation](#development-and-compilation)
 
 ---
@@ -391,6 +392,30 @@ Renders a theme-styled action button with flexible width, alignment, icon picker
 * **Button Alignment (`alignment`):** Alignment when using Content Width (`left`, `center`, `right`).
 * **Icon Before Label (`iconBefore`):** Icon from dropdown picker displayed before text (or `none`).
 * **Icon After Label (`iconAfter`):** Icon from dropdown picker displayed after text (or `none`).
+
+---
+
+### 17. Icon List
+
+Renders a list of feature items with icons (standard Shopware icons, custom icon classes, or no icon), bold titles, and text descriptions in horizontal or vertical layouts with display animations.
+
+* **Block Name:** `icon-list`
+* **Element Name:** `icon-list`
+
+#### Configuration Options
+
+##### Content Tab
+* **Item Repeater (`items`):** Add, remove, and reorder items with Move Up / Move Down controls. For each item:
+  * **Icon (`icon`):** Select from Shopware icon dropdown, `No icon` (`none`), or `Enter icon class` (`custom`).
+  * **Custom Icon Class (`customIconClass`):** Text field shown when `Enter icon class` is selected, inserting an `<i>` tag with specified classes (e.g. `fa-solid fa-rocket` or `bi bi-star`).
+  * **Title (`title`):** Item title rendered in bold text.
+  * **Description Text (`text`):** Detailed description text.
+  * **Link URL (`url` - Optional):** Target destination link.
+  * **Link Target (`target` - Optional):** Choice of Same Window (`_self`) or New Tab (`_blank`).
+
+##### Settings Tab
+* **Layout Mode (`layout`):** Choice of **Horizontal List** (centered auto-fit column grid) or **Vertical List** (left-aligned stacked rows).
+* **Animation on Display (`animation`):** Choice of **None**, **Insert one by one (fade)**, **Insert one by one (sliding in from right)**, or **Insert one by one (sliding in from left)**.
 
 ---
 

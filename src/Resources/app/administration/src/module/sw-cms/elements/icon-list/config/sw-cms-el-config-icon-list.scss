@@ -1,0 +1,58 @@
+.sw-cms-el-config-icon-list {
+    &__content-tab,
+    &__settings-tab {
+        padding-top: 16px;
+    }
+
+    &__items-header {
+        margin-bottom: 12px;
+    }
+
+    &__items-title {
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    &__item-card {
+        background: #f9fafb;
+        border: 1px solid #e5e7eb;
+        border-radius: 6px;
+        padding: 16px;
+        margin-bottom: 16px;
+    }
+
+    &__item-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 12px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid #e5e7eb;
+    }
+
+    &__item-number-label {
+        font-weight: 600;
+        font-size: 13px;
+        color: #374151;
+    }
+
+    &__item-actions {
+        display: flex;
+        gap: 6px;
+    }
+
+    &__item-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    &__actions {
+        margin-top: 16px;
+    }
+
+    &__add-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}

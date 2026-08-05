@@ -384,11 +384,58 @@
                             "none": "No Icon"
                         }
                     }
+                },
+                "iconList": {
+                    "label": "Icon List",
+                    "placeholder": "Display a list of items with icons, bold titles, text descriptions, and optional animations.",
+                    "config": {
+                        "tabs": {
+                            "content": "Content",
+                            "settings": "Settings"
+                        },
+                        "itemsTitle": "Icon List Items",
+                        "itemLabel": "Item",
+                        "iconLabel": "Icon",
+                        "customIconClassLabel": "Custom Icon Class Name",
+                        "customIconClassPlaceholder": "e.g. fa-solid fa-rocket or bi bi-star",
+                        "customIconClassHelp": "Specify custom CSS classes for icon fonts (e.g. FontAwesome or Bootstrap Icons).",
+                        "titleLabel": "Title",
+                        "titlePlaceholder": "e.g. Launch within 1 week",
+                        "textLabel": "Description Text",
+                        "textPlaceholder": "e.g. You can start within one week after ordering...",
+                        "urlLabel": "Link URL (optional)",
+                        "urlPlaceholder": "e.g. /my-link",
+                        "targetLabel": "Link Target",
+                        "addItem": "Add Item",
+                        "layoutLabel": "Layout Mode",
+                        "layouts": {
+                            "horizontal": "Horizontal List",
+                            "vertical": "Vertical List"
+                        },
+                        "animationLabel": "Animation on Display",
+                        "animations": {
+                            "none": "None",
+                            "fade": "Insert one by one (fade)",
+                            "slideRight": "Insert one by one (sliding in from right)",
+                            "slideLeft": "Insert one by one (sliding in from left)"
+                        },
+                        "icons": {
+                            "none": "No icon",
+                            "custom": "Enter icon class..."
+                        },
+                        "targets": {
+                            "self": "Same Window (_self)",
+                            "blank": "New Tab (_blank)"
+                        }
+                    }
                 }
             }
         },
         "blocks": {
             "ultimateCmsTools": {
+                "iconList": {
+                    "label": "Icon List"
+                },
                 "button": {
                     "label": "Button"
                 },

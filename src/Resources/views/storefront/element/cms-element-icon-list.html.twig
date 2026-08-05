@@ -1,0 +1,60 @@
+{% block element_icon_list %}
+    {% set config = element.config %}
+    {% set layout = config.layout.value|default('horizontal') %}
+    {% set animation = config.animation.value|default('none') %}
+    {% set items = config.items.value|default([]) %}
+
+    <div class="cms-element-icon-list icon-list-layout-{{ layout }}{% if animation != 'none' %} has-animation animation-{{ animation }}{% endif %}"
+         {% if animation != 'none' %}data-icon-list-animation="{{ animation }}"{% endif %}>
+        {% if items|length > 0 %}
+            <div class="icon-list-grid">
+                {% for item in items %}
+                    {% set rawIcon = item.icon|default('none') %}
+                    {% set customClass = item.customIconClass|default('') %}
+
+                    <div class="icon-list-item" style="--item-index: {{ loop.index0 }};">
+                        {% if item.url %}
+                            <a href="{{ item.url }}"
+                               target="{{ item.target|default('_self') }}"
+                               {% if item.target == '_blank' %}rel="noopener noreferrer"{% endif %}
+                               class="icon-list-item-link">
+                        {% endif %}
+
+                        {% if rawIcon != 'none' %}
+                            <div class="icon-list-item-icon">
+                                {% if rawIcon == 'custom' and customClass %}
+                                    <i class="{{ customClass }}"></i>
+                                {% elseif rawIcon != 'custom' %}
+                                    {% set iconName = rawIcon|replace({'regular-': '', 'solid-': ''}) %}
+                                    {% sw_icon iconName %}
+                                {% endif %}
+                            </div>
+                        {% endif %}
+
+                        <div class="icon-list-item-content">
+                            {% if item.title %}
+                                <div class="icon-list-item-title">
+                                    {{ item.title }}
+                                </div>
+                            {% endif %}
+
+                            {% if item.text %}
+                                <div class="icon-list-item-text">
+                                    {% if item.text matches '/<[^>]+>/' %}
+                                        {{ item.text|raw }}
+                                    {% else %}
+                                        <p>{{ item.text|nl2br }}</p>
+                                    {% endif %}
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        {% if item.url %}
+                            </a>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

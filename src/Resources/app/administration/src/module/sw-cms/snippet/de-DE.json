@@ -384,11 +384,58 @@
                             "none": "Kein Icon"
                         }
                     }
+                },
+                "iconList": {
+                    "label": "Icon-Liste",
+                    "placeholder": "Zeigen Sie eine Liste von Elementen mit Icons, fetten Titeln, Beschreibungstexten und optionalen Animationen an.",
+                    "config": {
+                        "tabs": {
+                            "content": "Inhalt",
+                            "settings": "Einstellungen"
+                        },
+                        "itemsTitle": "Icon-Listen Elemente",
+                        "itemLabel": "Element",
+                        "iconLabel": "Icon",
+                        "customIconClassLabel": "Benutzerdefinierte Icon-Klasse",
+                        "customIconClassPlaceholder": "z.B. fa-solid fa-rocket oder bi bi-star",
+                        "customIconClassHelp": "Geben Sie benutzerdefinierte CSS-Klassen für Icon-Schriftarten an (z. B. FontAwesome oder Bootstrap Icons).",
+                        "titleLabel": "Titel",
+                        "titlePlaceholder": "z.B. Start innerhalb 1 Woche",
+                        "textLabel": "Beschreibungstext",
+                        "textPlaceholder": "z.B. Sie können innerhalb einer Woche nach der Bestellung starten...",
+                        "urlLabel": "Link-URL (optional)",
+                        "urlPlaceholder": "z.B. /mein-link",
+                        "targetLabel": "Link-Ziel",
+                        "addItem": "Element hinzufügen",
+                        "layoutLabel": "Layout-Modus",
+                        "layouts": {
+                            "horizontal": "Horizontale Liste",
+                            "vertical": "Vertikale Liste"
+                        },
+                        "animationLabel": "Animation bei Anzeige",
+                        "animations": {
+                            "none": "Keine",
+                            "fade": "Nacheinander einblenden (fade)",
+                            "slideRight": "Nacheinander von rechts einschieben",
+                            "slideLeft": "Nacheinander von links einschieben"
+                        },
+                        "icons": {
+                            "none": "Kein Icon",
+                            "custom": "Icon-Klasse eingeben..."
+                        },
+                        "targets": {
+                            "self": "Gleiches Fenster (_self)",
+                            "blank": "Neuer Tab (_blank)"
+                        }
+                    }
                 }
             }
         },
         "blocks": {
             "ultimateCmsTools": {
+                "iconList": {
+                    "label": "Icon-Liste"
+                },
                 "button": {
                     "label": "Button"
                 },

@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.11] - 2026-08-05
+
+### Added
+- Added new **Icon List** CMS block and element (`cms-element-icon-list` / `cms-block-icon-list`).
+- Added support for standard Shopware SVG icons, custom icon CSS classes (`<i>` tag support for custom icon libraries like FontAwesome or Bootstrap Icons), and no-icon mode.
+- Added **Horizontal List** (centered auto-fit grid presentation) and **Vertical List** (stacked row presentation with left-aligned icons) layout modes.
+- Added display animations (**Insert one by one (fade)**, **Insert one by one (sliding in from right)**, **Insert one by one (sliding in from left)**) with Storefront `IntersectionObserver` triggers and staggered transitions.
+- Added item reordering controls (Move Up / Move Down) and optional URL link configuration per item.
+
 ## [1.2.10] - 2026-08-05
 
 ### Fixed

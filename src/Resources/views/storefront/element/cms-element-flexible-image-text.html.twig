@@ -1,0 +1,89 @@
+{% block element_flexible_image_text %}
+    {% set config = element.fieldConfig.elements %}
+    
+    {% set position = config.position.value|default('image-left') %}
+    {% set columnSize = config.columnSize.value|default('50-50') %}
+    {% set animation = config.animation.value|default('none') %}
+    {% set theme = config.theme.value|default('traditional') %}
+    {% set content = config.content.value|default('') %}
+    {% set caption = config.caption.value|default('') %}
+    {% set media = element.data ? element.data.get('media') : null %}
+
+    {% set elementClasses = 'cms-element-flexible-image-text theme-' ~ theme ~ ' position-' ~ position ~ ' col-' ~ columnSize %}
+    {% if animation != 'none' %}
+        {% set elementClasses = elementClasses ~ ' animation-' ~ animation %}
+    {% endif %}
+
+
+    <div class="{{ elementClasses }}"
+         {% if animation != 'none' %}data-flexible-image-text-animation="{{ animation }}"{% endif %}>
+        
+        {% if theme == 'offset' %}
+            <div class="flexible-image-text__offset-frame"></div>
+        {% endif %}
+
+        <div class="flexible-image-text__container">
+            {# Image Column #}
+            <div class="flexible-image-text__image-wrapper">
+                {% if media %}
+                    {% if theme == 'polaroid' %}
+                        <div class="flexible-image-text__polaroid-card">
+                            <div class="flexible-image-text__polaroid-image">
+                                {% sw_thumbnails 'flexible-image-text-img' with {
+                                    media: media,
+                                    sizes: {
+                                        'xs': '576px',
+                                        'sm': '768px',
+                                        'md': '992px',
+                                        'lg': '1200px'
+                                    },
+                                    attributes: {
+                                        'class': 'flexible-image-text__image',
+                                        'alt': (media.translated.alt ?: caption ?: '')
+                                    }
+                                } %}
+                            </div>
+                            {% if caption %}
+                                <div class="flexible-image-text__caption">
+                                    {{ caption }}
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% else %}
+                        <div class="flexible-image-text__media-box">
+                            {% sw_thumbnails 'flexible-image-text-img' with {
+                                media: media,
+                                sizes: {
+                                    'xs': '576px',
+                                    'sm': '768px',
+                                    'md': '992px',
+                                    'lg': '1200px'
+                                },
+                                attributes: {
+                                    'class': 'flexible-image-text__image',
+                                    'alt': (media.translated.alt ?: caption ?: '')
+                                }
+                            } %}
+                        </div>
+                        {% if caption and theme != 'polaroid' %}
+                            <div class="flexible-image-text__image-subcaption">
+                                {{ caption }}
+                            </div>
+                        {% endif %}
+                    {% endif %}
+                {% endif %}
+            </div>
+
+            {# Text Column #}
+            <div class="flexible-image-text__text-wrapper">
+                <div class="flexible-image-text__text-content">
+                    {% if content matches '/<[^>]+>/' %}
+                        {{ content|raw }}
+                    {% else %}
+                        <p>{{ content|nl2br }}</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

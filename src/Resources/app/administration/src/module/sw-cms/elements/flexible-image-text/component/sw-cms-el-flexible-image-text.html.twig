@@ -1,0 +1,33 @@
+<div :class="elementClasses">
+    <div class="flexible-image-text__container">
+        <!-- Image Column -->
+        <div class="flexible-image-text__image-wrapper">
+            <div v-if="theme === 'polaroid'" class="flexible-image-text__polaroid-card">
+                <div class="flexible-image-text__media-box">
+                    <img v-if="mediaUrl" :src="mediaUrl" alt="Media preview" class="flexible-image-text__image" />
+                    <div v-else class="flexible-image-text__placeholder">
+                        <sw-icon name="regular-image" size="48px"></sw-icon>
+                    </div>
+                </div>
+                <div v-if="caption" class="flexible-image-text__caption">
+                    {{ caption }}
+                </div>
+            </div>
+
+            <div v-else class="flexible-image-text__media-box">
+                <img v-if="mediaUrl" :src="mediaUrl" alt="Media preview" class="flexible-image-text__image" />
+                <div v-else class="flexible-image-text__placeholder">
+                    <sw-icon name="regular-image" size="48px"></sw-icon>
+                </div>
+                <div v-if="caption" class="flexible-image-text__caption">
+                    {{ caption }}
+                </div>
+            </div>
+        </div>
+
+        <!-- Text Column -->
+        <div class="flexible-image-text__text-wrapper">
+            <div class="flexible-image-text__text-content" v-html="content"></div>
+        </div>
+    </div>
+</div>

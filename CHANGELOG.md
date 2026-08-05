@@ -5,7 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.12] - 2026-08-05
+
+### Added
+- Added new **Flexible Image and Text** CMS block and element (`cms-element-flexible-image-text` / `cms-block-flexible-image-text`).
+- Added support for rich text editor content (`sw-text-editor`), media library image uploads (`sw-media-compact-upload-v2`), photo/polaroid caption input, and responsive image thumbnail rendering (`sw_thumbnails`).
+- Added layout position setting: **Image Left + Text Right** vs **Text Left + Image Right** (with automatic mobile stacking ensuring the image always stays on top).
+- Added customizable column proportions: **25% - 75%**, **33% - 66%**, **50% - 50%**, **66% - 33%**, and **75% - 25%**.
+- Added entrance animations: **Slide in (from left/right)**, **Fade in**, and **Zoom in** powered by a Storefront `IntersectionObserver` plugin.
+- Added 5 presentation themes: **Traditional**, **Polaroid** (framed photo card with drop-shadow, tilt angle, and caption), **Offset** (overlapping frame), **Rounded** (dashed container with pill-rounded image), and **Stacked** (vertical full-width banner & content card).
+
 ## [1.2.11] - 2026-08-05
+
 
 ### Added
 - Added new **Icon List** CMS block and element (`cms-element-icon-list` / `cms-block-icon-list`).

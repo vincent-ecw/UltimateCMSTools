@@ -22,7 +22,9 @@ A collection of CMS blocks and elements that enhance Shopware's Shopping Experie
   - [15. Statistics](#15-statistics)
   - [16. Button](#16-button)
   - [17. Icon List](#17-icon-list)
+  - [18. Flexible Image and Text](#18-flexible-image-and-text)
 - [Development and Compilation](#development-and-compilation)
+
 
 ---
 
@@ -417,9 +419,31 @@ Renders a list of feature items with icons (standard Shopware icons, custom icon
 * **Layout Mode (`layout`):** Choice of **Horizontal List** (centered auto-fit column grid) or **Vertical List** (left-aligned stacked rows).
 * **Animation on Display (`animation`):** Choice of **None**, **Insert one by one (fade)**, **Insert one by one (sliding in from right)**, or **Insert one by one (sliding in from left)**.
 
+### 18. Flexible Image and Text
+
+* **Technical Names:** `cms-element-flexible-image-text` / `cms-block-flexible-image-text`
+* **Description:** A versatile side-by-side or stacked image and rich text block supporting responsive thumbnail rendering (`sw_thumbnails`), custom column split ratios, mobile stacking (image always on top), entrance animations, and 5 distinct presentation themes.
+
+##### Content Tab
+* **Image (`media`):** Media library upload or selection.
+* **Caption / Label (`caption`):** Optional photo label or Polaroid caption text.
+* **Rich Text Content (`content`):** Main text content entered via a rich text editor (`sw-text-editor`).
+
+##### Settings Tab
+* **Layout Position (`position`):** Choice of **Image Left + Text Right** or **Text Left + Image Right**. (Automatically stacks vertically with image on top on screens `< 768px`).
+* **Column Proportions (`columnSize`):** Choice of **25% - 75%**, **33% - 66%**, **50% - 50%**, **66% - 33%**, or **75% - 25%**.
+* **Entrance Animation (`animation`):** Choice of **None**, **Slide in from left / right**, **Fade in**, or **Zoom in**.
+* **Presentation Theme (`theme`):** Choice of 5 visual styles:
+  * **Traditional:** Clean, classic side-by-side layout.
+  * **Polaroid:** Framed photo card with drop-shadow, tilt angle, and bottom caption.
+  * **Offset:** Modern overlapping frame design with accent border.
+  * **Rounded:** Light container with dashed border and pill-rounded image corners.
+  * **Stacked:** Vertical full-width banner image and attached content card.
+
 ---
 
 ## Development and Compilation
+
 
 If you modify administration components (Vue 3 / Vite) or storefront scripts/styles:
 

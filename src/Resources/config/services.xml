@@ -58,5 +58,10 @@
         <service id="VincentBourgonje\UltimateCmsTools\DataResolver\CategoryHeaderCmsElementResolver">
             <tag name="shopware.cms.data_resolver" />
         </service>
+
+        <service id="VincentBourgonje\UltimateCmsTools\DataResolver\FlexibleImageTextCmsElementResolver">
+            <tag name="shopware.cms.data_resolver" />
+        </service>
     </services>
+
 </container>

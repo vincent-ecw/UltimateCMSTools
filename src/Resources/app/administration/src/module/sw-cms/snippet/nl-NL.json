@@ -428,11 +428,58 @@
                             "blank": "Nieuw tabblad (_blank)"
                         }
                     }
+                },
+                "flexibleImageText": {
+                    "label": "Flexibele afbeelding en tekst",
+                    "config": {
+                        "tabs": {
+                            "content": "Inhoud",
+                            "settings": "Instellingen"
+                        },
+                        "mediaLabel": "Afbeelding",
+                        "captionLabel": "Bijschrift / Label",
+                        "captionPlaceholder": "bijv. Tech Essentials No. 04",
+                        "captionHelp": "Fotobijschrift of Polaroid-labeltekst",
+                        "contentLabel": "Opgemaakte tekst",
+                        "contentPlaceholder": "Voer tekstinhoud in...",
+                        "positionLabel": "Layout positie",
+                        "positions": {
+                            "imageLeft": "Afbeelding links + Tekst rechts",
+                            "textLeft": "Tekst links + Afbeelding rechts"
+                        },
+                        "columnSizeLabel": "Kolomverhoudingen",
+                        "columnSizes": {
+                            "col2575": "25% - 75%",
+                            "col3366": "33% - 66%",
+                            "col5050": "50% - 50%",
+                            "col6633": "66% - 33%",
+                            "col7525": "75% - 25%"
+                        },
+                        "animationLabel": "Binnenkomst animatie",
+                        "animations": {
+                            "none": "Geen",
+                            "slide": "Inschuiven vanaf links / rechts",
+                            "fade": "Faden (Vervagen)",
+                            "zoom": "Zoomen (Zoom in)"
+                        },
+                        "themeLabel": "Presentatiestijl",
+                        "themes": {
+                            "traditional": "Traditioneel",
+                            "polaroid": "Polaroid",
+                            "offset": "Versprongen (Offset)",
+                            "rounded": "Afgerond (Rounded)",
+                            "stacked": "Gestapeld (Stacked)"
+                        }
+                    }
                 }
             }
         },
         "blocks": {
             "ultimateCmsTools": {
+                "flexibleImageText": {
+                    "label": "Flexibele afbeelding en tekst"
+                },
+
                 "iconList": {
                     "label": "Icoonlijst"
                 },

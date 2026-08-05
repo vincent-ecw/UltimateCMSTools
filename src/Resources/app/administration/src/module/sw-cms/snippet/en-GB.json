@@ -428,11 +428,58 @@
                             "blank": "New Tab (_blank)"
                         }
                     }
+                },
+                "flexibleImageText": {
+                    "label": "Flexible Image and Text",
+                    "config": {
+                        "tabs": {
+                            "content": "Content",
+                            "settings": "Settings"
+                        },
+                        "mediaLabel": "Image",
+                        "captionLabel": "Caption / Label",
+                        "captionPlaceholder": "e.g. Tech Essentials No. 04",
+                        "captionHelp": "Photo label or Polaroid caption text",
+                        "contentLabel": "Rich Text Content",
+                        "contentPlaceholder": "Enter text content...",
+                        "positionLabel": "Layout Position",
+                        "positions": {
+                            "imageLeft": "Image Left + Text Right",
+                            "textLeft": "Text Left + Image Right"
+                        },
+                        "columnSizeLabel": "Column Proportions",
+                        "columnSizes": {
+                            "col2575": "25% - 75%",
+                            "col3366": "33% - 66%",
+                            "col5050": "50% - 50%",
+                            "col6633": "66% - 33%",
+                            "col7525": "75% - 25%"
+                        },
+                        "animationLabel": "Entrance Animation",
+                        "animations": {
+                            "none": "None",
+                            "slide": "Slide in from left / right",
+                            "fade": "Fade in",
+                            "zoom": "Zoom in"
+                        },
+                        "themeLabel": "Presentation Theme",
+                        "themes": {
+                            "traditional": "Traditional",
+                            "polaroid": "Polaroid",
+                            "offset": "Offset",
+                            "rounded": "Rounded",
+                            "stacked": "Stacked"
+                        }
+                    }
                 }
             }
         },
         "blocks": {
             "ultimateCmsTools": {
+                "flexibleImageText": {
+                    "label": "Flexible Image and Text"
+                },
+
                 "iconList": {
                     "label": "Icon List"
                 },

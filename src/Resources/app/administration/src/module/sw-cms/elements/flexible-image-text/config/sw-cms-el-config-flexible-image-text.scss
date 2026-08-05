@@ -1,0 +1,13 @@
+.sw-cms-el-config-flexible-image-text {
+    .sw-cms-el-config-flexible-image-text__content-tab,
+    .sw-cms-el-config-flexible-image-text__settings-tab {
+        padding-top: 15px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .sw-cms-el-config-flexible-image-text__media-upload {
+        margin-bottom: 5px;
+    }
+}

@@ -34,7 +34,7 @@
         flex-direction: column;
         gap: 15px;
         box-sizing: border-box;
-        z-index: 1;
+        z-index: 2;
     }
 
     &__overlay {
@@ -44,7 +44,7 @@
         right: 0;
         bottom: 0;
         background: rgba(0, 0, 0, 0.4);
-        z-index: -1;
+        z-index: 1;
     }
 
     &__title {
@@ -64,27 +64,109 @@
         display: flex;
         gap: 10px;
         flex-wrap: wrap;
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 18px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            text-align: center;
+            cursor: pointer;
+            border: 1px solid transparent;
+            box-sizing: border-box;
+
+            &.btn-primary {
+                background-color: #189eff;
+                color: #ffffff;
+                border-color: #189eff;
+            }
+
+            &.btn-secondary {
+                background-color: #6b7280;
+                color: #ffffff;
+                border-color: #6b7280;
+            }
+
+            &.btn-outline-primary {
+                background-color: transparent;
+                color: #189eff;
+                border-color: #189eff;
+            }
+
+            &.btn-outline-secondary {
+                background-color: transparent;
+                color: #6b7280;
+                border-color: #6b7280;
+            }
+
+            &.btn-light {
+                background-color: #f3f4f6;
+                color: #1f2937;
+                border-color: #e5e7eb;
+            }
+
+            &.btn-dark {
+                background-color: #1f2937;
+                color: #ffffff;
+                border-color: #1f2937;
+            }
+
+            &.btn-link {
+                background-color: transparent;
+                color: #189eff;
+                border-color: transparent;
+                text-decoration: underline;
+                padding: 8px 0;
+            }
+        }
     }
 
-    &__btn {
-        display: inline-block;
-        padding: 10px 20px;
-        border-radius: 6px;
-        font-size: 14px;
-        font-weight: 600;
-        text-decoration: none;
-        text-align: center;
-        cursor: pointer;
-
-        &--primary {
-            background-color: #189eff;
-            color: #ffffff;
+    /* Layout Structures */
+    &.layout-vertical-inline {
+        .sw-cms-el-cta__container {
+            flex-direction: column;
         }
+        .sw-cms-el-cta__actions {
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+    }
 
-        &--secondary {
-            background-color: #f3f4f6;
-            color: #374151;
-            border: 1px solid #d1d5db;
+    &.layout-vertical-stacked {
+        .sw-cms-el-cta__container {
+            flex-direction: column;
+        }
+        .sw-cms-el-cta__actions {
+            flex-direction: column;
+            align-items: flex-start;
+
+            .btn {
+                width: 100%;
+                max-width: 320px;
+            }
+        }
+    }
+
+    &.layout-horizontal {
+        .sw-cms-el-cta__container {
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .sw-cms-el-cta__content {
+            flex: 1;
+        }
+        .sw-cms-el-cta__actions {
+            flex-direction: column;
+            flex-shrink: 0;
+
+            .btn {
+                width: 100%;
+            }
         }
     }
 
@@ -115,18 +197,6 @@
         }
         .sw-cms-el-cta__subtitle {
             color: #000000;
-        }
-        .sw-cms-el-cta__btn--primary {
-            background-color: #ffffff;
-            color: #000000;
-            border: 2px solid #000000;
-            box-shadow: 3px 3px 0px #000000;
-        }
-        .sw-cms-el-cta__btn--secondary {
-            background-color: #000000;
-            color: #ffffff;
-            border: 2px solid #000000;
-            box-shadow: 3px 3px 0px #ffffff;
         }
     }
 
@@ -182,6 +252,26 @@
 
         .sw-cms-el-cta__container {
             border-top: 4px solid #189eff;
+        }
+    }
+
+    &.text-light {
+        .sw-cms-el-cta__title {
+            color: #ffffff;
+        }
+
+        .sw-cms-el-cta__subtitle {
+            color: rgba(255, 255, 255, 0.85);
+        }
+    }
+
+    &.text-dark {
+        .sw-cms-el-cta__title {
+            color: #1f2937;
+        }
+
+        .sw-cms-el-cta__subtitle {
+            color: #4b5563;
         }
     }
 }

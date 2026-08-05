@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.10] - 2026-08-05
+
+### Fixed
+- Refactored CTA element button styling in Storefront and Administration to rely completely on theme button styles (`btn`, `btn-primary`, `btn-secondary`, etc.).
+- Fixed background image loading and rendering in Administration layout editor previews by fetching media entities asynchronously when media IDs are present.
+- Fixed overlay stacking (`z-index`) and container rendering for CTA background images in Administration editor component.
+
+## [1.2.9] - 2026-08-05
+
+### Added
+- Added individual button design / variant selection for Primary and Secondary buttons in CTA block (`primary`, `secondary`, `outline-primary`, `outline-secondary`, `light`, `dark`, `link`).
+- Added Layout Structure choices for CTA block: `Vertical (Buttons side-by-side)`, `Vertical (Buttons stacked)`, and `Horizontal (Content left, buttons right)`.
+- Updated Administration configuration panel and Storefront SCSS/Twig layout templates to support responsive orientation switching and dynamic button variants.
+
 ## [1.2.8] - 2026-08-05
 
 ### Added

@@ -209,9 +209,15 @@ A highly flexible Call to Action banner card designed to capture user engagement
 * **Primary Button Text (`buttonText` - Optional):** Label for the primary action button.
 * **Primary Button URL (`buttonUrl` - Optional):** URL destination for the primary action.
 * **Primary Button Target (`buttonTarget` - Optional):** Target window context (`_self` or `_blank`).
+* **Primary Button Design (`buttonVariant` - Optional):** Select button variant (`primary`, `secondary`, `outline-primary`, `outline-secondary`, `light`, `dark`, `link`). Relying on theme button styling.
 * **Secondary Button Text (`buttonSecondaryText` - Optional):** Label for the optional secondary action button.
 * **Secondary Button URL (`buttonSecondaryUrl` - Optional):** URL destination for the secondary action.
 * **Secondary Button Target (`buttonSecondaryTarget` - Optional):** Target window context (`_self` or `_blank`).
+* **Secondary Button Design (`buttonSecondaryVariant` - Optional):** Select button variant (`primary`, `secondary`, `outline-primary`, `outline-secondary`, `light`, `dark`, `link`). Relying on theme button styling.
+* **Layout Structure (`layout` - Optional):**
+  - `vertical-inline`: Title/subtitle top, buttons side-by-side below.
+  - `vertical-stacked`: Title/subtitle top, buttons stacked vertically below.
+  - `horizontal`: Title/subtitle on left side, buttons stacked on right side.
 * **Background Image (`backgroundImage` - Optional):** Image mapped behind the text content of the card.
 * **Minimum Height (`minHeight` - Optional):** Sets a minimum height (e.g. `400px` or `400`) for the CTA block.
 * **Style Preset (`style` - Optional):** `split-minimal`, `neo-brutal`, `glassmorphic`, `hero-spotlight`, `interactive-card`.

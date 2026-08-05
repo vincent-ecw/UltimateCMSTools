@@ -200,6 +200,12 @@
                             "hero-spotlight": "Hero Spotlight",
                             "interactive-card": "Interactive Floating Card"
                         },
+                        "layoutLabel": "Layout Structure",
+                        "layouts": {
+                            "verticalInline": "Vertical (Buttons side-by-side)",
+                            "verticalStacked": "Vertical (Buttons stacked)",
+                            "horizontal": "Horizontal (Content left, buttons right)"
+                        },
                         "textColorLabel": "Text Style",
                         "textColors": {
                             "dark": "Dark Text (Optimized for light backgrounds)",
@@ -212,6 +218,16 @@
                         "buttonUrlLabel": "Link URL",
                         "buttonUrlPlaceholder": "e.g. /category-link",
                         "buttonTargetLabel": "Link Target",
+                        "buttonVariantLabel": "Button Design",
+                        "buttonVariants": {
+                            "primary": "Primary",
+                            "secondary": "Secondary",
+                            "outlinePrimary": "Outline Primary",
+                            "outlineSecondary": "Outline Secondary",
+                            "light": "Light",
+                            "dark": "Dark",
+                            "link": "Link"
+                        },
                         "targetSelf": "Same Window",
                         "targetBlank": "New Window"
                     }

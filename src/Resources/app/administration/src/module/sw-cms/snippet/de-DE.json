@@ -200,6 +200,12 @@
                             "hero-spotlight": "Hero-Spotlight",
                             "interactive-card": "Interaktive schwebende Karte"
                         },
+                        "layoutLabel": "Layout-Struktur",
+                        "layouts": {
+                            "verticalInline": "Vertikal (Buttons nebeneinander)",
+                            "verticalStacked": "Vertikal (Buttons untereinander)",
+                            "horizontal": "Horizontal (Inhalt links, Buttons rechts)"
+                        },
                         "textColorLabel": "Textstil",
                         "textColors": {
                             "dark": "Dunkler Text (Optimiert für helle Hintergründe)",
@@ -212,6 +218,16 @@
                         "buttonUrlLabel": "Link-URL",
                         "buttonUrlPlaceholder": "z.B. /kategorie-link",
                         "buttonTargetLabel": "Link-Ziel",
+                        "buttonVariantLabel": "Button-Design",
+                        "buttonVariants": {
+                            "primary": "Primär",
+                            "secondary": "Sekundär",
+                            "outlinePrimary": "Kontur Primär",
+                            "outlineSecondary": "Kontur Sekundär",
+                            "light": "Hell",
+                            "dark": "Dunkel",
+                            "link": "Link"
+                        },
                         "targetSelf": "Gleiches Fenster",
                         "targetBlank": "Neues Fenster"
                     }

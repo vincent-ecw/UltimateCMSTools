@@ -21,6 +21,10 @@ Component.register('sw-cms-el-config-cta', {
             return this.element.config?.backgroundImage?.value || null;
         },
 
+        backgroundImage() {
+            return this.element?.data?.backgroundImage || this.element?.config?.backgroundImage?.value || null;
+        },
+
         styleOptions() {
             return [
                 { value: 'split-minimal', label: this.$tc('sw-cms.elements.ultimateCmsTools.cta.config.styles.split-minimal') },
@@ -42,6 +46,26 @@ Component.register('sw-cms-el-config-cta', {
             return [
                 { value: 'dark', label: this.$tc('sw-cms.elements.ultimateCmsTools.cta.config.textColors.dark') },
                 { value: 'light', label: this.$tc('sw-cms.elements.ultimateCmsTools.cta.config.textColors.light') }
+            ];
+        },
+
+        layoutOptions() {
+            return [
+                { value: 'vertical-inline', label: this.$tc('sw-cms.elements.ultimateCmsTools.cta.config.layouts.verticalInline') },
+                { value: 'vertical-stacked', label: this.$tc('sw-cms.elements.ultimateCmsTools.cta.config.layouts.verticalStacked') },
+                { value: 'horizontal', label: this.$tc('sw-cms.elements.ultimateCmsTools.cta.config.layouts.horizontal') }
+            ];
+        },
+
+        buttonVariantOptions() {
+            return [
+                { value: 'primary', label: this.$tc('sw-cms.elements.ultimateCmsTools.cta.config.buttonVariants.primary') },
+                { value: 'secondary', label: this.$tc('sw-cms.elements.ultimateCmsTools.cta.config.buttonVariants.secondary') },
+                { value: 'outline-primary', label: this.$tc('sw-cms.elements.ultimateCmsTools.cta.config.buttonVariants.outlinePrimary') },
+                { value: 'outline-secondary', label: this.$tc('sw-cms.elements.ultimateCmsTools.cta.config.buttonVariants.outlineSecondary') },
+                { value: 'light', label: this.$tc('sw-cms.elements.ultimateCmsTools.cta.config.buttonVariants.light') },
+                { value: 'dark', label: this.$tc('sw-cms.elements.ultimateCmsTools.cta.config.buttonVariants.dark') },
+                { value: 'link', label: this.$tc('sw-cms.elements.ultimateCmsTools.cta.config.buttonVariants.link') }
             ];
         },
 
@@ -95,6 +119,16 @@ Component.register('sw-cms-el-config-cta', {
             }
         },
 
+        buttonVariant: {
+            get() {
+                return this.element?.config?.buttonVariant?.value || 'primary';
+            },
+            set(value) {
+                this.element.config.buttonVariant.value = value;
+                this.onChange();
+            }
+        },
+
         buttonSecondaryText: {
             get() {
                 return this.element?.config?.buttonSecondaryText?.value || '';
@@ -121,6 +155,26 @@ Component.register('sw-cms-el-config-cta', {
             },
             set(value) {
                 this.element.config.buttonSecondaryTarget.value = value;
+                this.onChange();
+            }
+        },
+
+        buttonSecondaryVariant: {
+            get() {
+                return this.element?.config?.buttonSecondaryVariant?.value || 'secondary';
+            },
+            set(value) {
+                this.element.config.buttonSecondaryVariant.value = value;
+                this.onChange();
+            }
+        },
+
+        layout: {
+            get() {
+                return this.element?.config?.layout?.value || 'vertical-inline';
+            },
+            set(value) {
+                this.element.config.layout.value = value;
                 this.onChange();
             }
         },
@@ -161,8 +215,19 @@ Component.register('sw-cms-el-config-cta', {
     },
 
     methods: {
-        createdComponent() {
+        async createdComponent() {
             this.initElementConfig('cta');
+            const mediaId = this.element?.config?.backgroundImage?.value;
+            if (mediaId && typeof mediaId === 'string' && (!this.element?.data?.backgroundImage || this.element.data.backgroundImage.id !== mediaId)) {
+                try {
+                    const media = await this.mediaRepository.get(mediaId);
+                    if (media) {
+                        this.updateElementData(media);
+                    }
+                } catch (e) {
+                    // Ignore error
+                }
+            }
         },
 
         onImageSelect(media) {

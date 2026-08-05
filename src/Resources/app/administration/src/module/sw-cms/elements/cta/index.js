@@ -29,6 +29,10 @@ Shopware.Service('cmsService').registerCmsElement({
             source: 'static',
             value: '_self'
         },
+        buttonVariant: {
+            source: 'static',
+            value: 'primary'
+        },
         buttonSecondaryText: {
             source: 'static',
             value: ''
@@ -41,10 +45,18 @@ Shopware.Service('cmsService').registerCmsElement({
             source: 'static',
             value: '_self'
         },
+        buttonSecondaryVariant: {
+            source: 'static',
+            value: 'secondary'
+        },
         backgroundImage: {
             source: 'static',
             value: null,
             entity: 'media'
+        },
+        layout: {
+            source: 'static',
+            value: 'vertical-inline'
         },
         style: {
             source: 'static',

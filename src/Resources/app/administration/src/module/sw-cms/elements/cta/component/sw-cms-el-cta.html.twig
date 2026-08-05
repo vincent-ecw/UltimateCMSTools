@@ -1,29 +1,31 @@
-<div class="sw-cms-el-cta" :class="[styleClass, textColorClass]" :style="containerStyles">
+<div class="sw-cms-el-cta" :class="[styleClass, layoutClass, textColorClass]" :style="containerStyles">
 	<div v-if="!title && !subtitle && !buttonText && !buttonSecondaryText && !backgroundImageUrl" class="sw-cms-el-cta__placeholder">
 		<sw-icon name="regular-bell" size="40px"></sw-icon>
 		<p>{{ $tc('sw-cms.elements.ultimateCmsTools.cta.placeholder') }}</p>
 	</div>
 
-	<div v-else class="sw-cms-el-cta__container">
+	<template v-else>
 		<div v-if="backgroundImageUrl" class="sw-cms-el-cta__overlay"></div>
 
-		<div class="sw-cms-el-cta__content">
-			<div v-if="title" class="sw-cms-el-cta__title-wrapper">
-				<h3 class="sw-cms-el-cta__title">{{ title }}</h3>
+		<div class="sw-cms-el-cta__container">
+			<div class="sw-cms-el-cta__content">
+				<div v-if="title" class="sw-cms-el-cta__title-wrapper">
+					<h3 class="sw-cms-el-cta__title">{{ title }}</h3>
+				</div>
+
+				<div v-if="subtitle" class="sw-cms-el-cta__subtitle-wrapper">
+					<p class="sw-cms-el-cta__subtitle">{{ subtitle }}</p>
+				</div>
 			</div>
 
-			<div v-if="subtitle" class="sw-cms-el-cta__subtitle-wrapper">
-				<p class="sw-cms-el-cta__subtitle">{{ subtitle }}</p>
+			<div v-if="buttonText || buttonSecondaryText" class="sw-cms-el-cta__actions">
+				<a v-if="buttonText" href="#" class="btn" :class="[buttonVariantClass]" @click.prevent>
+					{{ buttonText }}
+				</a>
+				<a v-if="buttonSecondaryText" href="#" class="btn" :class="[buttonSecondaryVariantClass]" @click.prevent>
+					{{ buttonSecondaryText }}
+				</a>
 			</div>
 		</div>
-
-		<div v-if="buttonText || buttonSecondaryText" class="sw-cms-el-cta__actions">
-			<a v-if="buttonText" href="#" class="sw-cms-el-cta__btn sw-cms-el-cta__btn--primary" @click.prevent>
-				{{ buttonText }}
-			</a>
-			<a v-if="buttonSecondaryText" href="#" class="sw-cms-el-cta__btn sw-cms-el-cta__btn--secondary" @click.prevent>
-				{{ buttonSecondaryText }}
-			</a>
-		</div>
-	</div>
+	</template>
 </div>

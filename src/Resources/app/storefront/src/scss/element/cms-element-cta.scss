@@ -89,118 +89,69 @@
         align-items: center;
     }
 
-    .cta-btn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        padding: 0.75rem 1.75rem;
-        font-weight: var(--ecw-font-regular, 400);
-        border-radius: var(
-            --cta-btn-radius,
-            var(--ecw-border-radius-normal, var(--bs-btn-border-radius, var(--bs-border-radius-sm, 8px)))
-        );
-        text-decoration: none;
-        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-        cursor: pointer;
-        border: 2px solid transparent;
-        white-space: nowrap;
+    /* =============================================================
+     * LAYOUT STRUCTURES
+     * ============================================================= */
+    &.layout-vertical-inline {
+        .cta-container {
+            flex-direction: column !important;
+        }
 
-        &-primary {
-            text-transform: uppercase;
-            font-weight: var(--ecw-font-bold, 800);
-            background-color: var(
-                --ecw-mapped-color-button-primary-background,
-                var(--colors-ecw-map-button-primary-back, var(--cta-primary-btn-bg, var(--bs-primary, #0056b3)))
-            );
-            color: var(
-                --ecw-mapped-color-button-primary-text,
-                var(--colors-ecw-map-button-primary-text, var(--cta-primary-btn-color, var(--bs-white, #ffffff)))
-            );
-            border-color: var(
-                --ecw-mapped-color-button-primary-border,
-                var(--colors-ecw-map-button-primary-border, var(--cta-primary-btn-border, var(--bs-primary, #0056b3)))
-            );
+        .cta-actions {
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+    }
 
-            &:hover {
-                background-color: var(
-                    --ecw-mapped-color-button-primary-hover-background,
-                    var(
-                        --colors-ecw-map-button-primary-hover,
-                        var(--cta-primary-btn-hover-bg, var(--bs-btn-hover-bg, var(--bs-link-hover-color, #004085)))
-                    )
-                );
-                color: var(
-                    --ecw-mapped-color-button-primary-hover-text,
-                    var(
-                        --colors-ecw-map-button-primary-lighttext,
-                        var(--cta-primary-btn-hover-color, var(--bs-btn-hover-color, var(--bs-white, #ffffff)))
-                    )
-                );
-                border-color: var(
-                    --ecw-mapped-color-button-primary-hover-border,
-                    var(
-                        --colors-ecw-map-button-primary-borderhover,
-                        var(
-                            --cta-primary-btn-hover-border,
-                            var(--bs-btn-hover-border-color, var(--bs-link-hover-color, #004085))
-                        )
-                    )
-                );
-                transform: translateY(-2px);
-                box-shadow: 0 4px 12px rgba(var(--bs-primary-rgb, 0, 86, 179), 0.25);
-            }
+    &.layout-vertical-stacked {
+        .cta-container {
+            flex-direction: column !important;
+        }
 
-            &:active {
-                transform: translateY(0);
+        .cta-actions {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.75rem;
+
+            .btn {
+                width: 100%;
+                max-width: 320px;
             }
         }
 
-        &-secondary {
-            border: 1px solid transparent;
-            background-color: var(
-                --ecw-mapped-color-button-primary-background,
-                var(--cta-back-transparent, var(--cta-primary-btn-bg, var(--bs-primary, #0056b3)))
-            );
-            color: var(
-                --ecw-mapped-color-button-primary-text,
-                var(--colors-ecw-map-button-primary-text, var(--cta-primary-btn-color, var(--bs-white, #ffffff)))
-            );
-            border-color: var(
-                --ecw-mapped-color-button-primary-border,
-                var(--colors-ecw-map-button-primary-border, var(--cta-primary-btn-border, var(--bs-primary, #0056b3)))
-            );
+        &.style-glassmorphic,
+        &.style-hero-spotlight {
+            .cta-actions {
+                align-items: center;
+            }
+        }
+    }
 
-            &:hover {
-                background-color: var(
-                    --ecw-mapped-color-button-primary-hover-background,
-                    var(
-                        --colors-ecw-map-button-primary-back,
-                        var(--cta-primary-btn-hover-bg, var(--bs-btn-hover-bg, var(--bs-link-hover-color, #004085)))
-                    )
-                );
-                color: var(
-                    --ecw-mapped-color-button-primary-hover-text,
-                    var(
-                        --colors-ecw-map-button-primary-lighttext,
-                        var(--cta-primary-btn-hover-color, var(--bs-btn-hover-color, var(--bs-white, #ffffff)))
-                    )
-                );
-                border-color: var(
-                    --ecw-mapped-color-button-primary-hover-border,
-                    var(
-                        --colors-ecw-map-button-primary-borderhover,
-                        var(
-                            --cta-primary-btn-hover-border,
-                            var(--bs-btn-hover-border-color, var(--bs-link-hover-color, #004085))
-                        )
-                    )
-                );
-                transform: translateY(-2px);
-                box-shadow: 0 4px 12px rgba(var(--bs-primary-rgb, 0, 86, 179), 0.25);
+    &.layout-horizontal {
+        @container cta (min-width: 650px) {
+            .cta-container {
+                flex-direction: row !important;
+                justify-content: space-between;
+                align-items: center;
+                gap: 3rem;
             }
 
-            &:active {
-                transform: translateY(0);
+            .cta-content {
+                flex: 1;
+                text-align: left;
+            }
+
+            .cta-actions {
+                flex-shrink: 0;
+                flex-direction: column;
+                justify-content: center;
+                align-items: stretch;
+                gap: 0.75rem;
+
+                .btn {
+                    width: 100%;
+                }
             }
         }
     }

@@ -16,7 +16,7 @@
     <!-- Background Image -->
     <div class="sw-cms-el-config-cta__media-upload">
         <sw-media-compact-upload-v2
-            :source="backgroundImageId"
+            :source="backgroundImage"
             :upload-tag="'cta-background-' + element.id"
             :allowMultiSelect="false"
             :label="$tc('sw-cms.elements.ultimateCmsTools.cta.config.backgroundImageLabel')"
@@ -45,6 +45,13 @@
         :options="styleOptions">
     </sw-single-select>
 
+    <!-- Layout Structure Selector -->
+    <sw-single-select
+        v-model:value="layout"
+        :label="$tc('sw-cms.elements.ultimateCmsTools.cta.config.layoutLabel')"
+        :options="layoutOptions">
+    </sw-single-select>
+
     <!-- Text Style Selector -->
     <sw-single-select
         v-model:value="textColor"
@@ -71,6 +78,11 @@
                 :label="$tc('sw-cms.elements.ultimateCmsTools.cta.config.buttonTargetLabel')"
                 :options="targetOptions">
             </sw-single-select>
+            <sw-single-select
+                v-model:value="buttonVariant"
+                :label="$tc('sw-cms.elements.ultimateCmsTools.cta.config.buttonVariantLabel')"
+                :options="buttonVariantOptions">
+            </sw-single-select>
         </div>
     </div>
 
@@ -92,6 +104,11 @@
                 v-model:value="buttonSecondaryTarget"
                 :label="$tc('sw-cms.elements.ultimateCmsTools.cta.config.buttonTargetLabel')"
                 :options="targetOptions">
+            </sw-single-select>
+            <sw-single-select
+                v-model:value="buttonSecondaryVariant"
+                :label="$tc('sw-cms.elements.ultimateCmsTools.cta.config.buttonVariantLabel')"
+                :options="buttonVariantOptions">
             </sw-single-select>
         </div>
     </div>

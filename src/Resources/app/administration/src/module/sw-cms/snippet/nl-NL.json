@@ -200,6 +200,12 @@
                             "hero-spotlight": "Hero spotlight",
                             "interactive-card": "Interactieve zwevende kaart"
                         },
+                        "layoutLabel": "Lay-outstructuur",
+                        "layouts": {
+                            "verticalInline": "Verticaal (Knoppen naast elkaar)",
+                            "verticalStacked": "Verticaal (Knoppen onder elkaar)",
+                            "horizontal": "Horizontaal (Inhoud links, knoppen rechts)"
+                        },
                         "textColorLabel": "Tekststijl",
                         "textColors": {
                             "dark": "Donkere tekst (Geoptimaliseerd voor lichte achtergronden)",
@@ -212,6 +218,16 @@
                         "buttonUrlLabel": "Link-URL",
                         "buttonUrlPlaceholder": "bijv. /categorie-link",
                         "buttonTargetLabel": "Linkdoel",
+                        "buttonVariantLabel": "Knopstijl / Ontwerp",
+                        "buttonVariants": {
+                            "primary": "Primair",
+                            "secondary": "Secundair",
+                            "outlinePrimary": "Contour primair",
+                            "outlineSecondary": "Contour secundair",
+                            "light": "Licht",
+                            "dark": "Donker",
+                            "link": "Link"
+                        },
                         "targetSelf": "Hetzelfde venster",
                         "targetBlank": "Nieuw venster"
                     }

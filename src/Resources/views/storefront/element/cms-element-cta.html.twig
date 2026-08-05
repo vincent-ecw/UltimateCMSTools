@@ -7,19 +7,22 @@
     {% set buttonText = config.buttonText.value|default('') %}
     {% set buttonUrl = config.buttonUrl.value|default('') %}
     {% set buttonTarget = config.buttonTarget.value|default('_self') %}
+    {% set buttonVariant = config.buttonVariant.value|default('primary') %}
     {% set buttonSecondaryText = config.buttonSecondaryText.value|default('') %}
     {% set buttonSecondaryUrl = config.buttonSecondaryUrl.value|default('') %}
     {% set buttonSecondaryTarget = config.buttonSecondaryTarget.value|default('_self') %}
+    {% set buttonSecondaryVariant = config.buttonSecondaryVariant.value|default('secondary') %}
+    {% set layout = config.layout.value|default('vertical-inline') %}
     {% set style = config.style.value|default('split-minimal') %}
     {% set textColor = config.textColor.value|default('dark') %}
     {% set minHeight = config.minHeight.value|default('') %}
 
-    {% if minHeight and minHeight matches '/^\\\\d+$/' %}
+    {% if minHeight and minHeight matches '/^\\d+$/' %}
         {% set minHeight = minHeight ~ 'px' %}
     {% endif %}
 
     {% if title or subtitle or buttonText or buttonSecondaryText %}
-        <div class="cms-element-cta style-{{ style }} text-{{ textColor }}"
+        <div class="cms-element-cta style-{{ style }} layout-{{ layout }} text-{{ textColor }}"
              style="{% if backgroundImage %}background-image: url('{{ backgroundImage.url }}'); background-size: cover; background-position: center;{% endif %}{% if minHeight %} min-height: {{ minHeight }};{% endif %}">
             
             {% if backgroundImage %}
@@ -45,7 +48,7 @@
                     <div class="cta-actions">
                         {% if buttonText and buttonUrl %}
                             <a href="{{ buttonUrl }}"
-                               class="btn cta-btn cta-btn-primary"
+                               class="btn btn-{{ buttonVariant }}"
                                target="{{ buttonTarget }}"
                                {% if buttonTarget == '_blank' %}rel="noopener noreferrer"{% endif %}>
                                 {{ buttonText }}
@@ -54,7 +57,7 @@
 
                         {% if buttonSecondaryText and buttonSecondaryUrl %}
                             <a href="{{ buttonSecondaryUrl }}"
-                               class="btn cta-btn cta-btn-secondary"
+                               class="btn btn-{{ buttonSecondaryVariant }}"
                                target="{{ buttonSecondaryTarget }}"
                                {% if buttonSecondaryTarget == '_blank' %}rel="noopener noreferrer"{% endif %}>
                                 {{ buttonSecondaryText }}

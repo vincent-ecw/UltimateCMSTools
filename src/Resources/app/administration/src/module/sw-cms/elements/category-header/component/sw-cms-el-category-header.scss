@@ -306,12 +306,12 @@
 
             .header-divider {
                 position: absolute;
-                left: 56%;
+                right: 0;
                 top: 0;
                 bottom: 0;
-                width: 6px;
+                width: 44%;
                 background-color: #f59e0b;
-                transform: skewX(-12deg);
+                clip-path: polygon(calc(14% - 6px) 0, calc(14% + 1px) 0, calc(0% + 1px) 100%, calc(0% - 6px) 100%);
                 z-index: 3;
             }
 

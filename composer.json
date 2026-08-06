@@ -1,7 +1,7 @@
 {
     "name": "vincentbourgonje/ultimate-cms-tools",
     "description": "A collection of CMS blocks that should have been included in Shopware by default.",
-    "version": "1.2.15",
+    "version": "1.2.16",
     "type": "shopware-platform-plugin",
     "license": "MIT",
     "authors": [

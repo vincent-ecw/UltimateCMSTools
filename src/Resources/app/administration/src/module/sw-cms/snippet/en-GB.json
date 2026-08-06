@@ -122,6 +122,13 @@
                 }
             },
             "ultimateCmsTools": {
+                "customCode": {
+                    "label": "Custom Code",
+                    "config": {
+                        "cssCodeLabel": "CSS Code",
+                        "jsCodeLabel": "JavaScript Code"
+                    }
+                },
                 "commonSlider": {
                     "label": "Common Slider",
                     "config": {

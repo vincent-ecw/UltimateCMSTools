@@ -1,18 +1,20 @@
 <div class="sw-cms-el-config-custom-code">
-    <sw-container title="CSS Code">
+    <div class="sw-cms-el-config-custom-code__css">
         <sw-code-editor
             v-model:value="cssCode"
+            :label="$tc('sw-cms.elements.ultimateCmsTools.customCode.config.cssCodeLabel')"
             language="css"
-            editorHeight="300" 
-            :sanitizeInput="false">
+            editor-height="300"
+            :sanitize-input="false">
         </sw-code-editor>
-    </sw-container>
-    <sw-container title="JavaScript Code" style="margin-top: 20px;">
+    </div>
+    <div class="sw-cms-el-config-custom-code__js" style="margin-top: 20px;">
         <sw-code-editor
             v-model:value="jsCode"
+            :label="$tc('sw-cms.elements.ultimateCmsTools.customCode.config.jsCodeLabel')"
             language="javascript"
-            editorHeight="300"
-            :sanitizeInput="false">
+            editor-height="300"
+            :sanitize-input="false">
         </sw-code-editor>
-    </sw-container>
+    </div>
 </div>

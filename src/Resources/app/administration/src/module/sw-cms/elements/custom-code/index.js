@@ -4,7 +4,7 @@ import './preview/sw-cms-el-preview-custom-code';
 
 Shopware.Service('cmsService').registerCmsElement({
     name: 'custom-code',
-    label: 'sw-cms.elements.customCode.label',
+    label: 'sw-cms.elements.ultimateCmsTools.customCode.label',
     component: 'sw-cms-el-custom-code',
     configComponent: 'sw-cms-el-config-custom-code',
     previewComponent: 'sw-cms-el-preview-custom-code',

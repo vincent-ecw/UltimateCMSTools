@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.14] - 2026-08-06
+
+### Fixed
+- Fixed missing Storefront block template (`cms-block-custom-code.html.twig`) for **Custom Code** block.
+- Fixed code editor field labels and titles in Administration CMS layout editor configuration modal for **Custom Code** element (`cms-element-custom-code`).
+- Fixed reactive data binding in Administration config component by calling `this.onChange()` on computed setters.
+- Fixed snippet namespaces for element registration labels in English, German, and Dutch.
+
 ## [1.2.13] - 2026-08-06
 
 ### Added

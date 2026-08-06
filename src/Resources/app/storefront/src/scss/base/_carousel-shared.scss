@@ -190,7 +190,7 @@
     transition: all 0.3s ease;
 
     &.active {
-        background-color: var(--colors-ecw-map-button-navigation-active, --primary, #007bff);
+        background-color: var(--colors-ecw-map-button-navigation-active, var(--primary, #007bff));
         width: 24px;
         border-radius: 5px;
     }

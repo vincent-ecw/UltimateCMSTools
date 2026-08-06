@@ -10,6 +10,8 @@
     &__btn {
         display: inline-flex;
         align-items: center;
+        justify-content: center;
+        vertical-align: middle;
         gap: 6px;
         padding: 6px 16px;
         background-color: #189eff;
@@ -17,5 +19,26 @@
         border-radius: 4px;
         font-size: 12px;
         font-weight: 600;
+
+        .sw-icon,
+        span {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            align-self: center;
+            line-height: 1;
+            margin: 0;
+            vertical-align: middle;
+        }
+
+        .sw-icon {
+            flex-shrink: 0;
+
+            > svg {
+                display: block;
+                vertical-align: middle;
+                margin: 0;
+            }
+        }
     }
 }

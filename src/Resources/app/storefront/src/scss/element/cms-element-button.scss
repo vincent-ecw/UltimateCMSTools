@@ -31,10 +31,34 @@
         display: inline-flex;
         align-items: center;
         justify-content: center;
+        vertical-align: middle;
         gap: var(--ecw-spacing-small, var(--spacer-md, var(--bs-spacer-4, 1.5rem)));
+
+        .icon,
+        .btn-icon-before,
+        .btn-icon-after,
+        .btn-text {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            align-self: center;
+            line-height: 1;
+            margin: 0;
+            vertical-align: middle;
+            position: static;
+            transform: none;
+        }
 
         .icon {
             flex-shrink: 0;
+
+            > svg {
+                display: block;
+                vertical-align: middle;
+                margin: 0;
+                position: static;
+                transform: none;
+            }
         }
 
         &.w-100 {
@@ -43,4 +67,5 @@
         }
     }
 }
+
 

@@ -31,6 +31,7 @@
         display: inline-flex;
         align-items: center;
         justify-content: center;
+        vertical-align: middle;
         gap: var(--ecw-spacing-small, var(--spacer-md, var(--bs-spacer-4, 1.5rem)));
         padding: 10px 20px;
         font-size: 14px;
@@ -39,6 +40,29 @@
         cursor: pointer;
         transition: all 0.2s ease-in-out;
         border: 1px solid transparent;
+
+        .sw-icon,
+        &__icon-before,
+        &__icon-after,
+        &__text {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            align-self: center;
+            line-height: 1;
+            margin: 0;
+            vertical-align: middle;
+        }
+
+        .sw-icon {
+            flex-shrink: 0;
+
+            > svg {
+                display: block;
+                vertical-align: middle;
+                margin: 0;
+            }
+        }
 
         &.is-full-width {
             width: 100%;

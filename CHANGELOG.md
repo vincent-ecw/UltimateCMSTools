@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.17] - 2026-08-06
+
+### Fixed
+- Fixed vertical alignment of button icons (`btn-icon-before`, `btn-icon-after`, `icon`) and button text (`btn-text`) in the **Button** CMS element (`cms-element-button`) and Administration editor/preview components to ensure icons and text are strictly centered vertically regardless of theme font metrics or button line-height overrides.
+
 ## [1.2.16] - 2026-08-06
 
 ### Fixed

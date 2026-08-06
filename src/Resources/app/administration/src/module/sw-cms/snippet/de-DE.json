@@ -10,7 +10,8 @@
                 "configInfo": "Keine Konfiguration erforderlich. Die Unterkategorien der aktiven Kategorie werden automatisch angezeigt.",
                 "config": {
                     "showAllSubcategoriesLabel": "Alle Unterkategorien anzeigen",
-                    "displayImageLabel": "Bild anzeigen"
+                    "displayImageLabel": "Bild anzeigen",
+                    "displayDescriptionLabel": "Beschreibung anzeigen"
                 }
             },
             "customCarousel": {
@@ -267,6 +268,7 @@
                     "config": {
                         "showAllSubcategoriesLabel": "Alle Unterkategorien anzeigen",
                         "displayImageLabel": "Bild anzeigen",
+                        "displayDescriptionLabel": "Beschreibung anzeigen",
                         "columnsMobileLabel": "Anzeige auf Mobilgeräten",
                         "columnsMobile1": "1 Spalte",
                         "columnsMobile2": "2 Spalten"

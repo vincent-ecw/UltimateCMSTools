@@ -2,6 +2,7 @@
 
 namespace VincentBourgonje\UltimateCmsTools\DataResolver;
 
+use Shopware\Core\Content\Category\CategoryCollection;
 use Shopware\Core\Content\Category\CategoryDefinition;
 use Shopware\Core\Content\Cms\Aggregate\CmsSlot\CmsSlotEntity;
 use Shopware\Core\Content\Cms\DataResolver\CriteriaCollection;
@@ -12,6 +13,7 @@ use Shopware\Core\Content\Cms\DataResolver\ResolverContext\ResolverContext;
 use Shopware\Core\Framework\DataAbstractionLayer\Search\Criteria;
 use Shopware\Core\Framework\DataAbstractionLayer\Search\Filter\EqualsFilter;
 use Shopware\Core\Framework\DataAbstractionLayer\Search\Filter\ContainsFilter;
+use Shopware\Core\Framework\DataAbstractionLayer\Util\AfterSort;
 
 class SubcategoryCarouselCmsElementResolver extends AbstractCmsElementResolver
 {
@@ -65,12 +67,107 @@ class SubcategoryCarouselCmsElementResolver extends AbstractCmsElementResolver
             return;
         }
 
+        /** @var CategoryCollection $categories */
         $categories = $searchResult->getEntities();
         
+        if ($resolverContext instanceof EntityResolverContext) {
+            $categories = $this->sortCategoriesByTree($categories, $resolverContext->getEntity()->getId());
+        } else {
+            $categories->sortByPosition();
+        }
+
+        foreach ($categories as $category) {
+            $translated = $category->getTranslated();
+            if (isset($translated['description']) && is_string($translated['description'])) {
+                $translated['description'] = $this->formatCategoryDescription($translated['description']);
+                $category->setTranslated($translated);
+            }
+        }
+
         $data = new \Shopware\Core\Framework\Struct\ArrayStruct([
             'categories' => $categories
         ]);
 
         $slot->setData($data);
+    }
+
+    private function formatCategoryDescription(?string $description): string
+    {
+        if (!$description) {
+            return '';
+        }
+
+        $text = preg_replace('/<\/(p|div|h[1-6]|li)>\s*|<br\s*\/?>/i', '||PARAGRAPH||', $description);
+        $text = strip_tags($text);
+
+        $parts = explode('||PARAGRAPH||', $text);
+        $cleanParts = [];
+
+        foreach ($parts as $part) {
+            $trimmed = trim(html_entity_decode($part, ENT_QUOTES | ENT_HTML5, 'UTF-8'));
+            $trimmed = trim($trimmed, " \t\n\r\0\x0B\xC2\xA0");
+
+            if ($trimmed === '') {
+                continue;
+            }
+
+            $lastChar = mb_substr($trimmed, -1);
+            if (!in_array($lastChar, ['.', '!', '?', ':', ';'], true)) {
+                $trimmed .= '.';
+            }
+
+            $cleanParts[] = $trimmed;
+        }
+
+        return implode(' ', $cleanParts);
+    }
+
+    private function sortCategoriesByTree(CategoryCollection $categories, string $rootCategoryId): CategoryCollection
+    {
+        if ($categories->count() <= 1) {
+            return $categories;
+        }
+
+        $grouped = [];
+        foreach ($categories as $category) {
+            $parentId = $category->getParentId() ?? '';
+            $grouped[$parentId][$category->getId()] = $category;
+        }
+
+        foreach ($grouped as $parentId => $children) {
+            $grouped[$parentId] = AfterSort::sort($children, 'afterCategoryId');
+        }
+
+        $sortedCategories = [];
+        $visited = [];
+
+        $flatten = function (string $parentId) use (&$flatten, &$grouped, &$sortedCategories, &$visited) {
+            if (!isset($grouped[$parentId])) {
+                return;
+            }
+
+            foreach ($grouped[$parentId] as $categoryId => $category) {
+                if (isset($visited[$categoryId])) {
+                    continue;
+                }
+                $visited[$categoryId] = true;
+                $sortedCategories[$categoryId] = $category;
+                $flatten($categoryId);
+            }
+        };
+
+        $flatten($rootCategoryId);
+
+        foreach ($grouped as $parentId => $children) {
+            foreach ($children as $categoryId => $category) {
+                if (!isset($visited[$categoryId])) {
+                    $visited[$categoryId] = true;
+                    $sortedCategories[$categoryId] = $category;
+                    $flatten($categoryId);
+                }
+            }
+        }
+
+        return new CategoryCollection($sortedCategories);
     }
 }

@@ -24,6 +24,11 @@
                     v-model:value="displayImage"
                     :label="$tc('sw-cms.elements.subcategoryCarousel.config.displayImageLabel')">
                 </sw-switch-field>
+
+                <sw-switch-field
+                    v-model:value="displayDescription"
+                    :label="$tc('sw-cms.elements.subcategoryCarousel.config.displayDescriptionLabel')">
+                </sw-switch-field>
             </div>
 
             <div v-if="active === 'settings'" class="sw-cms-el-config-subcategory-carousel__tab-settings">

@@ -10,7 +10,8 @@
                 "configInfo": "Geen configuratie vereist. De subcategorieën van de actieve categorie worden automatisch weergegeven.",
                 "config": {
                     "showAllSubcategoriesLabel": "Toon alle subcategorieën",
-                    "displayImageLabel": "Afbeelding weergeven"
+                    "displayImageLabel": "Afbeelding weergeven",
+                    "displayDescriptionLabel": "Omschrijving weergeven"
                 }
             },
             "customCarousel": {
@@ -267,6 +268,7 @@
                     "config": {
                         "showAllSubcategoriesLabel": "Toon alle subcategorieën",
                         "displayImageLabel": "Afbeelding weergeven",
+                        "displayDescriptionLabel": "Omschrijving weergeven",
                         "columnsMobileLabel": "Weergave op mobiele apparaten",
                         "columnsMobile1": "1 kolom",
                         "columnsMobile2": "2 kolommen"

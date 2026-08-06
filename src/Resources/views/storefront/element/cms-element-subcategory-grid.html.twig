@@ -1,6 +1,7 @@
 {% block element_subcategory_grid %}
     {% set categories = element.data.categories %}
     {% set displayImage = element.config.displayImage.value ?? true %}
+    {% set displayDescription = element.config.displayDescription.value ?? true %}
     {% set columnsMobile = element.config.columnsMobile.value ?? '1' %}
 
     {% if categories and categories.count > 0 %}
@@ -34,7 +35,7 @@
 
                         <div class="subcategory-card-content">
                             <h3 class="subcategory-card-title">{{ category.translated.name }}</h3>
-                            {% if category.translated.description %}
+                            {% if displayDescription and category.translated.description %}
                                 <div class="subcategory-card-description">
                                     {{ category.translated.description|striptags|u.truncate(80, '...', false) }}
                                 </div>

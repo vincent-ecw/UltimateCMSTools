@@ -28,6 +28,15 @@ Component.register('sw-cms-el-config-subcategory-carousel', {
                 this.onChange();
             }
         },
+        displayDescription: {
+            get() {
+                return this.element.config?.displayDescription?.value ?? true;
+            },
+            set(value) {
+                this.element.config.displayDescription.value = value;
+                this.onChange();
+            }
+        },
         dotsPositionOptions() {
             return [
                 {

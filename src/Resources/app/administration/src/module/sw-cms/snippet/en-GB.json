@@ -10,7 +10,8 @@
                 "configInfo": "No configuration required. The subcategories of the active category are displayed automatically.",
                 "config": {
                     "showAllSubcategoriesLabel": "Show all subcategories",
-                    "displayImageLabel": "Display image"
+                    "displayImageLabel": "Display image",
+                    "displayDescriptionLabel": "Display description"
                 }
             },
             "customCarousel": {
@@ -267,6 +268,7 @@
                     "config": {
                         "showAllSubcategoriesLabel": "Show all subcategories",
                         "displayImageLabel": "Display image",
+                        "displayDescriptionLabel": "Display description",
                         "columnsMobileLabel": "Display on mobile device",
                         "columnsMobile1": "1 column",
                         "columnsMobile2": "2 columns"

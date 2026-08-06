@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.15] - 2026-08-06
+
+### Added
+- Added `Display description` configuration switch setting to **Subcategory Carousel** and **Subcategory Grid** CMS elements in Administration and Storefront views.
+- Added intelligent paragraph concatenation for multi-paragraph category descriptions in PHP resolvers (`SubcategoryCarouselCmsElementResolver` and `SubcategoryGridCmsElementResolver`), appending missing sentence punctuation and separating paragraphs with proper spacing.
+
+### Fixed
+- Fixed subcategory sort order in **Subcategory Carousel** (`subcategory-carousel`) and **Subcategory Grid** (`subcategory-grid`) CMS elements to strictly respect the position defined in the category tree (`afterCategoryId`) for both single and multi-level subcategory configurations.
+
 ## [1.2.14] - 2026-08-06
 
 ### Fixed

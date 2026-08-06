@@ -17,6 +17,10 @@ Shopware.Service('cmsService').registerCmsElement({
             source: 'static',
             value: true
         },
+        displayDescription: {
+            source: 'static',
+            value: true
+        },
         navigationArrows: {
             source: 'static',
             value: true

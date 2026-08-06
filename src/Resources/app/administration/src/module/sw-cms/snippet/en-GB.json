@@ -112,6 +112,10 @@
                 "label": "FAQ Harmonica",
                 "emptyState": "Add FAQ items in the settings",
                 "config": {
+                    "tabs": {
+                        "content": "Content",
+                        "settings": "Settings"
+                    },
                     "iconLabel": "Icon",
                     "iconPlaceholder": "e.g. regular-comments",
                     "iconHelpText": "Enter a valid Shopware icon name.",
@@ -119,7 +123,15 @@
                     "titlePlaceholder": "Enter the question...",
                     "contentLabel": "Answer",
                     "contentPlaceholder": "Enter the answer...",
-                    "addButton": "Add FAQ Item"
+                    "addButton": "Add FAQ Item",
+                    "themeLabel": "Accordion Theme",
+                    "themes": {
+                        "clean": "Minimal Clean Dividers",
+                        "boxed": "Floating Cards",
+                        "pillBlock": "Accent Toggle Block",
+                        "editorialNumbered": "Modern Numbered",
+                        "accentLine": "Left Accent Border"
+                    }
                 }
             },
             "ultimateCmsTools": {
@@ -484,6 +496,32 @@
                             "offset": "Offset",
                             "rounded": "Rounded",
                             "stacked": "Stacked"
+                        }
+                    }
+                },
+                "faqHarmonica": {
+                    "label": "FAQ Harmonica",
+                    "emptyState": "Add FAQ items in the settings",
+                    "config": {
+                        "tabs": {
+                            "content": "Content",
+                            "settings": "Settings"
+                        },
+                        "iconLabel": "Icon",
+                        "iconPlaceholder": "e.g. regular-comments",
+                        "iconHelpText": "Enter a valid Shopware icon name.",
+                        "titleLabel": "Question",
+                        "titlePlaceholder": "Enter the question...",
+                        "contentLabel": "Answer",
+                        "contentPlaceholder": "Enter the answer...",
+                        "addButton": "Add FAQ Item",
+                        "themeLabel": "Accordion Theme",
+                        "themes": {
+                            "clean": "Minimal Clean Dividers",
+                            "boxed": "Floating Cards",
+                            "pillBlock": "Accent Toggle Block",
+                            "editorialNumbered": "Modern Numbered",
+                            "accentLine": "Left Accent Border"
                         }
                     }
                 }

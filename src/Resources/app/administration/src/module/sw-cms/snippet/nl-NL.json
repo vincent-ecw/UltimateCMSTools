@@ -112,6 +112,10 @@
                 "label": "FAQ Accordeon",
                 "emptyState": "Voeg FAQ-items toe in de instellingen",
                 "config": {
+                    "tabs": {
+                        "content": "Inhoud",
+                        "settings": "Instellingen"
+                    },
                     "iconLabel": "Icoon",
                     "iconPlaceholder": "bijv. regular-comments",
                     "iconHelpText": "Voer een geldige Shopware-icoonnaam in.",
@@ -119,7 +123,15 @@
                     "titlePlaceholder": "Voer de vraag in...",
                     "contentLabel": "Antwoord",
                     "contentPlaceholder": "Voer het antwoord in...",
-                    "addButton": "FAQ-item toevoegen"
+                    "addButton": "FAQ-item toevoegen",
+                    "themeLabel": "Accordeon Thema",
+                    "themes": {
+                        "clean": "Minimalistisch Clean",
+                        "boxed": "Zwevende Kaarten",
+                        "pillBlock": "Accent Schakelknop",
+                        "editorialNumbered": "Modern Genummerd",
+                        "accentLine": "Linker Accentlijn"
+                    }
                 }
             },
             "ultimateCmsTools": {
@@ -484,6 +496,32 @@
                             "offset": "Versprongen (Offset)",
                             "rounded": "Afgerond (Rounded)",
                             "stacked": "Gestapeld (Stacked)"
+                        }
+                    }
+                },
+                "faqHarmonica": {
+                    "label": "FAQ Accordeon",
+                    "emptyState": "Voeg FAQ-items toe in de instellingen",
+                    "config": {
+                        "tabs": {
+                            "content": "Inhoud",
+                            "settings": "Instellingen"
+                        },
+                        "iconLabel": "Icoon",
+                        "iconPlaceholder": "bijv. regular-comments",
+                        "iconHelpText": "Voer een geldige Shopware-icoonnaam in.",
+                        "titleLabel": "Vraag",
+                        "titlePlaceholder": "Voer de vraag in...",
+                        "contentLabel": "Antwoord",
+                        "contentPlaceholder": "Voer het antwoord in...",
+                        "addButton": "FAQ-item toevoegen",
+                        "themeLabel": "Accordeon Thema",
+                        "themes": {
+                            "clean": "Minimalistisch Clean",
+                            "boxed": "Zwevende Kaarten",
+                            "pillBlock": "Accent Schakelknop",
+                            "editorialNumbered": "Modern Genummerd",
+                            "accentLine": "Linker Accentlijn"
                         }
                     }
                 }

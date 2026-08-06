@@ -112,6 +112,10 @@
                 "label": "FAQ Harmonika",
                 "emptyState": "Fügen Sie FAQ-Elemente in den Einstellungen hinzu",
                 "config": {
+                    "tabs": {
+                        "content": "Inhalt",
+                        "settings": "Einstellungen"
+                    },
                     "iconLabel": "Icon",
                     "iconPlaceholder": "z.B. regular-comments",
                     "iconHelpText": "Geben Sie einen gültigen Shopware-Icon-Namen ein.",
@@ -119,7 +123,15 @@
                     "titlePlaceholder": "Frage eingeben...",
                     "contentLabel": "Antwort",
                     "contentPlaceholder": "Antwort eingeben...",
-                    "addButton": "FAQ-Element hinzufügen"
+                    "addButton": "FAQ-Element hinzufügen",
+                    "themeLabel": "Akkordeon-Design",
+                    "themes": {
+                        "clean": "Minimalistisch Clean",
+                        "boxed": "Schwebende Karten",
+                        "pillBlock": "Akzent-Schaltfläche",
+                        "editorialNumbered": "Modern Nummeriert",
+                        "accentLine": "Linker Akzentstreifen"
+                    }
                 }
             },
             "ultimateCmsTools": {
@@ -484,6 +496,32 @@
                             "offset": "Versetzt (Offset)",
                             "rounded": "Abgerundet (Rounded)",
                             "stacked": "Gestapelt (Stacked)"
+                        }
+                    }
+                },
+                "faqHarmonica": {
+                    "label": "FAQ Harmonika",
+                    "emptyState": "Fügen Sie FAQ-Elemente in den Einstellungen hinzu",
+                    "config": {
+                        "tabs": {
+                            "content": "Inhalt",
+                            "settings": "Einstellungen"
+                        },
+                        "iconLabel": "Icon",
+                        "iconPlaceholder": "z.B. regular-comments",
+                        "iconHelpText": "Geben Sie einen gültigen Shopware-Icon-Namen ein.",
+                        "titleLabel": "Frage",
+                        "titlePlaceholder": "Frage eingeben...",
+                        "contentLabel": "Antwort",
+                        "contentPlaceholder": "Antwort eingeben...",
+                        "addButton": "FAQ-Element hinzufügen",
+                        "themeLabel": "Akkordeon-Design",
+                        "themes": {
+                            "clean": "Minimalistisch Clean",
+                            "boxed": "Schwebende Karten",
+                            "pillBlock": "Akzent-Schaltfläche",
+                            "editorialNumbered": "Modern Nummeriert",
+                            "accentLine": "Linker Akzentstreifen"
                         }
                     }
                 }

@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.18] - 2026-08-06
+
+### Added
+- Added theme selection capability to **FAQ Harmonica** (`faq-harmonica`) CMS element with 5 theme variations: Minimal Clean Dividers (`clean`), Floating Cards (`boxed`), Accent Toggle Block (`pill-block`), Modern Numbered (`editorial-numbered`), and Left Accent Border (`accent-line`).
+- Added theme configuration tab in Administration editor for FAQ Harmonica with Vue 3 reactive getter/setter and `v-model:value` binding.
+- Updated Storefront Twig and SCSS templates to dynamically adapt FAQ Harmonica themes to the active Shopware theme colors (`$primary`, `$secondary`, `$tertiary`, `$border-color`, `$card-bg`).
+
 ## [1.2.17] - 2026-08-06
 
 ### Fixed

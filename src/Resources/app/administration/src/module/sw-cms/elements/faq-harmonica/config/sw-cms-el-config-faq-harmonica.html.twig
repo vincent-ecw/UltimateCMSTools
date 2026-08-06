@@ -1,49 +1,71 @@
 <div class="sw-cms-el-config-faq-harmonica">
-    <div class="sw-cms-el-config-faq-harmonica__faq-items">
-        <div v-for="(faq, index) in element.config.faqs.value" :key="index" class="sw-cms-el-config-faq-harmonica__faq-item">
-            <div class="sw-cms-el-config-faq-harmonica__faq-item-header">
-                <span class="faq-number">FAQ Item {{ index + 1 }}</span>
-                <sw-button @click="onRemoveFaq(index)" size="small" variant="danger">
-                    {{ $tc('global.default.delete') }}
-                </sw-button>
-            </div>
-            
-            <div class="sw-cms-el-config-faq-harmonica__faq-item-content">
-                <sw-media-compact-upload-v2
-                    :source="faq.mediaId"
-                    :upload-tag="'faq-icon-upload-' + element.id + '-' + index"
-                    :allowMultiSelect="false"
-                    :label="$tc('sw-cms.elements.faqHarmonica.config.iconLabel')"
-                    :helpText="'Please upload an image with dimensions of exactly 24x24 pixels to ensure proper alignment.'"
-                    @selection-change="onImageSelect(faq, $event)"
-                    @media-upload-remove-image="onImageRemove(faq)"
-                ></sw-media-compact-upload-v2>
+    <sw-tabs default-item="content" position="top">
+        <template #default="{ active }">
+            <sw-tabs-item name="content" :active-tab="active" @click="activeTab = 'content'">
+                {{ $tc('sw-cms.elements.ultimateCmsTools.faqHarmonica.config.tabs.content') || $tc('sw-cms.elements.faqHarmonica.config.tabs.content') || 'Content' }}
+            </sw-tabs-item>
+            <sw-tabs-item name="settings" :active-tab="active" @click="activeTab = 'settings'">
+                {{ $tc('sw-cms.elements.ultimateCmsTools.faqHarmonica.config.tabs.settings') || $tc('sw-cms.elements.faqHarmonica.config.tabs.settings') || 'Settings' }}
+            </sw-tabs-item>
+        </template>
+    </sw-tabs>
 
-                <sw-upload-listener
-                    :upload-tag="'faq-icon-upload-' + element.id + '-' + index"
-                    auto-upload
-                    @media-upload-finish="onImageUpload(faq, $event)"
-                />
+    <div v-if="activeTab === 'content'" class="sw-cms-el-config-faq-harmonica__content-tab">
+        <div class="sw-cms-el-config-faq-harmonica__faq-items">
+            <div v-for="(faq, index) in element.config.faqs.value" :key="index" class="sw-cms-el-config-faq-harmonica__faq-item">
+                <div class="sw-cms-el-config-faq-harmonica__faq-item-header">
+                    <span class="faq-number">FAQ Item {{ index + 1 }}</span>
+                    <sw-button @click="onRemoveFaq(index)" size="small" variant="danger">
+                        {{ $tc('global.default.delete') }}
+                    </sw-button>
+                </div>
                 
-                <sw-text-field 
-                    v-model="faq.title" 
-                    :label="$tc('sw-cms.elements.faqHarmonica.config.titleLabel')" 
-                    :placeholder="$tc('sw-cms.elements.faqHarmonica.config.titlePlaceholder')">
-                </sw-text-field>
-                
-                <sw-text-editor 
-                    :value="faq.content"
-                    @update:value="faq.content = $event"
-                    :label="$tc('sw-cms.elements.faqHarmonica.config.contentLabel')"
-                    :placeholder="$tc('sw-cms.elements.faqHarmonica.config.contentPlaceholder')">
-                </sw-text-editor>
+                <div class="sw-cms-el-config-faq-harmonica__faq-item-content">
+                    <sw-media-compact-upload-v2
+                        :source="faq.mediaId"
+                        :upload-tag="'faq-icon-upload-' + element.id + '-' + index"
+                        :allowMultiSelect="false"
+                        :label="$tc('sw-cms.elements.faqHarmonica.config.iconLabel')"
+                        :helpText="'Please upload an image with dimensions of exactly 24x24 pixels to ensure proper alignment.'"
+                        @selection-change="onImageSelect(faq, $event)"
+                        @media-upload-remove-image="onImageRemove(faq)"
+                    ></sw-media-compact-upload-v2>
+
+                    <sw-upload-listener
+                        :upload-tag="'faq-icon-upload-' + element.id + '-' + index"
+                        auto-upload
+                        @media-upload-finish="onImageUpload(faq, $event)"
+                    />
+                    
+                    <sw-text-field 
+                        v-model="faq.title" 
+                        :label="$tc('sw-cms.elements.faqHarmonica.config.titleLabel')" 
+                        :placeholder="$tc('sw-cms.elements.faqHarmonica.config.titlePlaceholder')">
+                    </sw-text-field>
+                    
+                    <sw-text-editor 
+                        :value="faq.content"
+                        @update:value="faq.content = $event; onChange()"
+                        :label="$tc('sw-cms.elements.faqHarmonica.config.contentLabel')"
+                        :placeholder="$tc('sw-cms.elements.faqHarmonica.config.contentPlaceholder')">
+                    </sw-text-editor>
+                </div>
             </div>
+        </div>
+
+        <div class="sw-cms-el-config-faq-harmonica__actions">
+            <sw-button @click="onAddFaq" variant="ghost" class="sw-cms-el-config-faq-harmonica__add-button">
+                {{ $tc('sw-cms.elements.faqHarmonica.config.addButton') }}
+            </sw-button>
         </div>
     </div>
 
-    <div class="sw-cms-el-config-faq-harmonica__actions">
-        <sw-button @click="onAddFaq" variant="ghost" class="sw-cms-el-config-faq-harmonica__add-button">
-            {{ $tc('sw-cms.elements.faqHarmonica.config.addButton') }}
-        </sw-button>
+    <div v-if="activeTab === 'settings'" class="sw-cms-el-config-faq-harmonica__settings-tab">
+        <sw-single-select
+            v-model:value="theme"
+            :options="themeOptions"
+            :label="$tc('sw-cms.elements.ultimateCmsTools.faqHarmonica.config.themeLabel') || $tc('sw-cms.elements.faqHarmonica.config.themeLabel')">
+        </sw-single-select>
     </div>
 </div>
+

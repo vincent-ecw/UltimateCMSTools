@@ -9,6 +9,10 @@ Shopware.Service('cmsService').registerCmsElement({
     configComponent: 'sw-cms-el-config-faq-harmonica',
     previewComponent: 'sw-cms-el-preview-faq-harmonica',
     defaultConfig: {
+        theme: {
+            source: 'static',
+            value: 'clean'
+        },
         faqs: {
             source: 'static',
             value: [

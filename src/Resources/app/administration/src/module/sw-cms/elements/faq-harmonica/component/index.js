@@ -8,6 +8,12 @@ Shopware.Component.register('sw-cms-el-faq-harmonica', {
         Shopware.Mixin.getByName('cms-element')
     ],
 
+    computed: {
+        currentTheme() {
+            return this.element?.config?.theme?.value || 'clean';
+        }
+    },
+
     created() {
         this.createdComponent();
     },

@@ -1,10 +1,17 @@
 <div class="sw-cms-el-faq-harmonica">
-    <div v-if="element.config.faqs.value && element.config.faqs.value.length > 0" class="faq-harmonica-preview">
+    <div v-if="element.config.faqs.value && element.config.faqs.value.length > 0" :class="['faq-harmonica-preview', 'theme-' + currentTheme]">
         <div class="faq-item" v-for="(faq, index) in element.config.faqs.value" :key="index">
             <div class="faq-header">
-                <sw-icon v-if="faq.icon" :name="faq.icon"></sw-icon>
+                <span v-if="currentTheme === 'pill-block'" class="faq-pill-badge">
+                    <sw-icon name="regular-plus-xs"></sw-icon>
+                </span>
+                <span v-if="currentTheme === 'editorial-numbered'" class="faq-number">
+                    ({{ (index + 1) < 10 ? '0' + (index + 1) : (index + 1) }})
+                </span>
+                <sw-icon v-if="faq.icon && currentTheme !== 'pill-block'" :name="faq.icon"></sw-icon>
                 <span class="faq-title">{{ faq.title }}</span>
-                <sw-icon name="regular-chevron-down" class="faq-toggle-icon"></sw-icon>
+                <sw-icon v-if="currentTheme === 'editorial-numbered'" name="regular-long-arrow-right" class="faq-toggle-icon arrow-icon"></sw-icon>
+                <sw-icon v-else name="regular-chevron-down" class="faq-toggle-icon"></sw-icon>
             </div>
         </div>
     </div>

@@ -9,32 +9,30 @@
         border: none;
     }
 
+    // Base FAQ Item rules
     .faq-harmonica-item {
-        border: none;
-        border-bottom: 1px solid $border-color;
-        border-radius: 0;
-        background: transparent;
-
-        &:last-child {
-            border-bottom: none;
-        }
+        transition: all 0.25s ease-in-out;
 
         .faq-harmonica-header {
             margin: 0;
             padding: 0;
             
             .faq-harmonica-button {
-                padding: 1.5rem 1rem;
+                padding: 1.25rem 1rem;
                 font-weight: 600;
                 color: $headings-color;
                 background-color: transparent;
                 box-shadow: none;
                 display: flex;
                 align-items: center;
+                width: 100%;
+                text-align: left;
+                border: none;
+                transition: color 0.2s ease, background-color 0.2s ease;
 
-                &:not(.collapsed) {
-                    color: $primary;
-                    background-color: rgba($primary, 0.05);
+                &:focus {
+                    box-shadow: none;
+                    outline: none;
                 }
 
                 .faq-harmonica-icon-wrapper {
@@ -61,20 +59,296 @@
 
                 .faq-harmonica-title {
                     flex-grow: 1;
-                    font-size: 1.1rem;
+                    font-size: 1.05rem;
+                    line-height: 1.4;
+                }
+
+                // Default Bootstrap accordion chevron styling override
+                &::after {
+                    transition: transform 0.25s ease-in-out;
                 }
             }
         }
 
         .faq-harmonica-body {
-            padding: 0 1rem 1.5rem 1rem;
+            padding: 0 1rem 1.25rem 1rem;
             color: $body-color;
             line-height: 1.6;
-            
-            // Indent the body so it aligns with the title text
-            @media (min-width: 768px) {
-                padding-left: 3.5rem; // 1rem padding + 24px icon + 1rem margin = ~3.5rem
+        }
+    }
+
+    // ----------------------------------------------------
+    // Theme 1: Clean (Minimal Dividers - Default)
+    // ----------------------------------------------------
+    &.theme-clean {
+        .faq-harmonica-item {
+            border: none;
+            border-bottom: 1px solid $border-color;
+            border-radius: 0;
+            background: transparent;
+
+            &:last-child {
+                border-bottom: none;
+            }
+
+            .faq-harmonica-button {
+                &:not(.collapsed) {
+                    color: $primary;
+                    background-color: rgba($primary, 0.04);
+                }
+            }
+
+            .faq-harmonica-body {
+                @media (min-width: 768px) {
+                    padding-left: 3.5rem;
+                }
+            }
+        }
+    }
+
+    // ----------------------------------------------------
+    // Theme 2: Boxed (Floating Cards with Shadow & Accent Border)
+    // ----------------------------------------------------
+    &.theme-boxed {
+        .faq-harmonica-item {
+            border: 1px solid $border-color;
+            border-radius: if(variable-exists('border-radius-lg'), $border-radius-lg, 8px);
+            margin-bottom: 1rem;
+            background-color: if(variable-exists('card-bg'), $card-bg, #ffffff);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+            overflow: hidden;
+
+            &:hover {
+                border-color: darken($border-color, 10%);
+                box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+            }
+
+            .faq-harmonica-button {
+                padding: 1.25rem 1.25rem;
+
+                &:not(.collapsed) {
+                    color: $primary;
+                    background-color: rgba($primary, 0.03);
+                }
+            }
+
+            &:has(.faq-harmonica-button:not(.collapsed)) {
+                border-color: $primary;
+                box-shadow: 0 6px 20px rgba($primary, 0.12);
+            }
+
+            .faq-harmonica-body {
+                padding: 0.25rem 1.25rem 1.25rem 1.25rem;
+
+                @media (min-width: 768px) {
+                    padding-left: 3.75rem;
+                }
+            }
+        }
+    }
+
+    // ----------------------------------------------------
+    // Theme 3: Pill Block (Elementor Side Accent Button)
+    // ----------------------------------------------------
+    &.theme-pill-block {
+        .faq-harmonica-item {
+            border: 1px solid $border-color;
+            border-radius: if(variable-exists('border-radius'), $border-radius, 6px);
+            margin-bottom: 0.875rem;
+            background-color: if(variable-exists('card-bg'), $card-bg, #ffffff);
+            overflow: hidden;
+
+            .faq-harmonica-button {
+                padding: 0.875rem 1.25rem;
+                display: flex;
+                align-items: center;
+
+                &::after {
+                    display: none; // Hide default chevron
+                }
+
+                .faq-harmonica-pill-badge {
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 36px;
+                    height: 36px;
+                    border-radius: 8px;
+                    background-color: $primary;
+                    color: #ffffff;
+                    margin-right: 1.25rem;
+                    flex-shrink: 0;
+                    transition: background-color 0.25s ease, transform 0.25s ease;
+
+                    .badge-icon {
+                        width: 14px;
+                        height: 14px;
+                        fill: currentColor;
+                    }
+
+                    .icon-minus {
+                        display: none;
+                    }
+
+                    .icon-plus {
+                        display: inline-block;
+                    }
+                }
+
+                &:not(.collapsed) {
+                    color: $primary;
+                    background-color: rgba($primary, 0.02);
+
+                    .faq-harmonica-pill-badge {
+                        background-color: if(variable-exists('secondary'), $secondary, darken($primary, 10%));
+
+                        .icon-plus {
+                            display: none;
+                        }
+
+                        .icon-minus {
+                            display: inline-block;
+                        }
+                    }
+                }
+            }
+
+            &:has(.faq-harmonica-button:not(.collapsed)) {
+                border-color: rgba($primary, 0.5);
+            }
+
+            .faq-harmonica-body {
+                padding: 0.5rem 1.25rem 1.25rem 1.25rem;
+                padding-left: 4.25rem;
+            }
+        }
+    }
+
+    // ----------------------------------------------------
+    // Theme 4: Editorial Numbered (Modern Numbered Rows & Solid Highlight)
+    // ----------------------------------------------------
+    &.theme-editorial-numbered {
+        .faq-harmonica-item {
+            border: none;
+            border-top: 1px solid $border-color;
+            border-bottom: 1px solid $border-color;
+            margin-top: -1px; // Collapse overlapping borders
+            background: transparent;
+            border-radius: 0;
+
+            .faq-harmonica-button {
+                padding: 1.5rem 1rem;
+                display: flex;
+                align-items: center;
+
+                &::after {
+                    display: none; // Hide default chevron
+                }
+
+                .faq-harmonica-number {
+                    font-size: 0.875rem;
+                    font-weight: 700;
+                    color: if(variable-exists('secondary'), $secondary, $primary);
+                    margin-right: 1.25rem;
+                    letter-spacing: 0.5px;
+                    flex-shrink: 0;
+                    opacity: 0.85;
+                }
+
+                .faq-harmonica-title {
+                    font-size: 1rem;
+                    font-weight: 700;
+                    text-transform: uppercase;
+                    letter-spacing: 0.6px;
+                }
+
+                .faq-harmonica-toggle-arrow {
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-left: 1rem;
+                    flex-shrink: 0;
+
+                    .arrow-icon {
+                        width: 18px;
+                        height: 18px;
+                        transform: rotate(-45deg);
+                        transition: transform 0.3s ease-in-out;
+                    }
+                }
+
+                &:not(.collapsed) {
+                    color: #ffffff;
+                    background-color: $primary;
+
+                    .faq-harmonica-number {
+                        color: rgba(#ffffff, 0.9);
+                    }
+
+                    .faq-harmonica-toggle-arrow .arrow-icon {
+                        transform: rotate(45deg);
+                    }
+                }
+            }
+
+            .faq-harmonica-collapse {
+                background-color: $primary;
+            }
+
+            .faq-harmonica-body {
+                background-color: $primary;
+                color: rgba(#ffffff, 0.95);
+                padding: 0 1rem 1.5rem 3.5rem;
+
+                a {
+                    color: #ffffff;
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+
+    // ----------------------------------------------------
+    // Theme 5: Accent Line (Left Accent Bar Indicator)
+    // ----------------------------------------------------
+    &.theme-accent-line {
+        .faq-harmonica-item {
+            border: 1px solid $border-color;
+            border-left: 4px solid darken($border-color, 8%);
+            border-radius: 0 if(variable-exists('border-radius'), $border-radius, 6px) if(variable-exists('border-radius'), $border-radius, 6px) 0;
+            margin-bottom: 0.75rem;
+            background-color: if(variable-exists('card-bg'), $card-bg, #ffffff);
+            overflow: hidden;
+            transition: border-color 0.25s ease, background-color 0.25s ease;
+
+            &:hover {
+                border-left-color: darken($border-color, 18%);
+            }
+
+            .faq-harmonica-button {
+                padding: 1.25rem 1.25rem;
+
+                &:not(.collapsed) {
+                    color: $primary;
+                    background-color: rgba($primary, 0.04);
+                }
+            }
+
+            &:has(.faq-harmonica-button:not(.collapsed)) {
+                border-left-color: $primary;
+                border-top-color: rgba($primary, 0.2);
+                border-right-color: rgba($primary, 0.2);
+                border-bottom-color: rgba($primary, 0.2);
+            }
+
+            .faq-harmonica-body {
+                padding: 0.25rem 1.25rem 1.25rem 1.25rem;
+
+                @media (min-width: 768px) {
+                    padding-left: 3.75rem;
+                }
             }
         }
     }
 }
+

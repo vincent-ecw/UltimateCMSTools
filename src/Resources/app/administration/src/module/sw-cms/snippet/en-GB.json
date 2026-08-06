@@ -378,6 +378,12 @@
                             "center": "Center",
                             "right": "Right"
                         },
+                        "verticalAlignmentLabel": "Vertical Alignment",
+                        "verticalAlignments": {
+                            "top": "Top",
+                            "center": "Middle",
+                            "bottom": "Bottom"
+                        },
                         "iconBeforeLabel": "Icon Before Label",
                         "iconAfterLabel": "Icon After Label",
                         "icons": {

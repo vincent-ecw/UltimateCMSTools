@@ -4,6 +4,7 @@
     {% set variant = config.variant.value|default('primary') %}
     {% set width = config.width.value|default('auto') %}
     {% set alignment = config.alignment.value|default('left') %}
+    {% set verticalAlignment = config.verticalAlignment.value|default('top') %}
     {% set linkUrl = config.linkUrl.value|default('') %}
     {% set linkTarget = config.linkTarget.value|default('_self') %}
     {% set linkTitle = config.linkTitle.value|default('') %}
@@ -19,7 +20,7 @@
         {% set btnClasses = btnClasses|merge(['w-100']) %}
     {% endif %}
 
-    <div class="cms-element-button-container cms-element-button-align-{{ alignment }}">
+    <div class="cms-element-button-container cms-element-button-align-{{ alignment }} cms-element-button-vertical-align-{{ verticalAlignment }}">
         <a href="{{ linkUrl|default('#') }}"
            class="{{ btnClasses|join(' ') }}"
            {% if linkTarget %}target="{{ linkTarget }}"{% endif %}

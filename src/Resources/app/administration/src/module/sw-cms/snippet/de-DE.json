@@ -378,6 +378,12 @@
                             "center": "Zentriert",
                             "right": "Rechts"
                         },
+                        "verticalAlignmentLabel": "Vertikale Ausrichtung",
+                        "verticalAlignments": {
+                            "top": "Oben",
+                            "center": "Mitte",
+                            "bottom": "Unten"
+                        },
                         "iconBeforeLabel": "Icon vor dem Text",
                         "iconAfterLabel": "Icon nach dem Text",
                         "icons": {

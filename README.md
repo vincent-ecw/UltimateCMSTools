@@ -392,6 +392,7 @@ Renders a theme-styled action button with flexible width, alignment, icon picker
   * `link`: Text link style (`btn-link`).
 * **Button Width (`width`):** Choice of Content Width (`auto`) or Full Width (`100%` / `w-100`).
 * **Button Alignment (`alignment`):** Alignment when using Content Width (`left`, `center`, `right`).
+* **Vertical Alignment (`verticalAlignment`):** Choice of Top (`top`), Middle (`center`), or Bottom (`bottom`) positioning within the slot container.
 * **Icon Before Label (`iconBefore`):** Icon from dropdown picker displayed before text (or `none`).
 * **Icon After Label (`iconAfter`):** Icon from dropdown picker displayed after text (or `none`).
 

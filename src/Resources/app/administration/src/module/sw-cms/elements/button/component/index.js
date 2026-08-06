@@ -27,6 +27,10 @@ Component.register('sw-cms-el-button', {
             return this.element?.config?.alignment?.value || 'left';
         },
 
+        verticalAlignment() {
+            return this.element?.config?.verticalAlignment?.value || 'top';
+        },
+
         iconBefore() {
             const icon = this.element?.config?.iconBefore?.value;
             return (icon && icon !== 'none') ? icon : null;
@@ -51,6 +55,7 @@ Component.register('sw-cms-el-button', {
             return [
                 'sw-cms-el-button',
                 `sw-cms-el-button--align-${this.alignment}`,
+                `sw-cms-el-button--vertical-align-${this.verticalAlignment}`,
             ];
         },
     },

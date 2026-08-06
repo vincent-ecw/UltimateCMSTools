@@ -378,6 +378,12 @@
                             "center": "Midden",
                             "right": "Rechts"
                         },
+                        "verticalAlignmentLabel": "Verticale uitlijning",
+                        "verticalAlignments": {
+                            "top": "Boven",
+                            "center": "Midden",
+                            "bottom": "Onder"
+                        },
                         "iconBeforeLabel": "Icoon voor tekst",
                         "iconAfterLabel": "Icoon na tekst",
                         "icons": {

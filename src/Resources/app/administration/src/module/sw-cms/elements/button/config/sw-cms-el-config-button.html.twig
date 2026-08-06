@@ -57,6 +57,12 @@
                     :label="$tc('sw-cms.elements.ultimateCmsTools.button.config.alignmentLabel')">
                 </sw-single-select>
 
+                <sw-single-select
+                    v-model:value="verticalAlignment"
+                    :options="verticalAlignmentOptions"
+                    :label="$tc('sw-cms.elements.ultimateCmsTools.button.config.verticalAlignmentLabel')">
+                </sw-single-select>
+
                 <div class="sw-cms-el-config-button__icons-group">
                     <sw-single-select
                         v-model:value="iconBefore"

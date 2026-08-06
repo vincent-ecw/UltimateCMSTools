@@ -25,6 +25,10 @@ Shopware.Service('cmsService').registerCmsElement({
             source: 'static',
             value: 'left',
         },
+        verticalAlignment: {
+            source: 'static',
+            value: 'top',
+        },
         linkUrl: {
             source: 'static',
             value: '',

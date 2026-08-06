@@ -51,6 +51,16 @@ Component.register('sw-cms-el-config-button', {
             },
         },
 
+        verticalAlignment: {
+            get() {
+                return this.element?.config?.verticalAlignment?.value || 'top';
+            },
+            set(value) {
+                this.element.config.verticalAlignment.value = value;
+                this.onChange();
+            },
+        },
+
         linkUrl: {
             get() {
                 return this.element?.config?.linkUrl?.value || '';
@@ -123,6 +133,14 @@ Component.register('sw-cms-el-config-button', {
                 { value: 'left', label: this.$tc('sw-cms.elements.ultimateCmsTools.button.config.alignments.left') },
                 { value: 'center', label: this.$tc('sw-cms.elements.ultimateCmsTools.button.config.alignments.center') },
                 { value: 'right', label: this.$tc('sw-cms.elements.ultimateCmsTools.button.config.alignments.right') },
+            ];
+        },
+
+        verticalAlignmentOptions() {
+            return [
+                { value: 'top', label: this.$tc('sw-cms.elements.ultimateCmsTools.button.config.verticalAlignments.top') },
+                { value: 'center', label: this.$tc('sw-cms.elements.ultimateCmsTools.button.config.verticalAlignments.center') },
+                { value: 'bottom', label: this.$tc('sw-cms.elements.ultimateCmsTools.button.config.verticalAlignments.bottom') },
             ];
         },
 

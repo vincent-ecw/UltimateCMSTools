@@ -1,0 +1,47 @@
+<div class="sw-cms-el-related-products">
+    <div
+        v-for="category in displayCategories"
+        :key="category.id"
+        class="sw-cms-el-related-products__category-group"
+    >
+        <h2 class="sw-cms-el-related-products__category-title">
+            {{ category.title }}
+        </h2>
+
+        <div class="sw-cms-el-related-products__carousel-wrapper">
+            <div
+                v-if="hasNavigationArrows"
+                class="sw-cms-el-related-products__arrow is--prev"
+            >
+                <mt-icon name="regular-chevron-left" size="16" />
+            </div>
+
+            <div class="sw-cms-el-related-products__items-container">
+                <sw-cms-el-product-box
+                    v-for="n in 4"
+                    :key="n"
+                    class="sw-cms-el-related-products__item"
+                    :element="demoProductElement"
+                />
+            </div>
+
+            <div
+                v-if="hasNavigationArrows"
+                class="sw-cms-el-related-products__arrow is--next"
+            >
+                <mt-icon name="regular-chevron-right" size="16" />
+            </div>
+        </div>
+
+        <div
+            v-if="hasNavigationDots"
+            class="sw-cms-el-related-products__dots"
+            :class="'dots--' + dotsPosition"
+        >
+            <span class="sw-cms-el-related-products__dot is--active"></span>
+            <span class="sw-cms-el-related-products__dot"></span>
+            <span class="sw-cms-el-related-products__dot"></span>
+            <span class="sw-cms-el-related-products__dot"></span>
+        </div>
+    </div>
+</div>

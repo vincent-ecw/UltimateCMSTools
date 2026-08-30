@@ -1,0 +1,9 @@
+{% block block_related_products %}
+    <div class="cms-block cms-block-related-products">
+        {% set element = block.slots.getSlot('content') %}
+        
+        {% if element %}
+            {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ ".html.twig" ignore missing %}
+        {% endif %}
+    </div>
+{% endblock %}

@@ -108,6 +108,48 @@
                     "maxHeightHelp": "Definieer een maximale hoogte in pixels voor de slider (bijv. 500). Laat leeg om automatisch aan te passen."
                 }
             },
+            "relatedProducts": {
+                "label": "Gerelateerde producten",
+                "placeholder": "Configureer gerelateerde producten carrousel.",
+                "preview": {
+                    "categoryPrefix": "Cross-selling",
+                    "category1": "Cross-selling Categorie 1",
+                    "category2": "Cross-selling Categorie 2",
+                    "category3": "Cross-selling Categorie 3",
+                    "category4": "Cross-selling Categorie 4",
+                    "category5": "Cross-selling Categorie 5"
+                },
+                "config": {
+                    "tabs": {
+                        "content": "Inhoud",
+                        "settings": "Instellingen"
+                    },
+                    "infoTitle": "Productdetailpagina blok",
+                    "infoDescription": "Dit blok haalt automatisch de cross-selling producten op van het getoonde product. Als er meerdere cross-selling categorieën zijn, worden deze onder elkaar getoond met een eigen carrousel en titel.",
+                    "carouselIndexLabel": "Te tonen cross-selling categorie",
+                    "carouselIndexHelp": "Kies of alle toegewezen cross-selling groepen onder elkaar worden getoond of een specifieke groep (1e t/m 5e).",
+                    "carouselIndexOptions": {
+                        "all": "Alle cross-selling categorieën (standaard)",
+                        "one": "Alleen 1e cross-selling categorie",
+                        "two": "Alleen 2e cross-selling categorie",
+                        "three": "Alleen 3e cross-selling categorie",
+                        "four": "Alleen 4e cross-selling categorie",
+                        "five": "Alleen 5e cross-selling categorie"
+                    },
+                    "navigationArrows": "Navigatiepijlen tonen",
+                    "navigationDots": "Navigatiestippen tonen",
+                    "navigationDotsPosition": "Positie van stippen",
+                    "dotsPositions": {
+                        "inside": "Binnen slider",
+                        "outside": "Buiten slider"
+                    },
+                    "autoplay": "Automatisch afspelen",
+                    "autoplaySpeed": "Snelheid automatisch afspelen (ms)",
+                    "autoplaySpeedHelp": "Tijd in milliseconden dat een dia zichtbaar blijft (bijv. 5000 = 5 seconden). Stel in op 0 om automatisch afspelen uit te schakelen.",
+                    "maxHeight": "Maximale hoogte (px)",
+                    "maxHeightHelp": "Definieer een maximale hoogte in pixels voor de slider (bijv. 500). Laat leeg om automatisch aan te passen."
+                }
+            },
             "faqHarmonica": {
                 "label": "FAQ Accordeon",
                 "emptyState": "Voeg FAQ-items toe in de instellingen",
@@ -632,7 +674,21 @@
                 },
                 "imageTextQuartet": {
                     "label": "Kwartet van afbeelding en tekst"
+                },
+                "relatedProducts": {
+                    "label": "Gerelateerde producten"
                 }
+            }
+        },
+        "section": {
+            "customerGroup": {
+                "label": "Alleen tonen voor klantengroep",
+                "placeholderAll": "Alle klantengroepen (standaard)",
+                "helpText": "Selecteer een klantengroep als deze sectie alleen zichtbaar moet zijn voor klanten in die specifieke groep. Laat leeg / 'Alle' om aan alle bezoekers te tonen."
+            },
+            "hideWhenEmpty": {
+                "label": "Niet tonen als er geen inhoud is",
+                "helpText": "Wanneer actief en alle blokken in deze sectie geen inhoud hebben, wordt de gehele sectie verborgen in de storefront."
             }
         }
     },

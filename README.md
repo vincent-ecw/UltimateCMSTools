@@ -24,6 +24,8 @@ A collection of CMS blocks and elements that enhance Shopware's Shopping Experie
   - [17. Icon List](#17-icon-list)
   - [18. Flexible Image and Text](#18-flexible-image-and-text)
   - [19. Harmonica List](#19-harmonica-list)
+  - [20. Related Products](#20-related-products)
+- [Section Settings Enhancements](#section-settings-enhancements)
 - [Design Token Color System](#design-token-color-system)
 - [Development and Compilation](#development-and-compilation)
 
@@ -481,6 +483,43 @@ Manage a dynamic list of collapsible harmonica items. For each item:
   * **Accent Toggle Block (`pill-block`):** Elementor-inspired side block button featuring solid `$primary` or `$secondary` badge toggles (`+` / `-`).
   * **Modern Numbered (`editorial-numbered`):** High-impact editorial design with auto-formatted item numbers (`01`, `02`...), diagonal arrow toggles (`↗`), and solid color background row fills when active.
   * **Left Accent Border (`accent-line`):** Clean card rows highlighted with a bold 4px vertical accent bar on the left edge when expanded.
+
+### 20. Related Products
+
+A dedicated CMS block and element for Product Detail Page templates. It automatically retrieves all cross-selling product groups configured on the active product and presents each cross-selling category under each other with its category title (`H2`) and a responsive, smooth product carousel (utilizing the identical sleek layout, infinite loop wrapping, navigation controls, and card structure as the Custom Product Carousel).
+
+* **Block Name:** `related-products`
+* **Element Name:** `related-products`
+
+#### Configuration Options
+
+##### Content Tab
+* **Cross-selling category to display (`carouselIndex`):**
+  * **All cross-selling groups (default):** Displays every active cross-selling group assigned to the product under each other, each with its own heading (`[category title (H2)]`) and carousel (`[product carousel]`).
+  * **1st - 5th cross-selling group only:** Restricts the block to only render that single cross-selling category. If the active product does not have that category or has no products assigned to it, the element remains empty.
+
+##### Settings Tab
+* **Show Navigation Arrows (`navigationArrows`):** Display left/right scroll buttons.
+* **Show Navigation Dots (`navigationDots`):** Display slide indicator dots below or inside the carousel.
+* **Dots Position (`navigationDotsPosition`):** Choose between `Inside Slider` or `Outside Slider`.
+* **Autoplay (`autoplay`):** Automatically cycle through product slides.
+* **Autoplay Speed (`autoplaySpeed`):** Duration in milliseconds each slide remains visible (default `5000` ms).
+* **Max Height (`maxHeight`):** Optional maximum height limit in pixels.
+
+---
+
+## Section Settings Enhancements
+
+The plugin extends Shopware's native CMS Section configuration sidebar (`sw-cms-section-config`) with intelligent layout options:
+
+### "Show only for customer group" (`uct_customer_group_id`)
+* **Location:** CMS Layout Editor &rarr; Section Settings (Sidebar) &rarr; Settings
+* **Functionality:** Allows selecting a specific customer group from a dropdown (with "All customer groups" as default). When assigned, this section will only be rendered in the storefront for customers belonging to that customer group.
+* **HTTP Cache Invalidation & Isolation:** Built-in integration with Shopware's HTTP Cache via `HttpCacheSubscriber` guarantees that responses are properly isolated per customer group using cache hash cookies (`sw-cache-hash`), preventing other customer groups or guest visitors from ever seeing cached versions intended for a specific group.
+
+### "Do not show when there is no content" (`uct_hide_empty`)
+* **Location:** CMS Layout Editor &rarr; Section Settings (Sidebar) &rarr; Settings
+* **Functionality:** When this switch is enabled on a section, the storefront dynamically evaluates whether any blocks or elements inside that section produced visible content. If all blocks within the section are empty (such as a Related Products block configured for the 2nd cross-selling category when the product only has 1 category), the entire `<div class="cms-section ...">` container is completely omitted from the HTML output. This eliminates unwanted vertical gaps, margins, or padding.
 
 ---
 

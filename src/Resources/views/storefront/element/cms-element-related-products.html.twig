@@ -1,0 +1,92 @@
+{% block element_related_products %}
+    {% set config = element.fieldConfig.elements %}
+    {% set crossSellingsCollection = element.data ? element.data.crossSellings : null %}
+    {% set carouselIndex = config.carouselIndex.value|default('all') %}
+    {% set navigationArrows = config.navigationArrows.value|default(true) %}
+    {% set navigationDots = config.navigationDots.value|default(true) %}
+    {% set autoplay = config.autoplay.value is not null ? config.autoplay.value : true %}
+    {% set autoplaySpeed = config.autoplaySpeed.value|default(5000) %}
+    {% set dotsPosition = config.navigationDotsPosition.value|default('inside') %}
+    {% set maxHeight = config.maxHeight.value|default(null) %}
+
+    {% if crossSellingsCollection and crossSellingsCollection.elements is defined and crossSellingsCollection.elements|length > 0 %}
+        {% set activeCrossSellings = [] %}
+        {% for item in crossSellingsCollection.elements %}
+            {% if item.total > 0 and item.crossSelling.active == true and item.products|length > 0 %}
+                {% set activeCrossSellings = activeCrossSellings|merge([item]) %}
+            {% endif %}
+        {% endfor %}
+
+        {% set displayedCrossSellings = [] %}
+        {% if carouselIndex == 'all' %}
+            {% set displayedCrossSellings = activeCrossSellings %}
+        {% else %}
+            {% set targetIdx = (carouselIndex|number_format) - 1 %}
+            {% if activeCrossSellings[targetIdx] is defined %}
+                {% set displayedCrossSellings = [activeCrossSellings[targetIdx]] %}
+            {% endif %}
+        {% endif %}
+
+        {% if displayedCrossSellings|length > 0 %}
+            <div class="cms-element-related-products">
+                {% for item in displayedCrossSellings %}
+                    {% set crossSelling = item.crossSelling %}
+                    {% set products = item.products %}
+                    {% set crossSellingTitle = crossSelling.translated.name|default(crossSelling.name) %}
+
+                    <div class="cms-element-related-products__group{% if not loop.last %} mb-5{% endif %}">
+                        {% if crossSellingTitle %}
+                            <h2 class="cms-element-related-products__category-title mb-3">
+                                {{ crossSellingTitle }}
+                            </h2>
+                        {% endif %}
+
+                        <div class="cms-element-custom-product-carousel"
+                             {% if maxHeight and maxHeight > 0 %}style="--uct-carousel-max-height: {{ maxHeight }}px; --custom-product-carousel-max-height: {{ maxHeight }}px; max-height: {{ maxHeight }}px;"{% endif %}
+                             data-custom-product-carousel="true"
+                             data-custom-product-carousel-options='{
+                                 "arrows": {{ navigationArrows ? "true" : "false" }},
+                                 "dots": {{ navigationDots ? "true" : "false" }},
+                                 "autoplay": {{ autoplay ? "true" : "false" }},
+                                 "autoplaySpeed": {{ autoplaySpeed }}
+                             }'>
+
+                            <div class="custom-product-carousel-wrapper">
+                                {% if navigationArrows %}
+                                    <button class="uct-carousel-control custom-product-carousel-control prev" aria-label="Previous">
+                                        {% sw_icon 'arrow-left' %}
+                                    </button>
+                                {% endif %}
+
+                                <div class="custom-product-carousel-container" {% if maxHeight and maxHeight > 0 %}style="max-height: {{ maxHeight }}px;"{% endif %}>
+                                    {% for product in products %}
+                                        <div class="custom-product-card product-slider-item" {% if maxHeight and maxHeight > 0 %}style="max-height: {{ maxHeight }}px;"{% endif %}>
+                                            {% sw_include '@Storefront/storefront/component/product/card/box.html.twig' with {
+                                                'layout': 'standard',
+                                                'displayMode': 'standard'
+                                            } %}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+
+                                {% if navigationArrows %}
+                                    <button class="uct-carousel-control custom-product-carousel-control next" aria-label="Next">
+                                        {% sw_icon 'arrow-right' %}
+                                    </button>
+                                {% endif %}
+                            </div>
+
+                            {% if navigationDots %}
+                                <div class="uct-carousel-indicators custom-product-carousel-indicators uct-dots-{{ dotsPosition }} dots-{{ dotsPosition }}">
+                                    {% for product in products %}
+                                        <button class="uct-carousel-dot custom-product-carousel-dot {% if loop.first %}active{% endif %}" data-index="{{ loop.index0 }}" aria-label="Go to slide {{ loop.index }}"></button>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endif %}
+{% endblock %}

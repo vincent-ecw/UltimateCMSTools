@@ -36,6 +36,9 @@ import './module/sw-cms/elements/icon-list';
 import './module/sw-cms/blocks/ultimate-cms-tools/icon-list';
 import './module/sw-cms/elements/flexible-image-text';
 import './module/sw-cms/blocks/ultimate-cms-tools/flexible-image-text';
+import './module/sw-cms/elements/related-products';
+import './module/sw-cms/blocks/ultimate-cms-tools/related-products';
+import './module/sw-cms/component/sw-cms-section-config';
 import deDE from './module/sw-cms/snippet/de-DE.json';
 
 import enGB from './module/sw-cms/snippet/en-GB.json';

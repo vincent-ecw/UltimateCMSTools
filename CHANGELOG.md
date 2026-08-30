@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.22] - 2026-08-30
+
+### Added
+- Added new **Related Products** (`related-products`) CMS block and element for Product Detail Page layouts, automatically fetching product cross-selling categories and rendering each category with its H2 title and a product carousel.
+- Added cross-selling selection configuration (`carouselIndex`) allowing merchants to display all cross-selling groups under each other or restrict the block to a specific group (1st, 2nd, 3rd, 4th, or 5th cross-selling group).
+- Added comprehensive carousel options to Related Products matching the Custom Product Carousel (navigation arrows, navigation dots with inside/outside positioning, autoplay, autoplay speed, and maximum height).
+- Added new **"Do not show when there is no content"** section setting to the CMS section settings sidebar in Administration (`sw-cms-section-config`), dynamically omitting the section markup in the Storefront when the section's blocks contain no output.
+- Added new **"Show only for customer group"** section setting to the CMS section settings sidebar in Administration (`sw-cms-section-config`), allowing sections to be selectively rendered for specific customer groups or all visitors.
+- Added `HttpCacheSubscriber` to include the active customer group ID in the Storefront HTTP cache hash (`HttpCacheCookieEvent`), preventing cross-customer group cache contamination when customer-group-specific sections are used.
+- Added English, German, and Dutch translations for the Related Products CMS block, element, configuration options, and section settings.
+- Added `RelatedProductsCmsElementResolver` service leveraging `AbstractProductCrossSellingRoute`.
+
 ## [1.2.21] - 2026-08-30
 
 ### Changed

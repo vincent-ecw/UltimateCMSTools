@@ -1,0 +1,9 @@
+.sw-cms-el-config-related-products {
+    &__tab-content,
+    &__tab-settings {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        padding-top: 16px;
+    }
+}

@@ -1,0 +1,18 @@
+{% block sw_cms_sidebar_section_config_css_classes_field %}
+    {% parent %}
+
+    <sw-entity-single-select
+        v-model:value="uctCustomerGroupId"
+        entity="customer_group"
+        :label="$tc('sw-cms.section.customerGroup.label')"
+        :placeholder="$tc('sw-cms.section.customerGroup.placeholderAll')"
+        :help-text="$tc('sw-cms.section.customerGroup.helpText')"
+        show-clearable-button
+    />
+
+    <mt-switch
+        v-model="uctHideWhenEmpty"
+        :label="$tc('sw-cms.section.hideWhenEmpty.label')"
+        :help-text="$tc('sw-cms.section.hideWhenEmpty.helpText')"
+    />
+{% endblock %}

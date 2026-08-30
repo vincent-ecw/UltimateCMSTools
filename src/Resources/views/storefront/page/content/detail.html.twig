@@ -1,0 +1,25 @@
+{% sw_extends '@Storefront/storefront/page/content/detail.html.twig' %}
+
+{% block page_content_section %}
+    {% set targetCustomerGroupId = section.customFields.uct_customer_group_id|default(null) %}
+    {% set currentCustomerGroupId = context.customer ? context.customer.groupId : (context.currentCustomerGroup ? context.currentCustomerGroup.id : null) %}
+
+    {% if not targetCustomerGroupId or targetCustomerGroupId == currentCustomerGroupId %}
+        {% set hideWhenEmpty = section.customFields.uct_hide_empty|default(false) %}
+        {% if hideWhenEmpty %}
+            {% set sectionContent %}
+                {% sw_include '@Storefront/storefront/section/cms-section-' ~ section.type ~ '.html.twig' %}
+            {% endset %}
+
+            {# Check if sectionContent has visible/meaningful content #}
+            {% if sectionContent|striptags|trim is not empty or '<img' in sectionContent or '<svg' in sectionContent or '<iframe' in sectionContent or '<video' in sectionContent or '<canvas' in sectionContent or '<input' in sectionContent or '<button' in sectionContent or '<a' in sectionContent %}
+                <div class="cms-section {{ sectionClasses|join(' ') }}"
+                     style="{% if sectionBgColor %}background-color: {{ sectionBgColor }};{% endif %}{% if sectionBgImg %}background-image: url({{ sectionBgImg }});background-size: {{ section.backgroundMediaMode }};{% endif %}">
+                    {{ sectionContent|raw }}
+                </div>
+            {% endif %}
+        {% else %}
+            {{ parent() }}
+        {% endif %}
+    {% endif %}
+{% endblock %}

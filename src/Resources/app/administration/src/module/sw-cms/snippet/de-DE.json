@@ -108,6 +108,48 @@
                     "maxHeightHelp": "Geben Sie eine maximale Höhe in Pixeln für den Slider ein (z.B. 500). Leer lassen für automatische Höhe."
                 }
             },
+            "relatedProducts": {
+                "label": "Verwandte Produkte",
+                "placeholder": "Karussell für verwandte Produkte konfigurieren.",
+                "preview": {
+                    "categoryPrefix": "Cross-Selling",
+                    "category1": "Cross-Selling Kategorie 1",
+                    "category2": "Cross-Selling Kategorie 2",
+                    "category3": "Cross-Selling Kategorie 3",
+                    "category4": "Cross-Selling Kategorie 4",
+                    "category5": "Cross-Selling Kategorie 5"
+                },
+                "config": {
+                    "tabs": {
+                        "content": "Inhalt",
+                        "settings": "Einstellungen"
+                    },
+                    "infoTitle": "Produktdetailseiten-Block",
+                    "infoDescription": "Dieser Block lädt automatisch die dem aktuellen Produkt zugewiesenen Cross-Selling-Produkte. Wenn mehrere Cross-Selling-Gruppen zugewiesen sind, wird jede Gruppe in einem eigenen Karussell mit Kategorietitel angezeigt.",
+                    "carouselIndexLabel": "Anzuzeigende Cross-Selling-Kategorie",
+                    "carouselIndexHelp": "Wählen Sie, ob alle zugewiesenen Cross-Selling-Gruppen untereinander oder nur eine bestimmte Gruppe (1. bis 5.) angezeigt werden soll.",
+                    "carouselIndexOptions": {
+                        "all": "Alle Cross-Selling-Gruppen (Standard)",
+                        "one": "Nur 1. Cross-Selling-Gruppe",
+                        "two": "Nur 2. Cross-Selling-Gruppe",
+                        "three": "Nur 3. Cross-Selling-Gruppe",
+                        "four": "Nur 4. Cross-Selling-Gruppe",
+                        "five": "Nur 5. Cross-Selling-Gruppe"
+                    },
+                    "navigationArrows": "Navigationspfeile anzeigen",
+                    "navigationDots": "Navigationspunkte anzeigen",
+                    "navigationDotsPosition": "Position der Punkte",
+                    "dotsPositions": {
+                        "inside": "Innerhalb des Sliders",
+                        "outside": "Außerhalb des Sliders"
+                    },
+                    "autoplay": "Autoplay",
+                    "autoplaySpeed": "Autoplay-Geschwindigkeit (ms)",
+                    "autoplaySpeedHelp": "Zeit in Millisekunden, die ein Slide sichtbar bleibt (z.B. 5000 = 5 Sekunden). Auf 0 setzen, um Autoplay zu deaktivieren.",
+                    "maxHeight": "Maximale Höhe (px)",
+                    "maxHeightHelp": "Geben Sie eine maximale Höhe in Pixeln für den Slider ein (z.B. 500). Leer lassen für automatische Höhe."
+                }
+            },
             "faqHarmonica": {
                 "label": "FAQ Harmonika",
                 "emptyState": "Fügen Sie FAQ-Elemente in den Einstellungen hinzu",
@@ -638,7 +680,21 @@
                 },
                 "imageTextQuartet": {
                     "label": "Bild und Text Quartett"
+                },
+                "relatedProducts": {
+                    "label": "Verwandte Produkte"
                 }
+            }
+        },
+        "section": {
+            "customerGroup": {
+                "label": "Nur für Kundengruppe anzeigen",
+                "placeholderAll": "Alle Kundengruppen (Standard)",
+                "helpText": "Wählen Sie eine Kundengruppe aus, wenn dieser Bereich nur für Kunden dieser Gruppe sichtbar sein soll. Leer lassen / 'Alle', um allen Besuchern anzuzeigen."
+            },
+            "hideWhenEmpty": {
+                "label": "Nicht anzeigen wenn kein Inhalt vorhanden ist",
+                "helpText": "Wenn aktiv und alle Blöcke in diesem Bereich keinen Inhalt haben, wird der gesamte Bereich im Storefront ausgeblendet."
             }
         }
     },

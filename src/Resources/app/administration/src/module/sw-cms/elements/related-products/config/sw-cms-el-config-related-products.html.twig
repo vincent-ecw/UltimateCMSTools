@@ -1,0 +1,77 @@
+<div class="sw-cms-el-config-related-products">
+    <sw-tabs class="sw-cms-el-config-related-products__tabs" defaultItem="content">
+        <template #default="{ active }">
+            <sw-tabs-item name="content" :activeTab="active">
+                {{ $tc('sw-cms.elements.relatedProducts.config.tabs.content') }}
+            </sw-tabs-item>
+            <sw-tabs-item name="settings" :activeTab="active">
+                {{ $tc('sw-cms.elements.relatedProducts.config.tabs.settings') }}
+            </sw-tabs-item>
+        </template>
+
+        <template #content="{ active }">
+            <div v-if="active === 'content'" class="sw-cms-el-config-related-products__tab-content">
+                <!-- Info text explaining that this element automatically loads cross sellings from the product -->
+                <sw-alert
+                    variant="info"
+                    :title="$tc('sw-cms.elements.relatedProducts.config.infoTitle')"
+                >
+                    {{ $tc('sw-cms.elements.relatedProducts.config.infoDescription') }}
+                </sw-alert>
+
+                <!-- Carousel Selection Dropdown (All, 1 - 5) -->
+                <sw-single-select
+                    v-model:value="carouselIndex"
+                    :label="$tc('sw-cms.elements.relatedProducts.config.carouselIndexLabel')"
+                    :helpText="$tc('sw-cms.elements.relatedProducts.config.carouselIndexHelp')"
+                    :options="carouselIndexOptions"
+                />
+            </div>
+
+            <div v-if="active === 'settings'" class="sw-cms-el-config-related-products__tab-settings">
+                <!-- Navigation Arrows Switch -->
+                <sw-switch-field
+                    v-model:value="navigationArrows"
+                    :label="$tc('sw-cms.elements.relatedProducts.config.navigationArrows')"
+                />
+
+                <!-- Navigation Dots Switch -->
+                <sw-switch-field
+                    v-model:value="navigationDots"
+                    :label="$tc('sw-cms.elements.relatedProducts.config.navigationDots')"
+                />
+
+                <!-- Navigation Dots Position (visible if navigation dots is on) -->
+                <sw-single-select
+                    v-if="navigationDots"
+                    v-model:value="navigationDotsPosition"
+                    :label="$tc('sw-cms.elements.relatedProducts.config.navigationDotsPosition')"
+                    :options="dotsPositionOptions"
+                />
+
+                <!-- Autoplay Switch -->
+                <sw-switch-field
+                    v-model:value="autoplay"
+                    :label="$tc('sw-cms.elements.relatedProducts.config.autoplay')"
+                />
+
+                <!-- Autoplay Speed -->
+                <sw-number-field
+                    v-if="autoplay"
+                    v-model:value="autoplaySpeed"
+                    :label="$tc('sw-cms.elements.relatedProducts.config.autoplaySpeed')"
+                    :helpText="$tc('sw-cms.elements.relatedProducts.config.autoplaySpeedHelp')"
+                    :min="0"
+                />
+
+                <!-- Max Height -->
+                <sw-number-field
+                    v-model:value="maxHeight"
+                    :label="$tc('sw-cms.elements.relatedProducts.config.maxHeight')"
+                    :helpText="$tc('sw-cms.elements.relatedProducts.config.maxHeightHelp')"
+                    :min="0"
+                />
+            </div>
+        </template>
+    </sw-tabs>
+</div>

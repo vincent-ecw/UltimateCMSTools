@@ -108,6 +108,48 @@
                     "maxHeightHelp": "Define a maximum height in pixels for the slider (e.g. 500). Leave empty to auto-adapt."
                 }
             },
+            "relatedProducts": {
+                "label": "Related Products",
+                "placeholder": "Configure related products carousel.",
+                "preview": {
+                    "categoryPrefix": "Cross-selling",
+                    "category1": "Cross-selling Category 1",
+                    "category2": "Cross-selling Category 2",
+                    "category3": "Cross-selling Category 3",
+                    "category4": "Cross-selling Category 4",
+                    "category5": "Cross-selling Category 5"
+                },
+                "config": {
+                    "tabs": {
+                        "content": "Content",
+                        "settings": "Settings"
+                    },
+                    "infoTitle": "Product Detail Page Block",
+                    "infoDescription": "This block automatically retrieves the cross-selling products assigned to the currently viewed product. When more than one cross-selling group is assigned, each group will be displayed in its own carousel with its category title.",
+                    "carouselIndexLabel": "Cross-selling category to display",
+                    "carouselIndexHelp": "Choose whether to display all assigned cross-selling groups under each other or a specific single group (1st to 5th).",
+                    "carouselIndexOptions": {
+                        "all": "All cross-selling groups (default)",
+                        "one": "1st cross-selling group only",
+                        "two": "2nd cross-selling group only",
+                        "three": "3rd cross-selling group only",
+                        "four": "4th cross-selling group only",
+                        "five": "5th cross-selling group only"
+                    },
+                    "navigationArrows": "Show Navigation Arrows",
+                    "navigationDots": "Show Navigation Dots",
+                    "navigationDotsPosition": "Dots Position",
+                    "dotsPositions": {
+                        "inside": "Inside Slider",
+                        "outside": "Outside Slider"
+                    },
+                    "autoplay": "Autoplay",
+                    "autoplaySpeed": "Autoplay Speed (ms)",
+                    "autoplaySpeedHelp": "Time in milliseconds a slide stays visible (e.g., 5000 = 5 seconds). Set to 0 to disable autoplay.",
+                    "maxHeight": "Max Height (px)",
+                    "maxHeightHelp": "Define a maximum height in pixels for the slider (e.g. 500). Leave empty to auto-adapt."
+                }
+            },
             "faqHarmonica": {
                 "label": "FAQ Harmonica",
                 "emptyState": "Add FAQ items in the settings",
@@ -638,7 +680,21 @@
                 },
                 "imageTextQuartet": {
                     "label": "Image and Text Quartet"
+                },
+                "relatedProducts": {
+                    "label": "Related Products"
                 }
+            }
+        },
+        "section": {
+            "customerGroup": {
+                "label": "Show only for customer group",
+                "placeholderAll": "All customer groups (default)",
+                "helpText": "Select a customer group if this section should only be visible to customers in that specific group. Leave empty / 'All' to show to all visitors."
+            },
+            "hideWhenEmpty": {
+                "label": "Do not show when there is no content",
+                "helpText": "When active and all blocks in this section have no content to display, the entire section will be hidden in the storefront output."
             }
         }
     },

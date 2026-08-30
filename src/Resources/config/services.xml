@@ -39,6 +39,11 @@
             <tag name="shopware.cms.data_resolver" />
         </service>
 
+        <service id="VincentBourgonje\UltimateCmsTools\DataResolver\RelatedProductsCmsElementResolver">
+            <argument type="service" id="Shopware\Core\Content\Product\SalesChannel\CrossSelling\ProductCrossSellingRoute" />
+            <tag name="shopware.cms.data_resolver" />
+        </service>
+
         <service id="VincentBourgonje\UltimateCmsTools\DataResolver\ResponsiveImageCmsElementResolver">
             <tag name="shopware.cms.data_resolver" />
         </service>
@@ -61,6 +66,10 @@
 
         <service id="VincentBourgonje\UltimateCmsTools\DataResolver\FlexibleImageTextCmsElementResolver">
             <tag name="shopware.cms.data_resolver" />
+        </service>
+
+        <service id="VincentBourgonje\UltimateCmsTools\Subscriber\HttpCacheSubscriber">
+            <tag name="kernel.event_subscriber" />
         </service>
     </services>
 

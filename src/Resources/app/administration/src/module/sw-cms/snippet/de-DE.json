@@ -134,6 +134,32 @@
                     }
                 }
             },
+            "harmonicaList": {
+                "label": "Harmonika-Liste",
+                "emptyState": "Fügen Sie Elemente in den Einstellungen hinzu",
+                "config": {
+                    "tabs": {
+                        "content": "Inhalt",
+                        "settings": "Einstellungen"
+                    },
+                    "iconLabel": "Icon",
+                    "iconPlaceholder": "z.B. regular-comments",
+                    "iconHelpText": "Geben Sie einen gültigen Shopware-Icon-Namen ein.",
+                    "titleLabel": "Titel",
+                    "titlePlaceholder": "Titel eingeben...",
+                    "contentLabel": "Inhalt",
+                    "contentPlaceholder": "Inhalt eingeben...",
+                    "addButton": "Element hinzufügen",
+                    "themeLabel": "Akkordeon-Design",
+                    "themes": {
+                        "clean": "Minimalistisch Clean",
+                        "boxed": "Schwebende Karten",
+                        "pillBlock": "Akzent-Schaltfläche",
+                        "editorialNumbered": "Modern Nummeriert",
+                        "accentLine": "Linker Akzentstreifen"
+                    }
+                }
+            },
             "ultimateCmsTools": {
                 "customCode": {
                     "label": "Benutzerdefinierter Code",
@@ -524,6 +550,32 @@
                             "accentLine": "Linker Akzentstreifen"
                         }
                     }
+                },
+                "harmonicaList": {
+                    "label": "Harmonika-Liste",
+                    "emptyState": "Fügen Sie Elemente in den Einstellungen hinzu",
+                    "config": {
+                        "tabs": {
+                            "content": "Inhalt",
+                            "settings": "Einstellungen"
+                        },
+                        "iconLabel": "Icon",
+                        "iconPlaceholder": "z.B. regular-comments",
+                        "iconHelpText": "Geben Sie einen gültigen Shopware-Icon-Namen ein.",
+                        "titleLabel": "Titel",
+                        "titlePlaceholder": "Titel eingeben...",
+                        "contentLabel": "Inhalt",
+                        "contentPlaceholder": "Inhalt eingeben...",
+                        "addButton": "Element hinzufügen",
+                        "themeLabel": "Akkordeon-Design",
+                        "themes": {
+                            "clean": "Minimalistisch Clean",
+                            "boxed": "Schwebende Karten",
+                            "pillBlock": "Akzent-Schaltfläche",
+                            "editorialNumbered": "Modern Nummeriert",
+                            "accentLine": "Linker Akzentstreifen"
+                        }
+                    }
                 }
             }
         },
@@ -568,6 +620,9 @@
                 },
                 "faqHarmonica": {
                     "label": "FAQ Harmonika"
+                },
+                "harmonicaList": {
+                    "label": "Harmonika-Liste"
                 },
                 "commonSlider": {
                     "label": "Allgemeiner Slider"

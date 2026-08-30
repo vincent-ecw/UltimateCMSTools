@@ -134,6 +134,32 @@
                     }
                 }
             },
+            "harmonicaList": {
+                "label": "Harmonica List",
+                "emptyState": "Add items in the settings",
+                "config": {
+                    "tabs": {
+                        "content": "Content",
+                        "settings": "Settings"
+                    },
+                    "iconLabel": "Icon",
+                    "iconPlaceholder": "e.g. regular-comments",
+                    "iconHelpText": "Enter a valid Shopware icon name.",
+                    "titleLabel": "Title",
+                    "titlePlaceholder": "Enter the title...",
+                    "contentLabel": "Content",
+                    "contentPlaceholder": "Enter the content...",
+                    "addButton": "Add Item",
+                    "themeLabel": "Accordion Theme",
+                    "themes": {
+                        "clean": "Minimal Clean Dividers",
+                        "boxed": "Floating Cards",
+                        "pillBlock": "Accent Toggle Block",
+                        "editorialNumbered": "Modern Numbered",
+                        "accentLine": "Left Accent Border"
+                    }
+                }
+            },
             "ultimateCmsTools": {
                 "customCode": {
                     "label": "Custom Code",
@@ -524,6 +550,32 @@
                             "accentLine": "Left Accent Border"
                         }
                     }
+                },
+                "harmonicaList": {
+                    "label": "Harmonica List",
+                    "emptyState": "Add items in the settings",
+                    "config": {
+                        "tabs": {
+                            "content": "Content",
+                            "settings": "Settings"
+                        },
+                        "iconLabel": "Icon",
+                        "iconPlaceholder": "e.g. regular-comments",
+                        "iconHelpText": "Enter a valid Shopware icon name.",
+                        "titleLabel": "Title",
+                        "titlePlaceholder": "Enter the title...",
+                        "contentLabel": "Content",
+                        "contentPlaceholder": "Enter the content...",
+                        "addButton": "Add Item",
+                        "themeLabel": "Accordion Theme",
+                        "themes": {
+                            "clean": "Minimal Clean Dividers",
+                            "boxed": "Floating Cards",
+                            "pillBlock": "Accent Toggle Block",
+                            "editorialNumbered": "Modern Numbered",
+                            "accentLine": "Left Accent Border"
+                        }
+                    }
                 }
             }
         },
@@ -568,6 +620,9 @@
                 },
                 "faqHarmonica": {
                     "label": "FAQ Harmonika"
+                },
+                "harmonicaList": {
+                    "label": "Harmonica List"
                 },
                 "commonSlider": {
                     "label": "Common Slider"

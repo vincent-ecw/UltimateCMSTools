@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.20] - 2026-08-30
+
+### Added
+- Added Schema.org `FAQPage` rich snippets (JSON-LD structured data) to **FAQ Harmonica** (`faq-harmonica`) storefront template, automatically generating valid questions (`@type: Question`) and answers (`@type: Answer`) for SEO indexing.
+- Added new **Harmonica List** (`harmonica-list`) CMS block and element as a non-FAQ accordion list offering the identical features, collapse behavior, and 5 theme variations (`clean`, `boxed`, `pill-block`, `editorial-numbered`, `accent-line`) without FAQ structured data markup.
+- Added English, German, and Dutch snippet translations for the new Harmonica List CMS block and element.
+
+### Changed
+- Optimized accordion signifiers across all 5 themes in both **FAQ Harmonica** (`faq-harmonica`) and **Harmonica List** (`harmonica-list`) based on Nielsen Norman Group (NN/g) usability research: standardized on rotating caret/chevron signifiers pointing downward when closed and smoothly rotating 180° when expanded, eliminating navigation-ambiguous right arrows.
+
 ## [1.2.19] - 2026-08-30
 
 ### Fixed

@@ -1,0 +1,32 @@
+.sw-cms-el-preview-harmonica-list {
+    padding: 10px;
+    background-color: #f9fafb;
+    border-radius: 4px;
+
+    .sw-cms-el-preview-harmonica-list__item {
+        display: flex;
+        align-items: center;
+        background-color: #fff;
+        border: 1px solid #d1d9e0;
+        border-radius: 4px;
+        padding: 5px 10px;
+        margin-bottom: 5px;
+        font-size: 12px;
+
+        .sw-icon {
+            width: 14px;
+            height: 14px;
+            margin-right: 10px;
+            color: #189eff;
+        }
+
+        span {
+            flex-grow: 1;
+        }
+
+        .toggle {
+            margin-right: 0;
+            color: #94a6b8;
+        }
+    }
+}

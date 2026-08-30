@@ -134,6 +134,32 @@
                     }
                 }
             },
+            "harmonicaList": {
+                "label": "Harmonica lijst",
+                "emptyState": "Voeg items toe in de instellingen",
+                "config": {
+                    "tabs": {
+                        "content": "Inhoud",
+                        "settings": "Instellingen"
+                    },
+                    "iconLabel": "Icoon",
+                    "iconPlaceholder": "bijv. regular-comments",
+                    "iconHelpText": "Voer een geldige Shopware-icoonnaam in.",
+                    "titleLabel": "Titel",
+                    "titlePlaceholder": "Voer de titel in...",
+                    "contentLabel": "Inhoud",
+                    "contentPlaceholder": "Voer de inhoud in...",
+                    "addButton": "Item toevoegen",
+                    "themeLabel": "Harmonica thema",
+                    "themes": {
+                        "clean": "Minimalistisch Clean",
+                        "boxed": "Zwevende Kaarten",
+                        "pillBlock": "Accent Schakelknop",
+                        "editorialNumbered": "Modern Genummerd",
+                        "accentLine": "Linker Accentlijn"
+                    }
+                }
+            },
             "ultimateCmsTools": {
                 "customCode": {
                     "label": "Aangepaste Code",
@@ -524,6 +550,32 @@
                             "accentLine": "Linker Accentlijn"
                         }
                     }
+                },
+                "harmonicaList": {
+                    "label": "Harmonica lijst",
+                    "emptyState": "Voeg items toe in de instellingen",
+                    "config": {
+                        "tabs": {
+                            "content": "Inhoud",
+                            "settings": "Instellingen"
+                        },
+                        "iconLabel": "Icoon",
+                        "iconPlaceholder": "bijv. regular-comments",
+                        "iconHelpText": "Voer een geldige Shopware-icoonnaam in.",
+                        "titleLabel": "Titel",
+                        "titlePlaceholder": "Voer de titel in...",
+                        "contentLabel": "Inhoud",
+                        "contentPlaceholder": "Voer de inhoud in...",
+                        "addButton": "Item toevoegen",
+                        "themeLabel": "Harmonica thema",
+                        "themes": {
+                            "clean": "Minimalistisch Clean",
+                            "boxed": "Zwevende Kaarten",
+                            "pillBlock": "Accent Schakelknop",
+                            "editorialNumbered": "Modern Genummerd",
+                            "accentLine": "Linker Accentlijn"
+                        }
+                    }
                 }
             }
         },
@@ -562,6 +614,9 @@
                 },
                 "faqHarmonica": {
                     "label": "FAQ Accordeon"
+                },
+                "harmonicaList": {
+                    "label": "Harmonica lijst"
                 },
                 "commonSlider": {
                     "label": "Algemene slider"

@@ -11,13 +11,32 @@
                     {% set headingId = accordionId ~ '-heading-' ~ loop.index %}
                     {% set itemNumber = (loop.index < 10 ? '0' ~ loop.index : loop.index) %}
 
+                    {% set resolvedIcon = faq.icon|default('')|replace({
+                        'regular-': '',
+                        'solid-': '',
+                        'light-': '',
+                        '-s': '',
+                        '-xs': '',
+                        '-l': ''
+                    }) %}
+                    {% if resolvedIcon in ['comments', 'comment', 'chat'] %}
+                        {% set resolvedIcon = 'speech-bubbles' %}
+                    {% elseif resolvedIcon in ['question-circle', 'question', 'help-circle'] %}
+                        {% set resolvedIcon = 'help' %}
+                    {% elseif resolvedIcon in ['check', 'check-circle'] %}
+                        {% set resolvedIcon = 'checkmark' %}
+                    {% elseif resolvedIcon in ['mail', 'email'] %}
+                        {% set resolvedIcon = 'envelope' %}
+                    {% elseif resolvedIcon == 'chevron-down' %}
+                        {% set resolvedIcon = 'arrow-head-down' %}
+                    {% endif %}
+
                     <div class="accordion-item faq-harmonica-item">
                         <h3 class="accordion-header faq-harmonica-header" id="{{ headingId }}">
                             <button class="accordion-button faq-harmonica-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#{{ collapseId }}" aria-expanded="false" aria-controls="{{ collapseId }}">
                                 {% if theme == 'pill-block' %}
                                     <span class="faq-harmonica-pill-badge">
-                                        {% sw_icon 'plus-xs' style { 'class': 'badge-icon icon-plus' } %}
-                                        {% sw_icon 'minus-xs' style { 'class': 'badge-icon icon-minus' } %}
+                                        {% sw_icon 'arrow-head-down' style { 'class': 'badge-icon icon-chevron' } %}
                                     </span>
                                 {% endif %}
 
@@ -29,9 +48,9 @@
                                     <span class="faq-harmonica-icon-wrapper">
                                         <img src="{{ faq.mediaUrl }}" alt="Icon" width="24" height="24" class="faq-harmonica-image-icon" />
                                     </span>
-                                {% elseif faq.icon %}
+                                {% elseif resolvedIcon %}
                                     <span class="faq-harmonica-icon-wrapper">
-                                        {% sw_icon faq.icon style { 'class': 'faq-harmonica-icon' } %}
+                                        {% sw_icon resolvedIcon style { 'class': 'faq-harmonica-icon' } %}
                                     </span>
                                 {% elseif theme != 'pill-block' and theme != 'editorial-numbered' %}
                                     <span class="faq-harmonica-icon-wrapper empty-icon"></span>
@@ -39,9 +58,9 @@
 
                                 <span class="faq-harmonica-title">{{ faq.title }}</span>
 
-                                {% if theme == 'editorial-numbered' %}
-                                    <span class="faq-harmonica-toggle-arrow">
-                                        {% sw_icon 'long-arrow-right' style { 'class': 'arrow-icon' } %}
+                                {% if theme != 'pill-block' %}
+                                    <span class="faq-harmonica-toggle-icon-wrapper">
+                                        {% sw_icon 'arrow-head-down' style { 'class': 'faq-toggle-chevron' } %}
                                     </span>
                                 {% endif %}
                             </button>
@@ -54,7 +73,31 @@
                     </div>
                 {% endfor %}
             </div>
+
+            {% set faqEntities = [] %}
+            {% for faq in faqs %}
+                {% if faq.title|default('')|striptags|trim and faq.content|default('')|trim %}
+                    {% set faqEntities = faqEntities|merge([{
+                        '@type': 'Question',
+                        'name': faq.title|striptags|trim,
+                        'acceptedAnswer': {
+                            '@type': 'Answer',
+                            'text': faq.content|trim
+                        }
+                    }]) %}
+                {% endif %}
+            {% endfor %}
+
+            {% if faqEntities|length > 0 %}
+                {% set faqSchema = {
+                    '@context': 'https://schema.org',
+                    '@type': 'FAQPage',
+                    'mainEntity': faqEntities
+                } %}
+                <script type="application/ld+json">
+                    {{ faqSchema|json_encode|raw }}
+                </script>
+            {% endif %}
         {% endif %}
     </div>
 {% endblock %}
-

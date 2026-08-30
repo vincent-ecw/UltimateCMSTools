@@ -1,0 +1,27 @@
+.sw-cms-preview-harmonica-list {
+    padding: 15px;
+    background: #fff;
+
+    .sw-cms-preview-harmonica-list__title {
+        text-align: center;
+        background: #f1f5f8;
+        padding: 5px;
+        margin-bottom: 10px;
+        border-radius: 4px;
+        
+        span {
+            font-size: 10px;
+            color: #94a6b8;
+        }
+    }
+
+    .sw-cms-preview-harmonica-list__items {
+        .item {
+            height: 15px;
+            background: #f1f5f8;
+            margin-bottom: 5px;
+            border-radius: 2px;
+            border: 1px solid #d1d9e0;
+        }
+    }
+}

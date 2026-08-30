@@ -1,0 +1,21 @@
+<div class="sw-cms-el-harmonica-list">
+    <div v-if="items && items.length > 0" :class="['harmonica-list-preview', 'theme-' + currentTheme]">
+        <div class="harmonica-item" v-for="(item, index) in items" :key="index">
+            <div class="harmonica-header">
+                <span v-if="currentTheme === 'pill-block'" class="harmonica-pill-badge">
+                    <sw-icon name="regular-chevron-down"></sw-icon>
+                </span>
+                <span v-if="currentTheme === 'editorial-numbered'" class="harmonica-number">
+                    ({{ (index + 1) < 10 ? '0' + (index + 1) : (index + 1) }})
+                </span>
+                <sw-icon v-if="item.icon && currentTheme !== 'pill-block'" :name="item.icon"></sw-icon>
+                <span class="harmonica-title">{{ item.title }}</span>
+                <sw-icon v-if="currentTheme !== 'pill-block'" name="regular-chevron-down" class="harmonica-toggle-icon"></sw-icon>
+            </div>
+        </div>
+    </div>
+    <div v-else class="sw-cms-el-harmonica-list-empty">
+        <sw-icon name="regular-list" />
+        <p>{{ $tc('sw-cms.elements.harmonicaList.emptyState') }}</p>
+    </div>
+</div>

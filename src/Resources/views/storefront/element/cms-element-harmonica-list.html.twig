@@ -1,0 +1,78 @@
+{% block element_harmonica_list %}
+    {% set items = element.config.items.value|default(element.config.faqs.value) %}
+    {% set theme = element.config.theme.value|default('clean') %}
+    {% set accordionId = 'harmonicaAccordion-' ~ element.id %}
+
+    <div class="cms-element-harmonica-list theme-{{ theme }}">
+        {% if items and items|length > 0 %}
+            <div class="accordion" id="{{ accordionId }}">
+                {% for item in items %}
+                    {% set collapseId = accordionId ~ '-collapse-' ~ loop.index %}
+                    {% set headingId = accordionId ~ '-heading-' ~ loop.index %}
+                    {% set itemNumber = (loop.index < 10 ? '0' ~ loop.index : loop.index) %}
+
+                    {% set resolvedIcon = item.icon|default('')|replace({
+                        'regular-': '',
+                        'solid-': '',
+                        'light-': '',
+                        '-s': '',
+                        '-xs': '',
+                        '-l': ''
+                    }) %}
+                    {% if resolvedIcon in ['comments', 'comment', 'chat'] %}
+                        {% set resolvedIcon = 'speech-bubbles' %}
+                    {% elseif resolvedIcon in ['question-circle', 'question', 'help-circle'] %}
+                        {% set resolvedIcon = 'help' %}
+                    {% elseif resolvedIcon in ['check', 'check-circle'] %}
+                        {% set resolvedIcon = 'checkmark' %}
+                    {% elseif resolvedIcon in ['mail', 'email'] %}
+                        {% set resolvedIcon = 'envelope' %}
+                    {% elseif resolvedIcon == 'chevron-down' %}
+                        {% set resolvedIcon = 'arrow-head-down' %}
+                    {% endif %}
+
+                    <div class="accordion-item harmonica-list-item">
+                        <h3 class="accordion-header harmonica-list-header" id="{{ headingId }}">
+                            <button class="accordion-button harmonica-list-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#{{ collapseId }}" aria-expanded="false" aria-controls="{{ collapseId }}">
+                                {% if theme == 'pill-block' %}
+                                    <span class="harmonica-list-pill-badge">
+                                        {% sw_icon 'arrow-head-down' style { 'class': 'badge-icon icon-chevron' } %}
+                                    </span>
+                                {% endif %}
+
+                                {% if theme == 'editorial-numbered' %}
+                                    <span class="harmonica-list-number">({{ itemNumber }})</span>
+                                {% endif %}
+
+                                {% if item.mediaUrl %}
+                                    <span class="harmonica-list-icon-wrapper">
+                                        <img src="{{ item.mediaUrl }}" alt="Icon" width="24" height="24" class="harmonica-list-image-icon" />
+                                    </span>
+                                {% elseif resolvedIcon %}
+                                    <span class="harmonica-list-icon-wrapper">
+                                        {% sw_icon resolvedIcon style { 'class': 'harmonica-list-icon' } %}
+                                    </span>
+                                {% elseif theme != 'pill-block' and theme != 'editorial-numbered' %}
+                                    <span class="harmonica-list-icon-wrapper empty-icon"></span>
+                                {% endif %}
+
+                                <span class="harmonica-list-title">{{ item.title }}</span>
+
+                                {% if theme != 'pill-block' %}
+                                    <span class="harmonica-list-toggle-icon-wrapper">
+                                        {% sw_icon 'arrow-head-down' style { 'class': 'harmonica-toggle-chevron' } %}
+                                    </span>
+                                {% endif %}
+                            </button>
+                        </h3>
+                        <div id="{{ collapseId }}" class="accordion-collapse collapse" aria-labelledby="{{ headingId }}" data-bs-parent="#{{ accordionId }}">
+                            <div class="accordion-body harmonica-list-body">
+                                {{ item.content|raw }}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

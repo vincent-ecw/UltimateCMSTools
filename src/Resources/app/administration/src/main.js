@@ -10,6 +10,8 @@ import './module/sw-cms/elements/manufacturer-grid';
 import './module/sw-cms/blocks/ultimate-cms-tools/manufacturer-grid';
 import './module/sw-cms/elements/faq-harmonica';
 import './module/sw-cms/blocks/ultimate-cms-tools/faq-harmonica';
+import './module/sw-cms/elements/harmonica-list';
+import './module/sw-cms/blocks/ultimate-cms-tools/harmonica-list';
 import './module/sw-cms/elements/common-slider';
 import './module/sw-cms/blocks/ultimate-cms-tools/common-slider';
 import './module/sw-cms/elements/custom-carousel';

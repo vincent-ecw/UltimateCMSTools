@@ -1,0 +1,70 @@
+<div class="sw-cms-el-config-harmonica-list">
+    <sw-tabs default-item="content" position="top">
+        <template #default="{ active }">
+            <sw-tabs-item name="content" :active-tab="active" @click="activeTab = 'content'">
+                {{ $tc('sw-cms.elements.ultimateCmsTools.harmonicaList.config.tabs.content') || $tc('sw-cms.elements.harmonicaList.config.tabs.content') || 'Content' }}
+            </sw-tabs-item>
+            <sw-tabs-item name="settings" :active-tab="active" @click="activeTab = 'settings'">
+                {{ $tc('sw-cms.elements.ultimateCmsTools.harmonicaList.config.tabs.settings') || $tc('sw-cms.elements.harmonicaList.config.tabs.settings') || 'Settings' }}
+            </sw-tabs-item>
+        </template>
+    </sw-tabs>
+
+    <div v-if="activeTab === 'content'" class="sw-cms-el-config-harmonica-list__content-tab">
+        <div class="sw-cms-el-config-harmonica-list__items">
+            <div v-for="(item, index) in items" :key="index" class="sw-cms-el-config-harmonica-list__item">
+                <div class="sw-cms-el-config-harmonica-list__item-header">
+                    <span class="item-number">Item {{ index + 1 }}</span>
+                    <sw-button @click="onRemoveItem(index)" size="small" variant="danger">
+                        {{ $tc('global.default.delete') }}
+                    </sw-button>
+                </div>
+                
+                <div class="sw-cms-el-config-harmonica-list__item-content">
+                    <sw-media-compact-upload-v2
+                        :source="item.mediaId"
+                        :upload-tag="'harmonica-icon-upload-' + element.id + '-' + index"
+                        :allowMultiSelect="false"
+                        :label="$tc('sw-cms.elements.harmonicaList.config.iconLabel')"
+                        :helpText="'Please upload an image with dimensions of exactly 24x24 pixels to ensure proper alignment.'"
+                        @selection-change="onImageSelect(item, $event)"
+                        @media-upload-remove-image="onImageRemove(item)"
+                    ></sw-media-compact-upload-v2>
+
+                    <sw-upload-listener
+                        :upload-tag="'harmonica-icon-upload-' + element.id + '-' + index"
+                        auto-upload
+                        @media-upload-finish="onImageUpload(item, $event)"
+                    />
+                    
+                    <sw-text-field 
+                        v-model="item.title" 
+                        :label="$tc('sw-cms.elements.harmonicaList.config.titleLabel')" 
+                        :placeholder="$tc('sw-cms.elements.harmonicaList.config.titlePlaceholder')">
+                    </sw-text-field>
+                    
+                    <sw-text-editor 
+                        :value="item.content"
+                        @update:value="item.content = $event; onChange()"
+                        :label="$tc('sw-cms.elements.harmonicaList.config.contentLabel')"
+                        :placeholder="$tc('sw-cms.elements.harmonicaList.config.contentPlaceholder')">
+                    </sw-text-editor>
+                </div>
+            </div>
+        </div>
+
+        <div class="sw-cms-el-config-harmonica-list__actions">
+            <sw-button @click="onAddItem" variant="ghost" class="sw-cms-el-config-harmonica-list__add-button">
+                {{ $tc('sw-cms.elements.harmonicaList.config.addButton') }}
+            </sw-button>
+        </div>
+    </div>
+
+    <div v-if="activeTab === 'settings'" class="sw-cms-el-config-harmonica-list__settings-tab">
+        <sw-single-select
+            v-model:value="theme"
+            :options="themeOptions"
+            :label="$tc('sw-cms.elements.ultimateCmsTools.harmonicaList.config.themeLabel') || $tc('sw-cms.elements.harmonicaList.config.themeLabel')">
+        </sw-single-select>
+    </div>
+</div>

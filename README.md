@@ -23,6 +23,7 @@ A collection of CMS blocks and elements that enhance Shopware's Shopping Experie
   - [16. Button](#16-button)
   - [17. Icon List](#17-icon-list)
   - [18. Flexible Image and Text](#18-flexible-image-and-text)
+  - [19. Harmonica List](#19-harmonica-list)
 - [Development and Compilation](#development-and-compilation)
 
 
@@ -119,10 +120,11 @@ A carousel displaying the subcategories of the active category. It is ideal for 
 
 ### 3. FAQ Harmonica
 
-A collapsible Bootstrap accordion designed for Frequently Asked Questions (FAQs). It features support for custom uploaded image icons, built-in Shopware vector icons, and 5 dynamic theme variations that adapt seamlessly to active Shopware theme colors (`$primary`, `$secondary`, `$tertiary`).
+A collapsible Bootstrap accordion designed for Frequently Asked Questions (FAQs). It features automated Schema.org `FAQPage` rich snippets (JSON-LD structured data) for SEO indexing, support for custom uploaded image icons, built-in Shopware vector icons, and 5 dynamic theme variations that adapt seamlessly to active Shopware theme colors (`$primary`, `$secondary`, `$tertiary`).
 
 * **Block Name:** `faq-harmonica`
 * **Element Name:** `faq-harmonica`
+* **Rich Snippets:** Outputs Schema.org JSON-LD `<script type="application/ld+json">` (`@type: FAQPage`, `@type: Question`, `@type: Answer`) automatically.
 
 #### Configuration Options
 
@@ -451,6 +453,33 @@ Renders a list of feature items with icons (standard Shopware icons, custom icon
   * **Offset:** Modern overlapping frame design with accent border.
   * **Rounded:** Light container with dashed border and pill-rounded image corners.
   * **Stacked:** Vertical full-width banner image and attached content card.
+
+---
+
+### 19. Harmonica List
+
+A versatile collapsible Bootstrap accordion for general content lists, specifications, feature details, and topic overviews (when FAQ rich snippets are not desired). It provides the exact same functionality, icon support, image uploads, and 5 theme variations as FAQ Harmonica without generating FAQPage structured data markup.
+
+* **Block Name:** `harmonica-list`
+* **Element Name:** `harmonica-list`
+
+#### Configuration Options
+
+The configuration modal features two tabs:
+
+##### Content Tab
+Manage a dynamic list of collapsible harmonica items. For each item:
+* **Icon (`mediaId` / `icon`):** Upload an image file (recommended size: `24x24 px`) or input a standard Shopware icon name (e.g., `regular-comments` or `regular-question-circle-s`).
+* **Title (`title`):** The text displayed on the header button of the accordion item.
+* **Content (`content`):** A rich-text area (utilizing the built-in `sw-text-editor`) containing the body content.
+
+##### Settings Tab
+* **Accordion Theme (`theme`):** Choose from 5 distinct visual styles:
+  * **Minimal Clean Dividers (`clean`):** Sleek minimal list layout with hairline horizontal dividers.
+  * **Floating Cards (`boxed`):** Floating card boxes with rounded corners, subtle drop shadows, and active primary border outlines.
+  * **Accent Toggle Block (`pill-block`):** Elementor-inspired side block button featuring solid `$primary` or `$secondary` badge toggles (`+` / `-`).
+  * **Modern Numbered (`editorial-numbered`):** High-impact editorial design with auto-formatted item numbers (`01`, `02`...), diagonal arrow toggles (`↗`), and solid color background row fills when active.
+  * **Left Accent Border (`accent-line`):** Clean card rows highlighted with a bold 4px vertical accent bar on the left edge when expanded.
 
 ---
 

@@ -1,5 +1,5 @@
-.sw-cms-el-faq-harmonica {
-    .sw-cms-el-faq-harmonica-empty {
+.sw-cms-el-harmonica-list {
+    .sw-cms-el-harmonica-list-empty {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -15,14 +15,14 @@
         }
     }
 
-    .faq-harmonica-preview {
-        .faq-item {
+    .harmonica-list-preview {
+        .harmonica-item {
             border: 1px solid #d1d9e0;
             margin-bottom: 10px;
             border-radius: 4px;
             background-color: #fff;
             
-            .faq-header {
+            .harmonica-header {
                 display: flex;
                 align-items: center;
                 padding: 12px 16px;
@@ -34,23 +34,23 @@
                     color: #189eff;
                 }
 
-                .faq-title {
+                .harmonica-title {
                     flex-grow: 1;
                 }
 
-                .faq-toggle-icon {
+                .harmonica-toggle-icon {
                     margin-right: 0;
                     color: #94a6b8;
                 }
 
-                .faq-number {
+                .harmonica-number {
                     margin-right: 12px;
                     font-size: 12px;
                     font-weight: 700;
                     color: #189eff;
                 }
 
-                .faq-pill-badge {
+                .harmonica-pill-badge {
                     display: inline-flex;
                     align-items: center;
                     justify-content: center;
@@ -72,7 +72,7 @@
         }
 
         &.theme-clean {
-            .faq-item {
+            .harmonica-item {
                 border: none;
                 border-bottom: 1px solid #e2e8f0;
                 border-radius: 0;
@@ -82,7 +82,7 @@
         }
 
         &.theme-boxed {
-            .faq-item {
+            .harmonica-item {
                 border: 1px solid #e2e8f0;
                 border-radius: 8px;
                 box-shadow: 0 2px 4px rgba(0,0,0,0.03);
@@ -91,7 +91,7 @@
         }
 
         &.theme-pill-block {
-            .faq-item {
+            .harmonica-item {
                 border: 1px solid #e2e8f0;
                 border-radius: 8px;
                 margin-bottom: 10px;
@@ -100,14 +100,14 @@
         }
 
         &.theme-editorial-numbered {
-            .faq-item {
+            .harmonica-item {
                 border: none;
                 border-bottom: 1px solid #cbd5e1;
                 border-radius: 0;
                 margin-bottom: 0;
                 background: transparent;
 
-                .faq-title {
+                .harmonica-title {
                     text-transform: uppercase;
                     letter-spacing: 0.5px;
                     font-size: 13px;
@@ -116,7 +116,7 @@
         }
 
         &.theme-accent-line {
-            .faq-item {
+            .harmonica-item {
                 border: 1px solid #e2e8f0;
                 border-left: 4px solid #cbd5e1;
                 border-radius: 0 6px 6px 0;

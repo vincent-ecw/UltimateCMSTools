@@ -6,12 +6,12 @@
 
 .cms-element-harmonica-list {
     // Define robust CSS variable fallbacks for theme colors
-    --harmonica-primary: var(--primary, #{$primary});
-    --harmonica-secondary: var(--secondary, if(variable-exists("secondary"), #{$secondary}, var(--primary, #{$primary})));
-    --harmonica-border: var(--border-color, if(variable-exists("border-color"), #{$border-color}, #e2e8f0));
-    --harmonica-card-bg: var(--card-bg, if(variable-exists("card-bg"), #{$card-bg}, #ffffff));
-    --harmonica-body-color: var(--body-color, if(variable-exists("body-color"), #{$body-color}, #212529));
-    --harmonica-headings-color: var(--headings-color, if(variable-exists("headings-color"), #{$headings-color}, #1a202c));
+    --harmonica-primary: var(--ecw-mapped-color-cta-primarycolor, var(--bs-primary, var(--primary, #{$primary})));
+    --harmonica-secondary: var(--ecw-mapped-color-cta-secondarycolor, var(--bs-secondary, var(--secondary, if(variable-exists("secondary"), #{$secondary}, var(--primary, #{$primary})))));
+    --harmonica-border: var(--ecw-mapped-color-border-base, var(--bs-border-color, var(--border-color, if(variable-exists("border-color"), #{$border-color}, #e2e8f0))));
+    --harmonica-card-bg: var(--ecw-mapped-color-background-container, var(--bs-card-bg, var(--card-bg, if(variable-exists("card-bg"), #{$card-bg}, #ffffff))));
+    --harmonica-body-color: var(--ecw-mapped-color-text-normal, var(--bs-body-color, var(--body-color, if(variable-exists("body-color"), #{$body-color}, #212529))));
+    --harmonica-headings-color: var(--ecw-mapped-color-textcolor, var(--bs-heading-color, var(--headings-color, if(variable-exists("headings-color"), #{$headings-color}, #1a202c))));
 
     .accordion {
         border: none;

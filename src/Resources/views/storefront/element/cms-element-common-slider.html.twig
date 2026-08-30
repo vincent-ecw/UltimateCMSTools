@@ -10,7 +10,7 @@
     {% set maxHeight = config.maxHeight.value|default(null) %}
 
     <div class="cms-element-common-slider"
-         {% if maxHeight and maxHeight > 0 %}style="--uct-carousel-max-height: {{ maxHeight }}px; --common-slider-max-height: {{ maxHeight }}px; max-height: {{ maxHeight }}px;"{% endif %}
+         {% if maxHeight and maxHeight > 0 %}style="--uct-carousel-max-height: {{ maxHeight }}px; --common-slider-max-height: {{ maxHeight }}px;"{% endif %}
          data-common-slider="true"
          data-common-slider-options='{
              "effect": "{{ effect }}",

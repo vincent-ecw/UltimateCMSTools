@@ -5,6 +5,14 @@
 }
 
 .cms-element-faq-harmonica {
+    // Define robust CSS variable fallbacks for theme colors
+    --faq-primary: var(--primary, #{$primary});
+    --faq-secondary: var(--secondary, if(variable-exists("secondary"), #{$secondary}, var(--primary, #{$primary})));
+    --faq-border: var(--border-color, if(variable-exists("border-color"), #{$border-color}, #e2e8f0));
+    --faq-card-bg: var(--card-bg, if(variable-exists("card-bg"), #{$card-bg}, #ffffff));
+    --faq-body-color: var(--body-color, if(variable-exists("body-color"), #{$body-color}, #212529));
+    --faq-headings-color: var(--headings-color, if(variable-exists("headings-color"), #{$headings-color}, #1a202c));
+
     .accordion {
         border: none;
     }
@@ -16,11 +24,11 @@
         .faq-harmonica-header {
             margin: 0;
             padding: 0;
-            
+
             .faq-harmonica-button {
                 padding: 1.25rem 1rem;
                 font-weight: 600;
-                color: $headings-color;
+                color: var(--faq-headings-color);
                 background-color: transparent;
                 box-shadow: none;
                 display: flex;
@@ -28,7 +36,9 @@
                 width: 100%;
                 text-align: left;
                 border: none;
-                transition: color 0.2s ease, background-color 0.2s ease;
+                transition:
+                    color 0.2s ease,
+                    background-color 0.2s ease;
 
                 &:focus {
                     box-shadow: none;
@@ -72,7 +82,7 @@
 
         .faq-harmonica-body {
             padding: 0 1rem 1.25rem 1rem;
-            color: $body-color;
+            color: var(--faq-body-color);
             line-height: 1.6;
         }
     }
@@ -83,7 +93,7 @@
     &.theme-clean {
         .faq-harmonica-item {
             border: none;
-            border-bottom: 1px solid $border-color;
+            border-bottom: 1px solid var(--faq-border);
             border-radius: 0;
             background: transparent;
 
@@ -93,8 +103,8 @@
 
             .faq-harmonica-button {
                 &:not(.collapsed) {
-                    color: $primary;
-                    background-color: rgba($primary, 0.04);
+                    color: var(--faq-primary);
+                    background-color: color-mix(in srgb, var(--faq-primary) 6%, transparent);
                 }
             }
 
@@ -111,15 +121,15 @@
     // ----------------------------------------------------
     &.theme-boxed {
         .faq-harmonica-item {
-            border: 1px solid $border-color;
-            border-radius: if(variable-exists('border-radius-lg'), $border-radius-lg, 8px);
+            border: 1px solid var(--faq-border);
+            border-radius: if(variable-exists("border-radius-lg"), $border-radius-lg, 8px);
             margin-bottom: 1rem;
-            background-color: if(variable-exists('card-bg'), $card-bg, #ffffff);
+            background-color: var(--faq-card-bg);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
             overflow: hidden;
 
             &:hover {
-                border-color: darken($border-color, 10%);
+                border-color: color-mix(in srgb, var(--faq-border) 80%, #000000);
                 box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
             }
 
@@ -127,14 +137,14 @@
                 padding: 1.25rem 1.25rem;
 
                 &:not(.collapsed) {
-                    color: $primary;
-                    background-color: rgba($primary, 0.03);
+                    color: var(--faq-primary);
+                    background-color: color-mix(in srgb, var(--faq-primary) 5%, transparent);
                 }
             }
 
             &:has(.faq-harmonica-button:not(.collapsed)) {
-                border-color: $primary;
-                box-shadow: 0 6px 20px rgba($primary, 0.12);
+                border-color: var(--faq-primary);
+                box-shadow: 0 6px 20px color-mix(in srgb, var(--faq-primary) 15%, transparent);
             }
 
             .faq-harmonica-body {
@@ -152,10 +162,10 @@
     // ----------------------------------------------------
     &.theme-pill-block {
         .faq-harmonica-item {
-            border: 1px solid $border-color;
-            border-radius: if(variable-exists('border-radius'), $border-radius, 6px);
+            border: 1px solid var(--faq-border);
+            border-radius: if(variable-exists("border-radius"), $border-radius, 6px);
             margin-bottom: 0.875rem;
-            background-color: if(variable-exists('card-bg'), $card-bg, #ffffff);
+            background-color: var(--faq-card-bg);
             overflow: hidden;
 
             .faq-harmonica-button {
@@ -174,11 +184,13 @@
                     width: 36px;
                     height: 36px;
                     border-radius: 8px;
-                    background-color: $primary;
+                    background-color: var(--faq-primary);
                     color: #ffffff;
                     margin-right: 1.25rem;
                     flex-shrink: 0;
-                    transition: background-color 0.25s ease, transform 0.25s ease;
+                    transition:
+                        background-color 0.25s ease,
+                        transform 0.25s ease;
 
                     .badge-icon {
                         width: 14px;
@@ -196,11 +208,11 @@
                 }
 
                 &:not(.collapsed) {
-                    color: $primary;
-                    background-color: rgba($primary, 0.02);
+                    color: var(--faq-primary);
+                    background-color: color-mix(in srgb, var(--faq-primary) 3%, transparent);
 
                     .faq-harmonica-pill-badge {
-                        background-color: if(variable-exists('secondary'), $secondary, darken($primary, 10%));
+                        background-color: var(--faq-secondary);
 
                         .icon-plus {
                             display: none;
@@ -214,7 +226,7 @@
             }
 
             &:has(.faq-harmonica-button:not(.collapsed)) {
-                border-color: rgba($primary, 0.5);
+                border-color: color-mix(in srgb, var(--faq-primary) 50%, transparent);
             }
 
             .faq-harmonica-body {
@@ -230,8 +242,8 @@
     &.theme-editorial-numbered {
         .faq-harmonica-item {
             border: none;
-            border-top: 1px solid $border-color;
-            border-bottom: 1px solid $border-color;
+            border-top: 1px solid var(--faq-border);
+            border-bottom: 1px solid var(--faq-border);
             margin-top: -1px; // Collapse overlapping borders
             background: transparent;
             border-radius: 0;
@@ -248,7 +260,7 @@
                 .faq-harmonica-number {
                     font-size: 0.875rem;
                     font-weight: 700;
-                    color: if(variable-exists('secondary'), $secondary, $primary);
+                    color: var(--faq-secondary);
                     margin-right: 1.25rem;
                     letter-spacing: 0.5px;
                     flex-shrink: 0;
@@ -279,7 +291,7 @@
 
                 &:not(.collapsed) {
                     color: #ffffff;
-                    background-color: $primary;
+                    background-color: var(--faq-primary);
 
                     .faq-harmonica-number {
                         color: rgba(#ffffff, 0.9);
@@ -292,11 +304,11 @@
             }
 
             .faq-harmonica-collapse {
-                background-color: $primary;
+                background-color: var(--faq-primary);
             }
 
             .faq-harmonica-body {
-                background-color: $primary;
+                background-color: var(--faq-primary);
                 color: rgba(#ffffff, 0.95);
                 padding: 0 1rem 1.5rem 3.5rem;
 
@@ -313,32 +325,35 @@
     // ----------------------------------------------------
     &.theme-accent-line {
         .faq-harmonica-item {
-            border: 1px solid $border-color;
-            border-left: 4px solid darken($border-color, 8%);
-            border-radius: 0 if(variable-exists('border-radius'), $border-radius, 6px) if(variable-exists('border-radius'), $border-radius, 6px) 0;
+            border: 1px solid var(--faq-border);
+            border-left: 4px solid color-mix(in srgb, var(--faq-border) 70%, #cecece);
+            border-radius: 0 if(variable-exists("border-radius"), $border-radius, 6px)
+                if(variable-exists("border-radius"), $border-radius, 6px) 0;
             margin-bottom: 0.75rem;
-            background-color: if(variable-exists('card-bg'), $card-bg, #ffffff);
+            background-color: var(--faq-card-bg);
             overflow: hidden;
-            transition: border-color 0.25s ease, background-color 0.25s ease;
+            transition:
+                border-color 0.25s ease,
+                background-color 0.25s ease;
 
             &:hover {
-                border-left-color: darken($border-color, 18%);
+                border-left-color: color-mix(in srgb, var(--faq-border) 40%, #64748b);
             }
 
             .faq-harmonica-button {
                 padding: 1.25rem 1.25rem;
 
                 &:not(.collapsed) {
-                    color: $primary;
-                    background-color: rgba($primary, 0.04);
+                    color: var(--faq-primary);
+                    background-color: color-mix(in srgb, var(--faq-primary) 4%, transparent);
                 }
             }
 
             &:has(.faq-harmonica-button:not(.collapsed)) {
-                border-left-color: $primary;
-                border-top-color: rgba($primary, 0.2);
-                border-right-color: rgba($primary, 0.2);
-                border-bottom-color: rgba($primary, 0.2);
+                border-left-color: var(--faq-primary);
+                border-top-color: color-mix(in srgb, var(--faq-primary) 20%, transparent);
+                border-right-color: color-mix(in srgb, var(--faq-primary) 20%, transparent);
+                border-bottom-color: color-mix(in srgb, var(--faq-primary) 20%, transparent);
             }
 
             .faq-harmonica-body {
@@ -351,4 +366,3 @@
         }
     }
 }
-

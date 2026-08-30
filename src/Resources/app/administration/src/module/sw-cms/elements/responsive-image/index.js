@@ -8,6 +8,11 @@ Shopware.Service('cmsService').registerCmsElement({
     component: 'sw-cms-el-responsive-image',
     configComponent: 'sw-cms-el-config-responsive-image',
     previewComponent: 'sw-cms-el-preview-responsive-image',
+    defaultData: {
+        mediaDesktop: null,
+        mediaTablet: null,
+        mediaMobile: null
+    },
     defaultConfig: {
         mediaDesktop: {
             source: 'static',

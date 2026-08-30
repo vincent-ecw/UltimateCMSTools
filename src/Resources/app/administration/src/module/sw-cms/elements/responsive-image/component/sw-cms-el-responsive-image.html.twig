@@ -7,7 +7,7 @@
         <div v-else class="sw-cms-el-responsive-image__preview-image-wrapper">
             <img :src="mediaUrl" class="sw-cms-el-responsive-image__preview-image" :alt="altText" />
             <div class="sw-cms-el-responsive-image__info">
-                {{ altText || $tc('sw-cms.elements.ultimateCmsTools.responsiveImage.label') }}
+                {{ displayInfo }}
             </div>
         </div>
     </div>

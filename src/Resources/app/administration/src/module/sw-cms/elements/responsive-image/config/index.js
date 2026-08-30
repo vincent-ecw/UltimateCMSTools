@@ -66,7 +66,10 @@ Component.register('sw-cms-el-config-responsive-image', {
             if (!this.element.data) {
                 this.element.data = {};
             }
-            this.element.data[key] = media;
+            this.element.data = {
+                ...this.element.data,
+                [key]: media
+            };
         },
 
         onChange() {

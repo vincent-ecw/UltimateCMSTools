@@ -32,14 +32,14 @@
     .manufacturer-card {
         display: flex;
         flex-direction: column;
-        background: #ffffff;
+        background: var(--ecw-mapped-color-background-container, var(--bs-card-bg, #ffffff));
         border-radius: 12px;
         overflow: hidden;
         text-decoration: none;
         color: inherit;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
         transition: transform 0.3s ease, box-shadow 0.3s ease;
-        border: 1px solid rgba(0,0,0,0.03);
+        border: 1px solid var(--ecw-mapped-color-border-base, var(--bs-border-color, rgba(0, 0, 0, 0.03)));
         height: 100%;
 
         &:hover {
@@ -54,12 +54,12 @@
         position: relative;
         width: 100%;
         padding-top: 60%;
-        background: #ffffff;
+        background: var(--ecw-mapped-color-background-container, var(--bs-card-bg, #ffffff));
         overflow: hidden;
         display: flex;
         align-items: center;
         justify-content: center;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+        border-bottom: 1px solid var(--ecw-mapped-color-border-base, var(--bs-border-color, rgba(0, 0, 0, 0.04)));
     }
 
     .manufacturer-card-logo {
@@ -89,8 +89,8 @@
         align-items: center;
         justify-content: center;
         padding: 15px;
-        background: #f8f9fa;
-        color: #6c757d;
+        background: var(--ecw-mapped-color-table-header_back, var(--bs-tertiary-bg, #f8f9fa));
+        color: var(--ecw-mapped-color-text-meta, var(--bs-secondary-color, #6c757d));
         text-align: center;
     }
 
@@ -110,13 +110,13 @@
         font-size: 1.125rem;
         font-weight: 600;
         margin: 0 0 10px;
-        color: #212529;
+        color: var(--ecw-mapped-color-text-normal, var(--bs-heading-color, #212529));
         line-height: 1.3;
     }
 
     .manufacturer-card-description {
         font-size: 0.9rem;
-        color: #6c757d;
+        color: var(--ecw-mapped-color-text-meta, var(--bs-secondary-color, #6c757d));
         line-height: 1.5;
         display: -webkit-box;
         -webkit-line-clamp: 3;

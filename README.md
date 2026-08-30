@@ -24,6 +24,7 @@ A collection of CMS blocks and elements that enhance Shopware's Shopping Experie
   - [17. Icon List](#17-icon-list)
   - [18. Flexible Image and Text](#18-flexible-image-and-text)
   - [19. Harmonica List](#19-harmonica-list)
+- [Design Token Color System](#design-token-color-system)
 - [Development and Compilation](#development-and-compilation)
 
 
@@ -480,6 +481,26 @@ Manage a dynamic list of collapsible harmonica items. For each item:
   * **Accent Toggle Block (`pill-block`):** Elementor-inspired side block button featuring solid `$primary` or `$secondary` badge toggles (`+` / `-`).
   * **Modern Numbered (`editorial-numbered`):** High-impact editorial design with auto-formatted item numbers (`01`, `02`...), diagonal arrow toggles (`↗`), and solid color background row fills when active.
   * **Left Accent Border (`accent-line`):** Clean card rows highlighted with a bold 4px vertical accent bar on the left edge when expanded.
+
+---
+
+## Design Token Color System
+
+The plugin incorporates a 3-tier design token color system referenced in [`style/variables-shopware-legacy.css`](style/variables-shopware-legacy.css) and documented in [`style/COLOR_SYSTEM.md`](style/COLOR_SYSTEM.md) and [`AGENTS.md`](AGENTS.md).
+
+All CMS block and element stylesheets strictly consume mapped tokens (`--ecw-mapped-color-*`) with a built-in 3-tier fallback chain:
+1. **Tier 1 (Primary):** `--ecw-mapped-color-*` (Custom theme design token variable)
+2. **Tier 2 (Secondary Fallback):** `--bs-*` (Bootstrap 5 standard variable)
+3. **Tier 3 (Tertiary Fallback):** Fixed hex/RGB color fallback
+
+```scss
+/* Example fallback structure */
+background-color: var(--ecw-mapped-color-background-container, var(--bs-card-bg, #ffffff));
+border-color: var(--ecw-mapped-color-border-base, var(--bs-border-color, #e2e8f0));
+color: var(--ecw-mapped-color-text-normal, var(--bs-body-color, #333333));
+```
+
+This guarantees seamless visual integration within bespoke client themes while ensuring that blocks display reliably with standard styling on any default Shopware installation.
 
 ---
 

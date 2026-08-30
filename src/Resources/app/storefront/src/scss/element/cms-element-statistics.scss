@@ -9,7 +9,7 @@
         font-size: 1.25rem;
         line-height: 1.6;
         font-weight: var(--ecw-font-regular, 400);
-        color: var(--colors-ecw-map-text-normal, #1e293b);
+        color: var(--ecw-mapped-color-text-normal, var(--bs-body-color, #1e293b));
 
         p {
             margin: 0;
@@ -44,11 +44,11 @@
     }
 
     .icon {
-        color: var(--colors-ecw-map-cta-secondarycolor, #2563eb);
+        color: var(--ecw-mapped-color-cta-secondarycolor, var(--bs-secondary, #2563eb));
     }
 
     .statistics-item-icon {
-        color: var(--colors-ecw-map-cta-secondarycolor, #2563eb);
+        color: var(--ecw-mapped-color-cta-secondarycolor, var(--bs-secondary, #2563eb));
         display: inline-flex;
         align-items: center;
         justify-content: center;
@@ -71,13 +71,13 @@
         font-weight: 800;
         line-height: 1.1;
         letter-spacing: -0.02em;
-        color: var(--colors-ecw-map-cta-primarycolor, #2563eb);
+        color: var(--ecw-mapped-color-cta-primarycolor, var(--bs-primary, #2563eb));
     }
 
     .statistics-item-title {
         font-size: 1rem;
         font-weight: var(--ecw-font-bold, 800);
-        color: var(--colors-ecw-map-text-normal, #1e293b);
+        color: var(--ecw-mapped-color-textcolor, var(--bs-heading-color, #1e293b));
 
         &-top {
             margin-bottom: 0.25rem;
@@ -86,15 +86,15 @@
 
     .statistics-item-subline {
         font-size: 0.9rem;
-        color: var(--colors-ecw-map-text-normal, #1e293b);
+        color: var(--ecw-mapped-color-text-normal, var(--bs-body-color, #1e293b));
         font-weight: var(--ecw-font-regular, 400);
     }
 
     /* Theme 1: Boxed Design (Gradient card & dividers) */
     &.statistics-theme-boxed {
         .statistics-grid {
-            background: linear-gradient(180deg, #ffffff 0%, var(--colors-ecw-alias-bright-grey, #f8fafc) 100%);
-            border: 1px solid var(--colors-ecw-map-border-base, #e2e8f0);
+            background: linear-gradient(180deg, var(--ecw-mapped-color-background-container, #ffffff) 0%, var(--ecw-mapped-color-table-header_back, var(--bs-tertiary-bg, #f8fafc)) 100%);
+            border: 1px solid var(--ecw-mapped-color-border-base, var(--bs-border-color, #e2e8f0));
             border-radius: 16px;
             padding: 2.5rem 2rem;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
@@ -112,7 +112,7 @@
                         top: 10%;
                         height: 80%;
                         width: 1px;
-                        background-color: var(--colors-ecw-map-table-back-even, #cbd5e1);
+                        background-color: var(--ecw-mapped-color-table-back_even, var(--bs-border-color, #cbd5e1));
                         transform: rotate(12deg);
                     }
                 }
@@ -120,7 +120,7 @@
         }
 
         .statistics-item-number {
-            color: var(--colors-ecw-map-text-normal, #1e293b);
+            color: var(--ecw-mapped-color-text-normal, var(--bs-heading-color, #1e293b));
         }
     }
 
@@ -150,7 +150,7 @@
                         top: 15%;
                         height: 70%;
                         width: 1px;
-                        background-color: var(--colors-ecw-map-table-back-even, #e2e8f0);
+                        background-color: var(--ecw-mapped-color-table-back_even, var(--bs-border-color, #e2e8f0));
                     }
                 }
             }

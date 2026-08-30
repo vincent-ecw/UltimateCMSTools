@@ -28,14 +28,14 @@
         scroll-snap-align: center; /* Center snap active card in container */
         display: flex;
         flex-direction: column;
-        background: #ffffff;
+        background: var(--ecw-mapped-color-background-container, var(--bs-card-bg, #ffffff));
         border-radius: 12px;
         overflow: hidden;
         text-decoration: none;
         color: inherit;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
         transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease, border-color 0.3s ease;
-        border: 1px solid rgba(0, 0, 0, 0.04);
+        border: 1px solid var(--ecw-mapped-color-border-base, var(--bs-border-color, rgba(0, 0, 0, 0.04)));
         position: relative;
         z-index: 1;
 
@@ -63,7 +63,7 @@
         position: relative;
         width: 100%;
         padding-top: 75%; /* 4:3 Aspect Ratio */
-        background: #f8f9fa;
+        background: var(--ecw-mapped-color-table-header_back, var(--bs-tertiary-bg, #f8f9fa));
         overflow: hidden;
     }
 
@@ -86,7 +86,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        color: #ced4da;
+        color: var(--ecw-mapped-color-text-meta, var(--bs-secondary-color, #ced4da));
     }
 
     .custom-card-content {
@@ -116,24 +116,24 @@
         line-height: 1.2;
 
         &--primary {
-            background-color: var(--colors-light-green-700, #5da36d);
-            color: #ffffff;
+            background-color: var(--ecw-mapped-color-pill-primary-back, var(--bs-success, #5da36d));
+            color: var(--ecw-mapped-color-pill-primary-lighttext, var(--bs-white, #ffffff));
         }
 
         &--secondary {
-            background-color: var(--colors-blue-300, #1d4e89);
-            color: #ffffff;
+            background-color: var(--ecw-mapped-color-pill-secondary-back, var(--bs-primary, #1d4e89));
+            color: var(--ecw-mapped-color-pill-secondary-lighttext, var(--bs-white, #ffffff));
         }
 
         &--tertiary {
-            background-color: var(--colors-blue-900, #0a1b30);
-            color: #ffffff;
+            background-color: var(--ecw-mapped-color-pill-tertiary-back, var(--bs-dark, #0a1b30));
+            color: var(--ecw-mapped-color-pill-tertiary-lighttext, var(--bs-white, #ffffff));
         }
     }
 
     .custom-card-date {
         font-size: 0.8rem;
-        color: var(--colors-ecw-map-text-meta, #6c757d);
+        color: var(--ecw-mapped-color-text-meta, var(--bs-secondary-color, #6c757d));
         font-weight: 400;
         white-space: nowrap;
     }
@@ -142,11 +142,11 @@
         font-size: 1.125rem;
         font-weight: 600;
         margin: 0 0 10px;
-        color: #212529;
+        color: var(--ecw-mapped-color-text-normal, var(--bs-heading-color, #212529));
         line-height: 1.3;
 
         &--overlay {
-            color: #ffffff;
+            color: var(--ecw-mapped-color-cta-lighttext, var(--bs-white, #ffffff));
             font-size: 1.15rem;
             font-weight: 700;
             margin: 0;
@@ -156,7 +156,7 @@
 
     .custom-card-description {
         font-size: 0.9rem;
-        color: #6c757d;
+        color: var(--ecw-mapped-color-text-meta, var(--bs-secondary-color, #6c757d));
         line-height: 1.5;
         display: -webkit-box;
         -webkit-line-clamp: 3;
@@ -182,7 +182,7 @@
     // Active item highlight feature: 2px border and scale effect, keeping the same shadow as non-active items
     &.uct-highlight-active {
         .custom-card.active {
-            border: 2px solid var(--colors-ecw-map-button-navigation-active, var(--primary, #007bff)) !important;
+            border: 2px solid var(--ecw-mapped-color-button-navigation-active, var(--bs-primary, #007bff)) !important;
             transform: scale(1.06);
             z-index: 5;
         }
@@ -192,9 +192,9 @@
     // 1. Classic Theme (default)
     &.uct-theme-classic {
         .custom-card {
-            background: #ffffff;
+            background: var(--ecw-mapped-color-background-container, var(--bs-card-bg, #ffffff));
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-            border: 1px solid rgba(0, 0, 0, 0.04);
+            border: 1px solid var(--ecw-mapped-color-border-base, var(--bs-border-color, rgba(0, 0, 0, 0.04)));
         }
     }
 
@@ -204,7 +204,7 @@
             border: none !important;
             border-radius: 0 !important;
             box-shadow: none !important;
-            background-color: #ffffff !important;
+            background-color: var(--ecw-mapped-color-background-container, var(--bs-card-bg, #ffffff)) !important;
 
             .custom-card-image-wrapper,
             .custom-card-image,
@@ -214,7 +214,7 @@
 
             &:hover {
                 box-shadow: none !important;
-                background-color: #ffffff !important;
+                background-color: var(--ecw-mapped-color-background-container, var(--bs-card-bg, #ffffff)) !important;
             }
 
             &.active {
@@ -227,14 +227,14 @@
     // 3. Category Theme
     &.uct-theme-category {
         .custom-card {
-            background: #ffffff;
+            background: var(--ecw-mapped-color-background-container, var(--bs-card-bg, #ffffff));
             border-radius: 12px;
-            border: 1px solid rgba(0, 0, 0, 0.06);
+            border: 1px solid var(--ecw-mapped-color-border-base, var(--bs-border-color, rgba(0, 0, 0, 0.06)));
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
         }
 
         .custom-card-meta {
-            border-bottom: 1px solid #f1f3f5;
+            border-bottom: 1px solid var(--ecw-mapped-color-border-base, var(--bs-border-color, #f1f3f5));
             padding-bottom: 8px;
             margin-bottom: 12px;
         }
@@ -265,7 +265,7 @@
     // 5. Media Theme (Overlay style)
     &.uct-theme-media {
         .custom-card {
-            background: #ffffff;
+            background: var(--ecw-mapped-color-background-container, var(--bs-card-bg, #ffffff));
             border-radius: 12px;
         }
 

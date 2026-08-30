@@ -1,3 +1,6 @@
+/** Important: As you can see this file lacks color styling for buttons because the system relies on the styling of btn-primary, btn-secondary, etc. **/
+/** When you want to change the colors be sure to do it on a global (theme) level where you override the default bootstrap colors. **/
+
 .cms-element-button-container {
     display: flex;
     width: 100%;
@@ -32,7 +35,7 @@
         align-items: center;
         justify-content: center;
         vertical-align: middle;
-        gap: var(--ecw-spacing-small, var(--spacer-md, var(--bs-spacer-4, 1.5rem)));
+        gap: var(--ecw-mapped-number-spacing-small, var(--spacer-md, var(--bs-spacer-4, 1.5rem)));
 
         .icon,
         .btn-icon-before,
@@ -67,5 +70,3 @@
         }
     }
 }
-
-

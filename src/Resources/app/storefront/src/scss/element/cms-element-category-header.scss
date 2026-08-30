@@ -13,7 +13,7 @@
     /* Design 1: Minimal Card */
     &.design-1 {
         .card-design-1 {
-            background-color: #ebf1f6;
+            background-color: var(--ecw-mapped-color-header-category-back, var(--bs-tertiary-bg, #ebf1f6));
             border-radius: 16px;
             padding: 36px 44px;
             gap: 36px;
@@ -33,7 +33,7 @@
                 h1.category-header-title {
                     margin: 0 0 16px 0;
                     font-weight: 700;
-                    color: #0b1e36;
+                    color: var(--ecw-mapped-color-header-category-text, var(--ecw-mapped-color-header-textcolor, var(--bs-heading-color, #0b1e36)));
                     line-height: 1.25;
 
                     @media (max-width: 767.98px) {
@@ -42,7 +42,7 @@
                 }
 
                 .category-header-description {
-                    color: #2c3e50;
+                    color: var(--ecw-mapped-color-text-normal, var(--bs-body-color, #2c3e50));
                     line-height: 1.6;
 
                     p {
@@ -85,9 +85,9 @@
     /* Design 2: Accent Frame */
     &.design-2 {
         .card-design-2 {
-            background-color: #ffffff;
+            background-color: var(--ecw-mapped-color-background-container, var(--bs-card-bg, #ffffff));
             border-radius: 16px;
-            border: 1px solid #e2e8f0;
+            border: 1px solid var(--ecw-mapped-color-header-border, var(--bs-border-color, #e2e8f0));
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
             padding: 36px 44px;
             gap: 36px;
@@ -113,7 +113,7 @@
                     .badge-dot {
                         width: 8px;
                         height: 8px;
-                        background-color: #f59e0b;
+                        background-color: var(--ecw-mapped-color-header-subcategory-text, var(--bs-warning, #f59e0b));
                         border-radius: 2px;
                         display: inline-block;
                     }
@@ -122,7 +122,7 @@
                         font-size: 0.75rem;
                         font-weight: 700;
                         letter-spacing: 0.6px;
-                        color: #f59e0b;
+                        color: var(--ecw-mapped-color-header-subcategory-text, var(--bs-warning, #f59e0b));
                         text-transform: uppercase;
                     }
                 }
@@ -130,12 +130,12 @@
                 h1.category-header-title {
                     margin: 0 0 16px 0;
                     font-weight: 700;
-                    color: #0b1e36;
+                    color: var(--ecw-mapped-color-header-category-text, var(--ecw-mapped-color-header-textcolor, var(--bs-heading-color, #0b1e36)));
                     line-height: 1.25;
                 }
 
                 .category-header-description {
-                    color: #334155;
+                    color: var(--ecw-mapped-color-text-normal, var(--bs-body-color, #334155));
                     line-height: 1.6;
 
                     p {
@@ -167,8 +167,8 @@
                 .category-header-media-frame {
                     width: 100%;
                     height: 100%;
-                    background-color: #f3f4f6;
-                    border: 3px solid #f59e0b;
+                    background-color: var(--ecw-mapped-color-table-header_back, var(--bs-tertiary-bg, #f3f4f6));
+                    border: 3px solid var(--ecw-mapped-color-header-subcategory-text, var(--bs-warning, #f59e0b));
                     border-radius: 16px;
                     transform: rotate(3deg);
                     box-shadow: 0 10px 24px rgba(245, 158, 11, 0.18);
@@ -187,7 +187,7 @@
     /* Design 3: Dark Overlay */
     &.design-3 {
         .card-design-3 {
-            background-color: #0b1329;
+            background-color: var(--ecw-mapped-color-header-colored-back, var(--bs-dark, #0b1329));
             border-radius: 16px;
             padding: 48px;
             background-size: cover;
@@ -201,7 +201,7 @@
             @media (max-width: 767.98px) {
                 padding: 28px 24px;
                 min-height: auto;
-                background-image: linear-gradient(180deg, #0b1329 0%, #0b1329 80%, rgba(11, 19, 41, 0.7) 100%);
+                background-image: linear-gradient(180deg, var(--ecw-mapped-color-header-colored-back, #0b1329) 0%, var(--ecw-mapped-color-header-colored-back, #0b1329) 80%, rgba(11, 19, 41, 0.7) 100%);
             }
 
             .category-header-content {
@@ -221,7 +221,7 @@
                     font-size: 0.75rem;
                     font-weight: 700;
                     letter-spacing: 0.6px;
-                    color: #f59e0b;
+                    color: var(--ecw-mapped-color-header-subcategory-text, var(--bs-warning, #f59e0b));
                     text-transform: uppercase;
                     margin-bottom: 12px;
                 }
@@ -229,12 +229,12 @@
                 h1.category-header-title {
                     margin: 0 0 16px 0;
                     font-weight: 700;
-                    color: #ffffff;
+                    color: var(--ecw-mapped-color-header-lighttext, var(--bs-white, #ffffff));
                     line-height: 1.25;
                 }
 
                 .category-header-description {
-                    color: #cbd5e1;
+                    color: var(--ecw-mapped-color-text-meta, var(--bs-secondary-color, #cbd5e1));
                     line-height: 1.6;
 
                     p {
@@ -252,7 +252,7 @@
     /* Design 4: Circle Frame */
     &.design-4 {
         .card-design-4 {
-            background-color: #f8fafc;
+            background-color: var(--ecw-mapped-color-header-category-back, var(--bs-tertiary-bg, #f8fafc));
             border-radius: 16px;
             padding: 36px 44px;
             gap: 36px;
@@ -278,7 +278,7 @@
                     .line {
                         width: 24px;
                         height: 2px;
-                        background-color: #1e3a8a;
+                        background-color: var(--ecw-mapped-color-header-subcategory-hover, var(--bs-primary, #1e3a8a));
                         display: inline-block;
                     }
 
@@ -286,7 +286,7 @@
                         font-size: 0.75rem;
                         font-weight: 700;
                         letter-spacing: 0.6px;
-                        color: #1e3a8a;
+                        color: var(--ecw-mapped-color-header-subcategory-hover, var(--bs-primary, #1e3a8a));
                         text-transform: uppercase;
                     }
                 }
@@ -294,12 +294,12 @@
                 h1.category-header-title {
                     margin: 0 0 16px 0;
                     font-weight: 700;
-                    color: #0f172a;
+                    color: var(--ecw-mapped-color-header-category-text, var(--ecw-mapped-color-header-textcolor, var(--bs-heading-color, #0f172a)));
                     line-height: 1.25;
                 }
 
                 .category-header-description {
-                    color: #334155;
+                    color: var(--ecw-mapped-color-text-normal, var(--bs-body-color, #334155));
                     line-height: 1.6;
 
                     p {
@@ -317,8 +317,8 @@
                 height: 170px;
                 flex-shrink: 0;
                 border-radius: 50%;
-                border: 5px solid #1e3a8a;
-                box-shadow: 0 0 0 4px #ffffff, 0 10px 24px rgba(30, 58, 138, 0.2);
+                border: 5px solid var(--ecw-mapped-color-header-subcategory-hover, var(--bs-primary, #1e3a8a));
+                box-shadow: 0 0 0 4px var(--ecw-mapped-color-background-container, #ffffff), 0 10px 24px rgba(30, 58, 138, 0.2);
                 overflow: hidden;
 
                 @media (max-width: 991.98px) {
@@ -344,7 +344,7 @@
     /* Design 5: Diagonal Split */
     &.design-5 {
         .card-design-5 {
-            background-color: #08172c;
+            background-color: var(--ecw-mapped-color-header-colored-back, var(--bs-dark, #08172c));
             border-radius: 16px;
             min-height: 220px;
             position: relative;
@@ -375,7 +375,7 @@
                     font-size: 0.75rem;
                     font-weight: 700;
                     letter-spacing: 0.6px;
-                    color: #f59e0b;
+                    color: var(--ecw-mapped-color-header-subcategory-text, var(--bs-warning, #f59e0b));
                     text-transform: uppercase;
                     margin-bottom: 12px;
                 }
@@ -383,12 +383,12 @@
                 h1.category-header-title {
                     margin: 0 0 16px 0;
                     font-weight: 700;
-                    color: #ffffff;
+                    color: var(--ecw-mapped-color-header-lighttext, var(--bs-white, #ffffff));
                     line-height: 1.25;
                 }
 
                 .category-header-description {
-                    color: #cbd5e1;
+                    color: var(--ecw-mapped-color-text-meta, var(--bs-secondary-color, #cbd5e1));
                     line-height: 1.6;
 
                     p {
@@ -407,7 +407,7 @@
                 top: 0;
                 bottom: 0;
                 width: 44%;
-                background-color: #f59e0b;
+                background-color: var(--ecw-mapped-color-header-subcategory-text, var(--bs-warning, #f59e0b));
                 clip-path: polygon(calc(14% - 6px) 0, calc(14% + 1px) 0, calc(0% + 1px) 100%, calc(0% - 6px) 100%);
                 z-index: 3;
 

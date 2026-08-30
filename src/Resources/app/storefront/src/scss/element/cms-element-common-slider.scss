@@ -1,20 +1,19 @@
 .cms-element-common-slider {
     position: relative;
-    overflow: hidden;
     width: 100%;
-    max-height: var(--uct-carousel-max-height, var(--common-slider-max-height));
-    border-radius: var(
-        --ecw-mapped-number-border-radius-md,
-        var(--ecw-border-radius-normal, var(--cta-border-radius, var(--bs-border-radius, 12px)))
-    );
 
     .common-slider-wrapper {
         position: relative;
+        overflow: hidden;
         width: 100%;
         display: flex;
         transform-style: preserve-3d;
         height: 100%;
-        max-height: inherit;
+        max-height: var(--uct-carousel-max-height, var(--common-slider-max-height));
+        border-radius: var(
+            --ecw-mapped-number-border-radius-md,
+            var(--ecw-border-radius-normal, var(--cta-border-radius, var(--bs-border-radius, 12px)))
+        );
     }
 
     .common-slider-item {
@@ -123,7 +122,7 @@
         flex-direction: column;
         align-items: center;
         text-align: center;
-        color: #fff;
+        color: var(--ecw-mapped-color-header-lighttext, var(--bs-white, #ffffff));
         padding: 2rem;
         max-width: 800px;
     }
@@ -133,7 +132,7 @@
         font-weight: var(--ecw-font-bold, 800);
         margin-bottom: 1.5rem;
         background: rgba(255, 255, 255, 0.6);
-        color: var(--colors-ecw-map-text-normal, #333);
+        color: var(--ecw-mapped-color-text-normal, var(--bs-body-color, #333333));
         padding: 0.75rem 1.5rem;
         display: inline-block;
     }

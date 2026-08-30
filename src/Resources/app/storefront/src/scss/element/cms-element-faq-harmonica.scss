@@ -6,12 +6,12 @@
 
 .cms-element-faq-harmonica {
     // Define robust CSS variable fallbacks for theme colors
-    --faq-primary: var(--primary, #{$primary});
-    --faq-secondary: var(--secondary, if(variable-exists("secondary"), #{$secondary}, var(--primary, #{$primary})));
-    --faq-border: var(--border-color, if(variable-exists("border-color"), #{$border-color}, #e2e8f0));
-    --faq-card-bg: var(--card-bg, if(variable-exists("card-bg"), #{$card-bg}, #ffffff));
-    --faq-body-color: var(--body-color, if(variable-exists("body-color"), #{$body-color}, #212529));
-    --faq-headings-color: var(--headings-color, if(variable-exists("headings-color"), #{$headings-color}, #1a202c));
+    --faq-primary: var(--ecw-mapped-color-cta-primarycolor, var(--bs-primary, var(--primary, #{$primary})));
+    --faq-secondary: var(--ecw-mapped-color-cta-secondarycolor, var(--bs-secondary, var(--secondary, if(variable-exists("secondary"), #{$secondary}, var(--primary, #{$primary})))));
+    --faq-border: var(--ecw-mapped-color-border-base, var(--bs-border-color, var(--border-color, if(variable-exists("border-color"), #{$border-color}, #e2e8f0))));
+    --faq-card-bg: var(--ecw-mapped-color-background-container, var(--bs-card-bg, var(--card-bg, if(variable-exists("card-bg"), #{$card-bg}, #ffffff))));
+    --faq-body-color: var(--ecw-mapped-color-text-normal, var(--bs-body-color, var(--body-color, if(variable-exists("body-color"), #{$body-color}, #212529))));
+    --faq-headings-color: var(--ecw-mapped-color-textcolor, var(--bs-heading-color, var(--headings-color, if(variable-exists("headings-color"), #{$headings-color}, #1a202c))));
 
     .accordion {
         border: none;

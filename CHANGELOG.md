@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.21] - 2026-08-30
+
+### Changed
+- Standardized all CMS Block and Element Storefront SCSS stylesheets to use the **Design Token Color System** with primary `--ecw-mapped-color-*` CSS variables and robust 3-tier fallbacks (`var(--ecw-mapped-color-<token>, var(--bs-<var>, <fixed-value>))`).
+- Updated shared carousel navigation controls, indicator dots, category headers, CTA buttons and cards, custom carousels, FAQ harmonica, harmonica list, flexible image and text, icon list, image-text quartet, magazine quotes, manufacturer carousels/grids, statistics, and subcategory carousels/grids to seamlessly inherit custom theme tokens when installed in client shops while remaining fully functional on standard themes.
+
+### Added
+- Added `AGENTS.md` and `style/COLOR_SYSTEM.md` providing comprehensive design token rules, color catalog mappings, and development guidelines for future AI agents working on the plugin.
+
 ## [1.2.20] - 2026-08-30
 
 ### Added

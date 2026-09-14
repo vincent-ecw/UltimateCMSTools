@@ -5,8 +5,8 @@
     {% set width = config.width.value|default('auto') %}
     {% set alignment = config.alignment.value|default('left') %}
     {% set verticalAlignment = config.verticalAlignment.value|default('top') %}
-    {% set linkUrl = config.linkUrl.value|default('') %}
-    {% set linkTarget = config.linkTarget.value|default('_self') %}
+    {% set linkUrl = config.linkUrl.value|default('')|uct_safe_url %}
+    {% set linkTarget = config.linkTarget.value|default('_self') == '_blank' ? '_blank' : '_self' %}
     {% set linkTitle = config.linkTitle.value|default('') %}
 
     {% set rawIconBefore = config.iconBefore.value|default('none') %}

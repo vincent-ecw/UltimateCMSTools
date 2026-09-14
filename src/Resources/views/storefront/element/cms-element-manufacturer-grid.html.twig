@@ -10,13 +10,13 @@
         <div class="cms-element-manufacturer-grid">
             <div class="manufacturer-grid-container columns-mobile-{{ columnsMobile }}">
                 {% for manufacturer in manufacturers %}
-                    {% set manufacturerUrl = manufacturer.link %}
+                    {% set manufacturerUrl = manufacturer.link|uct_safe_url %}
                     {% set extStruct = manufacturer.extension('ultimateCmsTools') %}
                     {% set isExternal = extStruct ? extStruct.isExternal : false %}
                     {% set media = manufacturer.media %}
                     
                     {% if manufacturerUrl %}
-                        <a href="{{ manufacturerUrl }}" class="manufacturer-card" title="{{ manufacturer.translated.name }}" {% if isExternal %}target="_blank" rel="noopener"{% else %}target="_self"{% endif %}>
+                        <a href="{{ manufacturerUrl }}" class="manufacturer-card" title="{{ manufacturer.translated.name }}" {% if isExternal %}target="_blank" rel="noopener noreferrer"{% else %}target="_self"{% endif %}>
                             {% if displayLogo %}
                                 <div class="manufacturer-card-image-wrapper">
                                     {% if media %}

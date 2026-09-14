@@ -28,6 +28,7 @@ A collection of CMS blocks and elements that enhance Shopware's Shopping Experie
 - [Section Settings Enhancements](#section-settings-enhancements)
 - [Design Token Color System](#design-token-color-system)
 - [Development and Compilation](#development-and-compilation)
+- [Source and Security Audit](#source-and-security-audit)
 
 
 ---
@@ -563,3 +564,7 @@ If you modify administration components (Vue 3 / Vite) or storefront scripts/sty
 bin/console theme:compile
 bin/console cache:clear
 ```
+
+## Source and Security Audit
+
+See [AUDIT.md](AUDIT.md) for the plugin architecture, current security status, and a focused checklist for future changes. The custom-code element intentionally runs CSS/JavaScript and should be available only to trusted CMS editors. Customer-group section visibility requires the production-like cache release test documented in the audit; hidden sections are not a way to protect confidential content.

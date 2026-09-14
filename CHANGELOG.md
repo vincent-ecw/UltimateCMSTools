@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.24] - 2026-09-13
+
+### Security
+- Sanitize saved rich text in storefront output and administration previews, validate configurable link URLs and targets, and protect FAQ JSON-LD from script termination.
+- Validate inline CSS values, constrain new-tab links, and cap CMS DAL result sizes and product carousel limits.
+
+### Added
+- Added security-filter regression tests and a mandatory customer-group HTTP-cache release test matrix in AUDIT.md. The custom CSS/JavaScript CMS element remains intentional for trusted editors.
+
+## [1.2.23] - 2026-09-13
+
+### Added
+- Added a reusable source and security audit in `AUDIT.md`, including architecture, prioritized findings, verification limits, and a recheck guide for future changes.
+
 ## [1.2.22] - 2026-08-30
 
 ### Added

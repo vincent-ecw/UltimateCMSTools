@@ -38,7 +38,7 @@
             <div class="image-text-quartet__col image-text-quartet__col--text">
                 {% if text1 %}
                     <div class="image-text-quartet__text">
-                        {{ text1|raw }}
+                        {{ text1|sw_sanitize }}
                     </div>
                 {% endif %}
             </div>
@@ -50,7 +50,7 @@
             <div class="image-text-quartet__col image-text-quartet__col--text">
                 {% if text2 %}
                     <div class="image-text-quartet__text">
-                        {{ text2|raw }}
+                        {{ text2|sw_sanitize }}
                     </div>
                 {% endif %}
             </div>

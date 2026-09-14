@@ -20,6 +20,7 @@
     {% set subtitle = subtitleOverride ?: (category and category.customFields ? category.customFields.ultimate_cms_tools_subtitle|default('') : '') %}
     {% set description = descriptionOverride ?: (category ? category.translated.description|default(category.description) : '') %}
     {% set media = mediaOverride ?: (category ? category.media : null) %}
+    {% set backgroundImageUrl = media ? media.url|uct_css_url : '' %}
 
     <div class="cms-element-category-header {{ designClass }}">
         {# Design 1: Minimal Card #}
@@ -33,7 +34,7 @@
                     {% if description %}
                         <div class="category-header-description">
                             {% if description matches '/<[^>]+>/' %}
-                                {{ description|raw }}
+                                {{ description|sw_sanitize }}
                             {% else %}
                                 <p>{{ description|nl2br }}</p>
                             {% endif %}
@@ -71,7 +72,7 @@
                     {% if description %}
                         <div class="category-header-description">
                             {% if description matches '/<[^>]+>/' %}
-                                {{ description|raw }}
+                                {{ description|sw_sanitize }}
                             {% else %}
                                 <p>{{ description|nl2br }}</p>
                             {% endif %}
@@ -96,7 +97,7 @@
         {# Design 3: Dark Overlay #}
         {% elseif rawDesign == 'design-3' %}
             <div class="category-header-card card-design-3"
-                 {% if media %}style="background-image: linear-gradient(90deg, #0b1329 0%, #0b1329 45%, rgba(11, 19, 41, 0.3) 100%), url('{{ media.url }}');"{% endif %}>
+                 {% if backgroundImageUrl %}style="background-image: linear-gradient(90deg, #0b1329 0%, #0b1329 45%, rgba(11, 19, 41, 0.3) 100%), url('{{ backgroundImageUrl }}');"{% endif %}>
                 <div class="category-header-content">
                     {% if subtitle %}
                         <div class="category-header-subtitle">{{ subtitle }}</div>
@@ -109,7 +110,7 @@
                     {% if description %}
                         <div class="category-header-description">
                             {% if description matches '/<[^>]+>/' %}
-                                {{ description|raw }}
+                                {{ description|sw_sanitize }}
                             {% else %}
                                 <p>{{ description|nl2br }}</p>
                             {% endif %}
@@ -136,7 +137,7 @@
                     {% if description %}
                         <div class="category-header-description">
                             {% if description matches '/<[^>]+>/' %}
-                                {{ description|raw }}
+                                {{ description|sw_sanitize }}
                             {% else %}
                                 <p>{{ description|nl2br }}</p>
                             {% endif %}
@@ -171,7 +172,7 @@
                     {% if description %}
                         <div class="category-header-description">
                             {% if description matches '/<[^>]+>/' %}
-                                {{ description|raw }}
+                                {{ description|sw_sanitize }}
                             {% else %}
                                 <p>{{ description|nl2br }}</p>
                             {% endif %}
@@ -181,7 +182,7 @@
 
                 {% if media %}
                     <div class="category-header-divider"></div>
-                    <div class="category-header-right" style="background-image: url('{{ media.url }}');"></div>
+                    <div class="category-header-right" {% if backgroundImageUrl %}style="background-image: url('{{ backgroundImageUrl }}');"{% endif %}></div>
                 {% endif %}
             </div>
         {% endif %}

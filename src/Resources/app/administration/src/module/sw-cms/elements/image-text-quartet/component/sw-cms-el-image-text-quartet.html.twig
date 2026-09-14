@@ -16,7 +16,7 @@
             <div v-if="!text1" class="sw-cms-el-image-text-quartet__text-placeholder">
                 <p><strong>{{ $tc('sw-cms.elements.ultimateCmsTools.imageTextQuartet.config.tabs.row1') }}</strong> - {{ $tc('sw-cms.elements.faqHarmonica.config.contentPlaceholder') }}</p>
             </div>
-            <div v-else class="sw-cms-el-image-text-quartet__text-content" v-html="text1"></div>
+            <div v-else class="sw-cms-el-image-text-quartet__text-content" v-html="$sanitize(text1)"></div>
         </div>
     </div>
 
@@ -27,7 +27,7 @@
             <div v-if="!text2" class="sw-cms-el-image-text-quartet__text-placeholder">
                 <p><strong>{{ $tc('sw-cms.elements.ultimateCmsTools.imageTextQuartet.config.tabs.row2') }}</strong> - {{ $tc('sw-cms.elements.faqHarmonica.config.contentPlaceholder') }}</p>
             </div>
-            <div v-else class="sw-cms-el-image-text-quartet__text-content" v-html="text2"></div>
+            <div v-else class="sw-cms-el-image-text-quartet__text-content" v-html="$sanitize(text2)"></div>
         </div>
         <!-- Col 2: Image 2 -->
         <div class="sw-cms-el-image-text-quartet__col sw-cms-el-image-text-quartet__col--image">

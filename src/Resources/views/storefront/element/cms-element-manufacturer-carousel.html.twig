@@ -4,9 +4,9 @@
     {% set navigationArrows = config.navigationArrows.value is not null ? config.navigationArrows.value : true %}
     {% set navigationDots = config.navigationDots.value is not null ? config.navigationDots.value : true %}
     {% set autoplay = config.autoplay.value is not null ? config.autoplay.value : true %}
-    {% set autoplaySpeed = config.autoplaySpeed.value|default(5000) %}
+    {% set autoplaySpeed = config.autoplaySpeed.value|default(5000)|uct_bounded_int(0, 60000, 5000) %}
     {% set dotsPosition = config.navigationDotsPosition.value|default('inside') %}
-    {% set maxHeight = config.maxHeight.value|default(null) %}
+    {% set maxHeight = config.maxHeight.value|default(0)|uct_bounded_int(0, 2000, 0) %}
 
     {% set displayLogo = config.displayLogo.value is not null ? config.displayLogo.value : true %}
     {% set displayTitle = config.displayTitle.value is not null ? config.displayTitle.value : true %}
@@ -31,13 +31,13 @@
 
                 <div class="manufacturer-carousel-container" {% if maxHeight and maxHeight > 0 %}style="max-height: {{ maxHeight }}px;"{% endif %}>
                     {% for manufacturer in manufacturers %}
-                        {% set manufacturerUrl = manufacturer.link %}
+                        {% set manufacturerUrl = manufacturer.link|uct_safe_url %}
                         {% set extStruct = manufacturer.extension('ultimateCmsTools') %}
                         {% set isExternal = extStruct ? extStruct.isExternal : false %}
                         {% set media = manufacturer.media %}
                         
                         {% if manufacturerUrl %}
-                            <a href="{{ manufacturerUrl }}" class="manufacturer-card" title="{{ manufacturer.translated.name }}" {% if isExternal %}target="_blank" rel="noopener"{% else %}target="_self"{% endif %}>
+                            <a href="{{ manufacturerUrl }}" class="manufacturer-card" title="{{ manufacturer.translated.name }}" {% if isExternal %}target="_blank" rel="noopener noreferrer"{% else %}target="_self"{% endif %}>
                                 {% if displayLogo %}
                                     <div class="manufacturer-card-image-wrapper">
                                         {% if media %}

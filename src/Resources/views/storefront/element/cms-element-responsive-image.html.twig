@@ -5,13 +5,13 @@
 	{% set mediaMobile = element.data ? element.data.get('mediaMobile') : null %}
 
 	{% set altText = config.altText.value|default('') %}
-	{% set linkUrl = config.linkUrl.value|default('') %}
-	{% set linkTarget = config.linkTarget.value|default('_self') %}
+	{% set linkUrl = config.linkUrl.value|default('')|uct_safe_url %}
+	{% set linkTarget = config.linkTarget.value|default('_self') == '_blank' ? '_blank' : '_self' %}
 
 	<div class="cms-element-responsive-image">
 		{% if mediaDesktop %}
 			{% if linkUrl %}
-				<a href="{{ linkUrl }}" target="{{ linkTarget }}" class="responsive-image-link">
+				<a href="{{ linkUrl }}" target="{{ linkTarget }}" {% if linkTarget == '_blank' %}rel="noopener noreferrer"{% endif %} class="responsive-image-link">
 				{% endif %}
 
 				<picture class="responsive-image-picture">

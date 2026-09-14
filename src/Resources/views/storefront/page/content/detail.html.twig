@@ -7,6 +7,9 @@
     {% if not targetCustomerGroupId or targetCustomerGroupId == currentCustomerGroupId %}
         {% set hideWhenEmpty = section.customFields.uct_hide_empty|default(false) %}
         {% if hideWhenEmpty %}
+            {% set safeSectionBgColor = sectionBgColor|uct_css_color %}
+            {% set safeSectionBgImg = sectionBgImg|uct_css_url %}
+            {% set safeSectionBgImgMode = section.backgroundMediaMode in ['cover', 'contain', 'auto'] ? section.backgroundMediaMode : 'cover' %}
             {% set sectionContent %}
                 {% sw_include '@Storefront/storefront/section/cms-section-' ~ section.type ~ '.html.twig' %}
             {% endset %}
@@ -14,7 +17,7 @@
             {# Check if sectionContent has visible/meaningful content #}
             {% if sectionContent|striptags|trim is not empty or '<img' in sectionContent or '<svg' in sectionContent or '<iframe' in sectionContent or '<video' in sectionContent or '<canvas' in sectionContent or '<input' in sectionContent or '<button' in sectionContent or '<a' in sectionContent %}
                 <div class="cms-section {{ sectionClasses|join(' ') }}"
-                     style="{% if sectionBgColor %}background-color: {{ sectionBgColor }};{% endif %}{% if sectionBgImg %}background-image: url({{ sectionBgImg }});background-size: {{ section.backgroundMediaMode }};{% endif %}">
+                     style="{% if safeSectionBgColor %}background-color: {{ safeSectionBgColor }};{% endif %}{% if safeSectionBgImg %}background-image: url('{{ safeSectionBgImg }}');background-size: {{ safeSectionBgImgMode }};{% endif %}">
                     {{ sectionContent|raw }}
                 </div>
             {% endif %}

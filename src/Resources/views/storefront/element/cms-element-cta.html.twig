@@ -1,29 +1,26 @@
 {% block element_cta %}
     {% set config = element.config %}
     {% set backgroundImage = element.data ? element.data.get('backgroundImage') : null %}
+    {% set backgroundImageUrl = backgroundImage ? backgroundImage.url|uct_css_url : '' %}
 
     {% set title = config.title.value|default('') %}
     {% set subtitle = config.subtitle.value|default('') %}
     {% set buttonText = config.buttonText.value|default('') %}
-    {% set buttonUrl = config.buttonUrl.value|default('') %}
-    {% set buttonTarget = config.buttonTarget.value|default('_self') %}
+    {% set buttonUrl = config.buttonUrl.value|default('')|uct_safe_url %}
+    {% set buttonTarget = config.buttonTarget.value|default('_self') == '_blank' ? '_blank' : '_self' %}
     {% set buttonVariant = config.buttonVariant.value|default('primary') %}
     {% set buttonSecondaryText = config.buttonSecondaryText.value|default('') %}
-    {% set buttonSecondaryUrl = config.buttonSecondaryUrl.value|default('') %}
-    {% set buttonSecondaryTarget = config.buttonSecondaryTarget.value|default('_self') %}
+    {% set buttonSecondaryUrl = config.buttonSecondaryUrl.value|default('')|uct_safe_url %}
+    {% set buttonSecondaryTarget = config.buttonSecondaryTarget.value|default('_self') == '_blank' ? '_blank' : '_self' %}
     {% set buttonSecondaryVariant = config.buttonSecondaryVariant.value|default('secondary') %}
     {% set layout = config.layout.value|default('vertical-inline') %}
     {% set style = config.style.value|default('split-minimal') %}
     {% set textColor = config.textColor.value|default('dark') %}
-    {% set minHeight = config.minHeight.value|default('') %}
-
-    {% if minHeight and minHeight matches '/^\\d+$/' %}
-        {% set minHeight = minHeight ~ 'px' %}
-    {% endif %}
+    {% set minHeight = config.minHeight.value|default('')|uct_css_length %}
 
     {% if title or subtitle or buttonText or buttonSecondaryText %}
         <div class="cms-element-cta style-{{ style }} layout-{{ layout }} text-{{ textColor }}"
-             style="{% if backgroundImage %}background-image: url('{{ backgroundImage.url }}'); background-size: cover; background-position: center;{% endif %}{% if minHeight %} min-height: {{ minHeight }};{% endif %}">
+             style="{% if backgroundImageUrl %}background-image: url('{{ backgroundImageUrl }}'); background-size: cover; background-position: center;{% endif %}{% if minHeight %} min-height: {{ minHeight }};{% endif %}">
             
             {% if backgroundImage %}
                 <div class="cta-overlay"></div>

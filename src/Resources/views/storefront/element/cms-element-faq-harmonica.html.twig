@@ -67,7 +67,7 @@
                         </h3>
                         <div id="{{ collapseId }}" class="accordion-collapse collapse" aria-labelledby="{{ headingId }}" data-bs-parent="#{{ accordionId }}">
                             <div class="accordion-body faq-harmonica-body">
-                                {{ faq.content|raw }}
+                                {{ faq.content|sw_sanitize }}
                             </div>
                         </div>
                     </div>
@@ -95,7 +95,7 @@
                     'mainEntity': faqEntities
                 } %}
                 <script type="application/ld+json">
-                    {{ faqSchema|json_encode|raw }}
+                    {{ faqSchema|json_encode(constant('JSON_HEX_TAG') b-or constant('JSON_HEX_AMP') b-or constant('JSON_HEX_APOS') b-or constant('JSON_HEX_QUOT'))|raw }}
                 </script>
             {% endif %}
         {% endif %}

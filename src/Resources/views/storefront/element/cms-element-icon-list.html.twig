@@ -11,12 +11,14 @@
                 {% for item in items %}
                     {% set rawIcon = item.icon|default('none') %}
                     {% set customClass = item.customIconClass|default('') %}
+                    {% set itemUrl = item.url|default('')|uct_safe_url %}
+                    {% set itemTarget = item.target|default('_self') == '_blank' ? '_blank' : '_self' %}
 
                     <div class="icon-list-item" style="--item-index: {{ loop.index0 }};">
-                        {% if item.url %}
-                            <a href="{{ item.url }}"
-                               target="{{ item.target|default('_self') }}"
-                               {% if item.target == '_blank' %}rel="noopener noreferrer"{% endif %}
+                        {% if itemUrl %}
+                            <a href="{{ itemUrl }}"
+                               target="{{ itemTarget }}"
+                               {% if itemTarget == '_blank' %}rel="noopener noreferrer"{% endif %}
                                class="icon-list-item-link">
                         {% endif %}
 
@@ -41,7 +43,7 @@
                             {% if item.text %}
                                 <div class="icon-list-item-text">
                                     {% if item.text matches '/<[^>]+>/' %}
-                                        {{ item.text|raw }}
+                                        {{ item.text|sw_sanitize }}
                                     {% else %}
                                         <p>{{ item.text|nl2br }}</p>
                                     {% endif %}
@@ -49,7 +51,7 @@
                             {% endif %}
                         </div>
 
-                        {% if item.url %}
+                        {% if itemUrl %}
                             </a>
                         {% endif %}
                     </div>

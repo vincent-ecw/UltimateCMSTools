@@ -9,7 +9,7 @@
         {% if introText %}
             <div class="statistics-intro">
                 {% if introText matches '/<[^>]+>/' %}
-                    {{ introText|raw }}
+                    {{ introText|sw_sanitize }}
                 {% else %}
                     <p>{{ introText|nl2br }}</p>
                 {% endif %}

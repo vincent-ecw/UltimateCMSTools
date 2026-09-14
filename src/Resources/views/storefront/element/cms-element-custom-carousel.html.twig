@@ -4,9 +4,9 @@
     {% set navigationArrows = config.navigationArrows.value is not null ? config.navigationArrows.value : true %}
     {% set navigationDots = config.navigationDots.value is not null ? config.navigationDots.value : true %}
     {% set autoplay = config.autoplay.value is not null ? config.autoplay.value : true %}
-    {% set autoplaySpeed = config.autoplaySpeed.value|default(5000) %}
+    {% set autoplaySpeed = config.autoplaySpeed.value|default(5000)|uct_bounded_int(0, 60000, 5000) %}
     {% set dotsPosition = config.navigationDotsPosition.value|default('inside') %}
-    {% set maxHeight = config.maxHeight.value|default(null) %}
+    {% set maxHeight = config.maxHeight.value|default(0)|uct_bounded_int(0, 2000, 0) %}
     {% set theme = config.theme.value|default('classic') %}
     {% set highlightActiveItem = config.highlightActiveItem.value is not null ? config.highlightActiveItem.value : false %}
 
@@ -31,10 +31,12 @@
                 <div class="custom-carousel-container">
                     {% for item in items %}
                         {% set media = item.media %}
-                        {% set hasLink = item.buttonUrl is not empty %}
+                        {% set buttonUrl = item.buttonUrl|default('')|uct_safe_url %}
+                        {% set buttonTarget = item.buttonTarget|default('_self') == '_blank' ? '_blank' : '_self' %}
+                        {% set hasLink = buttonUrl is not empty %}
                         {% set categoryStyle = item.categoryStyle|default('primary') %}
                         
-                        <{% if hasLink %}a href="{{ item.buttonUrl }}" target="{{ item.buttonTarget|default('_self') }}"{% else %}div{% endif %}
+                        <{% if hasLink %}a href="{{ buttonUrl }}" target="{{ buttonTarget }}" {% if buttonTarget == '_blank' %}rel="noopener noreferrer"{% endif %}{% else %}div{% endif %}
                            class="custom-card {% if highlightActiveItem and loop.first %}active{% endif %}">
                             
                             <div class="custom-card-image-wrapper">

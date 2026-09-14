@@ -27,7 +27,7 @@
 
         <!-- Text Column -->
         <div class="flexible-image-text__text-wrapper">
-            <div class="flexible-image-text__text-content" v-html="content"></div>
+            <div class="flexible-image-text__text-content" v-html="$sanitize(content)"></div>
         </div>
     </div>
 </div>

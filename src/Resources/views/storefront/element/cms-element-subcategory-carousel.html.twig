@@ -6,9 +6,9 @@
     {% set navigationArrows = config.navigationArrows.value is not null ? config.navigationArrows.value : true %}
     {% set navigationDots = config.navigationDots.value is not null ? config.navigationDots.value : true %}
     {% set autoplay = config.autoplay.value is not null ? config.autoplay.value : true %}
-    {% set autoplaySpeed = config.autoplaySpeed.value|default(5000) %}
+    {% set autoplaySpeed = config.autoplaySpeed.value|default(5000)|uct_bounded_int(0, 60000, 5000) %}
     {% set dotsPosition = config.navigationDotsPosition.value|default('inside') %}
-    {% set maxHeight = config.maxHeight.value|default(null) %}
+    {% set maxHeight = config.maxHeight.value|default(0)|uct_bounded_int(0, 2000, 0) %}
 
     {% if categories and categories.count > 0 %}
         <div class="cms-element-subcategory-carousel"

@@ -26,6 +26,7 @@ class ManufacturerGridCmsElementResolver extends AbstractCmsElementResolver
         $criteria->addFilter(new EqualsFilter('customFields.ultimate_cms_tools_show_in_grid', true));
         $criteria->addAssociation('media');
         $criteria->addSorting(new FieldSorting('name', FieldSorting::ASCENDING));
+        $criteria->setLimit(100);
 
         $criteriaCollection = new CriteriaCollection();
         $criteriaCollection->add('manufacturer_grid_' . $slot->getUniqueIdentifier(), ProductManufacturerDefinition::class, $criteria);

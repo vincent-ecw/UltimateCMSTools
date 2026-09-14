@@ -5,9 +5,9 @@
     {% set navigationArrows = config.navigationArrows.value is not null ? config.navigationArrows.value : true %}
     {% set navigationDots = config.navigationDots.value is not null ? config.navigationDots.value : true %}
     {% set autoplay = config.autoplay.value is not null ? config.autoplay.value : true %}
-    {% set autoplaySpeed = config.autoplaySpeed.value|default(5000) %}
+    {% set autoplaySpeed = config.autoplaySpeed.value|default(5000)|uct_bounded_int(0, 60000, 5000) %}
     {% set dotsPosition = config.navigationDotsPosition.value|default('inside') %}
-    {% set maxHeight = config.maxHeight.value|default(null) %}
+    {% set maxHeight = config.maxHeight.value|default(0)|uct_bounded_int(0, 2000, 0) %}
 
     <div class="cms-element-common-slider"
          {% if maxHeight and maxHeight > 0 %}style="--uct-carousel-max-height: {{ maxHeight }}px; --common-slider-max-height: {{ maxHeight }}px;"{% endif %}
@@ -22,6 +22,8 @@
         
         <div class="common-slider-wrapper">
             {% for item in sliderItems %}
+                {% set buttonUrl = item.buttonUrl|default('')|uct_safe_url %}
+                {% set buttonTarget = item.buttonTarget|default('_self') == '_blank' ? '_blank' : '_self' %}
                 <div class="common-slider-item">
                     <picture class="common-slider-picture">
                         {% if item.mediaDesktop %}
@@ -37,14 +39,14 @@
                         {% endif %}
                     </picture>
 
-                    {% if item.title or (item.buttonText and item.buttonUrl) %}
+                    {% if item.title or (item.buttonText and buttonUrl) %}
                         <div class="common-slider-overlay">
                             <div class="common-slider-overlay-content">
                                 {% if item.title %}
                                     <h3 class="common-slider-title">{{ item.title }}</h3>
                                 {% endif %}
-                                {% if item.buttonText and item.buttonUrl %}
-                                    <a href="{{ item.buttonUrl }}" target="{{ item.buttonTarget|default('_self') }}" class="btn btn-primary common-slider-btn">{{ item.buttonText }}</a>
+                                {% if item.buttonText and buttonUrl %}
+                                    <a href="{{ buttonUrl }}" target="{{ buttonTarget }}" {% if buttonTarget == '_blank' %}rel="noopener noreferrer"{% endif %} class="btn btn-primary common-slider-btn">{{ item.buttonText }}</a>
                                 {% endif %}
                             </div>
                         </div>

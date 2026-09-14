@@ -51,6 +51,7 @@ class SubcategoryGridCmsElementResolver extends AbstractCmsElementResolver
         }
         $criteria->addFilter(new EqualsFilter('active', true));
         $criteria->addAssociation('media');
+        $criteria->setLimit(100);
 
         $criteriaCollection = new CriteriaCollection();
         $criteriaCollection->add('subcategory_grid_' . $slot->getUniqueIdentifier(), CategoryDefinition::class, $criteria);

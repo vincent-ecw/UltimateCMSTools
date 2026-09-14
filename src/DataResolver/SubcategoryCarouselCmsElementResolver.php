@@ -51,6 +51,7 @@ class SubcategoryCarouselCmsElementResolver extends AbstractCmsElementResolver
         }
         $criteria->addFilter(new EqualsFilter('active', true));
         $criteria->addAssociation('media');
+        $criteria->setLimit(100);
 
         $criteriaCollection = new CriteriaCollection();
         $criteriaCollection->add('subcategory_carousel_' . $slot->getUniqueIdentifier(), CategoryDefinition::class, $criteria);

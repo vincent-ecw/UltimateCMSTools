@@ -67,7 +67,7 @@
                         </h3>
                         <div id="{{ collapseId }}" class="accordion-collapse collapse" aria-labelledby="{{ headingId }}" data-bs-parent="#{{ accordionId }}">
                             <div class="accordion-body harmonica-list-body">
-                                {{ item.content|raw }}
+                                {{ item.content|sw_sanitize }}
                             </div>
                         </div>
                     </div>

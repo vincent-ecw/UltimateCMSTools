@@ -78,7 +78,7 @@
             <div class="flexible-image-text__text-wrapper">
                 <div class="flexible-image-text__text-content">
                     {% if content matches '/<[^>]+>/' %}
-                        {{ content|raw }}
+                        {{ content|sw_sanitize }}
                     {% else %}
                         <p>{{ content|nl2br }}</p>
                     {% endif %}

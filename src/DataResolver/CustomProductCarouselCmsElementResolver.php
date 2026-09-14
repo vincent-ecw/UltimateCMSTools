@@ -19,6 +19,8 @@ use Shopware\Core\System\SalesChannel\Entity\SalesChannelRepository;
 
 class CustomProductCarouselCmsElementResolver extends AbstractCmsElementResolver
 {
+    private const MAX_PRODUCTS = 24;
+
     private SalesChannelRepository $productRepository;
     private ProductStreamBuilderInterface $productStreamBuilder;
 
@@ -39,7 +41,10 @@ class CustomProductCarouselCmsElementResolver extends AbstractCmsElementResolver
     {
         $config = $slot->getFieldConfig();
         $selectionType = $config->get('productSelectionType') ? $config->get('productSelectionType')->getValue() : 'manual';
-        $limit = $config->get('limit') ? (int) $config->get('limit')->getValue() : 10;
+        $limit = max(1, min(self::MAX_PRODUCTS, (int) ($config->get('limit')?->getValue() ?? 10)));
+        if (!in_array($selectionType, ['manual', 'product_stream', 'latest', 'sale'], true)) {
+            return null;
+        }
 
         $categoryConfig = $config->get('categoryId');
         $categoryId = $categoryConfig ? $categoryConfig->getValue() : null;
@@ -48,6 +53,7 @@ class CustomProductCarouselCmsElementResolver extends AbstractCmsElementResolver
         $includeSubcategories = $includeSubcategoriesConfig ? (bool) $includeSubcategoriesConfig->getValue() : false;
 
         $criteria = new Criteria();
+        $criteria->setLimit($limit);
         $criteria->addState(Criteria::STATE_ELASTICSEARCH_AWARE);
         $criteria->addAssociation('cover');
         
@@ -61,10 +67,10 @@ class CustomProductCarouselCmsElementResolver extends AbstractCmsElementResolver
                 return null;
             }
             $productIds = $productsConfig->getValue();
-            if (empty($productIds)) {
+            if (!is_array($productIds) || $productIds === []) {
                 return null;
             }
-            $criteria->setIds($productIds);
+            $criteria->setIds(array_slice($productIds, 0, self::MAX_PRODUCTS));
         } elseif ($selectionType === 'product_stream') {
             $streamConfig = $config->get('productStreamId');
             if (!$streamConfig || !$streamConfig->getValue()) {
@@ -112,8 +118,8 @@ class CustomProductCarouselCmsElementResolver extends AbstractCmsElementResolver
         $selectionType = $config->get('productSelectionType') ? $config->get('productSelectionType')->getValue() : 'manual';
         if ($selectionType === 'manual') {
             $productsConfig = $config->get('products');
-            if ($productsConfig && $productsConfig->getValue()) {
-                $productIds = $productsConfig->getValue();
+            if ($productsConfig && is_array($productsConfig->getValue())) {
+                $productIds = array_slice($productsConfig->getValue(), 0, self::MAX_PRODUCTS);
                 $products->sortByIdArray($productIds);
             }
         }

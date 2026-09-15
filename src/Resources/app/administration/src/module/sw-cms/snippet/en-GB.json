@@ -203,6 +203,20 @@
                 }
             },
             "ultimateCmsTools": {
+                "alert": {
+                    "showIcon": "Show icon",
+                    "label": "Alert message",
+                    "message": "Message",
+                    "type": "Message type",
+                    "dismissible": "Allow visitors to close the message",
+                    "preview": "Your message appears here.",
+                    "types": {
+                        "success": "Success",
+                        "warning": "Warning",
+                        "error": "Error",
+                        "info": "Info"
+                    }
+                },
                 "customCode": {
                     "label": "Custom Code",
                     "config": {
@@ -623,10 +637,10 @@
         },
         "blocks": {
             "ultimateCmsTools": {
+                "alert": { "label": "Alert message" },
                 "flexibleImageText": {
                     "label": "Flexible Image and Text"
                 },
-
                 "iconList": {
                     "label": "Icon List"
                 },
@@ -690,11 +704,19 @@
             "customerGroup": {
                 "label": "Show only for customer group",
                 "placeholderAll": "All customer groups (default)",
-                "helpText": "Select a customer group if this section should only be visible to customers in that specific group. Leave empty / 'All' to show to all visitors."
+                "helpText": "Optionally restrict logged-in users to this customer group. Leave empty to allow all customer groups."
             },
             "hideWhenEmpty": {
                 "label": "Do not show when there is no content",
                 "helpText": "When active and all blocks in this section have no content to display, the entire section will be hidden in the storefront output."
+            },
+            "loginStatus": {
+                "label": "Show section for",
+                "options": {
+                    "all": "All visitors",
+                    "logged-in": "Logged-in users",
+                    "logged-out": "Not logged-in users"
+                }
             }
         }
     },

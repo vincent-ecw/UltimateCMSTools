@@ -3,6 +3,7 @@
 A collection of CMS blocks and elements that enhance Shopware's Shopping Experiences with features that are essential for modern e-commerce page building.
 
 ## Table of Contents
+- [Alert Message](#alert-message)
 - [Installation](#installation)
 - [Available CMS Blocks](#available-cms-blocks)
   - [1. Common Slider](#1-common-slider)
@@ -509,14 +510,30 @@ A dedicated CMS block and element for Product Detail Page templates. It automati
 
 ---
 
+## Alert Message
+
+Add **Alert message** from the **Ultimate CMS Tools** block category, or select the alert element in an existing slot.
+
+- **Message:** Rich text with bold, italic, and links. Formatting and links are sanitized in both the editor preview and storefront; scripts, event handlers, and unsafe link URLs are removed. Empty messages produce no alert. Links open in the same tab.
+- **Message type:** Success, warning, error, or info (default).
+- **Show icon:** Disabled by default. Adds a matching outlined-circle icon before the message: check for success, exclamation for warning, cross for error, and “i” for info. The icon follows the message type and text color automatically.
+- Icons and close buttons are vertically centered alongside the message, including multiline messages.
+- **Allow visitors to close the message:** Disabled by default. When enabled, a keyboard-accessible close button removes only that alert until the next page load.
+- **Colors:** Uses `--ecw-mapped-color-alerts-{type}-{border|background|text}` from `style/variables-shopware-legacy.css`. Falls back to Bootstrap `--bs-{type}-border-subtle`, `--bs-{type}-bg-subtle`, and `--bs-{type}-text-emphasis`, then fixed colors. Error maps to Bootstrap danger. Editor previews share these styles.
+
 ## Section Settings Enhancements
 
 The plugin extends Shopware's native CMS Section configuration sidebar (`sw-cms-section-config`) with intelligent layout options:
 
+### "Show section for" (`uct_login_status`)
+
+Choose **All visitors** (default), **Logged-in users**, or **Not logged-in users**. Guest checkout customers count as not logged in. This setting combines with the empty-content setting below.
+
 ### "Show only for customer group" (`uct_customer_group_id`)
-* **Location:** CMS Layout Editor &rarr; Section Settings (Sidebar) &rarr; Settings
-* **Functionality:** Allows selecting a specific customer group from a dropdown (with "All customer groups" as default). When assigned, this section will only be rendered in the storefront for customers belonging to that customer group.
-* **HTTP Cache Invalidation & Isolation:** Built-in integration with Shopware's HTTP Cache via `HttpCacheSubscriber` guarantees that responses are properly isolated per customer group using cache hash cookies (`sw-cache-hash`), preventing other customer groups or guest visitors from ever seeing cached versions intended for a specific group.
+
+Available only when **Logged-in users** is selected. Leave empty to allow every logged-in customer group. Switching to another login option clears the group restriction. Existing group-restricted sections default to logged-in visibility; existing unrestricted sections continue to show to all visitors.
+
+The HTTP cache cookie varies by customer group and login status. Production-like cache verification remains required as described in [AUDIT.md](AUDIT.md).
 
 ### "Do not show when there is no content" (`uct_hide_empty`)
 * **Location:** CMS Layout Editor &rarr; Section Settings (Sidebar) &rarr; Settings

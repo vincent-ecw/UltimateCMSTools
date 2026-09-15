@@ -1,0 +1,11 @@
+<div class="uct-alert" :class="'uct-alert--' + alertType">
+    <svg v-if="element.config.showIcon?.value" class="uct-alert__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+        <circle cx="12" cy="12" r="10" />
+        <path v-if="alertType === 'warning'" d="M12 7v6 M12 17h.01" />
+        <path v-else-if="alertType === 'error'" d="m8 8 8 8 M16 8l-8 8" />
+        <path v-else-if="alertType === 'success'" d="m7 12 3 3 7-7" />
+        <path v-else d="M12 7h.01 M11 11h1v6 M10 17h4" />
+    </svg>
+    <div class="uct-alert__message" v-html="$sanitize(element.config.message.value || $tc('sw-cms.elements.ultimateCmsTools.alert.preview'), { ALLOWED_TAGS: ['p', 'br', 'div', 'b', 'strong', 'i', 'em', 'a'], ALLOWED_ATTR: ['href', 'title'] })"></div>
+    <span v-if="element.config.dismissible.value" class="uct-alert__close" aria-hidden="true">&times;</span>
+</div>

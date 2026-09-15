@@ -1,3 +1,6 @@
+import UctAlertPlugin from './plugin/uct-alert.plugin';
+window.PluginManager.register('UctAlert', UctAlertPlugin, '[data-uct-alert]');
+
 import SubcategoryCarouselPlugin from './plugin/subcategory-carousel.plugin';
 import ManufacturerCarouselPlugin from './plugin/manufacturer-carousel.plugin';
 import CommonSliderPlugin from './plugin/common-slider.plugin';
@@ -15,6 +18,5 @@ window.PluginManager.register('CustomProductCarousel', CustomProductCarouselPlug
 window.PluginManager.register('StatisticsCounter', StatisticsCounterPlugin, '[data-statistics-counter]');
 window.PluginManager.register('IconListAnimation', IconListAnimationPlugin, '[data-icon-list-animation]');
 window.PluginManager.register('FlexibleImageTextAnimation', FlexibleImageTextAnimationPlugin, '[data-flexible-image-text-animation]');
-
 
 

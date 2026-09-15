@@ -52,6 +52,10 @@ Validation in `shopware67`: 17 security-filter/JSON-LD/cache-hash tests (34 asse
 
 ## Mandatory customer-group cache release test (M2)
 
+Version 1.2.25 adds login-status section visibility and a matching `uct-login-status` cache-cookie contribution. Guest checkout customers use the logged-out state. Local validation passed: 19 tests (68 assertions), including 32 section visibility cases and same-group anonymous/guest/logged-in cache-hash comparisons; Twig lint, administration/storefront builds, cache clear, and theme compilation also passed. Browser save/reload behavior and production-like warm-cache isolation remain unverified.
+
+Include logged-in-only and logged-out-only section markers in the following matrix, and test a guest checkout session as well as an anonymous visitor. Existing customer-group restrictions now imply logged-in-only visibility when no explicit login setting is saved.
+
 1. In a production-like environment with Shopware HTTP cache and the deployed reverse proxy enabled, prepare one CMS page with unique visible markers for an unrestricted section, a section restricted to group A, and one restricted to group B. Use two separate customer accounts in those groups plus a guest session. Do not put secrets in CMS configuration for this test.
 2. Clear HTTP/reverse-proxy caches. Request the identical URL as guest, A, B, then A again and B again, using separate cookie jars. Repeat in reverse order after another clear. Each response must contain only the unrestricted marker and its own group marker; any wrong-group marker is a release blocker.
 3. Repeat after login, logout, customer-group change, and with missing/stale `sw-cache-hash` cookies while retaining the session. Inspect `Vary`, `sw-cache-hash`, `Age`, and reverse-proxy hit headers for the main response. Test ESI header/footer separately if group-specific sections appear there. Verify the same result with cold and warm caches.

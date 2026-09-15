@@ -1,0 +1,6 @@
+<div class="sw-cms-el-config-uct-alert">
+    <mt-switch v-model="showIcon" :label="$tc('sw-cms.elements.ultimateCmsTools.alert.showIcon')" />
+    <sw-text-editor v-model:value="message" :button-config="messageButtons" :label="$tc('sw-cms.elements.ultimateCmsTools.alert.message')" />
+    <sw-single-select v-model:value="type" :options="typeOptions" :label="$tc('sw-cms.elements.ultimateCmsTools.alert.type')" />
+    <mt-switch v-model="dismissible" :label="$tc('sw-cms.elements.ultimateCmsTools.alert.dismissible')" />
+</div>

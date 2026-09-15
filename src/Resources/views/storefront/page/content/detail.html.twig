@@ -2,9 +2,12 @@
 
 {% block page_content_section %}
     {% set targetCustomerGroupId = section.customFields.uct_customer_group_id|default(null) %}
-    {% set currentCustomerGroupId = context.customer ? context.customer.groupId : (context.currentCustomerGroup ? context.currentCustomerGroup.id : null) %}
+    {% set loginStatus = section.customFields.uct_login_status|default(targetCustomerGroupId ? 'logged-in' : 'all') %}
+    {% set isLoggedIn = context.customer and not context.customer.guest %}
+    {% set matchesLoginStatus = loginStatus == 'all' or (loginStatus == 'logged-in' and isLoggedIn) or (loginStatus == 'logged-out' and not isLoggedIn) %}
+    {% set matchesCustomerGroup = loginStatus != 'logged-in' or not targetCustomerGroupId or (isLoggedIn and targetCustomerGroupId == context.customer.groupId) %}
 
-    {% if not targetCustomerGroupId or targetCustomerGroupId == currentCustomerGroupId %}
+    {% if matchesLoginStatus and matchesCustomerGroup %}
         {% set hideWhenEmpty = section.customFields.uct_hide_empty|default(false) %}
         {% if hideWhenEmpty %}
             {% set safeSectionBgColor = sectionBgColor|uct_css_color %}

@@ -5,6 +5,39 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.29] - 2026-09-15
+
+### Fixed
+- Vertically center alert icons and close buttons alongside the message in the storefront and editor preview, removing outer rich-text margins that offset alignment.
+
+## [1.2.28] - 2026-09-15
+
+### Added
+- Optional leading alert icons in a consistent outlined-circle style: exclamation for warning, cross for error, information for info, and check for success. The message type determines the icon automatically; icons are disabled by default.
+
+## [1.2.27] - 2026-09-15
+
+### Changed
+- Alert messages now support bold, italic, and links through a rich-text editor.
+- Sanitize alert HTML with a limited formatting/link allowlist in previews and storefront output; hide messages containing only empty formatting.
+
+## [1.2.26] - 2026-09-15
+
+### Added
+- Alert CMS block and element with multiline plain-text messages, success/warning/error/info types, and optional dismissal.
+- Shared administration/storefront alert styles using mapped alert color tokens, Bootstrap semantic variables (danger for error), and fixed fallbacks.
+- English, German, and Dutch editor labels and accessible close-button labels.
+
+## [1.2.25] - 2026-09-15
+
+### Added
+- Section visibility for all visitors, logged-in users, or not logged-in users, with English, German, and Dutch translations.
+- Login status variation in the storefront HTTP cache cookie; guest checkout customers count as not logged in.
+
+### Changed
+- Show the customer-group selector only for logged-in visibility and clear its restriction when switching away.
+- Existing group-restricted sections default to logged-in visibility; unrestricted sections remain visible to everyone.
+
 ## [1.2.24] - 2026-09-13
 
 ### Security

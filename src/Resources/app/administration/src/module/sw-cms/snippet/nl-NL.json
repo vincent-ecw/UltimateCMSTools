@@ -203,6 +203,20 @@
                 }
             },
             "ultimateCmsTools": {
+                "alert": {
+                    "showIcon": "Pictogram tonen",
+                    "label": "Melding",
+                    "message": "Bericht",
+                    "type": "Berichttype",
+                    "dismissible": "Bezoekers mogen het bericht sluiten",
+                    "preview": "Je bericht verschijnt hier.",
+                    "types": {
+                        "success": "Succes",
+                        "warning": "Waarschuwing",
+                        "error": "Fout",
+                        "info": "Informatie"
+                    }
+                },
                 "customCode": {
                     "label": "Aangepaste Code",
                     "config": {
@@ -623,10 +637,10 @@
         },
         "blocks": {
             "ultimateCmsTools": {
+                "alert": { "label": "Melding" },
                 "flexibleImageText": {
                     "label": "Flexibele afbeelding en tekst"
                 },
-
                 "iconList": {
                     "label": "Icoonlijst"
                 },
@@ -684,11 +698,19 @@
             "customerGroup": {
                 "label": "Alleen tonen voor klantengroep",
                 "placeholderAll": "Alle klantengroepen (standaard)",
-                "helpText": "Selecteer een klantengroep als deze sectie alleen zichtbaar moet zijn voor klanten in die specifieke groep. Laat leeg / 'Alle' om aan alle bezoekers te tonen."
+                "helpText": "Beperk ingelogde gebruikers optioneel tot deze klantgroep. Laat leeg om alle klantgroepen toe te staan."
             },
             "hideWhenEmpty": {
                 "label": "Niet tonen als er geen inhoud is",
                 "helpText": "Wanneer actief en alle blokken in deze sectie geen inhoud hebben, wordt de gehele sectie verborgen in de storefront."
+            },
+            "loginStatus": {
+                "label": "Sectie tonen voor",
+                "options": {
+                    "all": "Alle bezoekers",
+                    "logged-in": "Ingelogde gebruikers",
+                    "logged-out": "Niet-ingelogde gebruikers"
+                }
             }
         }
     },

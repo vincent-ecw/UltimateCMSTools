@@ -1,5 +1,6 @@
 {
     "ultimateCmsTools": {
+        "alert": { "close": "Close message" },
         "categoryHeader": {
             "defaultTitle": "Category Header"
         }

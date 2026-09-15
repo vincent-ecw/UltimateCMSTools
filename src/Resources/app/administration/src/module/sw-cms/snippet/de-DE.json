@@ -203,6 +203,20 @@
                 }
             },
             "ultimateCmsTools": {
+                "alert": {
+                    "showIcon": "Symbol anzeigen",
+                    "label": "Hinweismeldung",
+                    "message": "Nachricht",
+                    "type": "Meldungstyp",
+                    "dismissible": "Besucher dürfen die Meldung schließen",
+                    "preview": "Ihre Nachricht erscheint hier.",
+                    "types": {
+                        "success": "Erfolg",
+                        "warning": "Warnung",
+                        "error": "Fehler",
+                        "info": "Information"
+                    }
+                },
                 "customCode": {
                     "label": "Benutzerdefinierter Code",
                     "config": {
@@ -623,10 +637,10 @@
         },
         "blocks": {
             "ultimateCmsTools": {
+                "alert": { "label": "Hinweismeldung" },
                 "flexibleImageText": {
                     "label": "Flexibles Bild & Text"
                 },
-
                 "iconList": {
                     "label": "Icon-Liste"
                 },
@@ -690,11 +704,19 @@
             "customerGroup": {
                 "label": "Nur für Kundengruppe anzeigen",
                 "placeholderAll": "Alle Kundengruppen (Standard)",
-                "helpText": "Wählen Sie eine Kundengruppe aus, wenn dieser Bereich nur für Kunden dieser Gruppe sichtbar sein soll. Leer lassen / 'Alle', um allen Besuchern anzuzeigen."
+                "helpText": "Angemeldete Benutzer optional auf diese Kundengruppe beschränken. Leer lassen, um alle Kundengruppen zuzulassen."
             },
             "hideWhenEmpty": {
                 "label": "Nicht anzeigen wenn kein Inhalt vorhanden ist",
                 "helpText": "Wenn aktiv und alle Blöcke in diesem Bereich keinen Inhalt haben, wird der gesamte Bereich im Storefront ausgeblendet."
+            },
+            "loginStatus": {
+                "label": "Abschnitt anzeigen für",
+                "options": {
+                    "all": "Alle Besucher",
+                    "logged-in": "Angemeldete Benutzer",
+                    "logged-out": "Nicht angemeldete Benutzer"
+                }
             }
         }
     },

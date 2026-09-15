@@ -1,3 +1,5 @@
+import './module/sw-cms/elements/uct-alert';
+import './module/sw-cms/blocks/ultimate-cms-tools/uct-alert';
 import './module/sw-cms/elements/custom-code';
 import './module/sw-cms/blocks/ultimate-cms-tools/custom-code';
 import './module/sw-cms/elements/subcategory-carousel';
@@ -47,4 +49,3 @@ import nlNL from './module/sw-cms/snippet/nl-NL.json';
 Shopware.Locale.register('de-DE', deDE);
 Shopware.Locale.register('en-GB', enGB);
 Shopware.Locale.register('nl-NL', nlNL);
-

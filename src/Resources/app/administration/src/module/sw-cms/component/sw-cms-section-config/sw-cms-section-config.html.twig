@@ -1,7 +1,14 @@
 {% block sw_cms_sidebar_section_config_css_classes_field %}
     {% parent %}
 
+    <sw-single-select
+        v-model:value="uctLoginStatus"
+        :options="uctLoginStatusOptions"
+        :label="$tc('sw-cms.section.loginStatus.label')"
+    />
+
     <sw-entity-single-select
+        v-if="uctLoginStatus === 'logged-in'"
         v-model:value="uctCustomerGroupId"
         entity="customer_group"
         :label="$tc('sw-cms.section.customerGroup.label')"

@@ -18,5 +18,7 @@ class HttpCacheSubscriber implements EventSubscriberInterface
     {
         $customerGroupId = $event->context->getCustomer()?->getGroupId() ?? $event->context->getCurrentCustomerGroup()->getId();
         $event->add('customer-group-id', $customerGroupId);
+        $customer = $event->context->getCustomer();
+        $event->add('uct-login-status', $customer !== null && !$customer->getGuest() ? 'logged-in' : 'logged-out');
     }
 }

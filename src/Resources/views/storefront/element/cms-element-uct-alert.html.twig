@@ -1,0 +1,31 @@
+{% block element_uct_alert %}
+    {% set message = element.config.message.value|default('')|sw_sanitize({p: [], br: [], div: [], b: [], strong: [], i: [], em: [], a: ['href', 'title']}, true) %}
+    {% set alertType = element.config.type.value|default('info') %}
+    {% set alertType = alertType in ['success', 'warning', 'error', 'info'] ? alertType : 'info' %}
+    {% set dismissible = element.config.dismissible.value|default(false) %}
+
+    {% if message|striptags|replace({'&nbsp;': ' '})|trim is not empty %}
+        <div class="cms-element-uct-alert uct-alert uct-alert--{{ alertType }}"{% if dismissible %} data-uct-alert{% endif %} role="{{ alertType in ['warning', 'error'] ? 'alert' : 'status' }}">
+            {% if element.config.showIcon.value|default(false) %}
+                <svg class="uct-alert__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                    <circle cx="12" cy="12" r="10" />
+                    {% if alertType == 'warning' %}
+                        <path d="M12 7v6 M12 17h.01" />
+                    {% elseif alertType == 'error' %}
+                        <path d="m8 8 8 8 M16 8l-8 8" />
+                    {% elseif alertType == 'success' %}
+                        <path d="m7 12 3 3 7-7" />
+                    {% else %}
+                        <path d="M12 7h.01 M11 11h1v6 M10 17h4" />
+                    {% endif %}
+                </svg>
+            {% endif %}
+            <div class="uct-alert__message">{{ message|raw }}</div>
+            {% if dismissible %}
+                <button type="button" class="uct-alert__close" data-uct-alert-close aria-label="{{ 'ultimateCmsTools.alert.close'|trans|striptags }}">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            {% endif %}
+        </div>
+    {% endif %}
+{% endblock %}

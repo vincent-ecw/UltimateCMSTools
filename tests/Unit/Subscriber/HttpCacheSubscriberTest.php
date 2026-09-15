@@ -28,10 +28,25 @@ final class HttpCacheSubscriberTest extends TestCase
         static::assertSame('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', $guestA->get('customer-group-id'));
         static::assertSame('bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb', $customerB->get('customer-group-id'));
         static::assertNotSame($guestA->getHash(), $guestB->getHash());
-        static::assertSame($guestB->getHash(), $customerB->getHash());
+        static::assertNotSame($guestB->getHash(), $customerB->getHash());
     }
 
-    private function eventForGroup(string $currentGroupId, ?string $customerGroupId = null): HttpCacheCookieEvent
+    public function testGuestCheckoutUsesLoggedOutCacheVariation(): void
+    {
+        $anonymous = $this->eventForGroup('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
+        $guestCheckout = $this->eventForGroup('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', true);
+        $loggedIn = $this->eventForGroup('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
+
+        $subscriber = new HttpCacheSubscriber();
+        foreach ([$anonymous, $guestCheckout, $loggedIn] as $event) {
+            $subscriber->onHttpCacheCookie($event);
+        }
+
+        static::assertSame($anonymous->getHash(), $guestCheckout->getHash());
+        static::assertNotSame($anonymous->getHash(), $loggedIn->getHash());
+    }
+
+    private function eventForGroup(string $currentGroupId, ?string $customerGroupId = null, bool $guest = false): HttpCacheCookieEvent
     {
         $group = new CustomerGroupEntity();
         $group->setId($currentGroupId);
@@ -42,6 +57,7 @@ final class HttpCacheSubscriberTest extends TestCase
         if ($customerGroupId !== null) {
             $customer = new CustomerEntity();
             $customer->setGroupId($customerGroupId);
+            $customer->setGuest($guest);
             $context->method('getCustomer')->willReturn($customer);
         }
 

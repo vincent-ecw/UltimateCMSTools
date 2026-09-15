@@ -203,6 +203,7 @@
                 }
             },
             "ultimateCmsTools": {
+                "singleProduct": {"label":"Enkel product","product":"Product","search":"Zoek op productnaam of productnummer","showVariants":"Varianteigenschappen tonen","variantPreview":"Varianteigenschappen worden in de webshop getoond."},
                 "alert": {
                     "showIcon": "Pictogram tonen",
                     "label": "Melding",
@@ -637,6 +638,7 @@
         },
         "blocks": {
             "ultimateCmsTools": {
+                "singleProduct": { "label": "Enkel product" },
                 "alert": { "label": "Melding" },
                 "flexibleImageText": {
                     "label": "Flexibele afbeelding en tekst"

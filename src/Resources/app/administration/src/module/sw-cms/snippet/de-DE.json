@@ -203,6 +203,7 @@
                 }
             },
             "ultimateCmsTools": {
+                "singleProduct": {"label":"Einzelnes Produkt","product":"Produkt","search":"Nach Produktname oder Produktnummer suchen","showVariants":"Varianteneigenschaften anzeigen","variantPreview":"Varianteneigenschaften werden im Storefront angezeigt."},
                 "alert": {
                     "showIcon": "Symbol anzeigen",
                     "label": "Hinweismeldung",
@@ -637,6 +638,7 @@
         },
         "blocks": {
             "ultimateCmsTools": {
+                "singleProduct": { "label": "Einzelnes Produkt" },
                 "alert": { "label": "Hinweismeldung" },
                 "flexibleImageText": {
                     "label": "Flexibles Bild & Text"

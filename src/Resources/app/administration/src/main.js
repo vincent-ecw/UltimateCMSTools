@@ -1,3 +1,5 @@
+import './module/sw-cms/elements/uct-single-product';
+import './module/sw-cms/blocks/ultimate-cms-tools/uct-single-product';
 import './module/sw-cms/elements/uct-alert';
 import './module/sw-cms/blocks/ultimate-cms-tools/uct-alert';
 import './module/sw-cms/elements/custom-code';

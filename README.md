@@ -3,6 +3,7 @@
 A collection of CMS blocks and elements that enhance Shopware's Shopping Experiences with features that are essential for modern e-commerce page building.
 
 ## Table of Contents
+- [Single Product](#single-product)
 - [Alert Message](#alert-message)
 - [Installation](#installation)
 - [Available CMS Blocks](#available-cms-blocks)
@@ -509,6 +510,17 @@ A dedicated CMS block and element for Product Detail Page templates. It automati
 * **Max Height (`maxHeight`):** Optional maximum height limit in pixels.
 
 ---
+
+## Single Product
+
+Add **Single product** from the **Ultimate CMS Tools** category, or use its element in a column. Search by product name or product number. Select a parent product to use Shopware's initial variant, or select a specific variant.
+
+- **Show variant properties:** Optional (off by default). Displays property dropdowns and updates the entire card in place when a variant changes. Shopware resolves available combinations and may adjust other property selections.
+- **Theme integration:** Extends the standard listing card, retaining product-card classes, badges, wishlist, prices, and theme overrides. The card fills its column and has a larger responsive image area.
+- **Cart:** Purchasable products can be added directly using Shopware's cart form at the minimum purchase quantity, independently of the listing buy-button setting. Stock and purchase rules remain enforced by Shopware.
+- Theme-owned price/action wrappers are preserved; direct-purchase button overrides apply only to this CMS element.
+- **Animation:** Variant images fade and slide into place; disabled when the visitor requests reduced motion.
+- Products unavailable in the current sales channel are omitted. Failed variant requests retain the previous product and display a retry message.
 
 ## Alert Message
 

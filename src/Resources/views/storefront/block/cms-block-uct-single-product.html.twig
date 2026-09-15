@@ -1,0 +1,8 @@
+{% block block_uct_single_product %}
+    {% set element = block.slots.getSlot('content') %}
+    {% if element %}
+        <div class="col-12" data-cms-element-id="{{ element.id }}">
+            {% sw_include '@Storefront/storefront/element/cms-element-' ~ element.type ~ '.html.twig' ignore missing %}
+        </div>
+    {% endif %}
+{% endblock %}

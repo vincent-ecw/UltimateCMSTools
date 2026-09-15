@@ -5,6 +5,20 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
+        <!-- ProductDetailRoute depends on the CMS resolver registry; defer it to avoid a construction cycle. -->
+        <service id="VincentBourgonje\UltimateCmsTools\Core\SingleProductLoader" lazy="true">
+            <argument type="service" id="Shopware\Core\Content\Product\SalesChannel\Detail\ProductDetailRoute" />
+            <argument type="service" id="Shopware\Core\Content\Product\SalesChannel\FindVariant\FindProductVariantRoute" />
+        </service>
+        <service id="VincentBourgonje\UltimateCmsTools\DataResolver\SingleProductCmsElementResolver">
+            <argument type="service" id="VincentBourgonje\UltimateCmsTools\Core\SingleProductLoader" />
+            <tag name="shopware.cms.data_resolver" />
+        </service>
+        <service id="VincentBourgonje\UltimateCmsTools\Controller\SingleProductController" public="true">
+            <argument type="service" id="VincentBourgonje\UltimateCmsTools\Core\SingleProductLoader" />
+            <call method="setContainer"><argument type="service" id="service_container" /></call>
+            <tag name="controller.service_arguments" />
+        </service>
         <service id="VincentBourgonje\UltimateCmsTools\Twig\CmsSecurityExtension">
             <tag name="twig.extension" />
         </service>

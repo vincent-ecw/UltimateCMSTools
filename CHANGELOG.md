@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.31] - 2026-09-15
+
+### Fixed
+- Preserve theme-owned price/action wrappers in single-product cards, fixing an unclosed div when the theme spans a wrapper across those Twig blocks.
+- Scope direct-purchase overrides to single-product cards while retaining normal listing-button behavior.
+
+## [1.2.30] - 2026-09-15
+
+### Added
+- Full-width single-product CMS block using the theme's product card, with searchable product selection and optional variant-property dropdowns.
+- In-place variant switching with updated image, price, availability, and cart product ID; image animation respects reduced-motion preferences.
+- Sales-channel-aware loading and a read-only, uncached variant-card endpoint with validated identifiers.
+
 ## [1.2.29] - 2026-09-15
 
 ### Fixed

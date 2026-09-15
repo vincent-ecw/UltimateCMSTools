@@ -4,6 +4,15 @@ Baseline updated 2026-09-13 for plugin version 1.2.24 on `bugfix/ultimate-cms-to
 
 ## How the plugin is built
 
+### Single-product addition (1.2.30)
+
+- `SingleProductLoader` uses the decorated Shopware product-detail and variant routes with the current sales-channel context. CMS-page loading is explicitly skipped to prevent recursive product layouts. The loader is lazy because the detail route itself depends on the CMS resolver registry.
+- The GET-only `frontend.uct.single_product` widget validates product, slot, group, and option identifiers, caps submitted groups at 32, and marks responses private/no-store. It does not mutate products or carts. Cart submissions use Shopware's existing add-to-cart route and its purchase validation.
+- No arbitrary HTML, prices, product URLs, or executable code is accepted from the browser. Product-card rendering retains the theme's existing templates; this addition does not sanitize or change unrelated theme overrides.
+- Verification: 22 PHPUnit tests passed (170 assertions), 47 storefront Twig files linted, service-container lint passed, and administration/storefront builds passed. A real two-card CMS fixture rendered successfully with variant controls enabled and disabled. Browser testing confirmed product-number search, product preview updates, switch persistence after saving/reloading, independent in-place variant switching, and the selected Blue/8 Hours SKU entering the cart. The test cart item was removed. Invalid slot identifiers returned HTTP 400. Production cache/proxy testing remains separate from these local checks.
+
+The architecture counts below describe the original 1.2.24 baseline.
+
 - Composer package `vincentbourgonje/ultimate-cms-tools` requires `shopware/core: 6.7.*`; `src/UltimateCmsTools.php` is a minimal `Plugin` class.
 - `src/Resources/app/administration/src/main.js` registers 20 matching CMS blocks and elements, plus a section settings override. Vue components, Twig administration templates, and English/German/Dutch snippets define editing controls. The storefront has one block and one element template per CMS type.
 - `src/Resources/config/services.xml` tags all 15 `src/DataResolver/*` classes as CMS resolvers. Most use Shopware's DAL criteria collection to fetch media, categories, or manufacturers. `CustomProductCarouselCmsElementResolver` uses the sales-channel product repository and product stream builder; `RelatedProductsCmsElementResolver` calls the cross-selling route.

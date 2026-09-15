@@ -1,0 +1,14 @@
+.cms-element-uct-single-product {
+    width: 100%;
+    min-width: 0;
+
+    .product-box { width: 100%; }
+    .product-image-wrapper { height: clamp(16rem, 30vw, 26rem); }
+    .product-image { max-height: clamp(16rem, 30vw, 26rem); }
+    .product-name, .product-description { height: auto; }
+    .uct-single-product-configurator {
+        position: relative;
+        z-index: 2;
+    }
+    [aria-busy="true"] { opacity: .65; }
+}

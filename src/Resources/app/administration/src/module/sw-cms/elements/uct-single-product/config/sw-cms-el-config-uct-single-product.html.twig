@@ -1,0 +1,20 @@
+<div class="sw-cms-el-config-uct-single-product">
+    <sw-entity-single-select
+        v-model:value="productId"
+        entity="product"
+        :criteria="productCriteria"
+        :context="productContext"
+        :label="$tc('sw-cms.elements.ultimateCmsTools.singleProduct.product')"
+        :placeholder="$tc('sw-cms.elements.ultimateCmsTools.singleProduct.search')"
+        show-clearable-button>
+        <template #selection-label-property="{ item }">
+            <sw-product-variant-info :variations="item.variation">{{ item.translated.name || item.name }} — {{ item.productNumber }}</sw-product-variant-info>
+        </template>
+        <template #result-item="{ item, index }">
+            <sw-select-result :item="item" :index="index">
+                <sw-product-variant-info :variations="item.variation">{{ item.translated.name || item.name }} — {{ item.productNumber }}</sw-product-variant-info>
+            </sw-select-result>
+        </template>
+    </sw-entity-single-select>
+    <mt-switch v-model="showVariants" :label="$tc('sw-cms.elements.ultimateCmsTools.singleProduct.showVariants')" />
+</div>

@@ -1,5 +1,6 @@
 {
     "ultimateCmsTools": {
+        "singleProduct": { "error": "The variant could not be loaded. Please try again." },
         "alert": { "close": "Close message" },
         "categoryHeader": {
             "defaultTitle": "Category Header"

@@ -1,5 +1,6 @@
 {
     "ultimateCmsTools": {
+        "singleProduct": { "error": "Die Variante konnte nicht geladen werden. Bitte versuchen Sie es erneut." },
         "alert": { "close": "Meldung schließen" },
         "categoryHeader": {
             "defaultTitle": "Kategorie-Header"

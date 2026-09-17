@@ -1,0 +1,23 @@
+{% block element_uct_single_product %}
+    {% if element.data.product %}
+        <div class="cms-element-uct-single-product" data-uct-single-product
+             data-uct-single-product-options="{{ {
+                 url: path('frontend.uct.single_product', {productId: element.data.product.id}),
+                 slotId: element.id,
+                 errorMessage: 'ultimateCmsTools.singleProduct.error'|trans|striptags
+             }|json_encode|e('html_attr') }}">
+            <div data-single-product-card>
+                {% sw_include '@UltimateCmsTools/storefront/component/uct-single-product/card.html.twig' with {
+                    product: element.data.product,
+                    configurator: element.data.configurator,
+                    showVariants: element.data.showVariants,
+                    requiresSelection: element.data.requiresSelection,
+                    slotId: element.id,
+                    layout: 'standard',
+                    displayMode: 'contain'
+                } %}
+            </div>
+            <p class="uct-single-product-error" role="status" aria-live="polite" data-single-product-error hidden></p>
+        </div>
+    {% endif %}
+{% endblock %}

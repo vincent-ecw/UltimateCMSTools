@@ -203,6 +203,7 @@
                 }
             },
             "ultimateCmsTools": {
+                "singleProduct": {"label":"Single product","product":"Product","search":"Search by product name or product number","showVariants":"Show variant properties","variantPreview":"Variant properties are shown in the storefront."},
                 "alert": {
                     "showIcon": "Show icon",
                     "label": "Alert message",
@@ -637,6 +638,7 @@
         },
         "blocks": {
             "ultimateCmsTools": {
+                "singleProduct": { "label": "Single product" },
                 "alert": { "label": "Alert message" },
                 "flexibleImageText": {
                     "label": "Flexible Image and Text"

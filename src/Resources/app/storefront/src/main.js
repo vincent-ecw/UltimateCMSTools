@@ -1,3 +1,6 @@
+import SingleProductPlugin from './plugin/single-product.plugin';
+window.PluginManager.register('UctSingleProduct', SingleProductPlugin, '[data-uct-single-product]');
+
 import UctAlertPlugin from './plugin/uct-alert.plugin';
 window.PluginManager.register('UctAlert', UctAlertPlugin, '[data-uct-alert]');
 
@@ -18,5 +21,4 @@ window.PluginManager.register('CustomProductCarousel', CustomProductCarouselPlug
 window.PluginManager.register('StatisticsCounter', StatisticsCounterPlugin, '[data-statistics-counter]');
 window.PluginManager.register('IconListAnimation', IconListAnimationPlugin, '[data-icon-list-animation]');
 window.PluginManager.register('FlexibleImageTextAnimation', FlexibleImageTextAnimationPlugin, '[data-flexible-image-text-animation]');
-
 

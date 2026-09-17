@@ -1,0 +1,19 @@
+{% sw_extends '@Storefront/storefront/component/product/card/action.html.twig' %}
+
+{% block component_product_box_action_inner %}
+    <div class="product-action">
+        {% if not requiresSelection|default(false) and product.available and product.childCount <= 0 and product.calculatedMaxPurchase >= product.minPurchase %}
+            {{ block('component_product_box_action_buy') }}
+        {% else %}
+            {{ block('component_product_box_action_detail') }}
+        {% endif %}
+    </div>
+{% endblock %}
+
+{% block component_product_box_action_buy_button %}
+    <div class="d-grid">
+        <button type="submit" class="btn btn-primary btn-buy">
+            {{ 'listing.boxAddProduct'|trans|sw_sanitize }}
+        </button>
+    </div>
+{% endblock %}

@@ -1,5 +1,28 @@
 {% sw_extends '@Storefront/storefront/component/product/card/box-standard.html.twig' %}
 
+{% block component_product_box_info %}
+    <div class="product-info">
+        <div class="ecw-product-title-description">
+            {{ block('component_product_box_name') }}
+            {% block buy_widget_ordernumber_container %}
+                {% if product.productNumber %}
+                    <div class="product-detail-ordernumber-container">
+                        <span class="product-detail-ordernumber">{{ product.productNumber }}</span>
+                    </div>
+                {% endif %}
+            {% endblock %}
+            {{ block('component_product_box_rating') }}
+            {{ block('component_product_box_variant_characteristics') }}
+            {{ block('component_product_box_description') }}
+        </div>
+        <div class="ecw-product-price">
+            {# Themes may span a wrapper across the price and action blocks. #}
+            {{ block('component_product_box_price') }}
+            {{ block('component_product_box_action') }}
+        </div>
+    </div>
+{% endblock %}
+
 {% block component_product_box_variant_characteristics %}
     {{ parent() }}
     {% if showVariants and configurator|length %}

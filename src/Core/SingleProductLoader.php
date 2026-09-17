@@ -37,6 +37,7 @@ class SingleProductLoader
             'product' => $detail->getProduct(),
             'configurator' => $showVariants ? $detail->getConfigurator() : null,
             'showVariants' => $showVariants,
+            'requiresSelection' => !$showVariants && ($detail->getProduct()->getParentId() === $productId || $detail->getProduct()->getChildCount() > 0),
         ]);
     }
 }

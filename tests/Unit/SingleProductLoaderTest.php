@@ -17,6 +17,25 @@ require_once __DIR__ . '/../../src/Core/SingleProductLoader.php';
 
 final class SingleProductLoaderTest extends TestCase
 {
+    public function testParentAndVariantPurchaseRules(): void
+    {
+        foreach ([
+            ['parent', 'parent', false, true],
+            ['parent', 'parent', true, false],
+            ['variant', 'parent', false, false],
+            ['simple', null, false, false],
+        ] as [$configuredId, $parentId, $showVariants, $requiresSelection]) {
+            $product = new SalesChannelProductEntity();
+            $product->setParentId($parentId);
+            $product->setChildCount(0);
+            $detail = $this->createMock(AbstractProductDetailRoute::class);
+            $detail->method('load')->willReturn(new ProductDetailRouteResponse($product, null));
+            $variant = $this->createMock(AbstractFindProductVariantRoute::class);
+            $result = (new SingleProductLoader($detail, $variant))->load($configuredId, $showVariants, $this->createMock(SalesChannelContext::class));
+            self::assertSame($requiresSelection, $result->get('requiresSelection'));
+        }
+    }
+
     public function testProductPageRecursionIsDisabledAndVariantControlsAreOptional(): void
     {
         $product = new SalesChannelProductEntity();

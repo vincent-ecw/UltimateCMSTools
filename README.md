@@ -515,10 +515,13 @@ A dedicated CMS block and element for Product Detail Page templates. It automati
 
 Add **Single product** from the **Ultimate CMS Tools** category, or use its element in a column. Search by product name or product number. Select a parent product to use Shopware's initial variant, or select a specific variant.
 
+Cards show the image, product name, product number, rating, variant options, and button in that order. Theme-provided descriptions and prices remain above the button.
+
 - **Show variant properties:** Optional (off by default). Displays property dropdowns and updates the entire card in place when a variant changes. Shopware resolves available combinations and may adjust other property selections.
 - **Theme integration:** Extends the standard listing card, retaining product-card classes, badges, wishlist, prices, and theme overrides. The card fills its column and has a larger responsive image area.
 - **Cart:** Purchasable products can be added directly using Shopware's cart form at the minimum purchase quantity, independently of the listing buy-button setting. Stock and purchase rules remain enforced by Shopware.
 - Theme-owned price/action wrappers are preserved; direct-purchase button overrides apply only to this CMS element.
+- **Button behavior:** A selected parent product with hidden variant options shows Details. A specifically selected variant, a product without variants, or a card showing variant options offers Add to shopping cart when purchasable. Image/name links still open the product detail page.
 - **Animation:** Variant images fade and slide into place; disabled when the visitor requests reduced motion.
 - Products unavailable in the current sales channel are omitted. Failed variant requests retain the previous product and display a retry message.
 

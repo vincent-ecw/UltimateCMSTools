@@ -17,3 +17,14 @@
         </button>
     </div>
 {% endblock %}
+
+{% block component_product_box_action_detail %}
+    <div class="d-grid">
+        <a href="{{ seoUrl('frontend.detail.page', {productId: product.id}) }}"
+           class="btn btn-primary btn-detail">
+            {% block component_product_box_action_detail_label %}
+                {{ 'listing.boxProductDetails'|trans|sw_sanitize }}
+            {% endblock %}
+        </a>
+    </div>
+{% endblock %}

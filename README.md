@@ -3,8 +3,7 @@
 A collection of CMS blocks and elements that enhance Shopware's Shopping Experiences with features that are essential for modern e-commerce page building.
 
 ## Table of Contents
-- [Single Product](#single-product)
-- [Alert Message](#alert-message)
+
 - [Installation](#installation)
 - [Available CMS Blocks](#available-cms-blocks)
   - [1. Common Slider](#1-common-slider)
@@ -27,6 +26,8 @@ A collection of CMS blocks and elements that enhance Shopware's Shopping Experie
   - [18. Flexible Image and Text](#18-flexible-image-and-text)
   - [19. Harmonica List](#19-harmonica-list)
   - [20. Related Products](#20-related-products)
+  - [21. Single Product](#21-single-product)
+  - [22. Alert Message](#22-alert-message)
 - [Section Settings Enhancements](#section-settings-enhancements)
 - [Design Token Color System](#design-token-color-system)
 - [Development and Compilation](#development-and-compilation)
@@ -511,7 +512,7 @@ A dedicated CMS block and element for Product Detail Page templates. It automati
 
 ---
 
-## Single Product
+### 21. Single Product
 
 Add **Single product** from the **Ultimate CMS Tools** category, or use its element in a column. Search by product name or product number. Select a parent product to use Shopware's initial variant, or select a specific variant.
 
@@ -522,10 +523,11 @@ Cards show the image, product name, product number, rating, variant options, and
 - **Cart:** Purchasable products can be added directly using Shopware's cart form at the minimum purchase quantity, independently of the listing buy-button setting. Stock and purchase rules remain enforced by Shopware.
 - Theme-owned price/action wrappers are preserved; direct-purchase button overrides apply only to this CMS element.
 - **Button behavior:** A selected parent product with hidden variant options shows Details. A specifically selected variant, a product without variants, or a card showing variant options offers Add to shopping cart when purchasable. Image/name links still open the product detail page.
+- **Button styling:** Both Details and Add to shopping cart use the theme's primary button styling (`btn-primary`).
 - **Animation:** Variant images fade and slide into place; disabled when the visitor requests reduced motion.
 - Products unavailable in the current sales channel are omitted. Failed variant requests retain the previous product and display a retry message.
 
-## Alert Message
+### 22. Alert Message
 
 Add **Alert message** from the **Ultimate CMS Tools** block category, or select the alert element in an existing slot.
 

@@ -6,6 +6,7 @@ use PHPUnit\Framework\TestCase;
 use Twig\Environment;
 use Twig\Loader\ArrayLoader;
 use Twig\TwigFilter;
+use Twig\TwigFunction;
 
 final class SingleProductMarkupTest extends TestCase
 {
@@ -24,12 +25,17 @@ final class SingleProductMarkupTest extends TestCase
         ]));
         $twig->addFilter(new TwigFilter('trans', static fn (string $key): string => 'Add to cart'));
         $twig->addFilter(new TwigFilter('sw_sanitize', static fn (string $value): string => $value));
+        $twig->addFunction(new TwigFunction('seoUrl', static fn (string $route, array $parameters): string => '/detail/' . $parameters['productId']));
         foreach ([[true, false], [false, false], [true, true]] as [$available, $requiresSelection]) {
-            $html = $twig->render('card', ['requiresSelection' => $requiresSelection, 'product' => ['available' => $available, 'childCount' => 0, 'calculatedMaxPurchase' => 10, 'minPurchase' => 1]]);
+            $html = $twig->render('card', ['requiresSelection' => $requiresSelection, 'product' => ['id' => 'test-product', 'available' => $available, 'childCount' => 0, 'calculatedMaxPurchase' => 10, 'minPurchase' => 1]]);
             self::assertSame(substr_count($html, '<div'), substr_count($html, '</div>'));
             self::assertStringContainsString('price-action', $html);
             self::assertSame($available && !$requiresSelection, str_contains($html, '<form>'));
             self::assertStringNotContainsString('LISTING', $html);
+            self::assertStringContainsString('btn btn-primary', $html);
+            if (!$available || $requiresSelection) {
+                self::assertStringContainsString('href="/detail/test-product"', $html);
+            }
         }
         self::assertStringContainsString('LISTING', $twig->render('action'));
         self::assertStringNotContainsString('<form>', $twig->render('action'));

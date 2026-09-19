@@ -1,4 +1,5 @@
 .cms-element-uct-single-product {
+    position: relative;
     width: 100%;
     min-width: 0;
 
@@ -11,4 +12,48 @@
         z-index: 2;
     }
     [aria-busy="true"] { opacity: .65; }
+}
+
+.cms-element-uct-single-product {
+    .uct-single-product-badges {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        left: 30%;
+        z-index: 3;
+        display: flex;
+        justify-content: flex-end;
+        flex-wrap: wrap;
+        gap: .5rem;
+        pointer-events: none;
+    }
+    .uct-single-product-badge {
+        padding: .35rem .75rem;
+        border-radius: 50rem;
+        font-weight: 600;
+        line-height: 1.25;
+        overflow-wrap: anywhere;
+        max-width: 100%;
+    }
+    .uct-single-product-badge--primary {
+        background-color: var(--ecw-mapped-color-pill-primary-back, var(--bs-success, #5da36d));
+        color: var(--ecw-mapped-color-pill-primary-lighttext, var(--bs-white, #ffffff));
+        &.uct-single-product-badge--dark-text {
+            color: var(--ecw-mapped-color-pill-primary-text, var(--bs-black, #000000));
+        }
+    }
+    .uct-single-product-badge--secondary {
+        background-color: var(--ecw-mapped-color-pill-secondary-back, var(--bs-primary, #1d4e89));
+        color: var(--ecw-mapped-color-pill-secondary-lighttext, var(--bs-white, #ffffff));
+        &.uct-single-product-badge--dark-text {
+            color: var(--ecw-mapped-color-pill-secondary-text, var(--bs-black, #000000));
+        }
+    }
+    .uct-single-product-badge--tertiary {
+        background-color: var(--ecw-mapped-color-pill-tertiary-back, var(--bs-dark, #0a1b30));
+        color: var(--ecw-mapped-color-pill-tertiary-lighttext, var(--bs-white, #ffffff));
+        &.uct-single-product-badge--dark-text {
+            color: var(--ecw-mapped-color-pill-tertiary-text, var(--bs-black, #000000));
+        }
+    }
 }

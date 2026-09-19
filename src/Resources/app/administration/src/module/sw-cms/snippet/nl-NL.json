@@ -203,7 +203,23 @@
                 }
             },
             "ultimateCmsTools": {
-                "singleProduct": {"label":"Enkel product","product":"Product","search":"Zoek op productnaam of productnummer","showVariants":"Varianteigenschappen tonen","variantPreview":"Varianteigenschappen worden in de webshop getoond."},
+                "singleProduct": {
+                    "label": "Enkel product",
+                    "product": "Product",
+                    "search": "Zoek op productnaam of productnummer",
+                    "showVariants": "Varianteigenschappen tonen",
+                    "variantPreview": "Varianteigenschappen worden in de webshop getoond.",
+                    "badge1Text": "Badge 1 tekst",
+                    "badge1Color": "Badge 1 kleur",
+                    "badge2Text": "Badge 2 tekst",
+                    "badge2Color": "Badge 2 kleur",
+                    "pillColors": {
+                        "primary": "Primair",
+                        "secondary": "Secundair",
+                        "tertiary": "Tertiair"
+                    },
+                    "showDarkText": "Donkere tekst tonen"
+                },
                 "alert": {
                     "showIcon": "Pictogram tonen",
                     "label": "Melding",
@@ -638,8 +654,12 @@
         },
         "blocks": {
             "ultimateCmsTools": {
-                "singleProduct": { "label": "Enkel product" },
-                "alert": { "label": "Melding" },
+                "singleProduct": {
+                    "label": "Enkel product"
+                },
+                "alert": {
+                    "label": "Melding"
+                },
                 "flexibleImageText": {
                     "label": "Flexibele afbeelding en tekst"
                 },

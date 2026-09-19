@@ -6,6 +6,16 @@
                  slotId: element.id,
                  errorMessage: 'ultimateCmsTools.singleProduct.error'|trans|striptags
              }|json_encode|e('html_attr') }}">
+            <div class="uct-single-product-badges">
+                {% for index in [1, 2] %}
+                    {% set text = element.config['badge' ~ index ~ 'Text'].value|default('')|trim %}
+                    {% set color = element.config['badge' ~ index ~ 'Color'].value|default('primary') %}
+                    {% if text is not empty %}
+                        {% set color = color in ['primary', 'secondary', 'tertiary'] ? color : 'primary' %}
+                        <span class="uct-single-product-badge uct-single-product-badge--{{ color }}{% if element.config['badge' ~ index ~ 'DarkText'].value|default(false) %} uct-single-product-badge--dark-text{% endif %}">{{ text }}</span>
+                    {% endif %}
+                {% endfor %}
+            </div>
             <div data-single-product-card>
                 {% sw_include '@UltimateCmsTools/storefront/component/uct-single-product/card.html.twig' with {
                     product: element.data.product,

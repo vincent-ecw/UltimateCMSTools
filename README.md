@@ -514,6 +514,8 @@ A dedicated CMS block and element for Product Detail Page templates. It automati
 
 ### 21. Single Product
 
+Configure up to two custom badges using the badge text and color fields. Each badge independently supports the Primary, Secondary, or Tertiary pill palette from the theme design tokens, with Bootstrap fallbacks. Enable **Show dark text** independently for either badge to use its palette’s pill text token instead of the default light-text token. Empty or whitespace-only labels are hidden. Custom badges appear at the top right and remain visible when switching variants; standard product-state badges are retained.
+
 Add **Single product** from the **Ultimate CMS Tools** category, or use its element in a column. Search by product name or product number. Select a parent product to use Shopware's initial variant, or select a specific variant.
 
 Cards show the image, product name, product number, rating, variant options, and button in that order. Theme-provided descriptions and prices remain above the button.

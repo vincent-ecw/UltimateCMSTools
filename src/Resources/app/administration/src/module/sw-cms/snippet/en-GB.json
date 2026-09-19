@@ -203,7 +203,23 @@
                 }
             },
             "ultimateCmsTools": {
-                "singleProduct": {"label":"Single product","product":"Product","search":"Search by product name or product number","showVariants":"Show variant properties","variantPreview":"Variant properties are shown in the storefront."},
+                "singleProduct": {
+                    "label": "Single product",
+                    "product": "Product",
+                    "search": "Search by product name or product number",
+                    "showVariants": "Show variant properties",
+                    "variantPreview": "Variant properties are shown in the storefront.",
+                    "badge1Text": "Badge 1 text",
+                    "badge1Color": "Badge 1 color",
+                    "badge2Text": "Badge 2 text",
+                    "badge2Color": "Badge 2 color",
+                    "pillColors": {
+                        "primary": "Primary",
+                        "secondary": "Secondary",
+                        "tertiary": "Tertiary"
+                    },
+                    "showDarkText": "Show dark text"
+                },
                 "alert": {
                     "showIcon": "Show icon",
                     "label": "Alert message",
@@ -638,8 +654,12 @@
         },
         "blocks": {
             "ultimateCmsTools": {
-                "singleProduct": { "label": "Single product" },
-                "alert": { "label": "Alert message" },
+                "singleProduct": {
+                    "label": "Single product"
+                },
+                "alert": {
+                    "label": "Alert message"
+                },
                 "flexibleImageText": {
                     "label": "Flexible Image and Text"
                 },

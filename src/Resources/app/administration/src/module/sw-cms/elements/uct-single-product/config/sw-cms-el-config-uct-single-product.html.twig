@@ -17,4 +17,10 @@
         </template>
     </sw-entity-single-select>
     <mt-switch v-model="showVariants" :label="$tc('sw-cms.elements.ultimateCmsTools.singleProduct.showVariants')" />
+    <sw-text-field v-model="badge1Text" :label="$tc('sw-cms.elements.ultimateCmsTools.singleProduct.badge1Text')" />
+    <sw-single-select v-model:value="badge1Color" :options="badgeColorOptions" :label="$tc('sw-cms.elements.ultimateCmsTools.singleProduct.badge1Color')" />
+    <mt-switch v-model="badge1DarkText" :label="$tc('sw-cms.elements.ultimateCmsTools.singleProduct.showDarkText')" />
+    <sw-text-field v-model="badge2Text" :label="$tc('sw-cms.elements.ultimateCmsTools.singleProduct.badge2Text')" />
+    <sw-single-select v-model:value="badge2Color" :options="badgeColorOptions" :label="$tc('sw-cms.elements.ultimateCmsTools.singleProduct.badge2Color')" />
+    <mt-switch v-model="badge2DarkText" :label="$tc('sw-cms.elements.ultimateCmsTools.singleProduct.showDarkText')" />
 </div>

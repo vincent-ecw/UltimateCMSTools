@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.36] - 2026-09-19
+
+### Added
+- Independent “Show dark text” switches for custom Single Product badges, using each pill palette’s text token with a black fallback. Light text remains the default.
+
+## [1.2.35] - 2026-09-19
+
+### Added
+- Two optional custom Single Product badges with independent Primary, Secondary, or Tertiary pill colors. Empty labels stay hidden and badges persist during variant switching.
+
 ## [1.2.34] - 2026-09-17
 
 ### Fixed

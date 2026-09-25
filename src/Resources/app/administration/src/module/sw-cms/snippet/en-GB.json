@@ -203,6 +203,15 @@
                 }
             },
             "ultimateCmsTools": {
+                "subcategoryThemes": {
+                    "label": "Theme",
+                    "classic": "Classic",
+                    "badge": "Badge",
+                    "basic": "Basic",
+                    "playful": "Playful",
+                    "modern": "Modern",
+                    "help": "Badge shows only the name. Playful and Modern show image and name. The Display image setting still applies."
+                },
                 "singleProduct": {
                     "label": "Single product",
                     "product": "Product",

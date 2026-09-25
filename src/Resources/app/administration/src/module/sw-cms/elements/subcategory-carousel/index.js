@@ -9,6 +9,7 @@ Shopware.Service('cmsService').registerCmsElement({
     configComponent: 'sw-cms-el-config-subcategory-carousel',
     previewComponent: 'sw-cms-el-preview-subcategory-carousel',
     defaultConfig: {
+        theme: { source: 'static', value: 'classic' },
         showAllSubcategories: {
             source: 'static',
             value: false

@@ -3,6 +3,13 @@
         {{ $tc('sw-cms.elements.ultimateCmsTools.subcategoryGrid.configInfo') }}
     </sw-alert>
 
+    <sw-single-select
+        v-model:value="theme"
+        :label="$tc('sw-cms.elements.ultimateCmsTools.subcategoryThemes.label')"
+        :helpText="$tc('sw-cms.elements.ultimateCmsTools.subcategoryThemes.help')"
+        :options="themeOptions">
+    </sw-single-select>
+
     <sw-switch-field
         v-model:value="showAllSubcategories"
         :label="$tc('sw-cms.elements.ultimateCmsTools.subcategoryGrid.config.showAllSubcategoriesLabel')">

@@ -9,6 +9,7 @@ Shopware.Service('cmsService').registerCmsElement({
     configComponent: 'sw-cms-el-config-subcategory-grid',
     previewComponent: 'sw-cms-el-preview-subcategory-grid',
     defaultConfig: {
+        theme: { source: 'static', value: 'classic' },
         showAllSubcategories: {
             source: 'static',
             value: false

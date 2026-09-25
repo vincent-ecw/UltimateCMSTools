@@ -203,6 +203,15 @@
                 }
             },
             "ultimateCmsTools": {
+                "manufacturerSorting": {
+                    "label": "Sortering",
+                    "ASC": "Oplopend",
+                    "DESC": "Aflopend",
+                    "help": "De richting geldt voor het gekozen sorteerveld. Bij Sorteervolgorde komen lege waarden oplopend eerst en aflopend laatst; gelijke waarden worden op naam A–Z gesorteerd.",
+                    "sortBy": "Sorteren op",
+                    "alphabetical": "Alfabetisch",
+                    "sortingOrder": "Sorteervolgorde"
+                },
                 "subcategoryThemes": {
                     "label": "Thema",
                     "classic": "Klassiek",

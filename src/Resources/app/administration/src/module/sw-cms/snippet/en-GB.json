@@ -203,6 +203,15 @@
                 }
             },
             "ultimateCmsTools": {
+                "manufacturerSorting": {
+                    "label": "Sorting",
+                    "ASC": "Ascending",
+                    "DESC": "Descending",
+                    "help": "Direction applies to the selected sort field. For Sorting order, empty values come first ascending and last descending; equal values sort by name A–Z.",
+                    "sortBy": "Sort by",
+                    "alphabetical": "Alphabetical",
+                    "sortingOrder": "Sorting order"
+                },
                 "subcategoryThemes": {
                     "label": "Theme",
                     "classic": "Classic",

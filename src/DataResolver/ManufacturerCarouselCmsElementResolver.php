@@ -25,7 +25,16 @@ class ManufacturerCarouselCmsElementResolver extends AbstractCmsElementResolver
         $criteria = new Criteria();
         $criteria->addFilter(new EqualsFilter('customFields.ultimate_cms_tools_show_in_carousel', true));
         $criteria->addAssociation('media');
-        $criteria->addSorting(new FieldSorting('name', FieldSorting::ASCENDING));
+        $direction = $slot->getFieldConfig()->get('sorting')?->getValue() === FieldSorting::DESCENDING
+            ? FieldSorting::DESCENDING
+            : FieldSorting::ASCENDING;
+        if ($slot->getFieldConfig()->get('sortBy')?->getValue() === 'sortingOrder') {
+            $criteria->addSorting(new FieldSorting('customFields.ultimate_cms_tools_manufacturer_sorting_order', $direction));
+            $criteria->addSorting(new FieldSorting('name', FieldSorting::ASCENDING));
+        } else {
+            $criteria->addSorting(new FieldSorting('name', $direction));
+        }
+        $criteria->addSorting(new FieldSorting('id', FieldSorting::ASCENDING));
         $criteria->setLimit(100);
 
         $criteriaCollection = new CriteriaCollection();

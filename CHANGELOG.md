@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.40] - 2026-09-25
+
+### Added
+- Sort by selector for both manufacturer blocks: Alphabetical (default) or numeric Sorting order. Ascending/descending applies to the selected field; numeric ties remain alphabetical.
+
+## [1.2.39] - 2026-09-25
+
+### Added
+- Numeric manufacturer Sorting order custom field, registered on plugin activation and update without changing existing manufacturer values.
+- Ascending/descending sorting settings for Manufacturer Grid and Carousel, with numeric ordering before the result limit and stable alphabetical tie-breaking.
+
 ## [1.2.38] - 2026-09-25
 
 ### Changed

@@ -4,6 +4,19 @@
     </sw-alert>
 
     <div class="sw-cms-el-config-manufacturer-carousel__settings" style="margin-top: 15px;">
+        <sw-single-select
+            v-model:value="sortBy"
+            :label="$tc('sw-cms.elements.ultimateCmsTools.manufacturerSorting.sortBy')"
+            :options="sortByOptions">
+        </sw-single-select>
+
+        <sw-single-select
+            v-model:value="sorting"
+            :label="$tc('sw-cms.elements.ultimateCmsTools.manufacturerSorting.label')"
+            :helpText="$tc('sw-cms.elements.ultimateCmsTools.manufacturerSorting.help')"
+            :options="sortingOptions">
+        </sw-single-select>
+
         <sw-switch-field
             v-model:value="displayLogo"
             :label="$tc('sw-cms.elements.ultimateCmsTools.manufacturerCarousel.config.displayLogoLabel')">

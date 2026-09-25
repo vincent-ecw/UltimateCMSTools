@@ -8,6 +8,37 @@ Shopware.Component.register('sw-cms-el-config-manufacturer-grid', {
     ],
 
     computed: {
+        sortBy: {
+            get() {
+                return this.element.config?.sortBy?.value ?? 'alphabetical';
+            },
+            set(value) {
+                this.element.config.sortBy = { source: 'static', value };
+                this.onChange();
+            }
+        },
+        sortByOptions() {
+            return ['alphabetical', 'sortingOrder'].map(value => ({
+                value,
+                label: this.$tc('sw-cms.elements.ultimateCmsTools.manufacturerSorting.' + value)
+            }));
+        },
+        sorting: {
+            get() {
+                return this.element.config?.sorting?.value ?? 'ASC';
+            },
+            set(value) {
+                this.element.config.sorting = { source: 'static', value };
+                this.onChange();
+            }
+        },
+        sortingOptions() {
+            return ['ASC', 'DESC'].map(value => ({
+                value,
+                label: this.$tc('sw-cms.elements.ultimateCmsTools.manufacturerSorting.' + value)
+            }));
+        },
+
         displayLogo: {
             get() {
                 return this.element.config?.displayLogo?.value ?? true;

@@ -203,6 +203,15 @@
                 }
             },
             "ultimateCmsTools": {
+                "manufacturerSorting": {
+                    "label": "Sortierung",
+                    "ASC": "Aufsteigend",
+                    "DESC": "Absteigend",
+                    "help": "Die Richtung gilt für das ausgewählte Sortierfeld. Bei Sortierreihenfolge stehen leere Werte aufsteigend zuerst und absteigend zuletzt; gleiche Werte werden nach Namen A–Z sortiert.",
+                    "sortBy": "Sortieren nach",
+                    "alphabetical": "Alphabetisch",
+                    "sortingOrder": "Sortierreihenfolge"
+                },
                 "subcategoryThemes": {
                     "label": "Design",
                     "classic": "Klassisch",

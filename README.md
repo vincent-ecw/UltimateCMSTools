@@ -311,6 +311,7 @@ Displays brand manufacturers in a clean responsive grid layout.
 
 * **Block Name:** `manufacturer-grid`
 * **Element Name:** `manufacturer-grid`
+* **Sorting:** Choose **Sort by: Alphabetical** (default) or **Sorting order**, then Ascending (default) or Descending. For numeric ordering, set **Sorting order** in the manufacturer’s Ultimate CMS Tools custom fields. Empty numeric values sort first ascending and last descending; numeric ties sort by name A–Z. The integer field is registered on plugin activation or update. Technical name: `ultimate_cms_tools_manufacturer_sorting_order`.
 
 #### Configuration Options
 
@@ -327,6 +328,7 @@ A carousel displaying brand manufacturers with configurable display toggles.
 
 * **Block Name:** `manufacturer-carousel`
 * **Element Name:** `manufacturer-carousel`
+* **Sorting:** Choose **Sort by: Alphabetical** (default) or **Sorting order**, then Ascending (default) or Descending. For numeric ordering, set **Sorting order** in the manufacturer’s Ultimate CMS Tools custom fields. Empty numeric values sort first ascending and last descending; numeric ties sort by name A–Z. The integer field is registered on plugin activation or update. Technical name: `ultimate_cms_tools_manufacturer_sorting_order`.
 
 #### Configuration Options
 

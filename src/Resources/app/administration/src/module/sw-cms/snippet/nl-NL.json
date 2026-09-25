@@ -203,6 +203,15 @@
                 }
             },
             "ultimateCmsTools": {
+                "subcategoryThemes": {
+                    "label": "Thema",
+                    "classic": "Klassiek",
+                    "badge": "Badge",
+                    "basic": "Basis",
+                    "playful": "Speels",
+                    "modern": "Modern",
+                    "help": "Badge toont alleen de naam. Speels en Modern tonen afbeelding en naam. De instelling Afbeelding weergeven blijft van toepassing."
+                },
                 "singleProduct": {
                     "label": "Enkel product",
                     "product": "Product",

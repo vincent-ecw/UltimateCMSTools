@@ -203,6 +203,15 @@
                 }
             },
             "ultimateCmsTools": {
+                "subcategoryThemes": {
+                    "label": "Design",
+                    "classic": "Klassisch",
+                    "badge": "Badge",
+                    "basic": "Einfach",
+                    "playful": "Verspielt",
+                    "modern": "Modern",
+                    "help": "Badge zeigt nur den Namen. Verspielt und Modern zeigen Bild und Namen. Die Einstellung Bild anzeigen gilt weiterhin."
+                },
                 "singleProduct": {
                     "label": "Einzelnes Produkt",
                     "product": "Produkt",

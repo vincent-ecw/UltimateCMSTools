@@ -114,6 +114,9 @@ A carousel displaying the subcategories of the active category. It is ideal for 
 
 * **Block Name:** `subcategory-carousel`
 * **Element Name:** `subcategory-carousel`
+* **Themes:** Classic (unchanged default), Badge (name only), Basic (square image card with description), Playful (circular image and centered name), and Modern (image with a white title over a black-to-transparent gradient). Select **Theme** in the element configuration. Image visibility remains configurable; descriptions appear only in Classic and Basic.
+* **Theme classes:** The CMS element receives `subcategory-theme-{theme}`, and each category link receives `subcategory-card--{theme}`. Missing or invalid themes fall back to Classic.
+
 
 #### Configuration Options
 
@@ -289,6 +292,10 @@ Displays the subcategories of the active category in a responsive grid layout.
 
 * **Block Name:** `subcategory-grid`
 * **Element Name:** `subcategory-grid`
+* **Badge layout:** Content-width badges flow next to each other with 24px horizontal and vertical gaps, wrapping onto the next row when space runs out. Grid column settings do not apply to this theme.
+* **Themes:** Classic (unchanged default), Badge (name only), Basic (square image card with description), Playful (circular image and centered name), and Modern (image with a white title over a black-to-transparent gradient). Select **Theme** in the element configuration. Image visibility remains configurable; descriptions appear only in Classic and Basic.
+* **Theme classes:** The CMS element receives `subcategory-theme-{theme}`, and each category link receives `subcategory-card--{theme}`. Missing or invalid themes fall back to Classic.
+
 
 #### Configuration Options
 

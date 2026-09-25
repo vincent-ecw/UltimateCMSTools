@@ -1,0 +1,107 @@
+// Shared variants; Classic deliberately retains the existing block styles.
+.cms-element-subcategory-carousel,
+.cms-element-subcategory-grid {
+    .subcategory-card--badge,
+    .subcategory-card--basic,
+    .subcategory-card--playful,
+    .subcategory-card--modern {
+        box-shadow: none;
+
+        &:hover {
+            box-shadow: none;
+            transform: none;
+        }
+
+        .subcategory-card-title {
+            overflow-wrap: anywhere;
+        }
+    }
+
+    .subcategory-card--badge {
+        align-self: start;
+        justify-self: start;
+        flex: 0 0 auto;
+        width: fit-content;
+        min-width: 0;
+        max-width: 100%;
+        height: auto;
+        border: 1px solid var(--ecw-mapped-color-border-base, var(--bs-border-color, #dee2e6));
+        border-radius: 12px;
+
+        .subcategory-card-content { padding: 10px 12px; }
+        .subcategory-card-title { margin: 0; }
+    }
+
+    .subcategory-card--basic {
+        padding: 12px;
+        border: 0;
+        border-radius: 0;
+
+        .subcategory-card-content { padding: 12px 0 0; }
+    }
+
+    .subcategory-card--playful {
+        background: none;
+        border: 0;
+        border-radius: 0;
+        align-items: center;
+        text-align: center;
+
+        .subcategory-card-image-wrapper {
+            width: min(100%, 168px);
+            aspect-ratio: 1;
+            padding-top: 0;
+            border-radius: 50%;
+        }
+
+        .subcategory-card-content {
+            flex-grow: 0;
+            width: 100%;
+            max-width: 240px;
+            padding: 32px 12px 12px;
+        }
+
+        .subcategory-card-title { margin: 0; }
+    }
+
+    .subcategory-card--modern {
+        position: relative;
+        aspect-ratio: 1;
+        align-self: start;
+        height: auto;
+        border: 0;
+        border-radius: 0;
+        background: var(--ecw-mapped-color-header-colored-back, var(--bs-dark, #212529));
+
+        .subcategory-card-image-wrapper {
+            position: absolute;
+            inset: 0;
+            height: 100%;
+            padding-top: 0;
+        }
+
+        .subcategory-card-content {
+            position: relative;
+            z-index: 1;
+            margin-top: auto;
+            flex-grow: 0;
+            padding: 48px 12px 12px;
+            background: linear-gradient(to top, var(--ecw-mapped-color-subcategory-overlay, var(--bs-black, #000000)), transparent);
+        }
+
+        .subcategory-card-title {
+            margin: 0;
+            color: var(--ecw-mapped-color-header-lighttext, var(--bs-white, #ffffff));
+        }
+    }
+}
+
+// Badge widths follow their labels and wrap independently of grid column settings.
+.cms-element-subcategory-grid.subcategory-theme-badge {
+    .subcategory-grid-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 24px;
+        align-items: flex-start;
+    }
+}

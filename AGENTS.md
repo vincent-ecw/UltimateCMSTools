@@ -75,6 +75,8 @@ For complete design token documentation, refer to [`style/COLOR_SYSTEM.md`](styl
 
 All Shopware commands **MUST** be run inside the Docker container `shopware67`.
 
+**Git commands are an exception to the container-only CLI rule:** Run all Git operations locally on the host, in this plugin's repository. This includes status, diff, branch, fetch, commit, merge, pull, and push. Use the host's Git configuration and SSH credentials; do not run Git inside Docker. Shopware commands and builds must still run inside `shopware67`.
+
 ```bash
 # Build storefront assets (SCSS / JS)
 docker exec -it shopware67 ./bin/build-storefront.sh

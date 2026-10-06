@@ -39,6 +39,43 @@ Component.register('sw-cms-el-config-flexible-image-text', {
             },
         },
 
+        readMoreText: {
+            get() {
+                return this.element?.config?.readMoreText?.value ?? '';
+            },
+            set(value) {
+                this.element.config.readMoreText.value = value ?? '';
+                this.onChange(this.element);
+            },
+        },
+
+        readMoreButtonStyle: {
+            get() {
+                return this.element?.config?.readMoreButtonStyle?.value || 'primary';
+            },
+            set(value) {
+                this.element.config.readMoreButtonStyle.value = value || 'primary';
+                this.onChange(this.element);
+            },
+        },
+
+        readMoreButtonStyleOptions() {
+            return ['primary', 'secondary', 'outline-primary', 'outline-secondary', 'light', 'dark', 'link'].map(value => ({
+                value,
+                label: this.$tc(`sw-cms.elements.ultimateCmsTools.flexibleImageText.config.buttonStyles.${value}`),
+            }));
+        },
+
+        readMoreMaxWidth: {
+            get() {
+                return this.element?.config?.readMoreMaxWidth?.value ?? '';
+            },
+            set(value) {
+                this.element.config.readMoreMaxWidth.value = value ?? '';
+                this.onChange(this.element);
+            },
+        },
+
         caption: {
             get() {
                 return this.element?.config?.caption?.value ?? '';

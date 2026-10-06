@@ -5,6 +5,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.44] - 2026-10-06
+
+### Fixed
+- Use the same typography rules for Flexible Image and Text primary and read-more content, including font size, line height, colors, headings, and paragraph spacing in the storefront and editor preview.
+
+## [1.2.43] - 2026-10-06
+
+### Added
+- Read-more button style selector: Primary, Secondary, Outline primary, Outline secondary, Light, Dark, and Text link, with translated labels and matching editor previews.
+
+### Changed
+- Place the Read less button below the expanded read-more content in both storefront and editor preview.
+
+## [1.2.42] - 2026-10-06
+
+### Added
+- Optional sanitized Read more rich text below Flexible Image and Text, with an accessible Read more/Read less toggle, reversible slide/fade animation, and reduced-motion support.
+- Horizontally centered read-more area with validated pixel or percentage maximum width, interactive CMS editor preview, and English, German, and Dutch translations.
+
 ## [1.2.41] - 2026-10-06
 
 ### Added

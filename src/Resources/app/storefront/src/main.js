@@ -22,3 +22,6 @@ window.PluginManager.register('StatisticsCounter', StatisticsCounterPlugin, '[da
 window.PluginManager.register('IconListAnimation', IconListAnimationPlugin, '[data-icon-list-animation]');
 window.PluginManager.register('FlexibleImageTextAnimation', FlexibleImageTextAnimationPlugin, '[data-flexible-image-text-animation]');
 
+
+import UctReadMorePlugin from './plugin/uct-read-more.plugin';
+window.PluginManager.register('UctReadMore', UctReadMorePlugin, '[data-uct-read-more]');

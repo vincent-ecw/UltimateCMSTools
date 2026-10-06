@@ -459,8 +459,11 @@ Renders a list of feature items with icons (standard Shopware icons, custom icon
 * **Image (`media`):** Media library upload or selection.
 * **Caption / Label (`caption`):** Optional photo label or Polaroid caption text.
 * **Rich Text Content (`content`):** Main text content entered via a rich text editor (`sw-text-editor`).
+* **Read more text (`readMoreText`):** Optional extra WYSIWYG text, initially collapsed below the image and main text. Read more expands it; The button sits below the expanded text; Read less collapses it with the same subtle slide/fade animation in reverse. Empty content hides the toggle. HTML is sanitized, collapsed links are excluded from keyboard focus, and reduced-motion preferences disable the animation. Read-more content shares the primary text typography, including line spacing and heading styles. The CMS editor offers an interactive preview.
 
 ##### Settings Tab
+* **Read more button style (`readMoreButtonStyle`):** Primary (default), Secondary, Outline primary, Outline secondary, Light, Dark, or Text link. Storefront buttons use the active theme's button styles, and the editor preview reflects the selected variant.
+* **Read more maximum width (`readMoreMaxWidth`):** Pixels (`800px` or `800`) or percentage (`80%`), including up to two decimal places. Leave empty for full width. The read-more area is always centered horizontally and stays within the available width; text alignment follows the rich-text formatting. Valid limits are greater than zero and at most `10000px` or `100%`.
 * **Layout Position (`position`):** Choice of **Image Left + Text Right** or **Text Left + Image Right**. (Automatically stacks vertically with image on top on screens `< 768px`).
 * **Column Proportions (`columnSize`):** Choice of **25% - 75%**, **33% - 66%**, **50% - 50%**, **66% - 33%**, or **75% - 25%**.
 * **Entrance Animation (`animation`):** Choice of **None**, **Slide in from left / right**, **Fade in**, or **Zoom in**.

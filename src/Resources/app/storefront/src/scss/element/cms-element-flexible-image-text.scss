@@ -1,3 +1,5 @@
+@import '../../../../shared/scss/uct-read-more';
+
 .cms-element-flexible-image-text {
     position: relative;
     width: 100%;
@@ -29,22 +31,23 @@
 
     .flexible-image-text__text-wrapper {
         flex-grow: 1;
+    }
 
-        .flexible-image-text__text-content {
-            font-size: 1rem;
-            line-height: 1.6;
-            color: var(--ecw-mapped-color-text-normal, var(--bs-body-color, #333333));
+    .flexible-image-text__text-wrapper .flexible-image-text__text-content,
+    .uct-read-more .flexible-image-text__text-content {
+        font-size: 1rem;
+        line-height: 1.6;
+        color: var(--ecw-mapped-color-text-normal, var(--bs-body-color, #333333));
 
-            h1, h2, h3, h4, h5, h6 {
-                margin-top: 0;
-                margin-bottom: 1rem;
-                font-weight: 700;
-                color: var(--ecw-mapped-color-textcolor, var(--bs-heading-color, #111111));
-            }
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 0;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            color: var(--ecw-mapped-color-textcolor, var(--bs-heading-color, #111111));
+        }
 
-            p:last-child {
-                margin-bottom: 0;
-            }
+        p:last-child {
+            margin-bottom: 0;
         }
     }
 

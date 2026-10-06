@@ -1,0 +1,53 @@
+.uct-read-more {
+    width: 100%;
+    margin-inline: auto;
+
+    &__actions {
+        margin-top: 1.5rem;
+        text-align: center;
+    }
+
+    &__panel {
+        display: grid;
+        grid-template-rows: 0fr;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-0.5rem);
+        transition: grid-template-rows 240ms ease, opacity 240ms ease,
+            transform 240ms ease, visibility 0s 240ms;
+    }
+
+    &__inner {
+        min-height: 0;
+        overflow: hidden;
+    }
+
+    &__content {
+        padding-top: 1.5rem;
+        overflow-wrap: anywhere;
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        > :last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    &.is-expanded &__panel {
+        grid-template-rows: 1fr;
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+        transition-delay: 0s;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        &__panel {
+            transition: none;
+            transform: none;
+        }
+    }
+}

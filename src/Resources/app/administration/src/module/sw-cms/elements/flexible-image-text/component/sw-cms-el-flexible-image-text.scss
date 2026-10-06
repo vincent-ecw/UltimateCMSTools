@@ -75,7 +75,7 @@
     .flexible-image-text__text-content {
         font-size: 14px;
         line-height: 1.5;
-        color: #333333;
+        color: var(--ecw-mapped-color-text-normal, var(--bs-body-color, #333333));
     }
 
     /* Theme-specific admin previews */
@@ -131,5 +131,56 @@
             padding: 20px;
             text-align: center;
         }
+    }
+}
+
+// Administration previews use the same variants as the storefront theme buttons.
+.sw-cms-el-flexible-image-text .uct-read-more__actions .btn {
+    padding: 0.5rem 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    font: inherit;
+
+    &.btn-primary {
+        background-color: var(--ecw-mapped-color-button-primary-back, var(--bs-primary, #0d6efd));
+        border-color: var(--ecw-mapped-color-button-primary-back, var(--bs-primary, #0d6efd));
+        color: var(--ecw-mapped-color-button-primary-text, var(--bs-white, #ffffff));
+    }
+
+    &.btn-secondary {
+        background-color: var(--ecw-mapped-color-cta-secondarycolor, var(--bs-secondary, #6c757d));
+        border-color: var(--ecw-mapped-color-cta-secondarycolor, var(--bs-secondary, #6c757d));
+        color: var(--ecw-mapped-color-cta-lighttext, var(--bs-white, #ffffff));
+    }
+
+    &.btn-outline-primary {
+        background-color: var(--ecw-mapped-color-background-container, var(--bs-body-bg, #ffffff));
+        border-color: var(--ecw-mapped-color-button-primary-back, var(--bs-primary, #0d6efd));
+        color: var(--ecw-mapped-color-button-primary-back, var(--bs-primary, #0d6efd));
+    }
+
+    &.btn-outline-secondary {
+        background-color: var(--ecw-mapped-color-background-container, var(--bs-body-bg, #ffffff));
+        border-color: var(--ecw-mapped-color-cta-secondarycolor, var(--bs-secondary, #6c757d));
+        color: var(--ecw-mapped-color-cta-secondarycolor, var(--bs-secondary, #6c757d));
+    }
+
+    &.btn-light {
+        background-color: var(--ecw-mapped-color-background-container, var(--bs-light, #f8f9fa));
+        border-color: var(--ecw-mapped-color-border-base, var(--bs-border-color, #dee2e6));
+        color: var(--ecw-mapped-color-text-normal, var(--bs-body-color, #333333));
+    }
+
+    &.btn-dark {
+        background-color: var(--ecw-mapped-color-header-colored-back, var(--bs-dark, #212529));
+        border-color: var(--ecw-mapped-color-header-colored-back, var(--bs-dark, #212529));
+        color: var(--ecw-mapped-color-cta-lighttext, var(--bs-white, #ffffff));
+    }
+
+    &.btn-link {
+        background-color: var(--ecw-mapped-color-background-container, var(--bs-body-bg, #ffffff));
+        color: var(--ecw-mapped-color-text-link, var(--bs-link-color, #0d6efd));
+        text-decoration: underline;
     }
 }

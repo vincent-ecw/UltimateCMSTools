@@ -1,5 +1,6 @@
 import template from './sw-cms-el-flexible-image-text.html.twig';
 import './sw-cms-el-flexible-image-text.scss';
+import '../../../../../../../shared/scss/uct-read-more.scss';
 
 const { Component, Mixin } = Shopware;
 
@@ -12,7 +13,38 @@ Component.register('sw-cms-el-flexible-image-text', {
         Mixin.getByName('cms-element'),
     ],
 
+    data() {
+        return { readMoreExpanded: false };
+    },
+
     computed: {
+        readMoreText() {
+            return this.$sanitize(this.element?.config?.readMoreText?.value || '');
+        },
+
+        hasReadMore() {
+            const document = new DOMParser().parseFromString(this.readMoreText, 'text/html');
+            return document.body.textContent.trim().length > 0;
+        },
+
+        readMoreButtonClass() {
+            const value = this.element?.config?.readMoreButtonStyle?.value;
+            const styles = ['primary', 'secondary', 'outline-primary', 'outline-secondary', 'light', 'dark', 'link'];
+            return `btn-${styles.includes(value) ? value : 'primary'}`;
+        },
+
+        readMoreStyle() {
+            const value = String(this.element?.config?.readMoreMaxWidth?.value || '').trim();
+            const match = value.match(/^([0-9]{1,5}(?:\.[0-9]{1,2})?)(px|%)?$/);
+            if (!match) {
+                return {};
+            }
+            const number = Number(match[1]);
+            const unit = match[2] || 'px';
+            return number > 0 && number <= (unit === '%' ? 100 : 10000)
+                ? { maxWidth: `${match[1]}${unit}` } : {};
+        },
+
         mediaRepository() {
             return this.repositoryFactory.create('media');
         },

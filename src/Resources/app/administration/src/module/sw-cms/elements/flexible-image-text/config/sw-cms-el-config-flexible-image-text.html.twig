@@ -43,9 +43,27 @@
             :label="$tc('sw-cms.elements.ultimateCmsTools.flexibleImageText.config.contentLabel')"
             :placeholder="$tc('sw-cms.elements.ultimateCmsTools.flexibleImageText.config.contentPlaceholder')">
         </sw-text-editor>
+        <sw-text-editor
+            :value="readMoreText"
+            @update:value="readMoreText = $event"
+            :label="$tc('sw-cms.elements.ultimateCmsTools.flexibleImageText.config.readMoreTextLabel')">
+        </sw-text-editor>
     </div>
 
     <div v-if="activeTab === 'settings'" class="sw-cms-el-config-flexible-image-text__settings-tab">
+        <sw-text-field
+            v-model="readMoreMaxWidth"
+            :label="$tc('sw-cms.elements.ultimateCmsTools.flexibleImageText.config.readMoreMaxWidthLabel')"
+            :help-text="$tc('sw-cms.elements.ultimateCmsTools.flexibleImageText.config.readMoreMaxWidthHelp')"
+            placeholder="800px / 80%">
+        </sw-text-field>
+
+        <sw-single-select
+            v-model:value="readMoreButtonStyle"
+            :label="$tc('sw-cms.elements.ultimateCmsTools.flexibleImageText.config.readMoreButtonStyleLabel')"
+            :options="readMoreButtonStyleOptions">
+        </sw-single-select>
+
         <!-- Position -->
         <sw-single-select
             v-model:value="position"

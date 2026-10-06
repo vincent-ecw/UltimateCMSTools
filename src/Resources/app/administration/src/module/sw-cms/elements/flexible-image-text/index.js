@@ -18,6 +18,18 @@ Shopware.Service('cmsService').registerCmsElement({
             source: 'static',
             value: '<h2>Hier komt een koptitel</h2><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vestibulum arcu magna, eget vehicula libero congue sit amet.</p>',
         },
+        readMoreText: {
+            source: 'static',
+            value: '',
+        },
+        readMoreButtonStyle: {
+            source: 'static',
+            value: 'primary',
+        },
+        readMoreMaxWidth: {
+            source: 'static',
+            value: '',
+        },
         caption: {
             source: 'static',
             value: '',

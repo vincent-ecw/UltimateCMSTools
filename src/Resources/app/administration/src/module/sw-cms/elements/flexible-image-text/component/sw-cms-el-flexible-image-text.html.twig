@@ -30,4 +30,17 @@
             <div class="flexible-image-text__text-content" v-html="$sanitize(content)"></div>
         </div>
     </div>
+    <div v-if="hasReadMore" class="uct-read-more" :class="{ 'is-expanded': readMoreExpanded }" :style="readMoreStyle">
+        <div :id="'uct-read-more-preview-' + element.id" class="uct-read-more__panel" :aria-hidden="!readMoreExpanded" :inert="!readMoreExpanded">
+            <div class="uct-read-more__inner">
+                <div class="uct-read-more__content flexible-image-text__text-content" v-html="readMoreText"></div>
+            </div>
+        </div>
+        <div class="uct-read-more__actions">
+            <button type="button" class="btn" :class="readMoreButtonClass" :aria-expanded="readMoreExpanded"
+                    :aria-controls="'uct-read-more-preview-' + element.id" @click.stop="readMoreExpanded = !readMoreExpanded">
+                {{ $tc('sw-cms.elements.ultimateCmsTools.flexibleImageText.config.' + (readMoreExpanded ? 'readLess' : 'readMore')) }}
+            </button>
+        </div>
+    </div>
 </div>

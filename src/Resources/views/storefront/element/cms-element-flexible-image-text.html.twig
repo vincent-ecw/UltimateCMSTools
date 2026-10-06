@@ -6,6 +6,11 @@
     {% set animation = config.animation.value|default('none') %}
     {% set theme = config.theme.value|default('traditional') %}
     {% set content = config.content.value|default('') %}
+    {% set readMoreText = config.readMoreText.value|default('')|sw_sanitize %}
+    {% set hasReadMore = readMoreText|striptags|replace({'&nbsp;': '', '&#160;': '', ' ': ''})|trim != '' %}
+    {% set readMoreMaxWidth = config.readMoreMaxWidth.value|default('')|uct_read_more_width %}
+    {% set readMoreButtonStyle = config.readMoreButtonStyle.value|default('primary') %}
+    {% set readMoreButtonStyle = readMoreButtonStyle in ['primary', 'secondary', 'outline-primary', 'outline-secondary', 'light', 'dark', 'link'] ? readMoreButtonStyle : 'primary' %}
     {% set caption = config.caption.value|default('') %}
     {% set media = element.data ? element.data.get('media') : null %}
 
@@ -85,5 +90,23 @@
                 </div>
             </div>
         </div>
+        {% if hasReadMore %}
+            <div class="uct-read-more" data-uct-read-more{% if readMoreMaxWidth %} style="max-width: {{ readMoreMaxWidth }};"{% endif %}>
+                <div id="uct-read-more-{{ element.id }}" class="uct-read-more__panel" data-uct-read-more-panel aria-hidden="true" inert>
+                    <div class="uct-read-more__inner">
+                        <div class="uct-read-more__content flexible-image-text__text-content">{{ readMoreText|raw }}</div>
+                    </div>
+                </div>
+                <div class="uct-read-more__actions">
+                    <button type="button" class="btn btn-{{ readMoreButtonStyle }} uct-read-more__toggle" hidden
+                            aria-expanded="false" aria-controls="uct-read-more-{{ element.id }}"
+                            data-uct-read-more-toggle
+                            data-label-more="{{ 'ultimateCmsTools.flexibleImageText.readMore'|trans }}"
+                            data-label-less="{{ 'ultimateCmsTools.flexibleImageText.readLess'|trans }}">
+                        {{ 'ultimateCmsTools.flexibleImageText.readMore'|trans }}
+                    </button>
+                </div>
+            </div>
+        {% endif %}
     </div>
 {% endblock %}

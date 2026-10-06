@@ -1,5 +1,6 @@
 {
     "ultimateCmsTools": {
+        "flexibleImageText": {"readMore": "Read more", "readLess": "Read less"},
         "singleProduct": { "error": "The variant could not be loaded. Please try again." },
         "alert": { "close": "Close message" },
         "categoryHeader": {

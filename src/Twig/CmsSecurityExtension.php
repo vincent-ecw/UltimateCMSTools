@@ -11,6 +11,7 @@ final class CmsSecurityExtension extends AbstractExtension
     {
         return [
             new TwigFilter('uct_safe_url', self::safeUrl(...)),
+            new TwigFilter('uct_read_more_width', self::safeReadMoreWidth(...)),
             new TwigFilter('uct_css_length', self::safeCssLength(...)),
             new TwigFilter('uct_css_color', self::safeCssColor(...)),
             new TwigFilter('uct_css_url', self::safeCssUrl(...)),
@@ -71,6 +72,18 @@ final class CmsSecurityExtension extends AbstractExtension
         };
 
         return $number <= $maximum ? $number . $unit : '';
+    }
+
+    public static function safeReadMoreWidth(?string $value): string
+    {
+        $width = trim($value ?? '');
+        if (!preg_match('/^([0-9]{1,5}(?:\.[0-9]{1,2})?)(px|%)?$/', $width, $match)) {
+            return '';
+        }
+
+        $number = (float) $match[1];
+        $unit = $match[2] ?? 'px';
+        return $number > 0 && $number <= ($unit === '%' ? 100 : 10000) ? $match[1] . $unit : '';
     }
 
     public static function safeCssColor(?string $value): string

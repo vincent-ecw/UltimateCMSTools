@@ -1,5 +1,6 @@
 .cms-element-responsive-image {
     width: 100%;
+    max-width: var(--uct-responsive-image-max-width, 100%);
     height: auto;
     display: block;
 
@@ -19,6 +20,9 @@
     .responsive-image-img {
         width: 100%;
         height: auto;
+        max-height: var(--uct-responsive-image-max-height, none);
+        object-fit: contain;
+        object-position: left center;
         display: block;
         border-radius: var(
             --ecw-mapped-number-border-radius-md,

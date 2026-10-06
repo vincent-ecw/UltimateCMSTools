@@ -8,7 +8,10 @@
 	{% set linkUrl = config.linkUrl.value|default('')|uct_safe_url %}
 	{% set linkTarget = config.linkTarget.value|default('_self') == '_blank' ? '_blank' : '_self' %}
 
-	<div class="cms-element-responsive-image">
+	{% set maxWidth = config.maxWidth.value|default(0)|uct_bounded_int(0, 10000, 0) %}
+	{% set maxHeight = config.maxHeight.value|default(0)|uct_bounded_int(0, 10000, 0) %}
+
+	<div class="cms-element-responsive-image"{% if maxWidth or maxHeight %} style="{% if maxWidth %}--uct-responsive-image-max-width: {{ maxWidth }}px;{% endif %}{% if maxHeight %}--uct-responsive-image-max-height: {{ maxHeight }}px;{% endif %}"{% endif %}>
 		{% if mediaDesktop %}
 			{% if linkUrl %}
 				<a href="{{ linkUrl }}" target="{{ linkTarget }}" {% if linkTarget == '_blank' %}rel="noopener noreferrer"{% endif %} class="responsive-image-link">

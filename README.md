@@ -215,6 +215,7 @@ A CMS element providing high-performance responsive image rendering using a sema
 * **Desktop Image (`mediaDesktop` - Mandatory):** The fallback image and source displayed on desktop viewports.
 * **Tablet Image (`mediaTablet` - Optional):** Custom source displayed on tablet viewports (up to 767px wide).
 * **Mobile Image (`mediaMobile` - Optional):** Custom source displayed on mobile viewports (up to 576px wide).
+* **Maximum Width / Height (`maxWidth` / `maxHeight` - Optional):** Limits in pixels, shared by all device images. Leave empty or use `0` for no limit; positive integers up to `10000` are supported. Images remain responsive and retain their proportions without cropping. The CMS editor preview reflects these limits (with its existing 350px preview height when no height limit is set).
 * **Alt Text (`altText` - Optional):** Alternative text description for accessibility and SEO.
 * **Link URL (`linkUrl` - Optional):** Makes the entire image clickable, redirecting to this URL.
 * **Link Target (`linkTarget` - Optional):** Sets whether to open the URL in the same tab (`_self`) or in a new window (`_blank`).

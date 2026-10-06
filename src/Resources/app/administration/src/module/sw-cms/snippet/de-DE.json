@@ -296,7 +296,12 @@
                 },
                 "responsiveImage": {
                     "label": "Responsives Bild",
-                    "placeholder": "Laden Sie responsive Bilder für Desktop, Tablet und Mobile herunter."
+                    "placeholder": "Laden Sie responsive Bilder für Desktop, Tablet und Mobile herunter.",
+                    "config": {
+                        "maxWidth": "Maximale Breite (px)",
+                        "maxHeight": "Maximale Höhe (px)",
+                        "sizeHelp": "Gilt für alle Geräte. Leer lassen oder 0 eingeben für keine Begrenzung (maximal 10000 px). Die Bildproportionen bleiben erhalten."
+                    }
                 },
                 "magazineQuote": {
                     "label": "Magazin Zitat / Titel",

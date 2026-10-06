@@ -296,7 +296,12 @@
                 },
                 "responsiveImage": {
                     "label": "Responsive Image",
-                    "placeholder": "Upload responsive images for desktop, tablet, and mobile breakpoints."
+                    "placeholder": "Upload responsive images for desktop, tablet, and mobile breakpoints.",
+                    "config": {
+                        "maxWidth": "Maximum width (px)",
+                        "maxHeight": "Maximum height (px)",
+                        "sizeHelp": "Applies to all devices. Leave empty or enter 0 for no limit (maximum 10000 px). Images retain their proportions."
+                    }
                 },
                 "magazineQuote": {
                     "label": "Magazine Quote",

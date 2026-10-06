@@ -296,7 +296,12 @@
                 },
                 "responsiveImage": {
                     "label": "Responsieve afbeelding",
-                    "placeholder": "Upload responsieve afbeeldingen voor desktop-, tablet- en mobiele breekpunten."
+                    "placeholder": "Upload responsieve afbeeldingen voor desktop-, tablet- en mobiele breekpunten.",
+                    "config": {
+                        "maxWidth": "Maximale breedte (px)",
+                        "maxHeight": "Maximale hoogte (px)",
+                        "sizeHelp": "Geldt voor alle apparaten. Laat leeg of vul 0 in voor geen limiet (maximaal 10000 px). Afbeeldingen behouden hun verhoudingen."
+                    }
                 },
                 "magazineQuote": {
                     "label": "Tijdschriftcitaat",

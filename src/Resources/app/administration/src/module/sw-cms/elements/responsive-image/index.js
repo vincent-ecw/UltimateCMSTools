@@ -30,6 +30,14 @@ Shopware.Service('cmsService').registerCmsElement({
             value: null,
             entity: 'media'
         },
+        maxWidth: {
+            source: 'static',
+            value: null
+        },
+        maxHeight: {
+            source: 'static',
+            value: null
+        },
         altText: {
             source: 'static',
             value: ''

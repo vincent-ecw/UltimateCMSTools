@@ -5,7 +5,7 @@
             <p>{{ $tc('sw-cms.elements.ultimateCmsTools.responsiveImage.placeholder') }}</p>
         </div>
         <div v-else class="sw-cms-el-responsive-image__preview-image-wrapper">
-            <img :src="mediaUrl" class="sw-cms-el-responsive-image__preview-image" :alt="altText" />
+            <img :src="mediaUrl" :style="imageStyle" class="sw-cms-el-responsive-image__preview-image" :alt="altText" />
             <div class="sw-cms-el-responsive-image__info">
                 {{ displayInfo }}
             </div>

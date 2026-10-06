@@ -53,6 +53,24 @@
         </div>
     </div>
 
+    <sw-number-field
+        v-model:value="maxWidth"
+        :label="$tc('sw-cms.elements.ultimateCmsTools.responsiveImage.config.maxWidth')"
+        :help-text="$tc('sw-cms.elements.ultimateCmsTools.responsiveImage.config.sizeHelp')"
+        :min="0"
+        :max="10000"
+        :digits="0">
+    </sw-number-field>
+
+    <sw-number-field
+        v-model:value="maxHeight"
+        :label="$tc('sw-cms.elements.ultimateCmsTools.responsiveImage.config.maxHeight')"
+        :help-text="$tc('sw-cms.elements.ultimateCmsTools.responsiveImage.config.sizeHelp')"
+        :min="0"
+        :max="10000"
+        :digits="0">
+    </sw-number-field>
+
     <!-- Text content for ALT -->
     <sw-text-field
         v-model:value="element.config.altText.value"

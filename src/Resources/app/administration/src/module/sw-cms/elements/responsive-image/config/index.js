@@ -13,6 +13,26 @@ Component.register('sw-cms-el-config-responsive-image', {
     ],
 
     computed: {
+        maxWidth: {
+            get() {
+                return this.element.config.maxWidth?.value ?? null;
+            },
+            set(value) {
+                this.element.config.maxWidth.value = value;
+                this.onChange();
+            }
+        },
+
+        maxHeight: {
+            get() {
+                return this.element.config.maxHeight?.value ?? null;
+            },
+            set(value) {
+                this.element.config.maxHeight.value = value;
+                this.onChange();
+            }
+        },
+
         mediaRepository() {
             return this.repositoryFactory.create('media');
         },

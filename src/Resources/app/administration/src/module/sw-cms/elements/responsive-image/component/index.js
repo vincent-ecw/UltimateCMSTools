@@ -15,6 +15,17 @@ Component.register('sw-cms-el-responsive-image', {
     ],
 
     computed: {
+        imageStyle() {
+            const style = {};
+            for (const key of ['maxWidth', 'maxHeight']) {
+                const value = Number(this.element?.config?.[key]?.value);
+                if (Number.isInteger(value) && value > 0) {
+                    style[key] = `${Math.min(value, 10000)}px`;
+                }
+            }
+            return style;
+        },
+
         mediaRepository() {
             return this.repositoryFactory.create('media');
         },

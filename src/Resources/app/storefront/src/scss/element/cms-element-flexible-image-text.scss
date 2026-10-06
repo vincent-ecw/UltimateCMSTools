@@ -29,6 +29,14 @@
         }
     }
 
+    .flexible-image-text__image-link {
+        display: block;
+        &:focus-visible {
+            outline: 3px solid var(--ecw-mapped-color-border-select, var(--bs-primary, #0d6efd));
+            outline-offset: 3px;
+        }
+    }
+
     .flexible-image-text__text-wrapper {
         flex-grow: 1;
     }

@@ -2,7 +2,9 @@
     "ultimateCmsTools": {
         "flexibleImageText": {
             "readMore": "Weiterlesen",
-            "readLess": "Weniger lesen"
+            "readLess": "Weniger lesen",
+            "viewImage": "Bild ansehen",
+            "newTab": "öffnet in einem neuen Tab"
         },
         "singleProduct": {
             "error": "Die Variante konnte nicht geladen werden. Bitte versuchen Sie es erneut."

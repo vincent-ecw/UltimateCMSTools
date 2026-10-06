@@ -638,7 +638,13 @@
                             "offset": "Versprongen (Offset)",
                             "rounded": "Afgerond (Rounded)",
                             "stacked": "Gestapeld (Stacked)"
-                        }
+                        },
+                        "imageLinkLabel": "Afbeeldingslink (optioneel)",
+                        "imageLinkHelp": "Kies een URL, product, categorie, media, e-mail- of telefoonbestemming. Laat leeg voor een afbeelding zonder link.",
+                        "imageLinkNewTab": "Afbeeldingslink openen in een nieuw tabblad",
+                        "imageLinkAccessibleLabel": "Toegankelijk label van afbeeldingslink (optioneel)",
+                        "imageLinkAccessibleHelp": "Beschrijf de bestemming. Standaard wordt de alt-tekst of het bijschrift gebruikt.",
+                        "imageLinkTargetHelp": "Uit: openen in het huidige tabblad. Aan: openen in een nieuw tabblad."
                     }
                 },
                 "faqHarmonica": {

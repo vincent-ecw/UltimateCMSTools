@@ -28,6 +28,17 @@
             </sw-upload-listener>
         </div>
 
+        <fieldset class="sw-cms-el-config-flexible-image-text__image-link">
+            <legend>{{ $tc('sw-cms.elements.ultimateCmsTools.flexibleImageText.config.imageLinkLabel') }}</legend>
+            <sw-dynamic-url-field v-model:value="imageLink" />
+            <mt-switch v-model:model-value="imageLinkNewTab"
+                :label="$tc('sw-cms.elements.ultimateCmsTools.flexibleImageText.config.imageLinkNewTab')"
+                :help-text="$tc('sw-cms.elements.ultimateCmsTools.flexibleImageText.config.imageLinkTargetHelp')" />
+        </fieldset>
+        <sw-text-field v-if="imageLink" v-model="imageLinkLabel"
+            :label="$tc('sw-cms.elements.ultimateCmsTools.flexibleImageText.config.imageLinkAccessibleLabel')"
+            :help-text="$tc('sw-cms.elements.ultimateCmsTools.flexibleImageText.config.imageLinkAccessibleHelp')" />
+
         <!-- Polaroid / Image Caption -->
         <sw-text-field
             v-model="caption"

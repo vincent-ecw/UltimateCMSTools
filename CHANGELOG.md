@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.49] - 2026-10-06
+
+### Changed
+- Use Shopware's standard dynamic URL selector for Flexible Image and Text image links, including product, category, media, email and phone destinations.
+
+### Fixed
+- Always display the standard Meteor new-tab switch with clear current/new-tab help and correct Vue 3 binding.
+
+## [1.2.48] - 2026-10-06
+
+### Added
+- Optional image links for every Flexible Image and Text theme, with new-tab selection, accessible destination labels, safe URL validation and English/German/Dutch translations.
+
 ## [1.2.47] - 2026-10-06
 
 ### Fixed

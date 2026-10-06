@@ -2,7 +2,9 @@
     "ultimateCmsTools": {
         "flexibleImageText": {
             "readMore": "Read more",
-            "readLess": "Read less"
+            "readLess": "Read less",
+            "viewImage": "View image",
+            "newTab": "opens in a new tab"
         },
         "singleProduct": {
             "error": "The variant could not be loaded. Please try again."

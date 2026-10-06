@@ -76,6 +76,30 @@ Component.register('sw-cms-el-config-flexible-image-text', {
             },
         },
 
+        imageLink: {
+            get() { return this.element?.config?.imageLink?.value ?? ''; },
+            set(value) {
+                this.element.config.imageLink.value = value ?? '';
+                this.onChange(this.element);
+            },
+        },
+
+        imageLinkNewTab: {
+            get() { return this.element?.config?.imageLinkNewTab?.value ?? false; },
+            set(value) {
+                this.element.config.imageLinkNewTab.value = value ?? false;
+                this.onChange(this.element);
+            },
+        },
+
+        imageLinkLabel: {
+            get() { return this.element?.config?.imageLinkLabel?.value ?? ''; },
+            set(value) {
+                this.element.config.imageLinkLabel.value = value ?? '';
+                this.onChange(this.element);
+            },
+        },
+
         caption: {
             get() {
                 return this.element?.config?.caption?.value ?? '';

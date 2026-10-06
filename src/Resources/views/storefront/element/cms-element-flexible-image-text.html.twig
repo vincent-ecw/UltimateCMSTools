@@ -12,7 +12,11 @@
     {% set readMoreButtonStyle = config.readMoreButtonStyle.value|default('primary') %}
     {% set readMoreButtonStyle = readMoreButtonStyle in ['primary', 'secondary', 'outline-primary', 'outline-secondary', 'light', 'dark', 'link'] ? readMoreButtonStyle : 'primary' %}
     {% set caption = config.caption.value|default('') %}
+    {% set imageLink = config.imageLink.value|default('')|uct_safe_url %}
+    {% set imageLinkNewTab = config.imageLinkNewTab.value|default(false) %}
     {% set media = element.data ? element.data.get('media') : null %}
+
+    {% set imageLinkLabel = config.imageLinkLabel.value|default(media.translated.alt|default(caption|default('ultimateCmsTools.flexibleImageText.viewImage'|trans))) %}
 
     {% set elementClasses = 'cms-element-flexible-image-text theme-' ~ theme ~ ' position-' ~ position ~ ' col-' ~ columnSize %}
     {% if animation != 'none' %}
@@ -34,6 +38,9 @@
                     {% if theme == 'polaroid' %}
                         <div class="flexible-image-text__polaroid-card">
                             <div class="flexible-image-text__polaroid-image">
+                                {% if imageLink %}
+                                    <a class="flexible-image-text__image-link" href="{{ imageLink }}" aria-label="{{ imageLinkLabel }}{% if imageLinkNewTab %} ({{ 'ultimateCmsTools.flexibleImageText.newTab'|trans }}){% endif %}"{% if imageLinkNewTab %} target="_blank" rel="noopener noreferrer"{% endif %}>
+                                {% endif %}
                                 {% sw_thumbnails 'flexible-image-text-img' with {
                                     media: media,
                                     sizes: {
@@ -47,6 +54,7 @@
                                         'alt': (media.translated.alt ?: caption ?: '')
                                     }
                                 } %}
+                                {% if imageLink %}</a>{% endif %}
                             </div>
                             {% if caption %}
                                 <div class="flexible-image-text__caption">
@@ -56,7 +64,10 @@
                         </div>
                     {% else %}
                         <div class="flexible-image-text__media-box">
-                            {% sw_thumbnails 'flexible-image-text-img' with {
+                            {% if imageLink %}
+                                    <a class="flexible-image-text__image-link" href="{{ imageLink }}" aria-label="{{ imageLinkLabel }}{% if imageLinkNewTab %} ({{ 'ultimateCmsTools.flexibleImageText.newTab'|trans }}){% endif %}"{% if imageLinkNewTab %} target="_blank" rel="noopener noreferrer"{% endif %}>
+                                {% endif %}
+                                {% sw_thumbnails 'flexible-image-text-img' with {
                                 media: media,
                                 sizes: {
                                     'xs': '576px',
@@ -69,6 +80,7 @@
                                     'alt': (media.translated.alt ?: caption ?: '')
                                 }
                             } %}
+                            {% if imageLink %}</a>{% endif %}
                         </div>
                         {% if caption and theme != 'polaroid' %}
                             <div class="flexible-image-text__image-subcaption">

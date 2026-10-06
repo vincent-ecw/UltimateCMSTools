@@ -638,7 +638,13 @@
                             "offset": "Versetzt (Offset)",
                             "rounded": "Abgerundet (Rounded)",
                             "stacked": "Gestapelt (Stacked)"
-                        }
+                        },
+                        "imageLinkLabel": "Bildlink (optional)",
+                        "imageLinkHelp": "URL, Produkt, Kategorie, Medium, E-Mail oder Telefonnummer auswählen. Leer lassen für ein Bild ohne Link.",
+                        "imageLinkNewTab": "Bildlink in einem neuen Tab öffnen",
+                        "imageLinkAccessibleLabel": "Zugängliche Beschriftung des Bildlinks (optional)",
+                        "imageLinkAccessibleHelp": "Beschreiben Sie das Linkziel. Standardmäßig wird der Alternativtext oder die Bildunterschrift verwendet.",
+                        "imageLinkTargetHelp": "Aus: im aktuellen Tab öffnen. An: in einem neuen Tab öffnen."
                     }
                 },
                 "faqHarmonica": {

@@ -30,6 +30,9 @@ Shopware.Service('cmsService').registerCmsElement({
             source: 'static',
             value: '',
         },
+        imageLink: { source: 'static', value: '' },
+        imageLinkNewTab: { source: 'static', value: false },
+        imageLinkLabel: { source: 'static', value: '' },
         caption: {
             source: 'static',
             value: '',

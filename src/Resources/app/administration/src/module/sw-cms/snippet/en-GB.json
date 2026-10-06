@@ -638,7 +638,13 @@
                             "offset": "Offset",
                             "rounded": "Rounded",
                             "stacked": "Stacked"
-                        }
+                        },
+                        "imageLinkLabel": "Image link (optional)",
+                        "imageLinkHelp": "Choose a URL, product, category, media, email or phone destination. Leave blank for an unlinked image.",
+                        "imageLinkNewTab": "Open image link in a new tab",
+                        "imageLinkAccessibleLabel": "Image link accessible label (optional)",
+                        "imageLinkAccessibleHelp": "Describe the destination. Defaults to image alt text or caption.",
+                        "imageLinkTargetHelp": "Off: open in the current tab. On: open in a new tab."
                     }
                 },
                 "faqHarmonica": {

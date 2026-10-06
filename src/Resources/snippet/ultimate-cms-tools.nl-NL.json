@@ -2,7 +2,9 @@
     "ultimateCmsTools": {
         "flexibleImageText": {
             "readMore": "Lees meer",
-            "readLess": "Lees minder"
+            "readLess": "Lees minder",
+            "viewImage": "Afbeelding bekijken",
+            "newTab": "opent in een nieuw tabblad"
         },
         "singleProduct": {
             "error": "De variant kon niet worden geladen. Probeer het opnieuw."

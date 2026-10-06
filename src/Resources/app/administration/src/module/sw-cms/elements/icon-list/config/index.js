@@ -1,3 +1,4 @@
+import { iconOptions as bundledIconOptions } from '../../../../../shared/uct-icons';
 import template from './sw-cms-el-config-icon-list.html.twig';
 import './sw-cms-el-config-icon-list.scss';
 
@@ -68,30 +69,7 @@ Component.register('sw-cms-el-config-icon-list', {
             return [
                 { value: 'none', label: this.$tc('sw-cms.elements.ultimateCmsTools.iconList.config.icons.none') },
                 { value: 'custom', label: this.$tc('sw-cms.elements.ultimateCmsTools.iconList.config.icons.custom') },
-                { value: 'regular-rocket', label: 'Rocket (regular-rocket)' },
-                { value: 'regular-cog', label: 'Tools / Settings (regular-cog)' },
-                { value: 'regular-trophy', label: 'Trophy / Award (regular-trophy)' },
-                { value: 'regular-users', label: 'Users / Community (regular-users)' },
-                { value: 'regular-user', label: 'User / Profile (regular-user)' },
-                { value: 'regular-star', label: 'Star (regular-star)' },
-                { value: 'regular-checkmark', label: 'Checkmark (regular-checkmark)' },
-                { value: 'regular-heart', label: 'Heart (regular-heart)' },
-                { value: 'regular-lightbulb', label: 'Lightbulb (regular-lightbulb)' },
-                { value: 'regular-shield', label: 'Shield (regular-shield)' },
-                { value: 'regular-clock', label: 'Clock (regular-clock)' },
-                { value: 'regular-phone', label: 'Phone (regular-phone)' },
-                { value: 'regular-envelope', label: 'Email (regular-envelope)' },
-                { value: 'regular-comments', label: 'Comments / Chat (regular-comments)' },
-                { value: 'regular-shopping-bag', label: 'Shopping Bag (regular-shopping-bag)' },
-                { value: 'regular-credit-card', label: 'Credit Card (regular-credit-card)' },
-                { value: 'regular-truck', label: 'Truck / Delivery (regular-truck)' },
-                { value: 'regular-chart', label: 'Chart (regular-chart)' },
-                { value: 'regular-thumb-up', label: 'Thumbs Up (regular-thumb-up)' },
-                { value: 'regular-globe', label: 'Globe (regular-globe)' },
-                { value: 'regular-headset', label: 'Headset / Support (regular-headset)' },
-                { value: 'regular-lock', label: 'Lock / Security (regular-lock)' },
-                { value: 'regular-search', label: 'Search (regular-search)' },
-                { value: 'regular-filter', label: 'Filter (regular-filter)' },
+                ...bundledIconOptions,
             ];
         },
     },

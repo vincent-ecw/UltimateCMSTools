@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.50] - 2026-10-06
+
+### Added
+- Bundle 122 MIT-licensed Meteor SVG icons with a shared catalog for Button and Icon List pickers, editor previews and storefront output.
+
+### Fixed
+- Eliminate mismatched administration/storefront icon names and preserve regular/solid variants and existing saved selections with legacy name aliases.
+- Render selected icons locally without external fonts, CDN requests or dependence on Shopware's storefront icon packs; unknown legacy names use a visible help-icon fallback.
+
 ## [1.2.49] - 2026-10-06
 
 ### Changed

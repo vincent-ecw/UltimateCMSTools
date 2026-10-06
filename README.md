@@ -633,3 +633,11 @@ All carousel blocks, including Common Slider, use the shared indicator styleshee
 ### Flexible Image and Text image links
 
 In the Content tab, use **Image link (optional)** with Shopware's standard dynamic URL selector to link the image in any theme. Choose a URL, product, category, media, email or phone destination. Leave it blank to keep the image unlinked. Relative paths and supported safe URLs use the existing URL validator; unsafe destinations are not rendered as links. The always-visible **Open image link in a new tab** switch opens in the current tab when off, or a new tab when on (with secure rel attributes and an accessible notice). Set **Image link accessible label** to describe the destination, especially when the image alt text does not describe it. Blank labels fall back to the image alt text, caption, or translated “View image”. Captions remain outside the link.
+
+### Reliable Button and Icon List icons
+
+Button and Icon List share a bundled catalog of 122 regular/solid Meteor SVG icons (Shopware AG, MIT, version 5.10.0). The same SVG data drives their icon options, Shopping Experiences previews and storefront markup. No CDN, icon font or runtime Meteor installation is needed. Existing selected names are retained; legacy arrow/chart/shop/thumb-up names map to matching Meteor assets. Unknown saved names display a help icon rather than silently disappearing. “None” renders no icon.
+
+Icons inherit their surrounding color and are decorative to assistive technology; button/list text supplies the accessible name. The existing Icon List **Custom CSS class** option remains available for compatibility, but requires your theme to supply that external icon font/CSS. Use bundled selections for reliable rendering.
+
+The single source is `src/Resources/app/shared/icons/catalog.json`; attribution, the MIT license and maintenance notes are stored beside it. Add reviewed SVG assets centrally so both previews and storefronts receive the same icons.

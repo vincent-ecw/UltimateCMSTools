@@ -67,12 +67,14 @@
                     <sw-single-select
                         v-model:value="iconBefore"
                         :options="iconOptions"
+                    :help-text="$tc('sw-cms.elements.ultimateCmsTools.button.config.bundledIconHelp')"
                         :label="$tc('sw-cms.elements.ultimateCmsTools.button.config.iconBeforeLabel')">
                     </sw-single-select>
 
                     <sw-single-select
                         v-model:value="iconAfter"
                         :options="iconOptions"
+                    :help-text="$tc('sw-cms.elements.ultimateCmsTools.button.config.bundledIconHelp')"
                         :label="$tc('sw-cms.elements.ultimateCmsTools.button.config.iconAfterLabel')">
                     </sw-single-select>
                 </div>

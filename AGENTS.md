@@ -106,3 +106,10 @@ docker exec -it shopware67 ./bin/build-administration.sh
 - **Version Bumping:** Whenever modifying the plugin, increment the patch version in [`composer.json`](composer.json) by +1 (e.g., `1.2.20` → `1.2.21`).
 - **Changelog:** Always document changes under a new version heading in [`CHANGELOG.md`](CHANGELOG.md) following [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html).
 - **Readme:** Keep [`README.md`](README.md) updated when adding or modifying blocks, features, or design system components.
+
+## Shared CMS Icon Library
+
+- Button and Icon List icon options and rendering MUST use `src/Resources/app/shared/icons/catalog.json` as their single source. Use `uct-icon` in administration previews and the `storefront/utilities/uct-icon.html.twig` utility in storefront templates.
+- Do not map administration icon names to `sw_icon` by stripping prefixes. Preserve existing saved names and regular/solid variants.
+- Bundle only reviewed SVG assets with their source version and license. Never render user-supplied SVG markup or construct file paths from configured icon names.
+- New icon-supported CMS elements should reuse this library. Custom CSS icon classes are a compatibility feature and require theme-provided CSS.

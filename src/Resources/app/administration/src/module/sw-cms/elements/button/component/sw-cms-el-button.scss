@@ -42,6 +42,7 @@
         border: 1px solid transparent;
 
         .sw-icon,
+        .uct-icon,
         &__icon-before,
         &__icon-after,
         &__text {
@@ -54,7 +55,8 @@
             vertical-align: middle;
         }
 
-        .sw-icon {
+        .sw-icon,
+        .uct-icon {
             flex-shrink: 0;
 
             > svg {

@@ -10,10 +10,10 @@
     {% set linkTitle = config.linkTitle.value|default('') %}
 
     {% set rawIconBefore = config.iconBefore.value|default('none') %}
-    {% set iconBeforeName = (rawIconBefore and rawIconBefore != 'none') ? rawIconBefore|replace({'regular-': '', 'solid-': ''}) : null %}
+    {% set iconBeforeName = (rawIconBefore and rawIconBefore != 'none') ? rawIconBefore : null %}
 
     {% set rawIconAfter = config.iconAfter.value|default('none') %}
-    {% set iconAfterName = (rawIconAfter and rawIconAfter != 'none') ? rawIconAfter|replace({'regular-': '', 'solid-': ''}) : null %}
+    {% set iconAfterName = (rawIconAfter and rawIconAfter != 'none') ? rawIconAfter : null %}
 
     {% set btnClasses = ['btn', 'btn-' ~ variant, 'cms-element-button'] %}
     {% if width == 'full' or width == '100%' %}
@@ -27,11 +27,11 @@
            {% if linkTarget == '_blank' %}rel="noopener noreferrer"{% endif %}
            {% if linkTitle %}title="{{ linkTitle }}" aria-label="{{ linkTitle }}"{% else %}aria-label="{{ title }}"{% endif %}>
             {% if iconBeforeName %}
-                {% sw_icon iconBeforeName style { class: 'btn-icon-before' } %}
+                {% sw_include '@UltimateCmsTools/storefront/utilities/uct-icon.html.twig' with {name: iconBeforeName, iconClass: 'btn-icon-before'} %}
             {% endif %}
             <span class="btn-text">{{ title }}</span>
             {% if iconAfterName %}
-                {% sw_icon iconAfterName style { class: 'btn-icon-after' } %}
+                {% sw_include '@UltimateCmsTools/storefront/utilities/uct-icon.html.twig' with {name: iconAfterName, iconClass: 'btn-icon-after'} %}
             {% endif %}
         </a>
     </div>

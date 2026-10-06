@@ -5,6 +5,9 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
+        <service id="VincentBourgonje\UltimateCmsTools\Twig\BundledIconExtension">
+            <tag name="twig.extension" />
+        </service>
         <service id="VincentBourgonje\UltimateCmsTools\Core\ManufacturerCustomFields">
             <argument type="service" id="custom_field_set.repository" />
             <argument type="service" id="custom_field.repository" />

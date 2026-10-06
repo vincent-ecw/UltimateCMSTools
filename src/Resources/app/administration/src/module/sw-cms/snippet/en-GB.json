@@ -536,7 +536,8 @@
                         "iconAfterLabel": "Icon After Label",
                         "icons": {
                             "none": "No Icon"
-                        }
+                        },
+                        "bundledIconHelp": "Bundled icons render identically in the editor and storefront."
                     }
                 },
                 "iconList": {
@@ -580,7 +581,8 @@
                         "targets": {
                             "self": "Same Window (_self)",
                             "blank": "New Tab (_blank)"
-                        }
+                        },
+                        "bundledIconHelp": "Bundled icons render identically in the editor and storefront."
                     }
                 },
                 "flexibleImageText": {

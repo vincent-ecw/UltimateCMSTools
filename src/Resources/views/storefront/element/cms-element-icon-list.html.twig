@@ -25,10 +25,9 @@
                         {% if rawIcon != 'none' %}
                             <div class="icon-list-item-icon">
                                 {% if rawIcon == 'custom' and customClass %}
-                                    <i class="{{ customClass }}"></i>
+                                    <i class="{{ customClass }}" aria-hidden="true"></i>
                                 {% elseif rawIcon != 'custom' %}
-                                    {% set iconName = rawIcon|replace({'regular-': '', 'solid-': ''}) %}
-                                    {% sw_icon iconName %}
+                                    {% sw_include '@UltimateCmsTools/storefront/utilities/uct-icon.html.twig' with {name: rawIcon} %}
                                 {% endif %}
                             </div>
                         {% endif %}

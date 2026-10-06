@@ -1,0 +1,2 @@
+{% set markup = uct_icon(name|default(null)) %}
+{% if markup %}<span class="uct-icon {{ iconClass|default('') }}" aria-hidden="true">{{ uct_icon(name|default(null)) }}</span>{% endif %}

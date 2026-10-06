@@ -3,7 +3,7 @@
         <div v-for="(item, index) in items" :key="index" class="sw-cms-el-icon-list__item">
             <div v-if="item.icon && item.icon !== 'none'" class="sw-cms-el-icon-list__icon-wrapper">
                 <i v-if="item.icon === 'custom'" :class="item.customIconClass || 'sw-icon'" class="sw-cms-el-icon-list__custom-icon"></i>
-                <sw-icon v-else :name="item.icon" size="24px"></sw-icon>
+                <uct-icon v-else :name="item.icon" size="24px"></uct-icon>
             </div>
 
             <div class="sw-cms-el-icon-list__content">

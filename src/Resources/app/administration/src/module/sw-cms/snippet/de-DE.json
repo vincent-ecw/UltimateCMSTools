@@ -536,7 +536,8 @@
                         "iconAfterLabel": "Icon nach dem Text",
                         "icons": {
                             "none": "Kein Icon"
-                        }
+                        },
+                        "bundledIconHelp": "Die enthaltenen Icons werden im Editor und Storefront identisch dargestellt."
                     }
                 },
                 "iconList": {
@@ -580,7 +581,8 @@
                         "targets": {
                             "self": "Gleiches Fenster (_self)",
                             "blank": "Neuer Tab (_blank)"
-                        }
+                        },
+                        "bundledIconHelp": "Die enthaltenen Icons werden im Editor und Storefront identisch dargestellt."
                     }
                 },
                 "flexibleImageText": {

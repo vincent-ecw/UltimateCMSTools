@@ -50,6 +50,7 @@
                 <sw-single-select
                     v-model:value="item.icon"
                     :options="iconOptions"
+                    :help-text="$tc('sw-cms.elements.ultimateCmsTools.iconList.config.bundledIconHelp')"
                     :label="$tc('sw-cms.elements.ultimateCmsTools.iconList.config.iconLabel')"
                     @update:value="onItemChange">
                 </sw-single-select>

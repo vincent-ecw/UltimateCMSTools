@@ -1,3 +1,4 @@
+import { iconOptions as bundledIconOptions } from '../../../../../shared/uct-icons';
 import template from './sw-cms-el-config-button.html.twig';
 import './sw-cms-el-config-button.scss';
 
@@ -154,49 +155,7 @@ Component.register('sw-cms-el-config-button', {
         iconOptions() {
             return [
                 { value: 'none', label: this.$tc('sw-cms.elements.ultimateCmsTools.button.config.icons.none') },
-                // Arrows & Navigation
-                { value: 'regular-arrow-right', label: 'Arrow Right' },
-                { value: 'regular-arrow-left', label: 'Arrow Left' },
-                { value: 'regular-arrow-up', label: 'Arrow Up' },
-                { value: 'regular-arrow-down', label: 'Arrow Down' },
-                { value: 'regular-chevron-right', label: 'Chevron Right' },
-                { value: 'regular-chevron-left', label: 'Chevron Left' },
-                { value: 'regular-chevron-up', label: 'Chevron Up' },
-                { value: 'regular-chevron-down', label: 'Chevron Down' },
-                { value: 'regular-external-link', label: 'External Link' },
-                // Contact & Communication
-                { value: 'regular-phone', label: 'Phone / Contact' },
-                { value: 'regular-envelope', label: 'Mail / Email' },
-                { value: 'regular-paper-plane', label: 'Send / Paper Plane' },
-                { value: 'regular-comments', label: 'Comments / Chat' },
-                { value: 'regular-headset', label: 'Support / Headset' },
-                // Actions & Tasks
-                { value: 'regular-download', label: 'Download' },
-                { value: 'regular-checkmark', label: 'Checkmark / Success' },
-                { value: 'regular-plus', label: 'Plus / Add' },
-                { value: 'regular-search', label: 'Search' },
-                { value: 'regular-trash', label: 'Trash / Delete' },
-                { value: 'regular-cog', label: 'Settings / Gear' },
-                { value: 'regular-filter', label: 'Filter' },
-                { value: 'regular-info-circle', label: 'Info' },
-                { value: 'regular-question-circle', label: 'Help / FAQ' },
-                // User & Security
-                { value: 'regular-user', label: 'User / Profile' },
-                { value: 'regular-users', label: 'Users / Team' },
-                { value: 'regular-lock', label: 'Lock / Security' },
-                { value: 'regular-lock-open', label: 'Unlock' },
-                { value: 'regular-key', label: 'Key / Login' },
-                // Favorites & Ratings
-                { value: 'regular-heart', label: 'Heart / Favorite' },
-                { value: 'regular-thumb-up', label: 'Like / Thumbs Up' },
-                { value: 'regular-star', label: 'Star / Rating' },
-                { value: 'regular-trophy', label: 'Trophy / Award' },
-                // Commerce & Shop
-                { value: 'regular-shopping-bag', label: 'Shopping Bag' },
-                { value: 'regular-shopping-cart', label: 'Shopping Cart' },
-                { value: 'regular-shop', label: 'Store / Shop' },
-                { value: 'regular-products', label: 'Products' },
-                { value: 'regular-credit-card', label: 'Credit Card / Payment' },
+                ...bundledIconOptions,
             ];
         },
     },

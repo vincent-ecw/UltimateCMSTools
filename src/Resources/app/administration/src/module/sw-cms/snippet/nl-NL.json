@@ -536,7 +536,8 @@
                         "iconAfterLabel": "Icoon na tekst",
                         "icons": {
                             "none": "Geen icoon"
-                        }
+                        },
+                        "bundledIconHelp": "Gebundelde iconen worden hetzelfde weergegeven in de editor en storefront."
                     }
                 },
                 "iconList": {
@@ -580,7 +581,8 @@
                         "targets": {
                             "self": "Zelfde venster (_self)",
                             "blank": "Nieuw tabblad (_blank)"
-                        }
+                        },
+                        "bundledIconHelp": "Gebundelde iconen worden hetzelfde weergegeven in de editor en storefront."
                     }
                 },
                 "flexibleImageText": {

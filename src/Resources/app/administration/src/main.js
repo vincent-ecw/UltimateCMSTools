@@ -1,3 +1,4 @@
+import './component/uct-icon';
 import './module/sw-cms/elements/uct-single-product';
 import './module/sw-cms/blocks/ultimate-cms-tools/uct-single-product';
 import './module/sw-cms/elements/uct-alert';

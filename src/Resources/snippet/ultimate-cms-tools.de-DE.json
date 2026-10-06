@@ -1,10 +1,27 @@
 {
     "ultimateCmsTools": {
-        "flexibleImageText": {"readMore": "Weiterlesen", "readLess": "Weniger lesen"},
-        "singleProduct": { "error": "Die Variante konnte nicht geladen werden. Bitte versuchen Sie es erneut." },
-        "alert": { "close": "Meldung schließen" },
+        "flexibleImageText": {
+            "readMore": "Weiterlesen",
+            "readLess": "Weniger lesen"
+        },
+        "singleProduct": {
+            "error": "Die Variante konnte nicht geladen werden. Bitte versuchen Sie es erneut."
+        },
+        "alert": {
+            "close": "Meldung schließen"
+        },
         "categoryHeader": {
             "defaultTitle": "Kategorie-Header"
+        },
+        "commonSlider": {
+            "label": "Hervorgehobene Inhalte",
+            "carousel": "Karussell",
+            "slide": "Folie",
+            "position": "Folie %current% von %total%",
+            "previous": "Vorherige Folie",
+            "next": "Nächste Folie",
+            "goTo": "Zur Folie %number%",
+            "newTab": "öffnet in einem neuen Tab"
         }
     }
 }

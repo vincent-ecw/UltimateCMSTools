@@ -199,3 +199,29 @@
         background-color: var(--ecw-mapped-color-slider-dot-hover, var(--bs-secondary-bg, #007bff));
     }
 }
+
+// Keep keyboard focus and reduced-motion behavior consistent for all indicators.
+.uct-carousel-dot,
+.uct-slider-dot,
+.common-slider-dot,
+.custom-carousel-dot,
+.custom-product-carousel-dot,
+.manufacturer-carousel-dot,
+.subcategory-carousel-dot {
+    &:focus-visible {
+        outline: 2px solid var(--ecw-mapped-color-border-select, var(--bs-primary, #0d6efd));
+        outline-offset: 3px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .uct-carousel-dot,
+    .uct-slider-dot,
+    .common-slider-dot,
+    .custom-carousel-dot,
+    .custom-product-carousel-dot,
+    .manufacturer-carousel-dot,
+    .subcategory-carousel-dot {
+        transition: none;
+    }
+}

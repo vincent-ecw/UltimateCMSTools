@@ -291,7 +291,12 @@
                         "autoplaySpeed": "Autoplay Speed (ms)",
                         "autoplaySpeedHelp": "Time in milliseconds a slide stays visible (e.g., 5000 = 5 seconds). Set to 0 to disable autoplay.",
                         "maxHeight": "Max Height (px)",
-                        "maxHeightHelp": "Define a maximum height in pixels for the slider (e.g. 500). Leave empty to auto-adapt to image height."
+                        "maxHeightHelp": "Define a maximum height in pixels for the slider (e.g. 500). Leave empty to auto-adapt to image height.",
+                        "altText": "Shared image alt text",
+                        "altTextHelp": "Applies to desktop, tablet and mobile. Leave blank to use media alt text.",
+                        "decorative": "Decorative image (empty alt text)",
+                        "accessibleName": "Carousel accessible name",
+                        "headingLevel": "Slide title heading level"
                     }
                 },
                 "responsiveImage": {

@@ -9,6 +9,8 @@ Shopware.Service('cmsService').registerCmsElement({
     configComponent: 'sw-cms-el-config-common-slider',
     previewComponent: 'sw-cms-el-preview-common-slider',
     defaultConfig: {
+        accessibleName: { source: 'static', value: '' },
+        headingLevel: { source: 'static', value: 'h3' },
         sliderItems: {
             source: 'static',
             value: []

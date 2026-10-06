@@ -71,6 +71,13 @@ For complete design token documentation, refer to [`style/COLOR_SYSTEM.md`](styl
 
 ---
 
+## Shared Carousel Indicator Styling
+
+- **All CMS blocks and elements that show slide/page indicators MUST use the same shared indicator style** to keep the website visually consistent.
+- The single source of truth is `src/Resources/app/storefront/src/scss/base/_carousel-shared.scss`. Use the shared `uct-carousel-indicators` and `uct-carousel-dot` classes in new carousel markup.
+- Do not override indicator dimensions, spacing, shape, colors, active/hover/focus states or pseudo-element markers in individual element stylesheets. Apply visual and accessibility improvements to the shared stylesheet so every carousel receives them together.
+- Preserve the shared inside/outside positioning options and use the mapped slider-dot color tokens with the required fallback chain.
+
 ## 2. Environment & Compilation
 
 All Shopware commands **MUST** be run inside the Docker container `shopware67`.

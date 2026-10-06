@@ -617,3 +617,15 @@ bin/console cache:clear
 ## Source and Security Audit
 
 See [AUDIT.md](AUDIT.md) for the plugin architecture, current security status, and a focused checklist for future changes. The custom-code element intentionally runs CSS/JavaScript and should be available only to trusted CMS editors. Customer-group section visibility requires the production-like cache release test documented in the audit; hidden sections are not a way to protect confidential content.
+
+### Common Slider accessibility and images
+
+Each slide has one **Shared image alt text** for all three responsive image variants. Blank values retain the media-alt/title fallback for existing layouts. Enable **Decorative image** to output `alt=""` explicitly. Use concise descriptions and meaningful button labels. Desktop, tablet and mobile variants should convey the same content.
+
+Set a descriptive **Carousel accessible name** and choose a **Slide title heading level** matching the page outline (H1–H6 or P; existing layouts default to H3). New-tab links include a translated screen-reader notice. Arrow controls have 44px minimum targets and controls have visible focus indicators; verify theme colors and image overlays in the actual page.
+
+The first slide renders without JavaScript. Responsive thumbnails and image dimensions reserve space, including dimensions on art-directed sources. The first image loads eagerly; subsequent images load lazily. Image fallbacks support any available variant, including tablet-only media.
+
+Autoplay pauses on hover and when the document is hidden, and stops when keyboard focus enters the carousel. Reduced-motion preferences disable autoplay and transitions. Inactive slides are inert and hidden from assistive technology; indicators expose the current slide. There is deliberately no Pause/Play button: disable autoplay in configuration when a persistent user-operated pause control is required. These changes alone do not establish WCAG conformance for autoplaying content.
+
+All carousel blocks, including Common Slider, use the shared indicator stylesheet (`src/Resources/app/storefront/src/scss/base/_carousel-shared.scss`): 10px dots, a 24px active pill, matching spacing and colors, keyboard focus styling and reduced-motion handling. Indicator styling must be changed centrally to maintain consistency. The Common Slider title background uses the theme container color at 82% opacity.

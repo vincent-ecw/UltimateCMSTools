@@ -5,6 +5,35 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.47] - 2026-10-06
+
+### Fixed
+- Restore Common Slider indicators to the shared carousel dot/pill style, sizing, spacing and positioning.
+
+### Changed
+- Centralize indicator keyboard-focus styling and reduced-motion handling for all carousel blocks.
+- Document mandatory shared carousel indicator styling in AGENTS.md.
+
+## [1.2.46] - 2026-10-06
+
+### Changed
+- Refine Common Slider indicators to small dots and a slim active pill with transparent 44px click targets and keyboard focus styling.
+- Make the Common Slider title background subtly transparent (82% opacity) while preserving theme colors.
+
+## [1.2.45] - 2026-10-06
+
+### Added
+- Shared slide alt text, explicit decorative images, carousel names and configurable title heading levels, translated in English, German and Dutch.
+
+### Changed
+- Common Slider uses responsive thumbnails, intrinsic image dimensions, eager first-slide and lazy subsequent-slide loading.
+- Add carousel/slide semantics, active indicator state, inactive-slide isolation, keyboard focus styling, larger controls and reduced-motion support.
+- Autoplay stops permanently on keyboard focus and pauses on hover or hidden documents; no Pause/Play control is rendered.
+
+### Fixed
+- Render the first slide before JavaScript initialization and support tablet-only images.
+- Prevent overlapping slide transitions and clean up event listeners and timers.
+
 ## [1.2.44] - 2026-10-06
 
 ### Fixed

@@ -75,21 +75,23 @@
                             </div>
                         </div>
 
+                        <sw-text-field :model-value="slide.altText" :disabled="slide.decorative" :label="$tc('sw-cms.elements.ultimateCmsTools.commonSlider.config.altText')" :helpText="$tc('sw-cms.elements.ultimateCmsTools.commonSlider.config.altTextHelp')" @update:model-value="updateSlide(slide, 'altText', $event)" />
+                        <sw-switch-field :model-value="slide.decorative" :label="$tc('sw-cms.elements.ultimateCmsTools.commonSlider.config.decorative')" @update:model-value="updateSlide(slide, 'decorative', $event)" />
                         <!-- Text content -->
                         <sw-text-field
-                            v-model:value="slide.title"
+                            v-model="slide.title"
                             :label="$tc('sw-cms.elements.ultimateCmsTools.commonSlider.config.title')"
                             @change="onChange">
                         </sw-text-field>
                         
                         <sw-text-field
-                            v-model:value="slide.buttonText"
+                            v-model="slide.buttonText"
                             :label="$tc('sw-cms.elements.ultimateCmsTools.commonSlider.config.buttonText')"
                             @change="onChange">
                         </sw-text-field>
                         
                         <sw-text-field
-                            v-model:value="slide.buttonUrl"
+                            v-model="slide.buttonUrl"
                             :label="$tc('sw-cms.elements.ultimateCmsTools.commonSlider.config.buttonUrl')">
                         </sw-text-field>
 
@@ -111,6 +113,8 @@
             </div>
 
             <div v-if="active === 'settings'" class="sw-cms-el-config-common-slider__tab-settings">
+                <sw-text-field v-model="accessibleName" :label="$tc('sw-cms.elements.ultimateCmsTools.commonSlider.config.accessibleName')" @update:model-value="onChange" />
+                <sw-single-select v-model:value="headingLevel" :label="$tc('sw-cms.elements.ultimateCmsTools.commonSlider.config.headingLevel')" :options="['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p'].map(value => ({ value, label: value.toUpperCase() }))" @update:value="onChange" />
                 <sw-switch-field
                     v-model:value="element.config.navigationArrows.value"
                     :label="$tc('sw-cms.elements.ultimateCmsTools.commonSlider.config.navigationArrows')"

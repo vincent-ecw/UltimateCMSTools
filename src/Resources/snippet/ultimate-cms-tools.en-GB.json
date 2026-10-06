@@ -1,10 +1,27 @@
 {
     "ultimateCmsTools": {
-        "flexibleImageText": {"readMore": "Read more", "readLess": "Read less"},
-        "singleProduct": { "error": "The variant could not be loaded. Please try again." },
-        "alert": { "close": "Close message" },
+        "flexibleImageText": {
+            "readMore": "Read more",
+            "readLess": "Read less"
+        },
+        "singleProduct": {
+            "error": "The variant could not be loaded. Please try again."
+        },
+        "alert": {
+            "close": "Close message"
+        },
         "categoryHeader": {
             "defaultTitle": "Category Header"
+        },
+        "commonSlider": {
+            "label": "Featured content",
+            "carousel": "carousel",
+            "slide": "slide",
+            "position": "Slide %current% of %total%",
+            "previous": "Previous slide",
+            "next": "Next slide",
+            "goTo": "Go to slide %number%",
+            "newTab": "opens in a new tab"
         }
     }
 }

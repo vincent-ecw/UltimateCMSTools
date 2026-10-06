@@ -22,6 +22,14 @@ Component.register('sw-cms-el-config-common-slider', {
     },
 
     computed: {
+        accessibleName: {
+            get() { return this.element.config.accessibleName.value; },
+            set(value) { this.element.config.accessibleName.value = value; this.onChange(); }
+        },
+        headingLevel: {
+            get() { return this.element.config.headingLevel.value; },
+            set(value) { this.element.config.headingLevel.value = value; this.onChange(); }
+        },
         sliderItems() {
             if (this.element.config && this.element.config.sliderItems && this.element.config.sliderItems.value) {
                 return this.element.config.sliderItems.value;
@@ -59,6 +67,8 @@ Component.register('sw-cms-el-config-common-slider', {
                 mediaIdTablet: null,
                 mediaIdMobile: null,
                 title: '',
+                altText: '',
+                decorative: false,
                 buttonText: '',
                 buttonUrl: '',
                 buttonTarget: '_self'
@@ -94,6 +104,11 @@ Component.register('sw-cms-el-config-common-slider', {
             if (type === 'desktop') slide.mediaIdDesktop = mediaEntity.id;
             if (type === 'tablet') slide.mediaIdTablet = mediaEntity.id;
             if (type === 'mobile') slide.mediaIdMobile = mediaEntity.id;
+            this.onChange();
+        },
+
+        updateSlide(slide, field, value) {
+            slide[field] = value;
             this.onChange();
         },
 

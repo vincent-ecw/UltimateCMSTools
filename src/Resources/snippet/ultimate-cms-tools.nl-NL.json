@@ -1,10 +1,27 @@
 {
     "ultimateCmsTools": {
-        "flexibleImageText": {"readMore": "Lees meer", "readLess": "Lees minder"},
-        "singleProduct": { "error": "De variant kon niet worden geladen. Probeer het opnieuw." },
-        "alert": { "close": "Bericht sluiten" },
+        "flexibleImageText": {
+            "readMore": "Lees meer",
+            "readLess": "Lees minder"
+        },
+        "singleProduct": {
+            "error": "De variant kon niet worden geladen. Probeer het opnieuw."
+        },
+        "alert": {
+            "close": "Bericht sluiten"
+        },
         "categoryHeader": {
             "defaultTitle": "Categorie Header"
+        },
+        "commonSlider": {
+            "label": "Uitgelichte inhoud",
+            "carousel": "carrousel",
+            "slide": "dia",
+            "position": "Dia %current% van %total%",
+            "previous": "Vorige dia",
+            "next": "Volgende dia",
+            "goTo": "Ga naar dia %number%",
+            "newTab": "opent in een nieuw tabblad"
         }
     }
 }

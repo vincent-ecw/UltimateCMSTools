@@ -1,165 +1,103 @@
 import Plugin from 'src/plugin-system/plugin.class';
-import DomAccess from 'src/helper/dom-access.helper';
 
 export default class CommonSliderPlugin extends Plugin {
-    static options = {
-        effect: 'slide',
-        arrows: true,
-        dots: true,
-        autoplay: true,
-        autoplaySpeed: 5000
-    };
+    static options = { effect: 'slide', arrows: true, dots: true, autoplay: true, autoplaySpeed: 5000 };
 
     init() {
         this.currentIndex = 0;
-        this.items = this.el.querySelectorAll('.common-slider-item');
-        
-        if (this.items.length <= 1) {
-            this.options.arrows = false;
-            this.options.dots = false;
-            this.options.autoplay = false;
-        }
-
-        if (this.options.autoplaySpeed <= 0) {
-            this.options.autoplay = false;
-        }
-
-        if (this.items.length > 0) {
-            this.items[0].classList.add('active');
-            this.el.setAttribute('data-effect', this.options.effect);
-        }
-
-        this._registerEvents();
-        
-        if (this.options.autoplay) {
+        this.items = Array.from(this.el.querySelectorAll('.common-slider-item'));
+        this.dots = Array.from(this.el.querySelectorAll('.common-slider-dot'));
+        this.wrapper = this.el.querySelector('.common-slider-wrapper');
+        this.motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+        this.keyboardStopped = false;
+        this.hovered = false;
+        this.listeners = [];
+        this.el.setAttribute('data-effect', this.options.effect);
+        this._syncState();
+        this._listen(this.el.querySelector('.common-slider-prev'), 'click', () => this.prev());
+        this._listen(this.el.querySelector('.common-slider-next'), 'click', () => this.next());
+        this.dots.forEach((dot, index) => this._listen(dot, 'click', () => this.goTo(index)));
+        this._listen(this.el, 'focusin', () => {
+            this.keyboardStopped = true;
+            this._stopAutoplay();
+        });
+        this._listen(this.el, 'mouseenter', () => { this.hovered = true; this._stopAutoplay(); });
+        this._listen(this.el, 'mouseleave', () => { this.hovered = false; this._startAutoplay(); });
+        this._listen(this.motion, 'change', () => {
+            this._finishTransition();
             this._startAutoplay();
-        }
+        });
+        this._listen(document, 'visibilitychange', () => this._startAutoplay());
+        this._startAutoplay();
     }
 
-    _registerEvents() {
-        if (this.options.arrows) {
-            const prevBtn = this.el.querySelector('.common-slider-prev');
-            const nextBtn = this.el.querySelector('.common-slider-next');
-
-            if (prevBtn) {
-                prevBtn.addEventListener('click', () => {
-                    this._stopAutoplay();
-                    this.prev();
-                    this._startAutoplay();
-                });
-            }
-
-            if (nextBtn) {
-                nextBtn.addEventListener('click', () => {
-                    this._stopAutoplay();
-                    this.next();
-                    this._startAutoplay();
-                });
-            }
-        }
-
-        if (this.options.dots) {
-            const dots = this.el.querySelectorAll('.common-slider-dot');
-            dots.forEach((dot, index) => {
-                dot.addEventListener('click', () => {
-                    this._stopAutoplay();
-                    this.goTo(index);
-                    this._startAutoplay();
-                });
-            });
-        }
-        
-        // Pause on hover
-        this.el.addEventListener('mouseenter', () => this._stopAutoplay());
-        this.el.addEventListener('mouseleave', () => this._startAutoplay());
+    _listen(target, event, callback) {
+        if (!target) return;
+        target.addEventListener(event, callback);
+        this.listeners.push(() => target.removeEventListener(event, callback));
     }
 
     _startAutoplay() {
-        if (!this.options.autoplay) return;
         this._stopAutoplay();
-        
-        this.autoplayInterval = setInterval(() => {
-            this.next();
-        }, this.options.autoplaySpeed);
+        if (!this.options.autoplay || this.options.autoplaySpeed <= 0 || this.items.length < 2 ||
+            this.motion.matches || this.keyboardStopped || this.hovered || document.hidden) return;
+        this.wrapper.setAttribute('aria-live', 'off');
+        this.autoplayInterval = window.setInterval(() => this.next(), this.options.autoplaySpeed);
     }
 
     _stopAutoplay() {
-        if (this.autoplayInterval) {
-            clearInterval(this.autoplayInterval);
-            this.autoplayInterval = null;
+        window.clearInterval(this.autoplayInterval);
+        this.autoplayInterval = null;
+        this.wrapper?.setAttribute('aria-live', 'polite');
+    }
+
+    _syncState() {
+        this.items.forEach((item, index) => {
+            const active = index === this.currentIndex;
+            item.inert = !active;
+            item.setAttribute('aria-hidden', String(!active));
+        });
+        this.dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === this.currentIndex);
+            dot.setAttribute('aria-current', String(index === this.currentIndex));
+        });
+    }
+
+    _finishTransition() {
+        window.clearTimeout(this.transitionTimeout);
+        this.items.forEach((item, index) => {
+            item.classList.remove('prev', 'slide-to-right', 'slide-from-left');
+            item.classList.toggle('active', index === this.currentIndex);
+        });
+        this.transitioning = false;
+    }
+
+    next() { this.goTo((this.currentIndex + 1) % this.items.length, 'next'); }
+    prev() { this.goTo((this.currentIndex + this.items.length - 1) % this.items.length, 'prev'); }
+
+    goTo(index, direction = null) {
+        if (!Number.isInteger(index) || index < 0 || index >= this.items.length ||
+            index === this.currentIndex || this.transitioning) return;
+        const current = this.items[this.currentIndex];
+        const next = this.items[index];
+        direction = direction || (index > this.currentIndex ? 'next' : 'prev');
+        this.currentIndex = index;
+        this._syncState();
+        if (this.options.effect === 'slide' && !this.motion.matches) {
+            this.transitioning = true;
+            next.classList.add('prev', direction === 'next' ? 'slide-to-right' : 'slide-from-left');
+            void next.offsetWidth;
+            next.classList.remove('slide-to-right', 'slide-from-left');
+            this.transitionTimeout = window.setTimeout(() => this._finishTransition(), 600);
+        } else {
+            current.classList.remove('active');
+            next.classList.add('active');
         }
     }
 
     destroy() {
         this._stopAutoplay();
-    }
-
-    next() {
-        let nextIndex = this.currentIndex + 1;
-        if (nextIndex >= this.items.length) {
-            nextIndex = 0;
-        }
-        this.goTo(nextIndex, 'next');
-    }
-
-    prev() {
-        let prevIndex = this.currentIndex - 1;
-        if (prevIndex < 0) {
-            prevIndex = this.items.length - 1;
-        }
-        this.goTo(prevIndex, 'prev');
-    }
-
-    goTo(index, direction = null) {
-        if (index === this.currentIndex) return;
-
-        const currentItem = this.items[this.currentIndex];
-        const nextItem = this.items[index];
-
-        if (this.options.effect === 'slide') {
-            // Determine direction based on index if not provided
-            if (!direction) {
-                direction = index > this.currentIndex ? 'next' : 'prev';
-            }
-            
-            // Setup for transition
-            nextItem.classList.add('prev');
-            if (direction === 'next') {
-                nextItem.classList.add('slide-to-right');
-            } else {
-                nextItem.classList.add('slide-from-left');
-            }
-            
-            // Force reflow
-            void nextItem.offsetWidth;
-            
-            // Start transition
-            nextItem.classList.remove('slide-to-right', 'slide-from-left');
-            
-            setTimeout(() => {
-                currentItem.classList.remove('active');
-                nextItem.classList.remove('prev');
-                nextItem.classList.add('active');
-            }, 600); // match CSS transition duration
-        } else {
-            currentItem.classList.remove('active');
-            nextItem.classList.add('active');
-        }
-
-        this.currentIndex = index;
-        this._updateDots();
-    }
-
-    _updateDots() {
-        if (!this.options.dots) return;
-        
-        const dots = this.el.querySelectorAll('.common-slider-dot');
-        dots.forEach((dot, idx) => {
-            if (idx === this.currentIndex) {
-                dot.classList.add('active');
-            } else {
-                dot.classList.remove('active');
-            }
-        });
+        window.clearTimeout(this.transitionTimeout);
+        this.listeners.forEach(remove => remove());
     }
 }

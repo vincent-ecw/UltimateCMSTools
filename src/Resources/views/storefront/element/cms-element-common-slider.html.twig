@@ -6,47 +6,60 @@
     {% set navigationDots = config.navigationDots.value is not null ? config.navigationDots.value : true %}
     {% set autoplay = config.autoplay.value is not null ? config.autoplay.value : true %}
     {% set autoplaySpeed = config.autoplaySpeed.value|default(5000)|uct_bounded_int(0, 60000, 5000) %}
-    {% set dotsPosition = config.navigationDotsPosition.value|default('inside') %}
+    {% set dotsPosition = config.navigationDotsPosition.value|default('inside') == 'outside' ? 'outside' : 'inside' %}
+    {% set heading = config.headingLevel.value|default('h3') %}
+    {% if heading not in ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p'] %}{% set heading = 'h3' %}{% endif %}
     {% set maxHeight = config.maxHeight.value|default(0)|uct_bounded_int(0, 2000, 0) %}
 
     <div class="cms-element-common-slider"
          {% if maxHeight and maxHeight > 0 %}style="--uct-carousel-max-height: {{ maxHeight }}px; --common-slider-max-height: {{ maxHeight }}px;"{% endif %}
          data-common-slider="true"
-         data-common-slider-options='{
-             "effect": "{{ effect }}",
-             "arrows": {{ navigationArrows ? "true" : "false" }},
-             "dots": {{ navigationDots ? "true" : "false" }},
-             "autoplay": {{ autoplay ? "true" : "false" }},
-             "autoplaySpeed": {{ autoplaySpeed }}
-         }'>
+         role="region" aria-roledescription="{{ 'ultimateCmsTools.commonSlider.carousel'|trans }}"
+         aria-label="{{ config.accessibleName.value|default('ultimateCmsTools.commonSlider.label'|trans) }}"
+         data-common-slider-options="{{ {effect: effect in ['slide', 'fade', 'zoom-out'] ? effect : 'slide', arrows: navigationArrows, dots: navigationDots, autoplay: autoplay, autoplaySpeed: autoplaySpeed}|json_encode|escape('html_attr') }}">
         
-        <div class="common-slider-wrapper">
+        <div class="common-slider-wrapper" id="common-slider-{{ element.id }}" aria-live="off">
             {% for item in sliderItems %}
                 {% set buttonUrl = item.buttonUrl|default('')|uct_safe_url %}
                 {% set buttonTarget = item.buttonTarget|default('_self') == '_blank' ? '_blank' : '_self' %}
-                <div class="common-slider-item">
+                <div class="common-slider-item{% if loop.first %} active{% endif %}" role="group" aria-roledescription="{{ 'ultimateCmsTools.commonSlider.slide'|trans }}" aria-label="{{ 'ultimateCmsTools.commonSlider.position'|trans({'%current%': loop.index, '%total%': sliderItems|length}) }}"{% if not loop.first %} aria-hidden="true" inert{% endif %}>
+                    {% set fallbackMedia = item.mediaMobile|default(item.mediaDesktop|default(item.mediaTablet|default(null))) %}
+                    {% set imageAlt = item.decorative|default(false) ? '' : item.altText|default(fallbackMedia.translated.alt|default(item.title|default(''))) %}
+                    {% if fallbackMedia %}
                     <picture class="common-slider-picture">
-                        {% if item.mediaDesktop %}
-                            <source media="(min-width: 992px)" srcset="{{ item.mediaDesktop.url }}">
-                        {% endif %}
-                        {% if item.mediaTablet %}
-                            <source media="(min-width: 768px)" srcset="{{ item.mediaTablet.url }}">
-                        {% endif %}
-                        {% if item.mediaMobile %}
-                            <img src="{{ item.mediaMobile.url }}" alt="{{ item.mediaMobile.translated.alt|default(item.title) }}" class="common-slider-image">
-                        {% elseif item.mediaDesktop %}
-                            <img src="{{ item.mediaDesktop.url }}" alt="{{ item.mediaDesktop.translated.alt|default(item.title) }}" class="common-slider-image">
-                        {% endif %}
+                        {% for variant in [{media: item.mediaDesktop|default(null), breakpoint: 992}, {media: item.mediaTablet|default(null), breakpoint: 768}] %}
+                            {% if variant.media %}
+                                {% set candidates = [] %}
+                                {% for thumbnail in variant.media.thumbnails %}
+                                    {% set candidates = candidates|merge([thumbnail.url|sw_encode_url ~ ' ' ~ thumbnail.width ~ 'w']) %}
+                                {% endfor %}
+                                <source media="(min-width: {{ variant.breakpoint }}px)" srcset="{{ candidates ? candidates|join(', ') : variant.media.url|sw_encode_url }}" sizes="100vw"{% if variant.media.metaData.width and variant.media.metaData.height %} width="{{ variant.media.metaData.width }}" height="{{ variant.media.metaData.height }}"{% endif %}>
+                            {% endif %}
+                        {% endfor %}
+                        {% sw_thumbnails 'common-slider-image' with {
+                            media: fallbackMedia,
+                            sizes: {default: '100vw'},
+                            attributes: {
+                                alt: imageAlt,
+                                title: false,
+                                class: 'common-slider-image',
+                                loading: loop.first ? 'eager' : 'lazy',
+                                decoding: 'async',
+                                width: fallbackMedia.metaData.width|default(''),
+                                height: fallbackMedia.metaData.height|default('')
+                            }
+                        } %}
                     </picture>
+                    {% endif %}
 
                     {% if item.title or (item.buttonText and buttonUrl) %}
                         <div class="common-slider-overlay">
                             <div class="common-slider-overlay-content">
                                 {% if item.title %}
-                                    <h3 class="common-slider-title">{{ item.title }}</h3>
+                                    <{{ heading }} class="common-slider-title">{{ item.title }}</{{ heading }}>
                                 {% endif %}
                                 {% if item.buttonText and buttonUrl %}
-                                    <a href="{{ buttonUrl }}" target="{{ buttonTarget }}" {% if buttonTarget == '_blank' %}rel="noopener noreferrer"{% endif %} class="btn btn-primary common-slider-btn">{{ item.buttonText }}</a>
+                                    <a href="{{ buttonUrl }}" target="{{ buttonTarget }}" {% if buttonTarget == '_blank' %}rel="noopener noreferrer"{% endif %} class="btn btn-primary common-slider-btn">{{ item.buttonText }}{% if buttonTarget == '_blank' %}<span class="visually-hidden"> ({{ 'ultimateCmsTools.commonSlider.newTab'|trans }})</span>{% endif %}</a>
                                 {% endif %}
                             </div>
                         </div>
@@ -55,19 +68,19 @@
             {% endfor %}
         </div>
 
-        {% if navigationArrows %}
-            <button class="uct-carousel-control common-slider-arrow common-slider-prev" aria-label="Previous">
+        {% if navigationArrows and sliderItems|length > 1 %}
+            <button class="uct-carousel-control common-slider-arrow common-slider-prev" type="button" aria-controls="common-slider-{{ element.id }}" aria-label="{{ 'ultimateCmsTools.commonSlider.previous'|trans }}">
                 {% sw_icon 'arrow-left' %}
             </button>
-            <button class="uct-carousel-control common-slider-arrow common-slider-next" aria-label="Next">
+            <button class="uct-carousel-control common-slider-arrow common-slider-next" type="button" aria-controls="common-slider-{{ element.id }}" aria-label="{{ 'ultimateCmsTools.commonSlider.next'|trans }}">
                 {% sw_icon 'arrow-right' %}
             </button>
         {% endif %}
 
-        {% if navigationDots %}
+        {% if navigationDots and sliderItems|length > 1 %}
             <div class="uct-carousel-indicators common-slider-dots uct-dots-{{ dotsPosition }} dots-{{ dotsPosition }}">
                 {% for item in sliderItems %}
-                    <button class="uct-carousel-dot common-slider-dot {% if loop.first %}active{% endif %}" data-index="{{ loop.index0 }}" aria-label="Go to slide {{ loop.index }}"></button>
+                    <button class="uct-carousel-dot common-slider-dot {% if loop.first %}active{% endif %}" data-index="{{ loop.index0 }}" type="button" aria-controls="common-slider-{{ element.id }}" aria-current="{{ loop.first ? 'true' : 'false' }}" aria-label="{{ 'ultimateCmsTools.commonSlider.goTo'|trans({'%number%': loop.index}) }}"></button>
                 {% endfor %}
             </div>
         {% endif %}

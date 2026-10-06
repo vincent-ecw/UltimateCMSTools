@@ -291,7 +291,12 @@
                         "autoplaySpeed": "Autoplay-Geschwindigkeit (ms)",
                         "autoplaySpeedHelp": "Zeit in Millisekunden, die ein Slide sichtbar bleibt (z.B. 5000 = 5 Sekunden). Auf 0 setzen, um Autoplay zu deaktivieren.",
                         "maxHeight": "Maximale Höhe (px)",
-                        "maxHeightHelp": "Geben Sie eine maximale Höhe in Pixeln für den Slider ein (z.B. 500). Leer lassen, damit sich die Höhe automatisch an das Bild anpasst."
+                        "maxHeightHelp": "Geben Sie eine maximale Höhe in Pixeln für den Slider ein (z.B. 500). Leer lassen, damit sich die Höhe automatisch an das Bild anpasst.",
+                        "altText": "Gemeinsamer Bild-Alternativtext",
+                        "altTextHelp": "Gilt für Desktop, Tablet und Mobilgerät. Leer lassen für den Medien-Alternativtext.",
+                        "decorative": "Dekoratives Bild (leerer Alternativtext)",
+                        "accessibleName": "Zugänglicher Karussellname",
+                        "headingLevel": "Überschriftenebene des Folientitels"
                     }
                 },
                 "responsiveImage": {

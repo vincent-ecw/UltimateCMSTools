@@ -291,7 +291,12 @@
                         "autoplaySpeed": "Snelheid automatisch afspelen (ms)",
                         "autoplaySpeedHelp": "Tijd in milliseconden dat een dia zichtbaar blijft (bijv. 5000 = 5 seconden). Stel in op 0 om automatisch afspelen uit te schakelen.",
                         "maxHeight": "Maximale hoogte (px)",
-                        "maxHeightHelp": "Definieer een maximale hoogte in pixels voor de slider (bijv. 500). Laat leeg om automatisch aan te passen aan de hoogte van de afbeelding."
+                        "maxHeightHelp": "Definieer een maximale hoogte in pixels voor de slider (bijv. 500). Laat leeg om automatisch aan te passen aan de hoogte van de afbeelding.",
+                        "altText": "Gedeelde alternatieve afbeeldingstekst",
+                        "altTextHelp": "Geldt voor desktop, tablet en mobiel. Laat leeg voor de mediatekst.",
+                        "decorative": "Decoratieve afbeelding (lege alt-tekst)",
+                        "accessibleName": "Toegankelijke naam van carrousel",
+                        "headingLevel": "Kopniveau van diatitel"
                     }
                 },
                 "responsiveImage": {

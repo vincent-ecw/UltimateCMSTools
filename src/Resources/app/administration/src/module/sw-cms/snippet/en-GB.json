@@ -787,6 +787,68 @@
                 },
                 "relatedProducts": {
                     "label": "Related Products"
+                },
+                "grid12": {
+                    "label": "1 Column (Full Width)"
+                },
+                "gridMd66": {
+                    "label": "2 Columns (50% / 50%)"
+                },
+                "gridMd48": {
+                    "label": "2 Columns (33% / 67%)"
+                },
+                "gridMd84": {
+                    "label": "2 Columns (67% / 33%)"
+                },
+                "gridMd39": {
+                    "label": "2 Columns (25% / 75%)"
+                },
+                "gridMd93": {
+                    "label": "2 Columns (75% / 25%)"
+                },
+                "gridMd444": {
+                    "label": "3 Columns (Equal)"
+                },
+                "gridMd363": {
+                    "label": "3 Columns (25% / 50% / 25%)"
+                },
+                "gridMd282": {
+                    "label": "3 Columns (17% / 66% / 17%)"
+                },
+                "gridMd3333": {
+                    "label": "4 Columns (Equal)"
+                },
+                "gridMd222222": {
+                    "label": "6 Columns (Equal)"
+                }
+            }
+        },
+        "sidebar": {
+            "contentMenu": {
+                "uctColumnSettings": "Column Settings"
+            }
+        },
+        "columnConfig": {
+            "tabTitle": "Column {index}",
+            "paddingLabel": "Inner padding",
+            "paddingPlaceholder": "e.g. 20px or 16px 24px",
+            "bgColorLabel": "Background color",
+            "bgImageLabel": "Background image",
+            "bgModeLabel": "Background image mode",
+            "bgModeCover": "Cover",
+            "bgModeContain": "Contain",
+            "bgModeAuto": "Auto",
+            "cssClassLabel": "CSS class",
+            "cssClassPlaceholder": "e.g. custom-column-card",
+            "addElement": "Add element",
+            "moveUp": "Move up",
+            "moveDown": "Move down",
+            "removeElement": "Remove element"
+        },
+        "detail": {
+            "label": {
+                "blockCategory": {
+                    "page-structure": "Page Structure"
                 }
             }
         },
@@ -815,7 +877,8 @@
             "detail": {
                 "label": {
                     "blockCategory": {
-                        "ultimate-cms-tools": "Ultimate CMS Tools"
+                        "ultimate-cms-tools": "Ultimate CMS Tools",
+                        "page-structure": "Page Structure"
                     }
                 }
             }

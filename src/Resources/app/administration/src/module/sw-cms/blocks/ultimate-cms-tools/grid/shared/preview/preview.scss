@@ -1,0 +1,24 @@
+.uct-cms-preview-grid {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 6px;
+    box-sizing: border-box;
+
+    .uct-preview-svg {
+        width: 100%;
+        height: auto;
+        max-height: 100%;
+        display: block;
+        filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.04));
+        transition: transform 0.2s ease, filter 0.2s ease;
+    }
+
+    &:hover .uct-preview-svg {
+        transform: translateY(-1px);
+        filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.08));
+    }
+}
+

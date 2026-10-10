@@ -25,6 +25,10 @@
             <argument type="service" id="VincentBourgonje\UltimateCmsTools\Core\MediaImageSourceBuilder" />
             <tag name="twig.extension" />
         </service>
+        <service id="VincentBourgonje\UltimateCmsTools\Twig\MediaUrlExtension">
+            <argument type="service" id="media.repository" />
+            <tag name="twig.extension" />
+        </service>
         <service id="VincentBourgonje\UltimateCmsTools\Twig\BundledIconExtension">
             <tag name="twig.extension" />
         </service>

@@ -28,6 +28,7 @@ A collection of CMS blocks and elements that enhance Shopware's Shopping Experie
   - [20. Related Products](#20-related-products)
   - [21. Single Product](#21-single-product)
   - [22. Alert Message](#22-alert-message)
+  - [23. Page Structure Grid Blocks](#23-page-structure-grid-blocks)
 - [Section Settings Enhancements](#section-settings-enhancements)
 - [Design Token Color System](#design-token-color-system)
 - [Development and Compilation](#development-and-compilation)
@@ -552,6 +553,35 @@ Add **Alert message** from the **Ultimate CMS Tools** block category, or select 
 - Icons and close buttons are vertically centered alongside the message, including multiline messages.
 - **Allow visitors to close the message:** Disabled by default. When enabled, a keyboard-accessible close button removes only that alert until the next page load.
 - **Colors:** Uses `--ecw-mapped-color-alerts-{type}-{border|background|text}` from `style/variables-shopware-legacy.css`. Falls back to Bootstrap `--bs-{type}-border-subtle`, `--bs-{type}-bg-subtle`, and `--bs-{type}-text-emphasis`, then fixed colors. Error maps to Bootstrap danger. Editor previews share these styles.
+
+### 23. Page Structure Grid Blocks
+
+The **Page Structure** block category provides 11 flexible Bootstrap-based grid arrangements:
+
+1. **1 Column:** Full width (`grid-12`)
+2. **2 Columns (50% / 50%):** Equal halves (`grid-md-6-6`)
+3. **2 Columns (33% / 67%):** One-third and two-thirds (`grid-md-4-8`)
+4. **2 Columns (67% / 33%):** Two-thirds and one-third (`grid-md-8-4`)
+5. **2 Columns (25% / 75%):** Narrow left and wide right (`grid-md-3-9`)
+6. **2 Columns (75% / 25%):** Wide left and narrow right (`grid-md-9-3`)
+7. **3 Columns (Equal):** Three equal thirds (`grid-md-4-4-4`)
+8. **3 Columns (25% / 50% / 25%):** Narrow sides with prominent center (`grid-md-3-6-3`)
+9. **3 Columns (17% / 66% / 17%):** Slim sidebars and wide center content (`grid-md-2-8-2`)
+10. **4 Columns (Equal):** Four equal quarters (`grid-md-3-3-3-3`)
+11. **6 Columns (Equal):** Six equal columns (`grid-md-2-2-2-2-2-2`)
+
+#### Key Capabilities
+
+- **Dedicated "Page Structure" Category:** Easily discovered in the CMS block sidebar instead of mixed under Text.
+- **Multi-Element Stacking Per Column:** Within any column, click **+ Add element** to stack multiple CMS elements vertically. Move elements up/down or remove elements with quick-action buttons directly on the canvas.
+- **Individual Column Properties:** Select any grid block and open the **Column Settings** accordion in the sidebar to configure per-column styling:
+  - **Inner padding:** e.g. `20px` or `1rem 1.5rem`.
+  - **Background color:** Colorpicker for solid background tint.
+  - **Background image:** Upload or select from media with automatic URL resolution.
+  - **Background image mode:** Choose between `Cover`, `Contain`, or `Auto`.
+  - **CSS class:** Add custom class names to specific columns.
+- **Modern Vector Preview Illustrations:** Sleek SVG previews in the sidebar showcasing accurate column proportions and content layout structures.
+- **Drop-in Sschreier Replacement:** Fully compatible with templates previously created using `SschreierGridLayoutForShoppingExperiences`.
 
 ## Section Settings Enhancements
 

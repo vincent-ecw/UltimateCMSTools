@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.59] - 2026-10-10
+
+### Added
+- Dedicated "Page Structure" block category with 11 responsive Bootstrap grid layouts (1-column, 2-column variations 50/50, 33/67, 67/33, 25/75, 75/25, 3-column variations equal, 25/50/25, 17/66/17, 4-column equal, and 6-column equal).
+- Multi-element stacking per column: add, reorder, and delete multiple CMS elements stacked vertically within any grid column.
+- Individual column styling in the CMS sidebar: configurable inner padding, background color, background image (with mode cover/contain/auto), and custom CSS classes.
+- Modern vector preview illustrations with proportional column representations and content layout indicators.
+- Seamless compatibility to safely replace and remove `SschreierGridLayoutForShoppingExperiences`.
+
 ## [1.2.58] - 2026-10-10
 
 ### Security

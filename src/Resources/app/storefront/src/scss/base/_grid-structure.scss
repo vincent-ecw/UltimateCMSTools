@@ -1,0 +1,27 @@
+.cms-block-grid.uct-grid-row {
+    --uct-grid-gutter-x: 1.5rem;
+    --uct-grid-gutter-y: 1.5rem;
+
+    .uct-grid-col {
+        position: relative;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+
+        .uct-grid-col__content {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+
+            .uct-grid-element {
+                width: 100%;
+
+                &:not(:last-child) {
+                    margin-bottom: 1rem;
+                }
+            }
+        }
+    }
+}
+

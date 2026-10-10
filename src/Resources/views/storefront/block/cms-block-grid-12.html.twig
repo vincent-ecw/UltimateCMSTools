@@ -1,0 +1,9 @@
+{% block cms_block_grid_12 %}
+    {% sw_include '@Storefront/storefront/block/cms-block-grid-base.html.twig' with {
+        block: block,
+        columns: [
+            { index: 1, class: 'col-12' }
+        ]
+    } %}
+{% endblock %}
+

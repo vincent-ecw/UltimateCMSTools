@@ -787,6 +787,68 @@
                 },
                 "relatedProducts": {
                     "label": "Verwandte Produkte"
+                },
+                "grid12": {
+                    "label": "1 Spalte (Volle Breite)"
+                },
+                "gridMd66": {
+                    "label": "2 Spalten (50% / 50%)"
+                },
+                "gridMd48": {
+                    "label": "2 Spalten (33% / 67%)"
+                },
+                "gridMd84": {
+                    "label": "2 Spalten (67% / 33%)"
+                },
+                "gridMd39": {
+                    "label": "2 Spalten (25% / 75%)"
+                },
+                "gridMd93": {
+                    "label": "2 Spalten (75% / 25%)"
+                },
+                "gridMd444": {
+                    "label": "3 Spalten (Gleichmäßig)"
+                },
+                "gridMd363": {
+                    "label": "3 Spalten (25% / 50% / 25%)"
+                },
+                "gridMd282": {
+                    "label": "3 Spalten (17% / 66% / 17%)"
+                },
+                "gridMd3333": {
+                    "label": "4 Spalten (Gleichmäßig)"
+                },
+                "gridMd222222": {
+                    "label": "6 Spalten (Gleichmäßig)"
+                }
+            }
+        },
+        "sidebar": {
+            "contentMenu": {
+                "uctColumnSettings": "Spalteneinstellungen"
+            }
+        },
+        "columnConfig": {
+            "tabTitle": "Spalte {index}",
+            "paddingLabel": "Innenabstand (Padding)",
+            "paddingPlaceholder": "z.B. 20px oder 16px 24px",
+            "bgColorLabel": "Hintergrundfarbe",
+            "bgImageLabel": "Hintergrundbild",
+            "bgModeLabel": "Hintergrund Modus",
+            "bgModeCover": "Ausfüllend (Cover)",
+            "bgModeContain": "Einpassen (Contain)",
+            "bgModeAuto": "Automatisch (Auto)",
+            "cssClassLabel": "CSS-Klasse",
+            "cssClassPlaceholder": "z.B. custom-column-card",
+            "addElement": "Element hinzufügen",
+            "moveUp": "Nach oben verschieben",
+            "moveDown": "Nach unten verschieben",
+            "removeElement": "Element entfernen"
+        },
+        "detail": {
+            "label": {
+                "blockCategory": {
+                    "page-structure": "Seitenstruktur"
                 }
             }
         },
@@ -815,7 +877,8 @@
             "detail": {
                 "label": {
                     "blockCategory": {
-                        "ultimate-cms-tools": "Ultimate CMS Tools"
+                        "ultimate-cms-tools": "Ultimate CMS Tools",
+                        "page-structure": "Seitenstruktur"
                     }
                 }
             }

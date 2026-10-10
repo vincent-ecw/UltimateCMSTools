@@ -1,0 +1,200 @@
+<div class="uct-cms-preview-grid" :class="'uct-preview-' + blockType">
+    <svg viewBox="0 0 240 130" xmlns="http://www.w3.org/2000/svg" class="uct-preview-svg">
+        <!-- Background Frame -->
+        <rect x="4" y="4" width="232" height="122" rx="8" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1.5" />
+
+        <!-- 1 Column: grid-12 -->
+        <template v-if="blockType === 'grid-12'">
+            <rect x="14" y="14" width="212" height="102" rx="6" fill="#EEF4FA" stroke="#CBD5E1" stroke-width="1.2" />
+            <rect x="28" y="28" width="80" height="8" rx="4" fill="#94A3B8" opacity="0.7" />
+            <rect x="28" y="44" width="180" height="6" rx="3" fill="#CBD5E1" opacity="0.6" />
+            <rect x="28" y="56" width="150" height="6" rx="3" fill="#CBD5E1" opacity="0.6" />
+            <rect x="28" y="74" width="90" height="24" rx="4" fill="#3B82F6" opacity="0.8" />
+        </template>
+
+        <!-- 2 Columns: grid-md-6-6 -->
+        <template v-else-if="blockType === 'grid-md-6-6'">
+            <rect x="14" y="14" width="102" height="102" rx="6" fill="#EEF4FA" stroke="#CBD5E1" stroke-width="1.2" />
+            <rect x="24" y="26" width="45" height="7" rx="3.5" fill="#94A3B8" opacity="0.7" />
+            <rect x="24" y="40" width="80" height="5" rx="2.5" fill="#CBD5E1" opacity="0.6" />
+            <rect x="24" y="50" width="65" height="5" rx="2.5" fill="#CBD5E1" opacity="0.6" />
+            <rect x="24" y="66" width="82" height="34" rx="4" fill="#E2E8F0" opacity="0.7" />
+
+            <rect x="124" y="14" width="102" height="102" rx="6" fill="#EEF4FA" stroke="#CBD5E1" stroke-width="1.2" />
+            <rect x="134" y="26" width="82" height="46" rx="4" fill="#E2E8F0" opacity="0.7" />
+            <rect x="134" y="80" width="55" height="7" rx="3.5" fill="#94A3B8" opacity="0.7" />
+            <rect x="134" y="94" width="70" height="5" rx="2.5" fill="#CBD5E1" opacity="0.6" />
+        </template>
+
+        <!-- 2 Columns: grid-md-4-8 -->
+        <template v-else-if="blockType === 'grid-md-4-8'">
+            <rect x="14" y="14" width="66" height="102" rx="6" fill="#EEF4FA" stroke="#CBD5E1" stroke-width="1.2" />
+            <rect x="22" y="26" width="35" height="7" rx="3.5" fill="#94A3B8" opacity="0.7" />
+            <rect x="22" y="40" width="50" height="5" rx="2.5" fill="#CBD5E1" opacity="0.6" />
+            <rect x="22" y="50" width="42" height="5" rx="2.5" fill="#CBD5E1" opacity="0.6" />
+            <rect x="22" y="66" width="50" height="36" rx="4" fill="#E2E8F0" opacity="0.7" />
+
+            <rect x="88" y="14" width="138" height="102" rx="6" fill="#EEF4FA" stroke="#CBD5E1" stroke-width="1.2" />
+            <rect x="100" y="26" width="60" height="7" rx="3.5" fill="#94A3B8" opacity="0.7" />
+            <rect x="100" y="40" width="114" height="5" rx="2.5" fill="#CBD5E1" opacity="0.6" />
+            <rect x="100" y="50" width="95" height="5" rx="2.5" fill="#CBD5E1" opacity="0.6" />
+            <rect x="100" y="66" width="114" height="36" rx="4" fill="#E2E8F0" opacity="0.7" />
+        </template>
+
+        <!-- 2 Columns: grid-md-8-4 -->
+        <template v-else-if="blockType === 'grid-md-8-4'">
+            <rect x="14" y="14" width="138" height="102" rx="6" fill="#EEF4FA" stroke="#CBD5E1" stroke-width="1.2" />
+            <rect x="26" y="26" width="60" height="7" rx="3.5" fill="#94A3B8" opacity="0.7" />
+            <rect x="26" y="40" width="114" height="5" rx="2.5" fill="#CBD5E1" opacity="0.6" />
+            <rect x="26" y="50" width="95" height="5" rx="2.5" fill="#CBD5E1" opacity="0.6" />
+            <rect x="26" y="66" width="114" height="36" rx="4" fill="#E2E8F0" opacity="0.7" />
+
+            <rect x="160" y="14" width="66" height="102" rx="6" fill="#EEF4FA" stroke="#CBD5E1" stroke-width="1.2" />
+            <rect x="168" y="26" width="35" height="7" rx="3.5" fill="#94A3B8" opacity="0.7" />
+            <rect x="168" y="40" width="50" height="5" rx="2.5" fill="#CBD5E1" opacity="0.6" />
+            <rect x="168" y="50" width="42" height="5" rx="2.5" fill="#CBD5E1" opacity="0.6" />
+            <rect x="168" y="66" width="50" height="36" rx="4" fill="#E2E8F0" opacity="0.7" />
+        </template>
+
+        <!-- 2 Columns: grid-md-3-9 -->
+        <template v-else-if="blockType === 'grid-md-3-9'">
+            <rect x="14" y="14" width="48" height="102" rx="6" fill="#EEF4FA" stroke="#CBD5E1" stroke-width="1.2" />
+            <rect x="20" y="26" width="25" height="6" rx="3" fill="#94A3B8" opacity="0.7" />
+            <rect x="20" y="38" width="36" height="5" rx="2.5" fill="#CBD5E1" opacity="0.6" />
+            <rect x="20" y="48" width="30" height="5" rx="2.5" fill="#CBD5E1" opacity="0.6" />
+            <rect x="20" y="64" width="36" height="40" rx="4" fill="#E2E8F0" opacity="0.7" />
+
+            <rect x="70" y="14" width="156" height="102" rx="6" fill="#EEF4FA" stroke="#CBD5E1" stroke-width="1.2" />
+            <rect x="82" y="26" width="70" height="7" rx="3.5" fill="#94A3B8" opacity="0.7" />
+            <rect x="82" y="40" width="132" height="5" rx="2.5" fill="#CBD5E1" opacity="0.6" />
+            <rect x="82" y="50" width="110" height="5" rx="2.5" fill="#CBD5E1" opacity="0.6" />
+            <rect x="82" y="66" width="132" height="36" rx="4" fill="#E2E8F0" opacity="0.7" />
+        </template>
+
+        <!-- 2 Columns: grid-md-9-3 -->
+        <template v-else-if="blockType === 'grid-md-9-3'">
+            <rect x="14" y="14" width="156" height="102" rx="6" fill="#EEF4FA" stroke="#CBD5E1" stroke-width="1.2" />
+            <rect x="26" y="26" width="70" height="7" rx="3.5" fill="#94A3B8" opacity="0.7" />
+            <rect x="26" y="40" width="132" height="5" rx="2.5" fill="#CBD5E1" opacity="0.6" />
+            <rect x="26" y="50" width="110" height="5" rx="2.5" fill="#CBD5E1" opacity="0.6" />
+            <rect x="26" y="66" width="132" height="36" rx="4" fill="#E2E8F0" opacity="0.7" />
+
+            <rect x="178" y="14" width="48" height="102" rx="6" fill="#EEF4FA" stroke="#CBD5E1" stroke-width="1.2" />
+            <rect x="184" y="26" width="25" height="6" rx="3" fill="#94A3B8" opacity="0.7" />
+            <rect x="184" y="38" width="36" height="5" rx="2.5" fill="#CBD5E1" opacity="0.6" />
+            <rect x="184" y="48" width="30" height="5" rx="2.5" fill="#CBD5E1" opacity="0.6" />
+            <rect x="184" y="64" width="36" height="40" rx="4" fill="#E2E8F0" opacity="0.7" />
+        </template>
+
+        <!-- 3 Columns: grid-md-4-4-4 -->
+        <template v-else-if="blockType === 'grid-md-4-4-4'">
+            <rect x="14" y="14" width="65" height="102" rx="6" fill="#EEF4FA" stroke="#CBD5E1" stroke-width="1.2" />
+            <rect x="22" y="26" width="32" height="7" rx="3.5" fill="#94A3B8" opacity="0.7" />
+            <rect x="22" y="40" width="49" height="5" rx="2.5" fill="#CBD5E1" opacity="0.6" />
+            <rect x="22" y="58" width="49" height="44" rx="4" fill="#E2E8F0" opacity="0.7" />
+
+            <rect x="87" y="14" width="65" height="102" rx="6" fill="#EEF4FA" stroke="#CBD5E1" stroke-width="1.2" />
+            <rect x="95" y="26" width="32" height="7" rx="3.5" fill="#94A3B8" opacity="0.7" />
+            <rect x="95" y="40" width="49" height="5" rx="2.5" fill="#CBD5E1" opacity="0.6" />
+            <rect x="95" y="58" width="49" height="44" rx="4" fill="#E2E8F0" opacity="0.7" />
+
+            <rect x="160" y="14" width="65" height="102" rx="6" fill="#EEF4FA" stroke="#CBD5E1" stroke-width="1.2" />
+            <rect x="168" y="26" width="32" height="7" rx="3.5" fill="#94A3B8" opacity="0.7" />
+            <rect x="168" y="40" width="49" height="5" rx="2.5" fill="#CBD5E1" opacity="0.6" />
+            <rect x="168" y="58" width="49" height="44" rx="4" fill="#E2E8F0" opacity="0.7" />
+        </template>
+
+        <!-- 3 Columns: grid-md-3-6-3 -->
+        <template v-else-if="blockType === 'grid-md-3-6-3'">
+            <rect x="14" y="14" width="48" height="102" rx="6" fill="#EEF4FA" stroke="#CBD5E1" stroke-width="1.2" />
+            <rect x="20" y="26" width="24" height="6" rx="3" fill="#94A3B8" opacity="0.7" />
+            <rect x="20" y="38" width="36" height="5" rx="2.5" fill="#CBD5E1" opacity="0.6" />
+            <rect x="20" y="56" width="36" height="48" rx="4" fill="#E2E8F0" opacity="0.7" />
+
+            <rect x="70" y="14" width="98" height="102" rx="6" fill="#EEF4FA" stroke="#CBD5E1" stroke-width="1.2" />
+            <rect x="80" y="26" width="45" height="7" rx="3.5" fill="#94A3B8" opacity="0.7" />
+            <rect x="80" y="40" width="78" height="5" rx="2.5" fill="#CBD5E1" opacity="0.6" />
+            <rect x="80" y="56" width="78" height="48" rx="4" fill="#E2E8F0" opacity="0.7" />
+
+            <rect x="176" y="14" width="48" height="102" rx="6" fill="#EEF4FA" stroke="#CBD5E1" stroke-width="1.2" />
+            <rect x="182" y="26" width="24" height="6" rx="3" fill="#94A3B8" opacity="0.7" />
+            <rect x="182" y="38" width="36" height="5" rx="2.5" fill="#CBD5E1" opacity="0.6" />
+            <rect x="182" y="56" width="36" height="48" rx="4" fill="#E2E8F0" opacity="0.7" />
+        </template>
+
+        <!-- 3 Columns: grid-md-2-8-2 -->
+        <template v-else-if="blockType === 'grid-md-2-8-2'">
+            <rect x="14" y="14" width="32" height="102" rx="5" fill="#EEF4FA" stroke="#CBD5E1" stroke-width="1.2" />
+            <rect x="18" y="26" width="16" height="6" rx="3" fill="#94A3B8" opacity="0.7" />
+            <rect x="18" y="38" width="24" height="4" rx="2" fill="#CBD5E1" opacity="0.6" />
+            <rect x="18" y="54" width="24" height="50" rx="3" fill="#E2E8F0" opacity="0.7" />
+
+            <rect x="54" y="14" width="131" height="102" rx="6" fill="#EEF4FA" stroke="#CBD5E1" stroke-width="1.2" />
+            <rect x="66" y="26" width="55" height="7" rx="3.5" fill="#94A3B8" opacity="0.7" />
+            <rect x="66" y="40" width="107" height="5" rx="2.5" fill="#CBD5E1" opacity="0.6" />
+            <rect x="66" y="56" width="107" height="48" rx="4" fill="#E2E8F0" opacity="0.7" />
+
+            <rect x="193" y="14" width="32" height="102" rx="5" fill="#EEF4FA" stroke="#CBD5E1" stroke-width="1.2" />
+            <rect x="197" y="26" width="16" height="6" rx="3" fill="#94A3B8" opacity="0.7" />
+            <rect x="197" y="38" width="24" height="4" rx="2" fill="#CBD5E1" opacity="0.6" />
+            <rect x="197" y="54" width="24" height="50" rx="3" fill="#E2E8F0" opacity="0.7" />
+        </template>
+
+        <!-- 4 Columns: grid-md-3-3-3-3 -->
+        <template v-else-if="blockType === 'grid-md-3-3-3-3'">
+            <rect x="14" y="14" width="47" height="102" rx="5" fill="#EEF4FA" stroke="#CBD5E1" stroke-width="1.2" />
+            <rect x="20" y="26" width="22" height="6" rx="3" fill="#94A3B8" opacity="0.7" />
+            <rect x="20" y="38" width="35" height="4" rx="2" fill="#CBD5E1" opacity="0.6" />
+            <rect x="20" y="52" width="35" height="52" rx="3" fill="#E2E8F0" opacity="0.7" />
+
+            <rect x="69" y="14" width="47" height="102" rx="5" fill="#EEF4FA" stroke="#CBD5E1" stroke-width="1.2" />
+            <rect x="75" y="26" width="22" height="6" rx="3" fill="#94A3B8" opacity="0.7" />
+            <rect x="75" y="38" width="35" height="4" rx="2" fill="#CBD5E1" opacity="0.6" />
+            <rect x="75" y="52" width="35" height="52" rx="3" fill="#E2E8F0" opacity="0.7" />
+
+            <rect x="124" y="14" width="47" height="102" rx="5" fill="#EEF4FA" stroke="#CBD5E1" stroke-width="1.2" />
+            <rect x="130" y="26" width="22" height="6" rx="3" fill="#94A3B8" opacity="0.7" />
+            <rect x="130" y="38" width="35" height="4" rx="2" fill="#CBD5E1" opacity="0.6" />
+            <rect x="130" y="52" width="35" height="52" rx="3" fill="#E2E8F0" opacity="0.7" />
+
+            <rect x="179" y="14" width="47" height="102" rx="5" fill="#EEF4FA" stroke="#CBD5E1" stroke-width="1.2" />
+            <rect x="185" y="26" width="22" height="6" rx="3" fill="#94A3B8" opacity="0.7" />
+            <rect x="185" y="38" width="35" height="4" rx="2" fill="#CBD5E1" opacity="0.6" />
+            <rect x="185" y="52" width="35" height="52" rx="3" fill="#E2E8F0" opacity="0.7" />
+        </template>
+
+        <!-- 6 Columns: grid-md-2-2-2-2-2-2 -->
+        <template v-else-if="blockType === 'grid-md-2-2-2-2-2-2'">
+            <rect x="14" y="14" width="30" height="102" rx="4" fill="#EEF4FA" stroke="#CBD5E1" stroke-width="1.1" />
+            <rect x="18" y="24" width="14" height="5" rx="2.5" fill="#94A3B8" opacity="0.7" />
+            <rect x="18" y="34" width="22" height="3" rx="1.5" fill="#CBD5E1" opacity="0.6" />
+            <rect x="18" y="46" width="22" height="58" rx="2" fill="#E2E8F0" opacity="0.7" />
+
+            <rect x="50" y="14" width="30" height="102" rx="4" fill="#EEF4FA" stroke="#CBD5E1" stroke-width="1.1" />
+            <rect x="54" y="24" width="14" height="5" rx="2.5" fill="#94A3B8" opacity="0.7" />
+            <rect x="54" y="34" width="22" height="3" rx="1.5" fill="#CBD5E1" opacity="0.6" />
+            <rect x="54" y="46" width="22" height="58" rx="2" fill="#E2E8F0" opacity="0.7" />
+
+            <rect x="86" y="14" width="30" height="102" rx="4" fill="#EEF4FA" stroke="#CBD5E1" stroke-width="1.1" />
+            <rect x="90" y="24" width="14" height="5" rx="2.5" fill="#94A3B8" opacity="0.7" />
+            <rect x="90" y="34" width="22" height="3" rx="1.5" fill="#CBD5E1" opacity="0.6" />
+            <rect x="90" y="46" width="22" height="58" rx="2" fill="#E2E8F0" opacity="0.7" />
+
+            <rect x="122" y="14" width="30" height="102" rx="4" fill="#EEF4FA" stroke="#CBD5E1" stroke-width="1.1" />
+            <rect x="126" y="24" width="14" height="5" rx="2.5" fill="#94A3B8" opacity="0.7" />
+            <rect x="126" y="34" width="22" height="3" rx="1.5" fill="#CBD5E1" opacity="0.6" />
+            <rect x="126" y="46" width="22" height="58" rx="2" fill="#E2E8F0" opacity="0.7" />
+
+            <rect x="158" y="14" width="30" height="102" rx="4" fill="#EEF4FA" stroke="#CBD5E1" stroke-width="1.1" />
+            <rect x="162" y="24" width="14" height="5" rx="2.5" fill="#94A3B8" opacity="0.7" />
+            <rect x="162" y="34" width="22" height="3" rx="1.5" fill="#CBD5E1" opacity="0.6" />
+            <rect x="162" y="46" width="22" height="58" rx="2" fill="#E2E8F0" opacity="0.7" />
+
+            <rect x="194" y="14" width="30" height="102" rx="4" fill="#EEF4FA" stroke="#CBD5E1" stroke-width="1.1" />
+            <rect x="198" y="24" width="14" height="5" rx="2.5" fill="#94A3B8" opacity="0.7" />
+            <rect x="198" y="34" width="22" height="3" rx="1.5" fill="#CBD5E1" opacity="0.6" />
+            <rect x="198" y="46" width="22" height="58" rx="2" fill="#E2E8F0" opacity="0.7" />
+        </template>
+    </svg>
+</div>
+

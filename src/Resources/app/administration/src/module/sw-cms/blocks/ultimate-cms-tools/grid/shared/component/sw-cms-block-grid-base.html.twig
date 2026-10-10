@@ -1,0 +1,65 @@
+<div class="uct-cms-block-grid row" :class="block.type">
+    <div
+        v-for="col in columnDefinitions"
+        :key="col.index"
+        :class="['uct-grid-col', col.class, getColumnCustomClass(col.index)]"
+        :style="getColumnStyles(col.index)"
+    >
+        <div class="uct-grid-col__inner">
+            <div
+                v-for="(slotItem, slotIndex) in getColumnSlots(col.index)"
+                :key="slotItem.id || slotItem.slot"
+                class="uct-grid-slot-wrapper"
+            >
+                <div
+                    v-if="isActive && getColumnSlots(col.index).length > 1"
+                    class="uct-grid-slot-actions"
+                >
+                    <button
+                        type="button"
+                        class="uct-grid-slot-action-btn"
+                        :disabled="slotIndex === 0"
+                        :title="$t('sw-cms.columnConfig.moveUp')"
+                        @click.stop="moveSlot(col.index, slotIndex, -1)"
+                    >
+                        <mt-icon name="regular-chevron-up" size="12" />
+                    </button>
+                    <button
+                        type="button"
+                        class="uct-grid-slot-action-btn"
+                        :disabled="slotIndex === getColumnSlots(col.index).length - 1"
+                        :title="$t('sw-cms.columnConfig.moveDown')"
+                        @click.stop="moveSlot(col.index, slotIndex, 1)"
+                    >
+                        <mt-icon name="regular-chevron-down" size="12" />
+                    </button>
+                    <button
+                        type="button"
+                        class="uct-grid-slot-action-btn is--danger"
+                        :title="$t('sw-cms.columnConfig.removeElement')"
+                        @click.stop="removeSlot(col.index, slotItem)"
+                    >
+                        <mt-icon name="regular-trash" size="12" />
+                    </button>
+                </div>
+
+                <slot :name="slotItem.slot"></slot>
+            </div>
+
+            <div
+                v-if="isActive"
+                class="uct-grid-add-element"
+            >
+                <button
+                    type="button"
+                    class="uct-grid-add-element__btn"
+                    @click.stop="addSlotToColumn(col.index)"
+                >
+                    <mt-icon name="regular-plus" size="12" />
+                    <span>{{ $t('sw-cms.columnConfig.addElement') }}</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+

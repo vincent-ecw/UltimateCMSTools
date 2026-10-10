@@ -1,3 +1,4 @@
+import { iconOptions as bundledIconOptions } from '../../../../../shared/uct-icons';
 import template from './sw-cms-el-config-harmonica-list.html.twig';
 import './sw-cms-el-config-harmonica-list.scss';
 
@@ -18,6 +19,12 @@ Shopware.Component.register('sw-cms-el-config-harmonica-list', {
     inject: ['repositoryFactory'],
 
     computed: {
+        iconOptions() { return bundledIconOptions; },
+        iconModeOptions() {
+            return ['upload', 'list', 'class', 'none'].map(value => ({
+                value, label: this.$t('sw-cms.elements.ultimateCmsTools.accordionIcons.' + value)
+            }));
+        },
         mediaRepository() {
             return this.repositoryFactory.create('media');
         },
@@ -71,6 +78,9 @@ Shopware.Component.register('sw-cms-el-config-harmonica-list', {
     methods: {
         createdComponent() {
             this.initElementConfig('harmonica-list');
+            this.element.config.items.value.forEach(item => {
+                if (!item.iconMode) item.iconMode = item.mediaUrl || item.mediaId ? 'upload' : item.icon && item.icon !== 'none' ? 'list' : 'none';
+            });
         },
 
         onChange() {
@@ -82,7 +92,9 @@ Shopware.Component.register('sw-cms-el-config-harmonica-list', {
                 this.element.config.items = { source: 'static', value: [] };
             }
             this.element.config.items.value.push({
+                iconMode: 'none',
                 icon: '',
+                customIconClass: '',
                 title: '',
                 content: ''
             });
@@ -96,18 +108,23 @@ Shopware.Component.register('sw-cms-el-config-harmonica-list', {
 
         async onImageUpload(item, { targetId }) {
             const mediaEntity = await this.mediaRepository.get(targetId);
+            item.iconMode = 'upload';
             item.mediaId = mediaEntity.id;
             item.mediaUrl = mediaEntity.url;
             this.onChange();
         },
 
         onImageSelect(item, mediaEntity) {
+            if (!mediaEntity?.length) return;
+            item.iconMode = 'upload';
             item.mediaId = mediaEntity[0].id;
             item.mediaUrl = mediaEntity[0].url;
             this.onChange();
         },
 
         onImageRemove(item) {
+            item.iconMode = 'none';
+            item.icon = '';
             item.mediaId = null;
             item.mediaUrl = null;
             this.onChange();

@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.56] - 2026-10-10
+
+### Added
+- Upload, shared icon library, custom CSS class and no-icon choices for FAQ Harmonica and Harmonica List.
+
+### Fixed
+- Removing an uploaded accordion icon also clears the sample icon fallback.
+- Both accordions now use one shared definition for all five themes, including the Harmonica List left accent border.
+
 ## [1.2.55] - 2026-10-10
 
 ### Added

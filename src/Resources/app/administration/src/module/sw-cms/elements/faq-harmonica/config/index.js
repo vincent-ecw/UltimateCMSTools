@@ -1,3 +1,4 @@
+import { iconOptions as bundledIconOptions } from '../../../../../shared/uct-icons';
 import template from './sw-cms-el-config-faq-harmonica.html.twig';
 import './sw-cms-el-config-faq-harmonica.scss';
 
@@ -18,6 +19,12 @@ Shopware.Component.register('sw-cms-el-config-faq-harmonica', {
     inject: ['repositoryFactory'],
 
     computed: {
+        iconOptions() { return bundledIconOptions; },
+        iconModeOptions() {
+            return ['upload', 'list', 'class', 'none'].map(value => ({
+                value, label: this.$t('sw-cms.elements.ultimateCmsTools.accordionIcons.' + value)
+            }));
+        },
         mediaRepository() {
             return this.repositoryFactory.create('media');
         },
@@ -62,6 +69,9 @@ Shopware.Component.register('sw-cms-el-config-faq-harmonica', {
     methods: {
         createdComponent() {
             this.initElementConfig('faq-harmonica');
+            this.element.config.faqs.value.forEach(item => {
+                if (!item.iconMode) item.iconMode = item.mediaUrl || item.mediaId ? 'upload' : item.icon && item.icon !== 'none' ? 'list' : 'none';
+            });
         },
 
         onChange() {
@@ -70,7 +80,9 @@ Shopware.Component.register('sw-cms-el-config-faq-harmonica', {
 
         onAddFaq() {
             this.element.config.faqs.value.push({
+                iconMode: 'none',
                 icon: '',
+                customIconClass: '',
                 title: '',
                 content: ''
             });
@@ -84,18 +96,23 @@ Shopware.Component.register('sw-cms-el-config-faq-harmonica', {
 
         async onImageUpload(faq, { targetId }) {
             const mediaEntity = await this.mediaRepository.get(targetId);
+            faq.iconMode = 'upload';
             faq.mediaId = mediaEntity.id;
             faq.mediaUrl = mediaEntity.url;
             this.onChange();
         },
 
         onImageSelect(faq, mediaEntity) {
+            if (!mediaEntity?.length) return;
+            faq.iconMode = 'upload';
             faq.mediaId = mediaEntity[0].id;
             faq.mediaUrl = mediaEntity[0].url;
             this.onChange();
         },
 
         onImageRemove(faq) {
+            faq.iconMode = 'none';
+            faq.icon = '';
             faq.mediaId = null;
             faq.mediaUrl = null;
             this.onChange();

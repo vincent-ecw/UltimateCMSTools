@@ -8,7 +8,9 @@
                 <span v-if="currentTheme === 'editorial-numbered'" class="faq-number">
                     ({{ (index + 1) < 10 ? '0' + (index + 1) : (index + 1) }})
                 </span>
-                <sw-icon v-if="faq.icon && currentTheme !== 'pill-block'" :name="faq.icon"></sw-icon>
+                <img v-if="(faq.iconMode === 'upload' || !faq.iconMode) && faq.mediaUrl" :src="faq.mediaUrl" alt="" width="24" height="24" />
+                <uct-icon v-else-if="(faq.iconMode === 'list' || (!faq.iconMode && !faq.mediaUrl)) && faq.icon && faq.icon !== 'none'" :name="faq.icon" />
+                <span v-else-if="faq.iconMode === 'class'" :class="faq.customIconClass" aria-hidden="true"></span>
                 <span class="faq-title">{{ faq.title }}</span>
                 <sw-icon v-if="currentTheme !== 'pill-block'" name="regular-chevron-down" class="faq-toggle-icon"></sw-icon>
             </div>

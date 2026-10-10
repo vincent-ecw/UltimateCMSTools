@@ -710,6 +710,13 @@
                 "descriptionLines": {
                     "label": "Description lines",
                     "help": "Show 1–20 lines (default: 3). Every tile reserves the same space. Applies to themes that show descriptions."
+                },
+                "accordionIcons": {
+                    "mode": "Icon source",
+                    "upload": "Upload your own icon",
+                    "list": "Select icon from a list",
+                    "class": "Icon class",
+                    "none": "No icon"
                 }
             }
         },

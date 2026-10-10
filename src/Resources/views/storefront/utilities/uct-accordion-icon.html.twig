@@ -1,0 +1,8 @@
+{% set mode = item.iconMode|default(item.mediaUrl|default('') ? 'upload' : (item.icon|default('') and item.icon != 'none' ? 'list' : 'none')) %}
+{% if mode == 'upload' and item.mediaUrl|default('') %}
+    <span class="uct-accordion-icon-wrapper"><img src="{{ item.mediaUrl|uct_safe_url }}" alt="" width="24" height="24" loading="lazy" decoding="async" class="uct-accordion-image-icon" /></span>
+{% elseif mode == 'list' and item.icon|default('') and item.icon != 'none' %}
+    <span class="uct-accordion-icon-wrapper">{% include '@UltimateCmsTools/storefront/utilities/uct-icon.html.twig' with { name: item.icon } only %}</span>
+{% elseif mode == 'class' and item.customIconClass|default('') %}
+    <span class="uct-accordion-icon-wrapper"><span class="{{ item.customIconClass }}" aria-hidden="true"></span></span>
+{% endif %}

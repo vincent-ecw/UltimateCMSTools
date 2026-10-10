@@ -8,7 +8,9 @@
                 <span v-if="currentTheme === 'editorial-numbered'" class="harmonica-number">
                     ({{ (index + 1) < 10 ? '0' + (index + 1) : (index + 1) }})
                 </span>
-                <sw-icon v-if="item.icon && currentTheme !== 'pill-block'" :name="item.icon"></sw-icon>
+                <img v-if="(item.iconMode === 'upload' || !item.iconMode) && item.mediaUrl" :src="item.mediaUrl" alt="" width="24" height="24" />
+                <uct-icon v-else-if="(item.iconMode === 'list' || (!item.iconMode && !item.mediaUrl)) && item.icon && item.icon !== 'none'" :name="item.icon" />
+                <span v-else-if="item.iconMode === 'class'" :class="item.customIconClass" aria-hidden="true"></span>
                 <span class="harmonica-title">{{ item.title }}</span>
                 <sw-icon v-if="currentTheme !== 'pill-block'" name="regular-chevron-down" class="harmonica-toggle-icon"></sw-icon>
             </div>

@@ -6,7 +6,7 @@
     {% set theme = element.config.theme.value|default('clean') %}
     {% set accordionId = 'faqAccordion-' ~ element.id %}
 
-    <div class="cms-element-faq-harmonica theme-{{ theme }}">
+    <div class="cms-element-faq-harmonica uct-accordion theme-{{ theme }}">
         {% if faqs and faqs|length > 0 %}
             <div class="accordion" id="{{ accordionId }}">
                 {% for faq in faqs %}
@@ -14,62 +14,32 @@
                     {% set headingId = accordionId ~ '-heading-' ~ loop.index %}
                     {% set itemNumber = (loop.index < 10 ? '0' ~ loop.index : loop.index) %}
 
-                    {% set resolvedIcon = faq.icon|default('')|replace({
-                        'regular-': '',
-                        'solid-': '',
-                        'light-': '',
-                        '-s': '',
-                        '-xs': '',
-                        '-l': ''
-                    }) %}
-                    {% if resolvedIcon in ['comments', 'comment', 'chat'] %}
-                        {% set resolvedIcon = 'speech-bubbles' %}
-                    {% elseif resolvedIcon in ['question-circle', 'question', 'help-circle'] %}
-                        {% set resolvedIcon = 'help' %}
-                    {% elseif resolvedIcon in ['check', 'check-circle'] %}
-                        {% set resolvedIcon = 'checkmark' %}
-                    {% elseif resolvedIcon in ['mail', 'email'] %}
-                        {% set resolvedIcon = 'envelope' %}
-                    {% elseif resolvedIcon == 'chevron-down' %}
-                        {% set resolvedIcon = 'arrow-head-down' %}
-                    {% endif %}
-
-                    <div class="accordion-item faq-harmonica-item">
-                        <h3 class="accordion-header faq-harmonica-header" id="{{ headingId }}">
-                            <button class="accordion-button faq-harmonica-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#{{ collapseId }}" aria-expanded="false" aria-controls="{{ collapseId }}">
+                    <div class="accordion-item faq-harmonica-item uct-accordion-item">
+                        <h3 class="accordion-header faq-harmonica-header uct-accordion-header" id="{{ headingId }}">
+                            <button class="accordion-button faq-harmonica-button uct-accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#{{ collapseId }}" aria-expanded="false" aria-controls="{{ collapseId }}">
                                 {% if theme == 'pill-block' %}
-                                    <span class="faq-harmonica-pill-badge">
+                                    <span class="faq-harmonica-pill-badge uct-accordion-pill-badge">
                                         {% sw_icon 'arrow-head-down' style { 'class': 'badge-icon icon-chevron' } %}
                                     </span>
                                 {% endif %}
 
                                 {% if theme == 'editorial-numbered' %}
-                                    <span class="faq-harmonica-number">({{ itemNumber }})</span>
+                                    <span class="faq-harmonica-number uct-accordion-number">({{ itemNumber }})</span>
                                 {% endif %}
 
-                                {% if faq.mediaUrl %}
-                                    <span class="faq-harmonica-icon-wrapper">
-                                        <img src="{{ faq.mediaUrl|uct_safe_url }}" alt="Icon" width="24" height="24" loading="lazy" decoding="async" class="faq-harmonica-image-icon" />
-                                    </span>
-                                {% elseif resolvedIcon %}
-                                    <span class="faq-harmonica-icon-wrapper">
-                                        {% sw_icon resolvedIcon style { 'class': 'faq-harmonica-icon' } %}
-                                    </span>
-                                {% elseif theme != 'pill-block' and theme != 'editorial-numbered' %}
-                                    <span class="faq-harmonica-icon-wrapper empty-icon"></span>
-                                {% endif %}
+                                {% include '@UltimateCmsTools/storefront/utilities/uct-accordion-icon.html.twig' with { item: faq } only %}
 
-                                <span class="faq-harmonica-title">{{ faq.title }}</span>
+                                <span class="faq-harmonica-title uct-accordion-title">{{ faq.title }}</span>
 
                                 {% if theme != 'pill-block' %}
-                                    <span class="faq-harmonica-toggle-icon-wrapper">
+                                    <span class="faq-harmonica-toggle-icon-wrapper uct-accordion-toggle-icon-wrapper">
                                         {% sw_icon 'arrow-head-down' style { 'class': 'faq-toggle-chevron' } %}
                                     </span>
                                 {% endif %}
                             </button>
                         </h3>
                         <div id="{{ collapseId }}" class="accordion-collapse collapse" aria-labelledby="{{ headingId }}" data-bs-parent="#{{ accordionId }}">
-                            <div class="accordion-body faq-harmonica-body">
+                            <div class="accordion-body faq-harmonica-body uct-accordion-body">
                                 {{ faq.content|sw_sanitize }}
                             </div>
                         </div>

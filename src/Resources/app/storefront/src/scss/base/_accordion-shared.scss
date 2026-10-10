@@ -1,0 +1,378 @@
+.uct-accordion {
+    // Define robust CSS variable fallbacks for theme colors
+    --uct-accordion-primary: var(--ecw-mapped-color-cta-primarycolor, var(--bs-primary, #0d6efd));
+    --uct-accordion-secondary: var(--ecw-mapped-color-cta-secondarycolor, var(--bs-secondary, #6c757d));
+    --uct-accordion-border: var(--ecw-mapped-color-border-base, var(--bs-border-color, #e2e8f0));
+    --uct-accordion-card-bg: var(--ecw-mapped-color-background-container, var(--bs-card-bg, #ffffff));
+    --uct-accordion-body-color: var(--ecw-mapped-color-text-normal, var(--bs-body-color, #212529));
+    --uct-accordion-headings-color: var(--ecw-mapped-color-textcolor, var(--bs-heading-color, #1a202c));
+
+    .accordion {
+        border: none;
+    }
+
+    // Base Harmonica Item rules
+    .uct-accordion-item {
+        transition: all 0.25s ease-in-out;
+
+        .uct-accordion-header {
+            margin: 0;
+            padding: 0;
+
+            .uct-accordion-button {
+                padding: 1.25rem 1rem;
+                font-weight: 600;
+                color: var(--uct-accordion-headings-color);
+                background-color: transparent;
+                box-shadow: none;
+                display: flex;
+                align-items: center;
+                width: 100%;
+                text-align: left;
+                border: none;
+                cursor: pointer;
+                transition:
+                    color 0.2s ease,
+                    background-color 0.2s ease;
+
+                &:focus {
+                    box-shadow: none;
+                    outline: none;
+                }
+
+                // Hide Bootstrap default chevron
+                &::after {
+                    display: none;
+                }
+
+                .uct-accordion-icon-wrapper {
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 24px;
+                    height: 24px;
+                    margin-right: 1rem;
+                    flex-shrink: 0;
+
+                    .icon, .uct-icon {
+                        width: 24px;
+                        height: 24px;
+                        color: inherit;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+
+                        svg {
+                            width: 100%;
+                            height: 100%;
+                            fill: currentColor;
+                        }
+                    }
+
+                    .uct-accordion-image-icon {
+                        width: 24px;
+                        height: 24px;
+                        object-fit: contain;
+                    }
+                }
+
+                .uct-accordion-title {
+                    flex-grow: 1;
+                    font-size: 1.05rem;
+                    line-height: 1.4;
+                }
+
+                // Dedicated NN/g Caret/Chevron Signifier (Only this wrapper rotates 180deg)
+                .uct-accordion-toggle-icon-wrapper {
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-left: auto;
+                    flex-shrink: 0;
+                    width: 18px;
+                    height: 18px;
+                    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                    transform-origin: center center;
+
+                    .icon, .uct-icon {
+                        width: 18px;
+                        height: 18px;
+                        color: inherit;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+
+                        svg {
+                            width: 100%;
+                            height: 100%;
+                            fill: currentColor;
+                        }
+                    }
+                }
+
+                &:not(.collapsed) {
+                    .uct-accordion-toggle-icon-wrapper {
+                        transform: rotate(180deg);
+                    }
+                }
+            }
+        }
+
+        .uct-accordion-body {
+            padding: 0 1rem 1.25rem 1rem;
+            color: var(--uct-accordion-body-color);
+            line-height: 1.6;
+        }
+    }
+
+    // ----------------------------------------------------
+    // Theme 1: Clean (Minimal Dividers - Default)
+    // ----------------------------------------------------
+    &.theme-clean {
+        .uct-accordion-item {
+            border: none;
+            border-bottom: 1px solid var(--uct-accordion-border);
+            border-radius: 0;
+            background: transparent;
+
+            &:last-child {
+                border-bottom: none;
+            }
+
+            .uct-accordion-button {
+                &:not(.collapsed) {
+                    color: var(--uct-accordion-primary);
+                    background-color: color-mix(in srgb, var(--uct-accordion-primary) 6%, transparent);
+                }
+            }
+
+            .uct-accordion-body {
+                @media (min-width: 768px) {
+                    padding-left: 3.5rem;
+                }
+            }
+        }
+    }
+
+    // ----------------------------------------------------
+    // Theme 2: Boxed (Floating Cards with Shadow & Accent Border)
+    // ----------------------------------------------------
+    &.theme-boxed {
+        .uct-accordion-item {
+            border: 1px solid var(--uct-accordion-border);
+            border-radius: if(variable-exists("border-radius-lg"), $border-radius-lg, 8px);
+            margin-bottom: 1rem;
+            background-color: var(--uct-accordion-card-bg);
+            box-shadow: 0 4px 12px color-mix(in srgb, var(--ecw-mapped-color-text-normal, var(--bs-body-color, #000000)) 3%, transparent);
+            overflow: hidden;
+
+            &:hover {
+                border-color: color-mix(in srgb, var(--uct-accordion-border) 80%, var(--ecw-mapped-color-text-normal, var(--bs-body-color, #000000)));
+                box-shadow: 0 6px 16px color-mix(in srgb, var(--ecw-mapped-color-text-normal, var(--bs-body-color, #000000)) 6%, transparent);
+            }
+
+            .uct-accordion-button {
+                padding: 1.25rem 1.25rem;
+
+                &:not(.collapsed) {
+                    color: var(--uct-accordion-primary);
+                    background-color: color-mix(in srgb, var(--uct-accordion-primary) 5%, transparent);
+                }
+            }
+
+            &:has(.uct-accordion-button:not(.collapsed)) {
+                border-color: var(--uct-accordion-primary);
+                box-shadow: 0 6px 20px color-mix(in srgb, var(--uct-accordion-primary) 15%, transparent);
+            }
+
+            .uct-accordion-body {
+                padding: 0.25rem 1.25rem 1.25rem 1.25rem;
+
+                @media (min-width: 768px) {
+                    padding-left: 3.75rem;
+                }
+            }
+        }
+    }
+
+    // ----------------------------------------------------
+    // Theme 3: Pill Block (Elementor Side Accent Button with Caret Signifier)
+    // ----------------------------------------------------
+    &.theme-pill-block {
+        .uct-accordion-item {
+            border: 1px solid var(--uct-accordion-border);
+            border-radius: if(variable-exists("border-radius"), $border-radius, 6px);
+            margin-bottom: 0.875rem;
+            background-color: var(--uct-accordion-card-bg);
+            overflow: hidden;
+
+            .uct-accordion-button {
+                padding: 0.875rem 1.25rem;
+                display: flex;
+                align-items: center;
+
+                .uct-accordion-pill-badge {
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 36px;
+                    height: 36px;
+                    border-radius: 8px;
+                    background-color: var(--uct-accordion-primary);
+                    color: var(--ecw-mapped-color-cta-lighttext, var(--bs-white, #ffffff));
+                    margin-right: 1.25rem;
+                    flex-shrink: 0;
+                    transition: background-color 0.25s ease;
+
+                    .icon, .uct-icon {
+                        width: 16px;
+                        height: 16px;
+                        color: inherit;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                        transform-origin: center center;
+
+                        svg {
+                            width: 100%;
+                            height: 100%;
+                            fill: currentColor;
+                        }
+                    }
+                }
+
+                &:not(.collapsed) {
+                    color: var(--uct-accordion-primary);
+                    background-color: color-mix(in srgb, var(--uct-accordion-primary) 3%, transparent);
+
+                    .uct-accordion-pill-badge {
+                        background-color: var(--uct-accordion-secondary);
+
+                        .icon, .uct-icon {
+                            transform: rotate(180deg);
+                        }
+                    }
+                }
+            }
+
+            &:has(.uct-accordion-button:not(.collapsed)) {
+                border-color: color-mix(in srgb, var(--uct-accordion-primary) 50%, transparent);
+            }
+
+            .uct-accordion-body {
+                padding: 0.5rem 1.25rem 1.25rem 1.25rem;
+                padding-left: 4.25rem;
+            }
+        }
+    }
+
+    // ----------------------------------------------------
+    // Theme 4: Editorial Numbered (Modern Numbered Rows with Rotating Caret)
+    // ----------------------------------------------------
+    &.theme-editorial-numbered {
+        .uct-accordion-item {
+            border: none;
+            border-top: 1px solid var(--uct-accordion-border);
+            border-bottom: 1px solid var(--uct-accordion-border);
+            margin-top: -1px; // Collapse overlapping borders
+            background: transparent;
+            border-radius: 0;
+
+            .uct-accordion-button {
+                padding: 1.5rem 1rem;
+                display: flex;
+                align-items: center;
+
+                .uct-accordion-number {
+                    font-size: 0.875rem;
+                    font-weight: 700;
+                    color: var(--uct-accordion-secondary);
+                    margin-right: 1.25rem;
+                    letter-spacing: 0.5px;
+                    flex-shrink: 0;
+                    opacity: 0.85;
+                }
+
+                .uct-accordion-title {
+                    font-size: 1rem;
+                    font-weight: 700;
+                    text-transform: uppercase;
+                    letter-spacing: 0.6px;
+                }
+
+                &:not(.collapsed) {
+                    color: var(--ecw-mapped-color-cta-lighttext, var(--bs-white, #ffffff));
+                    background-color: var(--uct-accordion-primary);
+
+                    .uct-accordion-number {
+                        color: color-mix(in srgb, var(--ecw-mapped-color-cta-lighttext, var(--bs-white, #ffffff)) 90%, transparent);
+                    }
+                }
+            }
+
+            .uct-accordion-collapse {
+                background-color: var(--uct-accordion-primary);
+            }
+
+            .uct-accordion-body {
+                background-color: var(--uct-accordion-primary);
+                color: color-mix(in srgb, var(--ecw-mapped-color-cta-lighttext, var(--bs-white, #ffffff)) 95%, transparent);
+                padding: 0 1rem 1.5rem 3.5rem;
+
+                a {
+                    color: var(--ecw-mapped-color-cta-lighttext, var(--bs-white, #ffffff));
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+
+    // ----------------------------------------------------
+    // Theme 5: Accent Line (Left Accent Bar Indicator)
+    // ----------------------------------------------------
+    &.theme-accent-line {
+        .uct-accordion-item {
+            border: 1px solid var(--uct-accordion-border);
+            border-left: 4px solid color-mix(in srgb, var(--ecw-mapped-color-table-back_even, var(--bs-border-color, #e2e8f0)) 70%, var(--ecw-mapped-color-border-base, var(--bs-border-color, #cecece)));
+            border-radius: 0 if(variable-exists("border-radius"), $border-radius, 6px)
+                if(variable-exists("border-radius"), $border-radius, 6px) 0;
+            margin-bottom: 0.75rem;
+            background-color: var(--uct-accordion-card-bg);
+            overflow: hidden;
+            transition:
+                border-color 0.25s ease,
+                background-color 0.25s ease;
+
+            &:hover {
+                border-left-color: color-mix(in srgb, var(--uct-accordion-border) 40%, var(--ecw-mapped-color-text-meta, var(--bs-secondary-color, #64748b)));
+            }
+
+            .uct-accordion-button {
+                padding: 1.25rem 1.25rem;
+
+                &:not(.collapsed) {
+                    color: var(--uct-accordion-primary);
+                    background-color: color-mix(in srgb, var(--uct-accordion-primary) 4%, transparent);
+                }
+            }
+
+            &:has(.uct-accordion-button:not(.collapsed)) {
+                border-left-color: var(--uct-accordion-primary);
+                border-top-color: color-mix(in srgb, var(--uct-accordion-primary) 20%, transparent);
+                border-right-color: color-mix(in srgb, var(--uct-accordion-primary) 20%, transparent);
+                border-bottom-color: color-mix(in srgb, var(--uct-accordion-primary) 20%, transparent);
+            }
+
+            .uct-accordion-body {
+                padding: 0.25rem 1.25rem 1.25rem 1.25rem;
+
+                @media (min-width: 768px) {
+                    padding-left: 3.75rem;
+                }
+            }
+        }
+    }
+}
+
+.uct-accordion .uct-accordion-button:focus-visible { outline: 2px solid var(--ecw-mapped-color-border-select, var(--bs-primary, #0d6efd)); outline-offset: -2px; }

@@ -671,3 +671,7 @@ Image frames stay consistent across tiles while the image content retains its or
 Image quality is selected automatically from the theme and actual displayed frame, including device pixel density, source aspect ratio, and hover scaling. Shopware's `sw_thumbnails` rendering remains in use, with a scoped extension that removes unsuitable thumbnail candidates and includes the original at its actual pixel width. Small originals remain visible, but cannot gain detail through thumbnail selection. Use larger originals or SVG manufacturer logos when sharpness is insufficient. No media folder settings or uploaded files are modified.
 
 See [Image rendering audit](IMAGE_AUDIT.md) for the element inventory, theme minimums and verification details.
+
+### Accordion icons and shared themes
+
+FAQ Harmonica and Harmonica List support uploading an icon, selecting from the shared icon catalog, a theme-provided CSS icon class, or no icon. Existing saved icons remain supported. Removing an upload clears the icon fallback. Both elements use `_accordion-shared.scss` as the single definition for all five storefront themes.

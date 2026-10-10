@@ -2,12 +2,65 @@
     width: 100%;
     margin-left: 0;
     margin-right: 0;
+    display: grid;
+    grid-column-gap: 20px;
+    align-items: stretch;
+
+    /* 1 Column */
+    &.grid-12 {
+        grid-template-columns: 1fr;
+    }
+
+    /* 2 Columns */
+    &.grid-md-6-6 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    &.grid-md-4-8 {
+        grid-template-columns: 4fr 8fr;
+    }
+
+    &.grid-md-8-4 {
+        grid-template-columns: 8fr 4fr;
+    }
+
+    &.grid-md-3-9 {
+        grid-template-columns: 3fr 9fr;
+    }
+
+    &.grid-md-9-3 {
+        grid-template-columns: 9fr 3fr;
+    }
+
+    /* 3 Columns */
+    &.grid-md-4-4-4 {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    &.grid-md-3-6-3 {
+        grid-template-columns: 3fr 6fr 3fr;
+    }
+
+    &.grid-md-2-8-2 {
+        grid-template-columns: 2fr 8fr 2fr;
+    }
+
+    /* 4 Columns */
+    &.grid-md-3-3-3-3 {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    /* 6 Columns */
+    &.grid-md-2-2-2-2-2-2 {
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+    }
 
     .uct-grid-col {
         position: relative;
         box-sizing: border-box;
         transition: all 0.2s ease-in-out;
         min-height: 80px;
+        min-width: 0; /* Prevents overflow in grid items */
         border: 1px dashed transparent;
         border-radius: 4px;
         padding-top: 24px;

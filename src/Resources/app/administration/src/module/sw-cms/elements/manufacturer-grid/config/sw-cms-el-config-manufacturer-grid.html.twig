@@ -6,6 +6,11 @@
         </template>
         <template #content="{ active }">
             <div v-if="active === 'content'">
+    <sw-single-select v-model:value="theme"
+        :label="$tc('sw-cms.elements.ultimateCmsTools.subcategoryThemes.label')"
+        :helpText="$tc('sw-cms.elements.ultimateCmsTools.subcategoryThemes.help')"
+        :options="themeOptions">
+    </sw-single-select>
     <sw-alert variant="info">
         {{ $tc('sw-cms.elements.ultimateCmsTools.manufacturerGrid.configInfo') }}
     </sw-alert>

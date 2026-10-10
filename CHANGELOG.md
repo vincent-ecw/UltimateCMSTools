@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.53] - 2026-10-10
+
+### Added
+- Classic, Badge, Basic, Playful and Modern themes for manufacturer grids and carousels, matching the subcategory elements.
+
+### Changed
+- Centralize card presentation and reactive theme options across all four directory elements to prevent visual drift.
+- Badge themes show names without images or descriptions; Basic and Classic support descriptions. Manufacturer logos retain contained sizing.
+
 ## [1.2.52] - 2026-10-10
 
 ### Added

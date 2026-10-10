@@ -1,3 +1,4 @@
+import directoryThemes from '../../../shared/directory-themes';
 import template from './sw-cms-el-config-subcategory-grid.html.twig';
 
 Shopware.Component.register('sw-cms-el-config-subcategory-grid', {
@@ -9,19 +10,7 @@ Shopware.Component.register('sw-cms-el-config-subcategory-grid', {
     ],
 
     computed: {
-        theme: {
-            get() { return this.element.config?.theme?.value ?? 'classic'; },
-            set(value) {
-                this.element.config.theme = { source: 'static', value };
-                this.onChange();
-            }
-        },
-        themeOptions() {
-            return ['classic', 'badge', 'basic', 'playful', 'modern'].map(value => ({
-                value,
-                label: this.$tc('sw-cms.elements.ultimateCmsTools.subcategoryThemes.' + value)
-            }));
-        },
+        ...directoryThemes,
         showAllSubcategories: {
             get() {
                 return this.element.config?.showAllSubcategories?.value || false;

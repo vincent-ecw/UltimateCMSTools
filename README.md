@@ -653,3 +653,9 @@ In the storefront, sanitized intro text appears before the element content and o
 Configure **Distance between intro/outro and content (px)** in the plugin settings to use consistent spacing throughout the webshop. The default is **24 px**, with a range of **0–1000 px**; zero removes the gap. Sales-channel configuration overrides follow Shopware's standard behavior.
 
 The Shopping Experiences layout preview also shows **Intro → Element → Outro**, updating as the translated text changes. Preview spacing uses the global plugin configuration (24 px if unset); storefront pages use the configured value for their sales channel. Empty editors add no preview markup or gap. After entering text, close the popup with **Done** and save the layout to publish it on pages using that layout.
+
+### Shared category and manufacturer card themes
+
+Subcategory Carousel, Subcategory Grid, Manufacturer Carousel and Manufacturer Grid share Classic, Badge, Basic, Playful and Modern themes. Choose the same theme to keep a page consistent. Existing elements default to Classic. Badge always shows names and hides images/descriptions; descriptions are available in Classic and Basic. Manufacturer logos remain contained.
+
+Shared card styling lives in `src/Resources/app/storefront/src/scss/base/_directory-card.scss`, variants in `element/subcategory-themes.scss`, and editor options in `src/Resources/app/administration/src/module/sw-cms/shared/directory-themes.js`. Element styles own layout and media treatment only. Existing translated theme keys remain compatible.

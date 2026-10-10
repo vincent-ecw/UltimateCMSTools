@@ -1,3 +1,4 @@
+import directoryThemes from '../../../shared/directory-themes';
 import template from './sw-cms-el-config-manufacturer-carousel.html.twig';
 
 const { Component, Mixin } = Shopware;
@@ -11,6 +12,7 @@ Component.register('sw-cms-el-config-manufacturer-carousel', {
     ],
 
     computed: {
+        ...directoryThemes,
         sortBy: {
             get() {
                 return this.element.config?.sortBy?.value ?? 'alphabetical';

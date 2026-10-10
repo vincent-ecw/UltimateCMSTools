@@ -1,3 +1,4 @@
+import directoryThemes from '../../../shared/directory-themes';
 import template from './sw-cms-el-config-manufacturer-grid.html.twig';
 
 Shopware.Component.register('sw-cms-el-config-manufacturer-grid', {
@@ -9,6 +10,7 @@ Shopware.Component.register('sw-cms-el-config-manufacturer-grid', {
     ],
 
     computed: {
+        ...directoryThemes,
         sortBy: {
             get() {
                 return this.element.config?.sortBy?.value ?? 'alphabetical';

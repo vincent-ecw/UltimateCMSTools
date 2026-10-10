@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.61] - 2026-10-10
+
+### Fixed
+- Fixed storefront template priority: set template priority to 100 on `UltimateCmsTools` so storefront block templates override third-party plugins (such as `SschreierGridLayoutForShoppingExperiences`) and render column settings (background colors, background images, inner padding, custom CSS classes) reliably in the storefront.
+
 ## [1.2.60] - 2026-10-10
 
 ### Fixed

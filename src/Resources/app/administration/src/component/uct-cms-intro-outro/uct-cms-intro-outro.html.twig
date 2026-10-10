@@ -1,0 +1,6 @@
+<div class="uct-cms-intro-outro">
+    <sw-text-editor :value="intro" @update:value="$emit('update:intro', $event)"
+        :label="$t('sw-cms.elements.ultimateCmsTools.introOutro.intro')" />
+    <sw-text-editor :value="outro" @update:value="$emit('update:outro', $event)"
+        :label="$t('sw-cms.elements.ultimateCmsTools.introOutro.outro')" />
+</div>

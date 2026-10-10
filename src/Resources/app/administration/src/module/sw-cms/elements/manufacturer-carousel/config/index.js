@@ -6,6 +6,7 @@ Component.register('sw-cms-el-config-manufacturer-carousel', {
     template,
 
     mixins: [
+        Shopware.Mixin.getByName('uct-intro-outro'),
         Mixin.getByName('cms-element')
     ],
 

@@ -1,4 +1,7 @@
 {% block element_uct_alert %}
+    {% if element.config.uctIntroText.value|default('') %}
+        {% include '@UltimateCmsTools/storefront/utilities/uct-surrounding-text.html.twig' with { position: 'intro' } %}
+    {% endif %}
     {% set message = element.config.message.value|default('')|sw_sanitize({p: [], br: [], div: [], b: [], strong: [], i: [], em: [], a: ['href', 'title']}, true) %}
     {% set alertType = element.config.type.value|default('info') %}
     {% set alertType = alertType in ['success', 'warning', 'error', 'info'] ? alertType : 'info' %}
@@ -27,5 +30,8 @@
                 </button>
             {% endif %}
         </div>
+    {% endif %}
+    {% if element.config.uctOutroText.value|default('') %}
+        {% include '@UltimateCmsTools/storefront/utilities/uct-surrounding-text.html.twig' with { position: 'outro' } %}
     {% endif %}
 {% endblock %}

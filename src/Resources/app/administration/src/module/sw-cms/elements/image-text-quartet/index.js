@@ -9,6 +9,8 @@ Shopware.Service('cmsService').registerCmsElement({
     configComponent: 'sw-cms-el-config-image-text-quartet',
     previewComponent: 'sw-cms-el-preview-image-text-quartet',
     defaultConfig: {
+        uctIntroText: { source: 'static', value: '' },
+        uctOutroText: { source: 'static', value: '' },
         media1Desktop: {
             source: 'static',
             value: null,

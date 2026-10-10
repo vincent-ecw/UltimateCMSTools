@@ -700,6 +700,12 @@
                             "accentLine": "Linker Akzentstreifen"
                         }
                     }
+                },
+                "introOutro": {
+                    "tab": "Intro / Outro",
+                    "intro": "Einleitungstext",
+                    "outro": "Abschlusstext",
+                    "content": "Inhalt"
                 }
             }
         },

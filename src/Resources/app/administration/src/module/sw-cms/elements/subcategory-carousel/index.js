@@ -9,6 +9,8 @@ Shopware.Service('cmsService').registerCmsElement({
     configComponent: 'sw-cms-el-config-subcategory-carousel',
     previewComponent: 'sw-cms-el-preview-subcategory-carousel',
     defaultConfig: {
+        uctIntroText: { source: 'static', value: '' },
+        uctOutroText: { source: 'static', value: '' },
         theme: { source: 'static', value: 'classic' },
         showAllSubcategories: {
             source: 'static',

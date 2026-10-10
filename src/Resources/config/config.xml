@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/shopware/trunk/src/Core/System/SystemConfig/Schema/config.xsd">
+    <card>
+        <title>CMS intro and outro</title>
+        <title lang="de-DE">CMS Einleitung und Abschluss</title>
+        <title lang="nl-NL">CMS intro en outro</title>
+        <input-field type="int">
+            <name>blockTextSpacing</name>
+            <label>Distance between intro/outro and content (px)</label>
+            <label lang="de-DE">Abstand zwischen Einleitung/Abschluss und Inhalt (px)</label>
+            <label lang="nl-NL">Afstand tussen intro/outro en inhoud (px)</label>
+            <defaultValue>24</defaultValue>
+            <min>0</min>
+            <max>1000</max>
+        </input-field>
+    </card>
+</config>

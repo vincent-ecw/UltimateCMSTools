@@ -1,4 +1,7 @@
 {% block element_statistics %}
+    {% if element.config.uctIntroText.value|default('') %}
+        {% include '@UltimateCmsTools/storefront/utilities/uct-surrounding-text.html.twig' with { position: 'intro' } %}
+    {% endif %}
     {% set config = element.config %}
     {% set theme = config.theme.value|default('boxed') %}
     {% set introText = config.introText.value|default('') %}
@@ -70,4 +73,7 @@
             </div>
         {% endif %}
     </div>
+    {% if element.config.uctOutroText.value|default('') %}
+        {% include '@UltimateCmsTools/storefront/utilities/uct-surrounding-text.html.twig' with { position: 'outro' } %}
+    {% endif %}
 {% endblock %}

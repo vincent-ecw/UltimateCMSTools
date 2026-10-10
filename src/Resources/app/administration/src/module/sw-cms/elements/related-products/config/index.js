@@ -7,6 +7,7 @@ Component.register('sw-cms-el-config-related-products', {
     template,
 
     mixins: [
+        Shopware.Mixin.getByName('uct-intro-outro'),
         Mixin.getByName('cms-element')
     ],
 

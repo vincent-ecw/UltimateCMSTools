@@ -1,4 +1,7 @@
 {% block element_magazine_quote %}
+    {% if element.config.uctIntroText.value|default('') %}
+        {% include '@UltimateCmsTools/storefront/utilities/uct-surrounding-text.html.twig' with { position: 'intro' } %}
+    {% endif %}
     {% set config = element.config %}
     {% set authorImage = element.data ? element.data.get('authorImage') : null %}
 
@@ -30,5 +33,8 @@
                 {% endif %}
             </div>
         </div>
+    {% endif %}
+    {% if element.config.uctOutroText.value|default('') %}
+        {% include '@UltimateCmsTools/storefront/utilities/uct-surrounding-text.html.twig' with { position: 'outro' } %}
     {% endif %}
 {% endblock %}

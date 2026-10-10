@@ -2,7 +2,7 @@ import template from './sw-cms-el-config-uct-alert.html.twig';
 
 Shopware.Component.register('sw-cms-el-config-uct-alert', {
     template,
-    mixins: [Shopware.Mixin.getByName('cms-element')],
+    mixins: [Shopware.Mixin.getByName('uct-intro-outro'), Shopware.Mixin.getByName('cms-element')],
     computed: {
         showIcon: {
             get() { return this.element.config.showIcon?.value ?? false; },

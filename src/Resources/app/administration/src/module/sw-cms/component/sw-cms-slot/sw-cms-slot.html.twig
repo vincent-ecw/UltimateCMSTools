@@ -1,0 +1,5 @@
+{% block sw_cms_slot_content %}
+    <uct-surrounding-text-preview v-if="uctHasSurroundingText" :element="element" position="intro" />
+    {% parent %}
+    <uct-surrounding-text-preview v-if="uctHasSurroundingText" :element="element" position="outro" />
+{% endblock %}

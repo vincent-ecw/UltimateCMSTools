@@ -14,6 +14,8 @@ Shopware.Service('cmsService').registerCmsElement({
         mediaMobile: null
     },
     defaultConfig: {
+        uctIntroText: { source: 'static', value: '' },
+        uctOutroText: { source: 'static', value: '' },
         mediaDesktop: {
             source: 'static',
             value: null,

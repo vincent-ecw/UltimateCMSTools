@@ -5,6 +5,7 @@ Shopware.Component.register('sw-cms-el-config-faq-harmonica', {
     template,
 
     mixins: [
+        Shopware.Mixin.getByName('uct-intro-outro'),
         Shopware.Mixin.getByName('cms-element')
     ],
 

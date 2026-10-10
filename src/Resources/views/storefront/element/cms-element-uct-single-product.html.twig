@@ -1,4 +1,7 @@
 {% block element_uct_single_product %}
+    {% if element.config.uctIntroText.value|default('') %}
+        {% include '@UltimateCmsTools/storefront/utilities/uct-surrounding-text.html.twig' with { position: 'intro' } %}
+    {% endif %}
     {% if element.data.product %}
         <div class="cms-element-uct-single-product" data-uct-single-product
              data-uct-single-product-options="{{ {
@@ -29,5 +32,8 @@
             </div>
             <p class="uct-single-product-error" role="status" aria-live="polite" data-single-product-error hidden></p>
         </div>
+    {% endif %}
+    {% if element.config.uctOutroText.value|default('') %}
+        {% include '@UltimateCmsTools/storefront/utilities/uct-surrounding-text.html.twig' with { position: 'outro' } %}
     {% endif %}
 {% endblock %}

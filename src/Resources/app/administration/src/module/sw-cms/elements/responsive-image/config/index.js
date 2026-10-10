@@ -9,6 +9,7 @@ Component.register('sw-cms-el-config-responsive-image', {
     inject: ['repositoryFactory'],
 
     mixins: [
+        Shopware.Mixin.getByName('uct-intro-outro'),
         Mixin.getByName('cms-element')
     ],
 

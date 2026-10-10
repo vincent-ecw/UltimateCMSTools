@@ -700,6 +700,12 @@
                             "accentLine": "Left Accent Border"
                         }
                     }
+                },
+                "introOutro": {
+                    "tab": "Intro / Outro",
+                    "intro": "Intro text",
+                    "outro": "Outro text",
+                    "content": "Content"
                 }
             }
         },

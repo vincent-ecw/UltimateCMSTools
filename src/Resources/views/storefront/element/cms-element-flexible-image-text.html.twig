@@ -1,4 +1,7 @@
 {% block element_flexible_image_text %}
+    {% if element.config.uctIntroText.value|default('') %}
+        {% include '@UltimateCmsTools/storefront/utilities/uct-surrounding-text.html.twig' with { position: 'intro' } %}
+    {% endif %}
     {% set config = element.fieldConfig.elements %}
     
     {% set position = config.position.value|default('image-left') %}
@@ -121,4 +124,7 @@
             </div>
         {% endif %}
     </div>
+    {% if element.config.uctOutroText.value|default('') %}
+        {% include '@UltimateCmsTools/storefront/utilities/uct-surrounding-text.html.twig' with { position: 'outro' } %}
+    {% endif %}
 {% endblock %}

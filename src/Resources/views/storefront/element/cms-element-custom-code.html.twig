@@ -1,4 +1,7 @@
 {% block element_custom_code %}
+    {% if element.config.uctIntroText.value|default('') %}
+        {% include '@UltimateCmsTools/storefront/utilities/uct-surrounding-text.html.twig' with { position: 'intro' } %}
+    {% endif %}
     <div class="cms-element-custom-code">
         {% if element.config.cssCode.value %}
             <style>
@@ -12,4 +15,7 @@
             </script>
         {% endif %}
     </div>
+    {% if element.config.uctOutroText.value|default('') %}
+        {% include '@UltimateCmsTools/storefront/utilities/uct-surrounding-text.html.twig' with { position: 'outro' } %}
+    {% endif %}
 {% endblock %}

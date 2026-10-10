@@ -9,6 +9,8 @@ Shopware.Service('cmsService').registerCmsElement({
     configComponent: 'sw-cms-el-config-flexible-image-text',
     previewComponent: 'sw-cms-el-preview-flexible-image-text',
     defaultConfig: {
+        uctIntroText: { source: 'static', value: '' },
+        uctOutroText: { source: 'static', value: '' },
         media: {
             source: 'static',
             value: null,

@@ -4,11 +4,15 @@
             <sw-tabs-item name="content" :active-tab="active" @click="activeTab = 'content'">
                 {{ $tc('sw-cms.elements.ultimateCmsTools.iconList.config.tabs.content') }}
             </sw-tabs-item>
+            <sw-tabs-item name="intro-outro" :active-tab="active" @click="activeTab = 'intro-outro'">
+                {{ $t('sw-cms.elements.ultimateCmsTools.introOutro.tab') }}
+            </sw-tabs-item>
             <sw-tabs-item name="settings" :active-tab="active" @click="activeTab = 'settings'">
                 {{ $tc('sw-cms.elements.ultimateCmsTools.iconList.config.tabs.settings') }}
             </sw-tabs-item>
         </template>
     </sw-tabs>
+    <div v-if="activeTab === 'intro-outro'"><uct-cms-intro-outro v-model:intro="uctIntroText" v-model:outro="uctOutroText" /></div>
 
     <div v-if="activeTab === 'content'" class="sw-cms-el-config-icon-list__content-tab">
         <div class="sw-cms-el-config-icon-list__items-header">

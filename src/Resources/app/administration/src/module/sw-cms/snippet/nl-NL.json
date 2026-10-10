@@ -700,6 +700,12 @@
                             "accentLine": "Linker Accentlijn"
                         }
                     }
+                },
+                "introOutro": {
+                    "tab": "Intro / Outro",
+                    "intro": "Introtekst",
+                    "outro": "Outrotekst",
+                    "content": "Inhoud"
                 }
             }
         },

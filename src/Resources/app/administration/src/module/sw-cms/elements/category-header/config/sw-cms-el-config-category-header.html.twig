@@ -1,4 +1,11 @@
 <div class="sw-cms-el-config-category-header">
+    <sw-tabs default-item="content">
+        <template #default="{ active }">
+            <sw-tabs-item name="content" :active-tab="active">{{ $t('sw-cms.elements.ultimateCmsTools.introOutro.content') }}</sw-tabs-item>
+            <sw-tabs-item name="intro-outro" :active-tab="active">{{ $t('sw-cms.elements.ultimateCmsTools.introOutro.tab') }}</sw-tabs-item>
+        </template>
+        <template #content="{ active }">
+            <div v-if="active === 'content'">
     <sw-container gap="20px">
         <sw-single-select
             v-model:value="design"
@@ -36,4 +43,9 @@
             @media-upload-remove="onImageRemove">
         </sw-media-upload-v2>
     </sw-container>
+
+            </div>
+            <div v-if="active === 'intro-outro'"><uct-cms-intro-outro v-model:intro="uctIntroText" v-model:outro="uctOutroText" /></div>
+        </template>
+    </sw-tabs>
 </div>

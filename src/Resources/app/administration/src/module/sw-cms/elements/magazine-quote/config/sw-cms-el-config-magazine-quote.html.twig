@@ -1,4 +1,11 @@
 <div class="sw-cms-el-config-magazine-quote">
+    <sw-tabs default-item="content">
+        <template #default="{ active }">
+            <sw-tabs-item name="content" :active-tab="active">{{ $t('sw-cms.elements.ultimateCmsTools.introOutro.content') }}</sw-tabs-item>
+            <sw-tabs-item name="intro-outro" :active-tab="active">{{ $t('sw-cms.elements.ultimateCmsTools.introOutro.tab') }}</sw-tabs-item>
+        </template>
+        <template #content="{ active }">
+            <div v-if="active === 'content'">
     <!-- Title / Quote Textarea -->
     <sw-textarea-field
         v-model="quote"
@@ -36,4 +43,9 @@
         :label="$tc('sw-cms.elements.ultimateCmsTools.magazineQuote.config.styleLabel')"
         :options="styleOptions">
     </sw-single-select>
+
+            </div>
+            <div v-if="active === 'intro-outro'"><uct-cms-intro-outro v-model:intro="uctIntroText" v-model:outro="uctOutroText" /></div>
+        </template>
+    </sw-tabs>
 </div>

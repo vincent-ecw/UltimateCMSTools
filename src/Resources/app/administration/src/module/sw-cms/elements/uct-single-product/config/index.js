@@ -2,7 +2,7 @@ import template from './sw-cms-el-config-uct-single-product.html.twig';
 
 Shopware.Component.register('sw-cms-el-config-uct-single-product', {
     template,
-    mixins: [Shopware.Mixin.getByName('cms-element')],
+    mixins: [Shopware.Mixin.getByName('uct-intro-outro'), Shopware.Mixin.getByName('cms-element')],
     computed: {
         badge2DarkText: {
             get() { return this.element.config.badge2DarkText.value; },

@@ -1,4 +1,7 @@
 {% block element_image_text_quartet %}
+    {% if element.config.uctIntroText.value|default('') %}
+        {% include '@UltimateCmsTools/storefront/utilities/uct-surrounding-text.html.twig' with { position: 'intro' } %}
+    {% endif %}
     {% set config = element.fieldConfig.elements %}
     {% set media1Desktop = element.data ? element.data.get('media1Desktop') : null %}
     {% set media1Tablet = element.data ? element.data.get('media1Tablet') : null %}
@@ -71,4 +74,7 @@
             </div>
         </div>
     </div>
+    {% if element.config.uctOutroText.value|default('') %}
+        {% include '@UltimateCmsTools/storefront/utilities/uct-surrounding-text.html.twig' with { position: 'outro' } %}
+    {% endif %}
 {% endblock %}

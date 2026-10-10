@@ -1,0 +1,11 @@
+{# CMS slot config is resolved in the current sales-channel language by Shopware. #}
+{% set uctField = position == 'intro' ? 'uctIntroText' : 'uctOutroText' %}
+{% set uctText = element.config[uctField].value|default('')|sw_sanitize %}
+{% set uctHasText = uctText|striptags|replace({'&nbsp;': '', '&#160;': '', ' ': ''})|trim or '<img' in uctText %}
+{% if uctHasText %}
+    {% set uctSpacing = config('UltimateCmsTools.config.blockTextSpacing') %}
+    {% if not (uctSpacing matches '/^[0-9]+$/') %}
+        {% set uctSpacing = 24 %}
+    {% endif %}
+    <div class="uct-surrounding-text uct-surrounding-text--{{ position }}" style="--uct-text-spacing: {{ min(uctSpacing, 1000) }}px;">{{ uctText|raw }}</div>
+{% endif %}

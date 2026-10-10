@@ -4,6 +4,7 @@ Shopware.Component.register('sw-cms-el-config-subcategory-grid', {
     template,
 
     mixins: [
+        Shopware.Mixin.getByName('uct-intro-outro'),
         Shopware.Mixin.getByName('cms-element')
     ],
 

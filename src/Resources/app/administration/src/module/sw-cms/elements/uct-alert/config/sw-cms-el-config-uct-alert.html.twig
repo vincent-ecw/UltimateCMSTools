@@ -1,6 +1,18 @@
 <div class="sw-cms-el-config-uct-alert">
+    <sw-tabs default-item="content">
+        <template #default="{ active }">
+            <sw-tabs-item name="content" :active-tab="active">{{ $t('sw-cms.elements.ultimateCmsTools.introOutro.content') }}</sw-tabs-item>
+            <sw-tabs-item name="intro-outro" :active-tab="active">{{ $t('sw-cms.elements.ultimateCmsTools.introOutro.tab') }}</sw-tabs-item>
+        </template>
+        <template #content="{ active }">
+            <div v-if="active === 'content'">
     <mt-switch v-model="showIcon" :label="$tc('sw-cms.elements.ultimateCmsTools.alert.showIcon')" />
     <sw-text-editor v-model:value="message" :button-config="messageButtons" :label="$tc('sw-cms.elements.ultimateCmsTools.alert.message')" />
     <sw-single-select v-model:value="type" :options="typeOptions" :label="$tc('sw-cms.elements.ultimateCmsTools.alert.type')" />
     <mt-switch v-model="dismissible" :label="$tc('sw-cms.elements.ultimateCmsTools.alert.dismissible')" />
+
+            </div>
+            <div v-if="active === 'intro-outro'"><uct-cms-intro-outro v-model:intro="uctIntroText" v-model:outro="uctOutroText" /></div>
+        </template>
+    </sw-tabs>
 </div>

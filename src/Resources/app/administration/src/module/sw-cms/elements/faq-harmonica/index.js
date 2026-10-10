@@ -9,6 +9,8 @@ Shopware.Service('cmsService').registerCmsElement({
     configComponent: 'sw-cms-el-config-faq-harmonica',
     previewComponent: 'sw-cms-el-preview-faq-harmonica',
     defaultConfig: {
+        uctIntroText: { source: 'static', value: '' },
+        uctOutroText: { source: 'static', value: '' },
         theme: {
             source: 'static',
             value: 'clean'

@@ -9,6 +9,8 @@ Shopware.Service('cmsService').registerCmsElement({
     configComponent: 'sw-cms-el-config-magazine-quote',
     previewComponent: 'sw-cms-el-preview-magazine-quote',
     defaultConfig: {
+        uctIntroText: { source: 'static', value: '' },
+        uctOutroText: { source: 'static', value: '' },
         quote: {
             source: 'static',
             value: ''

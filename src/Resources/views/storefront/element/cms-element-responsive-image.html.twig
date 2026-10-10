@@ -1,4 +1,7 @@
 {% block element_responsive_image %}
+    {% if element.config.uctIntroText.value|default('') %}
+        {% include '@UltimateCmsTools/storefront/utilities/uct-surrounding-text.html.twig' with { position: 'intro' } %}
+    {% endif %}
 	{% set config = element.fieldConfig.elements %}
 	{% set mediaDesktop = element.data ? element.data.get('mediaDesktop') : null %}
 	{% set mediaTablet = element.data ? element.data.get('mediaTablet') : null %}
@@ -32,4 +35,7 @@
 			{% endif %}
 		{% endif %}
 	</div>
+    {% if element.config.uctOutroText.value|default('') %}
+        {% include '@UltimateCmsTools/storefront/utilities/uct-surrounding-text.html.twig' with { position: 'outro' } %}
+    {% endif %}
 {% endblock %}

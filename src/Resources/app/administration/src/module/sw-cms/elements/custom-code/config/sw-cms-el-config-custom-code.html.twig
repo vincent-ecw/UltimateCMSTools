@@ -1,4 +1,11 @@
 <div class="sw-cms-el-config-custom-code">
+    <sw-tabs default-item="content">
+        <template #default="{ active }">
+            <sw-tabs-item name="content" :active-tab="active">{{ $t('sw-cms.elements.ultimateCmsTools.introOutro.content') }}</sw-tabs-item>
+            <sw-tabs-item name="intro-outro" :active-tab="active">{{ $t('sw-cms.elements.ultimateCmsTools.introOutro.tab') }}</sw-tabs-item>
+        </template>
+        <template #content="{ active }">
+            <div v-if="active === 'content'">
     <div class="sw-cms-el-config-custom-code__css">
         <sw-code-editor
             v-model:value="cssCode"
@@ -17,4 +24,9 @@
             :sanitize-input="false">
         </sw-code-editor>
     </div>
+
+            </div>
+            <div v-if="active === 'intro-outro'"><uct-cms-intro-outro v-model:intro="uctIntroText" v-model:outro="uctOutroText" /></div>
+        </template>
+    </sw-tabs>
 </div>

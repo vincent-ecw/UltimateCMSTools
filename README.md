@@ -641,3 +641,15 @@ Button and Icon List share a bundled catalog of 122 regular/solid Meteor SVG ico
 Icons inherit their surrounding color and are decorative to assistive technology; button/list text supplies the accessible name. The existing Icon List **Custom CSS class** option remains available for compatibility, but requires your theme to supply that external icon font/CSS. Use bundled selections for reliable rendering.
 
 The single source is `src/Resources/app/shared/icons/catalog.json`; attribution, the MIT license and maintenance notes are stored beside it. Add reviewed SVG assets centrally so both previews and storefronts receive the same icons.
+
+### Translatable intro and outro
+
+Open an Ultimate CMS Tools element's settings popup in Shopping Experiences. The **Intro / Outro** tab contains two WYSIWYG editors, separate from the content and settings tabs. Elements without existing tabs now have **Content** and **Intro / Outro** tabs. Existing specialised tabs, such as the Image Text Quartet row tabs, remain available.
+
+Both fields use translated CMS slot configuration, like other element content. Switch the layout editor language to enter a translation. Shopware's normal language inheritance applies until a translation is saved. No intro/outro fields are stored on the block or shown in the block sidebar.
+
+In the storefront, sanitized intro text appears before the element content and outro text after it. Empty text, including empty editor paragraphs, adds no markup or spacing. Existing elements without these fields retain their output.
+
+Configure **Distance between intro/outro and content (px)** in the plugin settings to use consistent spacing throughout the webshop. The default is **24 px**, with a range of **0–1000 px**; zero removes the gap. Sales-channel configuration overrides follow Shopware's standard behavior.
+
+The Shopping Experiences layout preview also shows **Intro → Element → Outro**, updating as the translated text changes. Preview spacing uses the global plugin configuration (24 px if unset); storefront pages use the configured value for their sales channel. Empty editors add no preview markup or gap. After entering text, close the popup with **Done** and save the layout to publish it on pages using that layout.

@@ -4,12 +4,16 @@
             <sw-tabs-item name="content" :active-tab="active">
                 {{ $tc('sw-cms.elements.ultimateCmsTools.button.config.tabs.content') }}
             </sw-tabs-item>
+            <sw-tabs-item name="intro-outro" :active-tab="active">
+                {{ $t('sw-cms.elements.ultimateCmsTools.introOutro.tab') }}
+            </sw-tabs-item>
             <sw-tabs-item name="styling" :active-tab="active">
                 {{ $tc('sw-cms.elements.ultimateCmsTools.button.config.tabs.styling') }}
             </sw-tabs-item>
         </template>
 
         <template #content="{ active }">
+            <div v-if="active === 'intro-outro'"><uct-cms-intro-outro v-model:intro="uctIntroText" v-model:outro="uctOutroText" /></div>
             <div v-if="active === 'content'" class="sw-cms-el-config-button__tab-content">
                 <sw-text-field
                     v-model="title"

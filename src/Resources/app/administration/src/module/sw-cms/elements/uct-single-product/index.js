@@ -9,6 +9,8 @@ Shopware.Service('cmsService').registerCmsElement({
     configComponent: 'sw-cms-el-config-uct-single-product',
     previewComponent: 'sw-cms-el-preview-uct-single-product',
     defaultConfig: {
+        uctIntroText: { source: 'static', value: '' },
+        uctOutroText: { source: 'static', value: '' },
         badge1DarkText: { source: 'static', value: false },
         badge1Text: { source: 'static', value: '' },
         badge1Color: { source: 'static', value: 'primary' },

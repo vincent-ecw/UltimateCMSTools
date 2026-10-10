@@ -9,6 +9,8 @@ Shopware.Service('cmsService').registerCmsElement({
     configComponent: 'sw-cms-el-config-custom-code',
     previewComponent: 'sw-cms-el-preview-custom-code',
     defaultConfig: {
+        uctIntroText: { source: 'static', value: '' },
+        uctOutroText: { source: 'static', value: '' },
         cssCode: {
             source: 'static',
             value: '',

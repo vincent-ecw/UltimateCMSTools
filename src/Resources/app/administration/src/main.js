@@ -1,3 +1,4 @@
+import './component/uct-cms-intro-outro';
 import './component/uct-icon';
 import './module/sw-cms/elements/uct-single-product';
 import './module/sw-cms/blocks/ultimate-cms-tools/uct-single-product';
@@ -52,3 +53,6 @@ import nlNL from './module/sw-cms/snippet/nl-NL.json';
 Shopware.Locale.register('de-DE', deDE);
 Shopware.Locale.register('en-GB', enGB);
 Shopware.Locale.register('nl-NL', nlNL);
+
+import './component/uct-surrounding-text-preview';
+import './module/sw-cms/component/sw-cms-slot';

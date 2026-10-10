@@ -1,4 +1,7 @@
 {% block element_button %}
+    {% if element.config.uctIntroText.value|default('') %}
+        {% include '@UltimateCmsTools/storefront/utilities/uct-surrounding-text.html.twig' with { position: 'intro' } %}
+    {% endif %}
     {% set config = element.config %}
     {% set title = config.title.value|default('Click here') %}
     {% set variant = config.variant.value|default('primary') %}
@@ -35,4 +38,7 @@
             {% endif %}
         </a>
     </div>
+    {% if element.config.uctOutroText.value|default('') %}
+        {% include '@UltimateCmsTools/storefront/utilities/uct-surrounding-text.html.twig' with { position: 'outro' } %}
+    {% endif %}
 {% endblock %}

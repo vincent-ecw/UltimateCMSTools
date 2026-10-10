@@ -1,0 +1,9 @@
+.uct-surrounding-text-preview {
+    display: flow-root;
+    flex: 0 0 auto;
+    width: 100%;
+    > :first-child { margin-top: 0; }
+    > :last-child { margin-bottom: 0; }
+    &--intro { margin-bottom: var(--uct-preview-text-spacing, 24px); }
+    &--outro { margin-top: var(--uct-preview-text-spacing, 24px); }
+}

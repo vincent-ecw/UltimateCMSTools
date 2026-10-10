@@ -5,12 +5,16 @@
             <sw-tabs-item name="content" :activeTab="active">
                 {{ $tc('sw-cms.elements.ultimateCmsTools.commonSlider.config.tabs.content') }}
             </sw-tabs-item>
+            <sw-tabs-item name="intro-outro" :active-tab="active">
+                {{ $t('sw-cms.elements.ultimateCmsTools.introOutro.tab') }}
+            </sw-tabs-item>
             <sw-tabs-item name="settings" :activeTab="active">
                 {{ $tc('sw-cms.elements.ultimateCmsTools.commonSlider.config.tabs.settings') }}
             </sw-tabs-item>
         </template>
 
         <template #content="{ active }">
+            <div v-if="active === 'intro-outro'"><uct-cms-intro-outro v-model:intro="uctIntroText" v-model:outro="uctOutroText" /></div>
             <div v-if="active === 'content'" class="sw-cms-el-config-common-slider__tab-content">
                 
                 <div class="sw-cms-el-config-common-slider__slide-list">

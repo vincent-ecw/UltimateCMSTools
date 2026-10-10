@@ -1,4 +1,7 @@
 {% block element_common_slider %}
+    {% if element.config.uctIntroText.value|default('') %}
+        {% include '@UltimateCmsTools/storefront/utilities/uct-surrounding-text.html.twig' with { position: 'intro' } %}
+    {% endif %}
     {% set config = element.fieldConfig.elements %}
     {% set sliderItems = element.data ? element.data.get('sliderItems') : config.sliderItems.value %}
     {% set effect = config.effect.value|default('slide') %}
@@ -85,4 +88,7 @@
             </div>
         {% endif %}
     </div>
+    {% if element.config.uctOutroText.value|default('') %}
+        {% include '@UltimateCmsTools/storefront/utilities/uct-surrounding-text.html.twig' with { position: 'outro' } %}
+    {% endif %}
 {% endblock %}

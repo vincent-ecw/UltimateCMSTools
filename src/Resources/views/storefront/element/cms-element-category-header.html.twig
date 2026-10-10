@@ -1,4 +1,7 @@
 {% block element_category_header %}
+    {% if element.config.uctIntroText.value|default('') %}
+        {% include '@UltimateCmsTools/storefront/utilities/uct-surrounding-text.html.twig' with { position: 'intro' } %}
+    {% endif %}
     {% set config = element.config %}
     {% set rawDesign = config.design.value|default('design-1') %}
     {% set designClass = rawDesign starts with 'design-' ? rawDesign : 'design-' ~ rawDesign %}
@@ -187,4 +190,7 @@
             </div>
         {% endif %}
     </div>
+    {% if element.config.uctOutroText.value|default('') %}
+        {% include '@UltimateCmsTools/storefront/utilities/uct-surrounding-text.html.twig' with { position: 'outro' } %}
+    {% endif %}
 {% endblock %}

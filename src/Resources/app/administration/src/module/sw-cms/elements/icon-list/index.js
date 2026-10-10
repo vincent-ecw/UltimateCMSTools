@@ -9,6 +9,8 @@ Shopware.Service('cmsService').registerCmsElement({
     configComponent: 'sw-cms-el-config-icon-list',
     previewComponent: 'sw-cms-el-preview-icon-list',
     defaultConfig: {
+        uctIntroText: { source: 'static', value: '' },
+        uctOutroText: { source: 'static', value: '' },
         layout: {
             source: 'static',
             value: 'horizontal',

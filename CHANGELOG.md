@@ -5,6 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.52] - 2026-10-10
+
+### Added
+- Live translated intro and outro rich text above and below all Ultimate CMS Tools elements in the Shopping Experiences layout preview.
+- Preview spacing loaded from the shared plugin configuration, including zero spacing and empty-content suppression.
+
+### Fixed
+- Keep rich text sanitized in the administration preview as well as on storefront pages.
+
+## [1.2.51] - 2026-10-10
+
+### Added
+- A separate Intro / Outro tab in all 22 element settings popups, alongside the existing content and settings tabs.
+- Two WYSIWYG fields stored in translated CMS slot configuration, supporting Shopware language switching and inheritance.
+- Sanitized intro/outro storefront output with no markup or gap for empty editor content.
+- Shared plugin spacing in pixels (default 24, range 0–1000).
+
 ## [1.2.50] - 2026-10-06
 
 ### Added

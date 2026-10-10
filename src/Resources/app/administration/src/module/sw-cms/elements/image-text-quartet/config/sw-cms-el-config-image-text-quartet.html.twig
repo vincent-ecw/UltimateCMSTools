@@ -4,12 +4,16 @@
             <sw-tabs-item name="row1" :activeTab="active">
                 {{ $tc('sw-cms.elements.ultimateCmsTools.imageTextQuartet.config.tabs.row1') }}
             </sw-tabs-item>
+            <sw-tabs-item name="intro-outro" :active-tab="active">
+                {{ $t('sw-cms.elements.ultimateCmsTools.introOutro.tab') }}
+            </sw-tabs-item>
             <sw-tabs-item name="row2" :activeTab="active">
                 {{ $tc('sw-cms.elements.ultimateCmsTools.imageTextQuartet.config.tabs.row2') }}
             </sw-tabs-item>
         </template>
 
         <template #content="{ active }">
+            <div v-if="active === 'intro-outro'"><uct-cms-intro-outro v-model:intro="uctIntroText" v-model:outro="uctOutroText" /></div>
             <!-- Row 1 Tab -->
             <div v-if="active === 'row1'" class="sw-cms-el-config-image-text-quartet__tab-content">
                 <div class="sw-cms-el-config-image-text-quartet__media-group">

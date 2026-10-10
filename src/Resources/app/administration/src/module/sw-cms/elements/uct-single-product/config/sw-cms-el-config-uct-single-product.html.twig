@@ -1,4 +1,11 @@
 <div class="sw-cms-el-config-uct-single-product">
+    <sw-tabs default-item="content">
+        <template #default="{ active }">
+            <sw-tabs-item name="content" :active-tab="active">{{ $t('sw-cms.elements.ultimateCmsTools.introOutro.content') }}</sw-tabs-item>
+            <sw-tabs-item name="intro-outro" :active-tab="active">{{ $t('sw-cms.elements.ultimateCmsTools.introOutro.tab') }}</sw-tabs-item>
+        </template>
+        <template #content="{ active }">
+            <div v-if="active === 'content'">
     <sw-entity-single-select
         v-model:value="productId"
         entity="product"
@@ -23,4 +30,9 @@
     <sw-text-field v-model="badge2Text" :label="$tc('sw-cms.elements.ultimateCmsTools.singleProduct.badge2Text')" />
     <sw-single-select v-model:value="badge2Color" :options="badgeColorOptions" :label="$tc('sw-cms.elements.ultimateCmsTools.singleProduct.badge2Color')" />
     <mt-switch v-model="badge2DarkText" :label="$tc('sw-cms.elements.ultimateCmsTools.singleProduct.showDarkText')" />
+
+            </div>
+            <div v-if="active === 'intro-outro'"><uct-cms-intro-outro v-model:intro="uctIntroText" v-model:outro="uctOutroText" /></div>
+        </template>
+    </sw-tabs>
 </div>

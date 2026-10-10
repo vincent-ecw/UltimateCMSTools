@@ -8,6 +8,7 @@ Component.register('sw-cms-el-config-icon-list', {
     template,
 
     mixins: [
+        Shopware.Mixin.getByName('uct-intro-outro'),
         Mixin.getByName('cms-element'),
     ],
 

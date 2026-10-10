@@ -1,0 +1,7 @@
+.uct-surrounding-text {
+    display: flow-root;
+    > :first-child { margin-top: 0; }
+    > :last-child { margin-bottom: 0; }
+    &--intro { margin-bottom: var(--uct-text-spacing, 24px); }
+    &--outro { margin-top: var(--uct-text-spacing, 24px); }
+}

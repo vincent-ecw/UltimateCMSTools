@@ -9,6 +9,8 @@ Shopware.Service('cmsService').registerCmsElement({
     configComponent: 'sw-cms-el-config-custom-product-carousel',
     previewComponent: 'sw-cms-el-preview-custom-product-carousel',
     defaultConfig: {
+        uctIntroText: { source: 'static', value: '' },
+        uctOutroText: { source: 'static', value: '' },
         productSelectionType: {
             source: 'static',
             value: 'manual'

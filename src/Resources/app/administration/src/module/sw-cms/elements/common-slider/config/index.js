@@ -10,6 +10,7 @@ Component.register('sw-cms-el-config-common-slider', {
     inject: ['repositoryFactory'],
 
     mixins: [
+        Shopware.Mixin.getByName('uct-intro-outro'),
         Mixin.getByName('cms-element')
     ],
 

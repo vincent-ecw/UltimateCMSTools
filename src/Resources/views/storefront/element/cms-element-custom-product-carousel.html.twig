@@ -1,4 +1,7 @@
 {% block element_custom_product_carousel %}
+    {% if element.config.uctIntroText.value|default('') %}
+        {% include '@UltimateCmsTools/storefront/utilities/uct-surrounding-text.html.twig' with { position: 'intro' } %}
+    {% endif %}
     {% set config = element.fieldConfig.elements %}
     {% set products = element.data ? element.data.get('products') : null %}
     {% set navigationArrows = config.navigationArrows.value|default(true) %}
@@ -52,5 +55,8 @@
                 </div>
             {% endif %}
         </div>
+    {% endif %}
+    {% if element.config.uctOutroText.value|default('') %}
+        {% include '@UltimateCmsTools/storefront/utilities/uct-surrounding-text.html.twig' with { position: 'outro' } %}
     {% endif %}
 {% endblock %}

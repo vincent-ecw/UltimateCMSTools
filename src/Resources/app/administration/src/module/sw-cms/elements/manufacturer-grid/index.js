@@ -9,6 +9,8 @@ Shopware.Service('cmsService').registerCmsElement({
     configComponent: 'sw-cms-el-config-manufacturer-grid',
     previewComponent: 'sw-cms-el-preview-manufacturer-grid',
     defaultConfig: {
+        uctIntroText: { source: 'static', value: '' },
+        uctOutroText: { source: 'static', value: '' },
         sortBy: { source: 'static', value: 'alphabetical' },
         sorting: { source: 'static', value: 'ASC' },
         displayLogo: {

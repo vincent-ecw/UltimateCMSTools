@@ -1,4 +1,7 @@
 {% block element_subcategory_carousel %}
+    {% if element.config.uctIntroText.value|default('') %}
+        {% include '@UltimateCmsTools/storefront/utilities/uct-surrounding-text.html.twig' with { position: 'intro' } %}
+    {% endif %}
     {% set config = element.fieldConfig.elements %}
     {% set categories = element.data.categories %}
     {% set displayImage = config.displayImage.value ?? true %}
@@ -84,5 +87,8 @@
                 </div>
             {% endif %}
         </div>
+    {% endif %}
+    {% if element.config.uctOutroText.value|default('') %}
+        {% include '@UltimateCmsTools/storefront/utilities/uct-surrounding-text.html.twig' with { position: 'outro' } %}
     {% endif %}
 {% endblock %}

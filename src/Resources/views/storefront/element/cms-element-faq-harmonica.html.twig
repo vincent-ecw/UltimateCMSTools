@@ -1,4 +1,7 @@
 {% block element_faq_harmonica %}
+    {% if element.config.uctIntroText.value|default('') %}
+        {% include '@UltimateCmsTools/storefront/utilities/uct-surrounding-text.html.twig' with { position: 'intro' } %}
+    {% endif %}
     {% set faqs = element.config.faqs.value %}
     {% set theme = element.config.theme.value|default('clean') %}
     {% set accordionId = 'faqAccordion-' ~ element.id %}
@@ -100,4 +103,7 @@
             {% endif %}
         {% endif %}
     </div>
+    {% if element.config.uctOutroText.value|default('') %}
+        {% include '@UltimateCmsTools/storefront/utilities/uct-surrounding-text.html.twig' with { position: 'outro' } %}
+    {% endif %}
 {% endblock %}

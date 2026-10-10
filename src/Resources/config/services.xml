@@ -5,6 +5,21 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
+        <service id="VincentBourgonje\UltimateCmsTools\Subscriber\CustomAssetsAccessSubscriber">
+            <argument type="service" id="request_stack" />
+            <argument type="service" id="system_config.repository" />
+            <tag name="kernel.event_subscriber" />
+        </service>
+        <service id="VincentBourgonje\UltimateCmsTools\Core\CustomAssetsService">
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService" />
+            <argument type="service" id="sales_channel.repository" />
+            <argument type="service" id="shopware.filesystem.public" />
+            <argument type="service" id="Shopware\Storefront\Theme\ThemeService" />
+        </service>
+        <service id="VincentBourgonje\UltimateCmsTools\Controller\CustomAssetsController" public="true">
+            <argument type="service" id="VincentBourgonje\UltimateCmsTools\Core\CustomAssetsService" />
+            <tag name="controller.service_arguments" />
+        </service>
         <service id="VincentBourgonje\UltimateCmsTools\Core\MediaImageSourceBuilder" />
         <service id="VincentBourgonje\UltimateCmsTools\Twig\MediaImageExtension">
             <argument type="service" id="VincentBourgonje\UltimateCmsTools\Core\MediaImageSourceBuilder" />

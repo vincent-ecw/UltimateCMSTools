@@ -820,5 +820,16 @@
                 }
             }
         }
+    },
+    "uct-custom-assets": {
+        "title": "Custom CSS + JS",
+        "save": "Save + compile",
+        "source": "Load code from sales channel",
+        "targets": "Apply to sales channels",
+        "css": "CSS",
+        "js": "JavaScript",
+        "help": "Load a sales channel, edit code and select target channels. Saving replaces both fields on every selected channel. Use CSS and JavaScript without HTML tags. CSS loads after theme styles; normal specificity still applies. Empty fields remove published code.",
+        "success": "Custom code saved and themes compiled.",
+        "error": "Could not load or publish code. Check themes, permissions and server logs."
     }
 }

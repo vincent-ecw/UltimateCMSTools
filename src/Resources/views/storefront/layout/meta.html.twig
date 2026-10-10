@@ -1,0 +1,17 @@
+{% sw_extends '@Storefront/storefront/layout/meta.html.twig' %}
+
+{% block layout_head_stylesheet %}
+    {{ parent() }}
+    {% set customAssets = config('UltimateCmsTools.customAssets') %}
+    {% if customAssets.cssPath ?? false %}
+        <link rel="stylesheet" href="{{ asset(customAssets.cssPath, 'asset') }}">
+    {% endif %}
+{% endblock %}
+
+{% block layout_head_javascript_hmr_mode %}
+    {{ parent() }}
+    {% set customAssets = config('UltimateCmsTools.customAssets') %}
+    {% if customAssets.jsPath ?? false %}
+        <script src="{{ asset(customAssets.jsPath, 'asset') }}" defer></script>
+    {% endif %}
+{% endblock %}

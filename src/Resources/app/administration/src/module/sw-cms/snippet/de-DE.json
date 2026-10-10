@@ -820,5 +820,16 @@
                 }
             }
         }
+    },
+    "uct-custom-assets": {
+        "title": "Custom CSS + JS",
+        "save": "Speichern + kompilieren",
+        "source": "Code vom Verkaufskanal laden",
+        "targets": "Auf Verkaufskanäle anwenden",
+        "css": "CSS",
+        "js": "JavaScript",
+        "help": "Verkaufskanal laden, Code bearbeiten und Zielkanäle auswählen. Speichern ersetzt beide Felder in allen ausgewählten Kanälen. CSS und JavaScript ohne HTML-Tags eingeben. CSS wird nach dem Theme geladen; die Spezifität gilt weiterhin. Leere Felder entfernen den Code.",
+        "success": "Code gespeichert und Themes kompiliert.",
+        "error": "Code konnte nicht geladen oder veröffentlicht werden. Themes, Rechte und Serverprotokolle prüfen."
     }
 }

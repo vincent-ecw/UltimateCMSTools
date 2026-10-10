@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.58] - 2026-10-10
+
+### Security
+- Restrict Custom CSS + JS navigation, screen and API endpoints to administrator users. Delegated theme/configuration permissions and integrations no longer grant access.
+- Protect the stored custom-code configuration against writes through generic configuration and DAL APIs by non-administrators.
+
+## [1.2.57] - 2026-10-10
+
+### Added
+- Content → Custom CSS + JS with syntax highlighting and publication to multiple storefront sales channels.
+- Save + compile with channel-specific content-hashed assets, theme compilation and backend permission checks. CSS loads after theme styles.
+
 ## [1.2.56] - 2026-10-10
 
 ### Added

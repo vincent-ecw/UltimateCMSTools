@@ -1,0 +1,17 @@
+<sw-page v-if="acl.isAdmin()">
+    <template #smart-bar-header><h2>{{ $tc('uct-custom-assets.title') }}</h2></template>
+    <template #smart-bar-actions>
+        <sw-button variant="primary" :disabled="!canSave" :is-loading="busy" @click="save">{{ $tc('uct-custom-assets.save') }}</sw-button>
+    </template>
+    <template #content>
+        <sw-card-view>
+            <sw-card :title="$tc('uct-custom-assets.title')" :is-loading="busy">
+                <p>{{ $tc('uct-custom-assets.help') }}</p>
+                <sw-single-select v-model:value="source" :options="options" :label="$tc('uct-custom-assets.source')" :disabled="busy" @update:value="load" />
+                <sw-multi-select v-model:value="selected" :options="options" :label="$tc('uct-custom-assets.targets')" :disabled="busy || !loaded" />
+                <sw-code-editor v-model:value="css" mode="text" :label="$tc('uct-custom-assets.css')" :disabled="busy || !loaded" :editor-config="{ mode: 'ace/mode/css', minLines: 18, maxLines: 35, useWorker: false, tabSize: 4 }" />
+                <sw-code-editor v-model:value="js" mode="text" :label="$tc('uct-custom-assets.js')" :disabled="busy || !loaded" :editor-config="{ mode: 'ace/mode/javascript', minLines: 18, maxLines: 35, useWorker: false, tabSize: 4 }" />
+            </sw-card>
+        </sw-card-view>
+    </template>
+</sw-page>

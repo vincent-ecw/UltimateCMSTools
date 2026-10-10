@@ -814,5 +814,16 @@
                 }
             }
         }
+    },
+    "uct-custom-assets": {
+        "title": "Custom CSS + JS",
+        "save": "Opslaan + compileren",
+        "source": "Code laden van verkoopkanaal",
+        "targets": "Toepassen op verkoopkanalen",
+        "css": "CSS",
+        "js": "JavaScript",
+        "help": "Laad een verkoopkanaal, bewerk code en kies doelkanalen. Opslaan vervangt beide velden in alle geselecteerde kanalen. Gebruik CSS en JavaScript zonder HTML-tags. CSS wordt na het thema geladen; specificiteit blijft gelden. Lege velden verwijderen de code.",
+        "success": "Code opgeslagen en thema’s gecompileerd.",
+        "error": "Code laden of publiceren mislukt. Controleer thema’s, rechten en serverlogs."
     }
 }

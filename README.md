@@ -675,3 +675,9 @@ See [Image rendering audit](IMAGE_AUDIT.md) for the element inventory, theme min
 ### Accordion icons and shared themes
 
 FAQ Harmonica and Harmonica List support uploading an icon, selecting from the shared icon catalog, a theme-provided CSS icon class, or no icon. Existing saved icons remain supported. Removing an upload clears the icon fallback. Both elements use `_accordion-shared.scss` as the single definition for all five storefront themes.
+
+## Sales-channel Custom CSS + JS
+
+Open **Content → Custom CSS + JS**. Load a storefront channel, edit CSS and JavaScript in the syntax-highlighted editors, select target channels, and click **Save + compile**. This replaces both fields for every selected channel and compiles their assigned themes. Empty fields remove the corresponding asset. Channels retain independent code even when sharing a theme.
+
+Content-hashed external assets use Shopware’s public filesystem. CSS loads after theme styles: equal-specificity rules win, while inline styles, higher specificity and important declarations follow normal cascade rules. JavaScript loads with defer after theme scripts. Use plain CSS and classic JavaScript without HTML tags; SCSS and module imports are not compiled. Old hashed assets remain available to cached pages. Access is restricted to users with Shopware’s Administrator flag enabled, because JavaScript runs for storefront visitors. Delegated theme/configuration permissions, a role merely named Administrator, and API integrations do not grant access. This restriction is enforced for the screen, its API endpoints, and custom-code writes through the generic system configuration and DAL APIs. Fields are limited to 1 MB each, with up to 100 target channels.

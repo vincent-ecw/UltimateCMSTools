@@ -1,0 +1,7 @@
+{
+    "name": "ultimate-cms-tools-administration",
+    "private": true,
+    "dependencies": {
+        "ace-builds": "1.43.2"
+    }
+}

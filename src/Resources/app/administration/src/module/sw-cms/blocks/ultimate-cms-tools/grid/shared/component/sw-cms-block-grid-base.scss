@@ -176,26 +176,32 @@
         .uct-grid-add-element {
             display: flex;
             justify-content: center;
-            padding: 6px 0;
+            align-items: center;
+            padding: 10px 0;
+            margin-top: auto;
+            position: relative;
+            z-index: 25;
 
             &__btn {
                 display: inline-flex;
                 align-items: center;
                 gap: 6px;
-                padding: 5px 12px;
-                background: #f7fafc;
-                border: 1px dashed #b2c2d4;
+                padding: 6px 14px;
+                background: #f0f7ff;
+                border: 1px dashed #189eff;
                 border-radius: 4px;
-                color: #52667a;
+                color: #189eff;
                 font-size: 12px;
-                font-weight: 500;
+                font-weight: 600;
                 cursor: pointer;
+                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
                 transition: all 0.15s ease-in-out;
 
                 &:hover {
-                    background: #ebf5ff;
+                    background: #189eff;
                     border-color: #189eff;
-                    color: #189eff;
+                    color: #ffffff;
+                    box-shadow: 0 2px 6px rgba(24, 158, 255, 0.35);
                 }
             }
         }

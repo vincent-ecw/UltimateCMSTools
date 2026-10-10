@@ -88,10 +88,9 @@ export default {
 
     methods: {
         onSelectColumn(colIndex) {
-            if (!this.block.customFields) {
-                this.block.customFields = {};
-            }
-            this.block.customFields.uct_selected_column = colIndex;
+            const customFields = Shopware.Utils.object.cloneDeep(this.block.customFields || {});
+            customFields.uct_selected_column = colIndex;
+            this.block.customFields = customFields;
 
             // Also set this block as active in cmsPage store so sidebar opens block settings
             const cmsPageStore = Shopware.Store.get('cmsPage');
@@ -176,13 +175,33 @@ export default {
             newSlot.blockId = this.block.id;
             newSlot.slot = slotName;
             newSlot.type = 'text';
-            newSlot.config = {};
+            newSlot.config = {
+                content: {
+                    source: 'static',
+                    value: `
+                        <h2>Lorem Ipsum dolor sit amet</h2>
+                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
+                        sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+                        sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+                        Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+                    `.trim(),
+                },
+                verticalAlign: {
+                    source: 'static',
+                    value: null,
+                },
+            };
             newSlot.data = {};
+            newSlot._isDirty = true;
 
             if (typeof this.block.slots.add === 'function') {
                 this.block.slots.add(newSlot);
             } else {
                 this.block.slots.push(newSlot);
+            }
+
+            if ('_isDirty' in this.block) {
+                this.block._isDirty = true;
             }
 
             this.updateColumnSlotOrder(colIndex);
@@ -203,7 +222,7 @@ export default {
             currentSlots[targetIndex] = slotA;
 
             const newOrder = currentSlots.map((s) => s.slot);
-            this.ensureColumnConfig(colIndex).slot_order = newOrder;
+            this.setColumnSlotOrder(colIndex, newOrder);
         },
 
         removeSlot(colIndex, slotItem) {
@@ -216,29 +235,35 @@ export default {
                 }
             }
 
-            const config = this.getColumnConfig(colIndex);
-            if (config.slot_order) {
-                config.slot_order = config.slot_order.filter((name) => name !== slotItem.slot);
+            if ('_isDirty' in this.block) {
+                this.block._isDirty = true;
             }
+
+            const currentSlots = this.getColumnSlots(colIndex);
+            const newOrder = currentSlots.filter((s) => s.id !== slotItem.id).map((s) => s.slot);
+            this.setColumnSlotOrder(colIndex, newOrder);
         },
 
-        ensureColumnConfig(colIndex) {
-            if (!this.block.customFields) {
-                this.block.customFields = {};
-            }
-            if (!this.block.customFields.uct_columns) {
-                this.block.customFields.uct_columns = {};
+        setColumnSlotOrder(colIndex, order) {
+            const customFields = Shopware.Utils.object.cloneDeep(this.block.customFields || {});
+            if (!customFields.uct_columns || typeof customFields.uct_columns !== 'object' || Array.isArray(customFields.uct_columns)) {
+                customFields.uct_columns = {};
             }
             const key = 'col' + colIndex;
-            if (!this.block.customFields.uct_columns[key]) {
-                this.block.customFields.uct_columns[key] = {};
+            if (!customFields.uct_columns[key] || typeof customFields.uct_columns[key] !== 'object' || Array.isArray(customFields.uct_columns[key])) {
+                customFields.uct_columns[key] = {};
             }
-            return this.block.customFields.uct_columns[key];
+
+            customFields.uct_columns[key].slot_order = order;
+            this.block.customFields = customFields;
+            if ('_isDirty' in this.block) {
+                this.block._isDirty = true;
+            }
         },
 
         updateColumnSlotOrder(colIndex) {
             const currentSlots = this.getColumnSlots(colIndex);
-            this.ensureColumnConfig(colIndex).slot_order = currentSlots.map((s) => s.slot);
+            this.setColumnSlotOrder(colIndex, currentSlots.map((s) => s.slot));
         },
     },
 };

@@ -110,7 +110,9 @@ Shopware.Component.register('uct-cms-block-columns-config', {
             },
             set(index) {
                 this.initCustomFields();
-                this.block.customFields.uct_selected_column = index;
+                const customFields = Shopware.Utils.object.cloneDeep(this.block.customFields || {});
+                customFields.uct_selected_column = index;
+                this.block.customFields = customFields;
                 this.loadColumnMedia(index);
             },
         },
@@ -199,29 +201,41 @@ Shopware.Component.register('uct-cms-block-columns-config', {
 
     methods: {
         initCustomFields() {
-            if (!this.block.customFields) {
+            if (!this.block.customFields || typeof this.block.customFields !== 'object' || Array.isArray(this.block.customFields)) {
                 this.block.customFields = {};
             }
-            if (!this.block.customFields.uct_columns) {
-                this.block.customFields.uct_columns = {};
+            if (!this.block.customFields.uct_columns || typeof this.block.customFields.uct_columns !== 'object' || Array.isArray(this.block.customFields.uct_columns)) {
+                const currentFields = Shopware.Utils.object.cloneDeep(this.block.customFields);
+                currentFields.uct_columns = {};
+                this.block.customFields = currentFields;
             }
             if (typeof this.block.customFields.uct_selected_column !== 'number') {
-                this.block.customFields.uct_selected_column = 1;
+                const currentFields = Shopware.Utils.object.cloneDeep(this.block.customFields);
+                currentFields.uct_selected_column = 1;
+                this.block.customFields = currentFields;
             }
         },
 
         setColumnProp(prop, value) {
             this.initCustomFields();
-            const key = 'col' + this.activeColumn;
-            if (!this.block.customFields.uct_columns[key]) {
-                this.block.customFields.uct_columns[key] = {};
+
+            const customFields = Shopware.Utils.object.cloneDeep(this.block.customFields || {});
+            if (!customFields.uct_columns || typeof customFields.uct_columns !== 'object' || Array.isArray(customFields.uct_columns)) {
+                customFields.uct_columns = {};
             }
 
-            // Create new object reference to ensure Vue 3 reactivity
-            this.block.customFields.uct_columns[key] = {
-                ...this.block.customFields.uct_columns[key],
-                [prop]: value,
-            };
+            const key = 'col' + this.activeColumn;
+            if (!customFields.uct_columns[key] || typeof customFields.uct_columns[key] !== 'object' || Array.isArray(customFields.uct_columns[key])) {
+                customFields.uct_columns[key] = {};
+            }
+
+            customFields.uct_columns[key][prop] = value;
+
+            // Reassign the root customFields on this.block to trigger Shopware DAL Entity proxy setter & _isDirty flag
+            this.block.customFields = customFields;
+            if ('_isDirty' in this.block) {
+                this.block._isDirty = true;
+            }
         },
 
         async loadColumnMedia(colIndex) {

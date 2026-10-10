@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.60] - 2026-10-10
+
+### Fixed
+- Fixed CMS grid column options persistence: column settings (padding, background color, image, CSS class) are now properly marked dirty on the Shopware DAL entity and persisted upon saving the page.
+- Fixed "+ Add element" stacking button visibility and stacking UX: styled the add button with proper z-index and spacing at the base of every column, ensuring items can be smoothly stacked and ordered vertically.
+- Initialized default text config and dirty state on newly added stacked column slots.
+
 ## [1.2.59] - 2026-10-10
 
 ### Added

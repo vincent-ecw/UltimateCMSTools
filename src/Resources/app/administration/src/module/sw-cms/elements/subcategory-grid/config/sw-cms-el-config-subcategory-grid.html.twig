@@ -10,7 +10,13 @@
         {{ $tc('sw-cms.elements.ultimateCmsTools.subcategoryGrid.configInfo') }}
     </sw-alert>
 
-    <sw-single-select
+    <sw-number-field
+                    v-model="descriptionLines"
+                    :label="$tc('sw-cms.elements.ultimateCmsTools.descriptionLines.label')"
+                    :helpText="$tc('sw-cms.elements.ultimateCmsTools.descriptionLines.help')"
+                    :min="1" :max="20" :step="1">
+                </sw-number-field>
+                <sw-single-select
         v-model:value="theme"
         :label="$tc('sw-cms.elements.ultimateCmsTools.subcategoryThemes.label')"
         :helpText="$tc('sw-cms.elements.ultimateCmsTools.subcategoryThemes.help')"

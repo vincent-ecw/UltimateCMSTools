@@ -706,6 +706,10 @@
                     "intro": "Einleitungstext",
                     "outro": "Abschlusstext",
                     "content": "Inhalt"
+                },
+                "descriptionLines": {
+                    "label": "Beschreibungszeilen",
+                    "help": "1–20 Zeilen (Standard: 3). Jede Kachel reserviert denselben Platz. Gilt für Themes mit Beschreibungen."
                 }
             }
         },

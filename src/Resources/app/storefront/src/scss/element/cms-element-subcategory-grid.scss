@@ -4,6 +4,7 @@
 
     .subcategory-grid-container {
         display: grid;
+        grid-auto-rows: 1fr;
         grid-template-columns: repeat(1, minmax(0, 1fr));
         gap: 20px;
         padding: 10px 0 20px;
@@ -36,7 +37,8 @@
     .subcategory-card-image-wrapper {
         position: relative;
         width: 100%;
-        padding-top: 75%; /* 4:3 Aspect Ratio */
+        aspect-ratio: 4 / 3;
+        flex-shrink: 0;
         background: var(--ecw-mapped-color-table-header_back, var(--bs-tertiary-bg, #f8f9fa));
         overflow: hidden;
     }

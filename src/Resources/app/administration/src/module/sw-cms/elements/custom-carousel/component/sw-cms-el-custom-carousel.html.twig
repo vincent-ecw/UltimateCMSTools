@@ -33,7 +33,7 @@
 
                 <strong v-if="currentTheme !== 'media'" class="sw-cms-el-custom-carousel__title">{{ item.title || 'Untitled Item' }}</strong>
 
-                <p v-if="item.description" class="sw-cms-el-custom-carousel__description">{{ item.description }}</p>
+                <p :style="{ '--uct-description-lines': descriptionLines }" class="sw-cms-el-custom-carousel__description">{{ item.description }}</p>
             </div>
         </div>
     </div>

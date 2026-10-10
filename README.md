@@ -659,3 +659,15 @@ The Shopping Experiences layout preview also shows **Intro → Element → Outro
 Subcategory Carousel, Subcategory Grid, Manufacturer Carousel and Manufacturer Grid share Classic, Badge, Basic, Playful and Modern themes. Choose the same theme to keep a page consistent. Existing elements default to Classic. Badge always shows names and hides images/descriptions; descriptions are available in Classic and Basic. Manufacturer logos remain contained.
 
 Shared card styling lives in `src/Resources/app/storefront/src/scss/base/_directory-card.scss`, variants in `element/subcategory-themes.scss`, and editor options in `src/Resources/app/administration/src/module/sw-cms/shared/directory-themes.js`. Element styles own layout and media treatment only. Existing translated theme keys remain compatible.
+
+### Tile description length
+
+Subcategory Carousel, Subcategory Grid, Custom Carousel, Manufacturer Carousel and Manufacturer Grid offer a **Description lines** setting from 1 to 20, defaulting to **3**, including existing layouts without a saved value. Numeric counts give precise control compared with short/medium/large presets. Full plain-text descriptions are visually clamped with an ellipsis, without an 80-character cutoff. Short or empty descriptions reserve the same space, carousel cards stretch equally, and grid rows have equal heights. Directory descriptions remain available in Classic and Basic themes when enabled; other directory themes retain their presentation.
+
+### Image proportions and sharpness
+
+Image frames stay consistent across tiles while the image content retains its original proportions. Photos use proportional `cover` cropping in tile/hero designs; manufacturer logos use `contain` so the complete logo remains visible. Content images retain their natural proportions with contained rendering under height constraints.
+
+Image quality is selected automatically from the theme and actual displayed frame, including device pixel density, source aspect ratio, and hover scaling. Shopware's `sw_thumbnails` rendering remains in use, with a scoped extension that removes unsuitable thumbnail candidates and includes the original at its actual pixel width. Small originals remain visible, but cannot gain detail through thumbnail selection. Use larger originals or SVG manufacturer logos when sharpness is insufficient. No media folder settings or uploaded files are modified.
+
+See [Image rendering audit](IMAGE_AUDIT.md) for the element inventory, theme minimums and verification details.

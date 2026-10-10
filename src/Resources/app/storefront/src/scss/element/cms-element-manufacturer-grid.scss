@@ -4,6 +4,7 @@
 
     .manufacturer-grid-container {
         display: grid;
+        grid-auto-rows: 1fr;
         grid-template-columns: repeat(1, minmax(0, 1fr));
         gap: 20px;
         padding: 10px 0 20px;
@@ -36,7 +37,8 @@
     .manufacturer-card-image-wrapper {
         position: relative;
         width: 100%;
-        padding-top: 60%;
+        aspect-ratio: 5 / 3;
+        flex-shrink: 0;
         background: var(--ecw-mapped-color-background-container, var(--bs-card-bg, #ffffff));
         overflow: hidden;
         display: flex;
@@ -47,19 +49,19 @@
 
     .manufacturer-card-logo {
         position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+        top: 10%;
+        left: 10%;
+        width: 80%;
+        height: 80%;
         max-width: 80%;
         max-height: 80%;
-        width: auto;
-        height: auto;
+        display: block;
         object-fit: contain;
         transition: transform 0.5s ease;
     }
 
     .manufacturer-card:hover .manufacturer-card-logo {
-        transform: translate(-50%, -50%) scale(1.05);
+        transform: scale(1.05);
     }
 
     .manufacturer-card-image-placeholder {

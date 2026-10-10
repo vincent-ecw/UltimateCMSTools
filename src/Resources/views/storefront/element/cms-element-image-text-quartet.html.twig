@@ -27,12 +27,12 @@
                 {% if media1Desktop %}
                     <picture class="image-text-quartet__picture">
                         {% if media1Mobile %}
-                            <source media="(max-width: 576px)" srcset="{{ media1Mobile.url }}">
+                            {% sw_include '@UltimateCmsTools/storefront/utilities/uct-picture-source.html.twig' with { media: media1Mobile, mediaQuery: '(max-width: 576px)', imageSizes: '100vw' } %}
                         {% endif %}
                         {% if media1Tablet %}
-                            <source media="(max-width: 767px)" srcset="{{ media1Tablet.url }}">
+                            {% sw_include '@UltimateCmsTools/storefront/utilities/uct-picture-source.html.twig' with { media: media1Tablet, mediaQuery: '(max-width: 767px)', imageSizes: '100vw' } %}
                         {% endif %}
-                        <img src="{{ media1Desktop.url }}" alt="{{ altText1|default(media1Desktop.translated.alt|default('')) }}" class="image-text-quartet__img">
+                        {% sw_thumbnails 'uct-content-image' with { media: media1Desktop, uctImageProfile: 'content', sizes: {default: '100vw'}, attributes: { alt: altText1|default(media1Desktop.translated.alt|default('')), class: 'image-text-quartet__img', loading: 'lazy' } } %}
                     </picture>
                 {% endif %}
             </div>
@@ -63,12 +63,12 @@
                 {% if media2Desktop %}
                     <picture class="image-text-quartet__picture">
                         {% if media2Mobile %}
-                            <source media="(max-width: 576px)" srcset="{{ media2Mobile.url }}">
+                            {% sw_include '@UltimateCmsTools/storefront/utilities/uct-picture-source.html.twig' with { media: media2Mobile, mediaQuery: '(max-width: 576px)', imageSizes: '100vw' } %}
                         {% endif %}
                         {% if media2Tablet %}
-                            <source media="(max-width: 767px)" srcset="{{ media2Tablet.url }}">
+                            {% sw_include '@UltimateCmsTools/storefront/utilities/uct-picture-source.html.twig' with { media: media2Tablet, mediaQuery: '(max-width: 767px)', imageSizes: '100vw' } %}
                         {% endif %}
-                        <img src="{{ media2Desktop.url }}" alt="{{ altText2|default(media2Desktop.translated.alt|default('')) }}" class="image-text-quartet__img">
+                        {% sw_thumbnails 'uct-content-image' with { media: media2Desktop, uctImageProfile: 'content', sizes: {default: '100vw'}, attributes: { alt: altText2|default(media2Desktop.translated.alt|default('')), class: 'image-text-quartet__img', loading: 'lazy' } } %}
                     </picture>
                 {% endif %}
             </div>

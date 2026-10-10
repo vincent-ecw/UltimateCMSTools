@@ -9,64 +9,22 @@
     width: 100%;
     margin-bottom: 30px;
 
-    // Responsive Max-height adaptation
-    &[style*="max-height"],
-    &[style*="--"] {
-        max-height: var(--uct-carousel-max-height, none);
+    // Only an explicit maximum-height setting activates a constraint.
+    // Image frames retain their own positioning and proportional fit rules.
+    &[style*="--uct-carousel-max-height:"] {
+        max-height: var(--uct-carousel-max-height);
 
         .common-slider-wrapper,
         .custom-carousel-wrapper,
         .custom-product-carousel-wrapper,
         .manufacturer-carousel-wrapper,
-        .subcategory-carousel-wrapper {
-            max-height: inherit;
-        }
-
+        .subcategory-carousel-wrapper,
         .common-slider-item,
         .custom-carousel-container,
         .custom-product-carousel-container,
         .manufacturer-carousel-container,
         .subcategory-carousel-container {
             max-height: inherit;
-        }
-
-        // Fit images & card wrappers within max-height without cropping
-        img,
-        picture,
-        .common-slider-image,
-        .custom-card-image,
-        .manufacturer-card-logo,
-        .subcategory-card-image,
-        .product-image-wrapper img {
-            max-height: var(--uct-carousel-max-height, 100%);
-            object-fit: contain;
-        }
-
-        .custom-card-image-wrapper,
-        .manufacturer-card-image-wrapper,
-        .subcategory-card-image-wrapper {
-            max-height: calc(var(--uct-carousel-max-height, 100vh) - 80px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            img {
-                position: static;
-                height: auto;
-                max-height: 100%;
-                width: auto;
-                max-width: 100%;
-                object-fit: contain;
-            }
-        }
-
-        .custom-card,
-        .manufacturer-card,
-        .subcategory-card,
-        .custom-product-card {
-            max-height: inherit;
-            display: flex;
-            flex-direction: column;
         }
     }
 }

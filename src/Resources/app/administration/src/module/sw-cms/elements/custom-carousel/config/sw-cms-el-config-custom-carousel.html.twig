@@ -40,25 +40,25 @@
                                 </sw-button>
                             </div>
                         </div>
-                        
+
                         <div class="sw-cms-el-config-custom-carousel__item-content">
-                            <sw-text-field 
+                            <sw-text-field
                                 v-model="item.title"
                                 required
-                                :label="$tc('sw-cms.elements.customCarousel.config.titleLabel')" 
+                                :label="$tc('sw-cms.elements.customCarousel.config.titleLabel')"
                                 :placeholder="$tc('sw-cms.elements.customCarousel.config.titlePlaceholder')">
                             </sw-text-field>
 
                             <sw-textarea-field
                                 v-model="item.description"
-                                :label="$tc('sw-cms.elements.customCarousel.config.descriptionLabel')" 
+                                :label="$tc('sw-cms.elements.customCarousel.config.descriptionLabel')"
                                 :placeholder="$tc('sw-cms.elements.customCarousel.config.descriptionPlaceholder')">
                             </sw-textarea-field>
 
                             <div class="sw-cms-el-config-custom-carousel__category-row">
-                                <sw-text-field 
+                                <sw-text-field
                                     v-model="item.category"
-                                    :label="$tc('sw-cms.elements.customCarousel.config.categoryLabel')" 
+                                    :label="$tc('sw-cms.elements.customCarousel.config.categoryLabel')"
                                     :placeholder="$tc('sw-cms.elements.customCarousel.config.categoryPlaceholder')">
                                 </sw-text-field>
 
@@ -106,9 +106,9 @@
                             </sw-upload-listener>
 
                             <div class="sw-cms-el-config-custom-carousel__button-row">
-                                <sw-text-field 
+                                <sw-text-field
                                     v-model="item.buttonUrl"
-                                    :label="$tc('sw-cms.elements.customCarousel.config.buttonUrlLabel')" 
+                                    :label="$tc('sw-cms.elements.customCarousel.config.buttonUrlLabel')"
                                     :placeholder="$tc('sw-cms.elements.customCarousel.config.buttonUrlPlaceholder')">
                                 </sw-text-field>
 
@@ -134,6 +134,13 @@
             </div>
 
             <div v-if="active === 'settings'" class="sw-cms-el-config-custom-carousel__tab-settings">
+                <sw-number-field
+                    v-model="descriptionLines"
+                    :label="$tc('sw-cms.elements.ultimateCmsTools.descriptionLines.label')"
+                    :helpText="$tc('sw-cms.elements.ultimateCmsTools.descriptionLines.help')"
+                    :min="1" :max="20" :step="1">
+                </sw-number-field>
+
                 <sw-single-select
                     v-model:value="element.config.theme.value"
                     :label="$tc('sw-cms.elements.customCarousel.config.themeLabel')"

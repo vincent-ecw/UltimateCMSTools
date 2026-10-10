@@ -48,10 +48,9 @@
                 {% if media %}
                     <div class="category-header-media">
                         {% sw_thumbnails 'category-header-img' with {
+                            uctImageProfile: 'header',
                             media: media,
-                            sizes: {
-                                'default': '400px'
-                            }
+                            sizes: {default: '(min-width: 768px) 320px, 100vw'}
                         } %}
                     </div>
                 {% endif %}
@@ -87,10 +86,9 @@
                     <div class="category-header-media-wrap">
                         <div class="category-header-media-frame">
                             {% sw_thumbnails 'category-header-img' with {
+                                uctImageProfile: 'header',
                                 media: media,
-                                sizes: {
-                                    'default': '400px'
-                                }
+                                sizes: {default: '(min-width: 768px) 320px, 100vw'}
                             } %}
                         </div>
                     </div>
@@ -151,10 +149,9 @@
                 {% if media %}
                     <div class="category-header-media-circle">
                         {% sw_thumbnails 'category-header-img' with {
+                            uctImageProfile: 'header',
                             media: media,
-                            sizes: {
-                                'default': '300px'
-                            }
+                            sizes: {default: '(min-width: 768px) 320px, 100vw'}
                         } %}
                     </div>
                 {% endif %}

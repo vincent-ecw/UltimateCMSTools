@@ -49,7 +49,7 @@
 
                                 {% if item.mediaUrl %}
                                     <span class="harmonica-list-icon-wrapper">
-                                        <img src="{{ item.mediaUrl }}" alt="Icon" width="24" height="24" class="harmonica-list-image-icon" />
+                                        <img src="{{ item.mediaUrl|uct_safe_url }}" alt="Icon" width="24" height="24" loading="lazy" decoding="async" class="harmonica-list-image-icon" />
                                     </span>
                                 {% elseif resolvedIcon %}
                                     <span class="harmonica-list-icon-wrapper">

@@ -40,7 +40,9 @@
         color: var(--ecw-mapped-color-text-meta, var(--bs-secondary-color, #6c757d));
         line-height: 1.5;
         display: -webkit-box;
-        -webkit-line-clamp: 3;
+        -webkit-line-clamp: var(--uct-description-lines, 3);
+        height: calc(var(--uct-description-lines, 3) * 1.5em);
+        flex-shrink: 0;
         -webkit-box-orient: vertical;
         overflow: hidden;
     }

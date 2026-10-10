@@ -1,3 +1,4 @@
+import descriptionLines from '../../../shared/description-lines';
 import directoryThemes from '../../../shared/directory-themes';
 import template from './sw-cms-el-config-manufacturer-grid.html.twig';
 
@@ -10,6 +11,7 @@ Shopware.Component.register('sw-cms-el-config-manufacturer-grid', {
     ],
 
     computed: {
+        ...descriptionLines,
         ...directoryThemes,
         sortBy: {
             get() {

@@ -26,9 +26,7 @@
 
                 {% if authorImage %}
                     <div class="magazine-quote-author-image-wrapper">
-                        <img src="{{ authorImage.url }}" 
-                             class="magazine-quote-author-image" 
-                             alt="{{ authorName|default('Author') }}">
+                        {% sw_thumbnails 'uct-author-image' with { media: authorImage, uctImageProfile: 'portrait', sizes: {default: '100px'}, attributes: {class: 'magazine-quote-author-image', alt: authorName|default('Author'), loading: 'lazy'} } %}
                     </div>
                 {% endif %}
             </div>

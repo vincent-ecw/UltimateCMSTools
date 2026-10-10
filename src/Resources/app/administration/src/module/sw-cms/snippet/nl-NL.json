@@ -706,6 +706,10 @@
                     "intro": "Introtekst",
                     "outro": "Outrotekst",
                     "content": "Inhoud"
+                },
+                "descriptionLines": {
+                    "label": "Beschrijvingsregels",
+                    "help": "Toon 1–20 regels (standaard: 3). Elke tegel reserveert dezelfde ruimte. Geldt voor thema’s met beschrijvingen."
                 }
             }
         },

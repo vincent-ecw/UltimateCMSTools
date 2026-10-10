@@ -5,6 +5,29 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.55] - 2026-10-10
+
+### Added
+- Automatic image candidate minimums per tile theme and measured responsive image sizing, including high-density displays and cover crops.
+- Image rendering audit covering every image-capable element, source selection tests and responsive layout verification.
+
+### Fixed
+- Description CSS variables no longer activate maximum-height rules that move category photos outside their frames and offset manufacturer logos.
+- Non-shrinking image frames and contained manufacturer logos retain consistent tile geometry with long descriptions.
+- Keep full-resolution originals in responsive candidates using their real dimensions; reject undersized, cropped, stretched and upscaled thumbnails.
+- Responsive Image, Image and Text Quartet and Magazine Quote now use Shopware thumbnail rendering; device-specific picture sources retain intrinsic dimensions and original-image fallback.
+- Preserve complete content images when maximum heights are applied in Flexible Image and Text and Image and Text Quartet.
+
+## [1.2.54] - 2026-10-10
+
+### Added
+- Description line setting (1–20, default 3) for subcategory and manufacturer grids/carousels and Custom Carousel, translated in English, German and Dutch.
+
+### Changed
+- Clamp full plain-text descriptions by line count instead of truncating at 80 characters.
+- Reserve equal description space for short and empty descriptions and use equal-height grid rows.
+- Existing saved elements without this setting retain the three-line default.
+
 ## [1.2.53] - 2026-10-10
 
 ### Added

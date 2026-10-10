@@ -45,13 +45,9 @@
                                     <a class="flexible-image-text__image-link" href="{{ imageLink }}" aria-label="{{ imageLinkLabel }}{% if imageLinkNewTab %} ({{ 'ultimateCmsTools.flexibleImageText.newTab'|trans }}){% endif %}"{% if imageLinkNewTab %} target="_blank" rel="noopener noreferrer"{% endif %}>
                                 {% endif %}
                                 {% sw_thumbnails 'flexible-image-text-img' with {
+                                    uctImageProfile: 'content',
                                     media: media,
-                                    sizes: {
-                                        'xs': '576px',
-                                        'sm': '768px',
-                                        'md': '992px',
-                                        'lg': '1200px'
-                                    },
+                                    sizes: {default: '100vw'},
                                     attributes: {
                                         'class': 'flexible-image-text__image',
                                         'alt': (media.translated.alt ?: caption ?: '')
@@ -71,13 +67,9 @@
                                     <a class="flexible-image-text__image-link" href="{{ imageLink }}" aria-label="{{ imageLinkLabel }}{% if imageLinkNewTab %} ({{ 'ultimateCmsTools.flexibleImageText.newTab'|trans }}){% endif %}"{% if imageLinkNewTab %} target="_blank" rel="noopener noreferrer"{% endif %}>
                                 {% endif %}
                                 {% sw_thumbnails 'flexible-image-text-img' with {
-                                media: media,
-                                sizes: {
-                                    'xs': '576px',
-                                    'sm': '768px',
-                                    'md': '992px',
-                                    'lg': '1200px'
-                                },
+                                    uctImageProfile: 'content',
+                                    media: media,
+                                    sizes: {default: '100vw'},
                                 attributes: {
                                     'class': 'flexible-image-text__image',
                                     'alt': (media.translated.alt ?: caption ?: '')

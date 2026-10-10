@@ -3,6 +3,7 @@
         {% include '@UltimateCmsTools/storefront/utilities/uct-surrounding-text.html.twig' with { position: 'intro' } %}
     {% endif %}
     {% set config = element.fieldConfig.elements %}
+    {% set descriptionLines = config.descriptionLines.value|default(3)|uct_bounded_int(1, 20, 3) %}
     {% set items = element.data ? element.data.carouselItems : config.carouselItems.value %}
     {% set navigationArrows = config.navigationArrows.value is not null ? config.navigationArrows.value : true %}
     {% set navigationDots = config.navigationDots.value is not null ? config.navigationDots.value : true %}
@@ -15,7 +16,7 @@
 
     {% if items and items|length > 0 %}
         <div class="cms-element-custom-carousel uct-theme-{{ theme }} {% if highlightActiveItem %}uct-highlight-active{% endif %}"
-             {% if maxHeight and maxHeight > 0 %}style="--uct-carousel-max-height: {{ maxHeight }}px; max-height: {{ maxHeight }}px;"{% endif %}
+             style="--uct-description-lines: {{ descriptionLines }}; {% if maxHeight and maxHeight > 0 %}--uct-carousel-max-height: {{ maxHeight }}px; max-height: {{ maxHeight }}px;{% endif %}"
              data-custom-carousel="true"
              data-custom-carousel-options='{
                  "arrows": {{ navigationArrows ? "true" : "false" }},
@@ -51,12 +52,9 @@
                                         'loading': 'lazy'
                                     } %}
                                     {% sw_thumbnails 'custom-card-thumbnails' with {
+                                        uctImageProfile: theme == 'media' ? 'card-media' : 'card',
                                         media: media,
-                                        sizes: {
-                                            'default': '360px',
-                                            'md': '320px',
-                                            'sm': '100vw'
-                                        },
+                                        sizes: {default: '320px'},
                                         attributes: attributes
                                     } %}
                                 {% else %}
@@ -113,11 +111,9 @@
                                     {% endif %}
                                 {% endif %}
 
-                                {% if item.description is not empty %}
-                                    <div class="custom-card-description">
-                                        {{ item.description|striptags|u.truncate(80, '...', false) }}
-                                    </div>
-                                {% endif %}
+                                <div class="custom-card-description">
+                                    {{ item.description|striptags }}
+                                </div>
                             </div>
                         </{% if hasLink %}a{% else %}div{% endif %}>
                     {% endfor %}

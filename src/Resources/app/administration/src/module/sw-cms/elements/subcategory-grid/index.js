@@ -9,6 +9,7 @@ Shopware.Service('cmsService').registerCmsElement({
     configComponent: 'sw-cms-el-config-subcategory-grid',
     previewComponent: 'sw-cms-el-preview-subcategory-grid',
     defaultConfig: {
+        descriptionLines: { source: 'static', value: 3 },
         uctIntroText: { source: 'static', value: '' },
         uctOutroText: { source: 'static', value: '' },
         theme: { source: 'static', value: 'classic' },

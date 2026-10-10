@@ -1,0 +1,7 @@
+{% set candidates = [] %}
+{% for candidate in media|uct_image_candidates('content') %}
+    {% set candidates = candidates|merge([candidate.url|sw_encode_url ~ ' ' ~ candidate.width ~ 'w']) %}
+{% endfor %}
+<source media="{{ mediaQuery }}" srcset="{{ candidates ? candidates|join(', ') : media.url|sw_encode_url }}"
+        sizes="{{ imageSizes|default('100vw') }}"
+        {% if media.metaData.width and media.metaData.height %}width="{{ media.metaData.width }}" height="{{ media.metaData.height }}"{% endif %}>

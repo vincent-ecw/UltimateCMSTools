@@ -1,3 +1,4 @@
+import descriptionLines from '../../../shared/description-lines';
 import template from './sw-cms-el-config-custom-carousel.html.twig';
 import './sw-cms-el-config-custom-carousel.scss';
 
@@ -14,6 +15,7 @@ Component.register('sw-cms-el-config-custom-carousel', {
     inject: ['repositoryFactory'],
 
     computed: {
+        ...descriptionLines,
         mediaRepository() {
             return this.repositoryFactory.create('media');
         },

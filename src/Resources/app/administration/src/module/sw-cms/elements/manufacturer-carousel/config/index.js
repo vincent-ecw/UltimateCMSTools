@@ -1,3 +1,4 @@
+import descriptionLines from '../../../shared/description-lines';
 import directoryThemes from '../../../shared/directory-themes';
 import template from './sw-cms-el-config-manufacturer-carousel.html.twig';
 
@@ -12,6 +13,7 @@ Component.register('sw-cms-el-config-manufacturer-carousel', {
     ],
 
     computed: {
+        ...descriptionLines,
         ...directoryThemes,
         sortBy: {
             get() {

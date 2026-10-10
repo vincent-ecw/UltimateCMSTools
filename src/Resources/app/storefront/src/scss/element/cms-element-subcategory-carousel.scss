@@ -44,7 +44,8 @@
     .subcategory-card-image-wrapper {
         position: relative;
         width: 100%;
-        padding-top: 75%; /* 4:3 Aspect Ratio */
+        aspect-ratio: 4 / 3;
+        flex-shrink: 0;
         background: var(--ecw-mapped-color-table-header_back, var(--bs-tertiary-bg, #f8f9fa));
         overflow: hidden;
     }

@@ -9,6 +9,7 @@ Shopware.Service('cmsService').registerCmsElement({
     configComponent: 'sw-cms-el-config-custom-carousel',
     previewComponent: 'sw-cms-el-preview-custom-carousel',
     defaultConfig: {
+        descriptionLines: { source: 'static', value: 3 },
         uctIntroText: { source: 'static', value: '' },
         uctOutroText: { source: 'static', value: '' },
         carouselItems: {

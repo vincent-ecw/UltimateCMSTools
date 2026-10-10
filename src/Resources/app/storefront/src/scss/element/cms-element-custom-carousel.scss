@@ -62,7 +62,8 @@
     .custom-card-image-wrapper {
         position: relative;
         width: 100%;
-        padding-top: 75%; /* 4:3 Aspect Ratio */
+        aspect-ratio: 4 / 3;
+        flex-shrink: 0;
         background: var(--ecw-mapped-color-table-header_back, var(--bs-tertiary-bg, #f8f9fa));
         overflow: hidden;
     }
@@ -159,7 +160,9 @@
         color: var(--ecw-mapped-color-text-meta, var(--bs-secondary-color, #6c757d));
         line-height: 1.5;
         display: -webkit-box;
-        -webkit-line-clamp: 3;
+        -webkit-line-clamp: var(--uct-description-lines, 3);
+        height: calc(var(--uct-description-lines, 3) * 1.5em);
+        flex-shrink: 0;
         -webkit-box-orient: vertical;
         overflow: hidden;
         margin-bottom: 0;
@@ -251,7 +254,8 @@
 
             .custom-card-image-wrapper {
                 width: 42%;
-                padding-top: 0;
+                aspect-ratio: auto;
+                flex-shrink: 0;
                 min-height: 160px;
             }
 
@@ -270,7 +274,7 @@
         }
 
         .custom-card-image-wrapper {
-            padding-top: 85%; /* Slightly taller aspect ratio */
+            aspect-ratio: 20 / 17;
         }
 
         .custom-card-title--overlay {

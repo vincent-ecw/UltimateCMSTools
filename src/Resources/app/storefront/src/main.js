@@ -1,4 +1,5 @@
 import SingleProductPlugin from './plugin/single-product.plugin';
+import UctResponsiveImagePlugin from './plugin/responsive-image.plugin';
 window.PluginManager.register('UctSingleProduct', SingleProductPlugin, '[data-uct-single-product]');
 
 import UctAlertPlugin from './plugin/uct-alert.plugin';
@@ -25,3 +26,7 @@ window.PluginManager.register('FlexibleImageTextAnimation', FlexibleImageTextAni
 
 import UctReadMorePlugin from './plugin/uct-read-more.plugin';
 window.PluginManager.register('UctReadMore', UctReadMorePlugin, '[data-uct-read-more]');
+
+// Carousels create loop clones during init; register image sizing afterwards so
+// those images receive the same resize handling as their original cards.
+window.PluginManager.register('UctResponsiveImage', UctResponsiveImagePlugin, '[data-uct-responsive-image]');

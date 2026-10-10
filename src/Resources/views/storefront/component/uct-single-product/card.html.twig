@@ -1,5 +1,11 @@
 {% sw_extends '@Storefront/storefront/component/product/card/box-standard.html.twig' %}
 
+{% block component_product_box_image_thumbnail %}
+    {% set uctImageProfile = 'content' %}
+    {% set sizes = {default: '100vw'} %}
+    {{ parent() }}
+{% endblock %}
+
 {% block component_product_box_info %}
     <div class="product-info">
         <div class="ecw-product-title-description">

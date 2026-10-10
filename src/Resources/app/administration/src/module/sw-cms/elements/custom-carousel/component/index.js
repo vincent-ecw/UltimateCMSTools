@@ -1,3 +1,4 @@
+import descriptionLines from '../../../shared/description-lines';
 import template from './sw-cms-el-custom-carousel.html.twig';
 import './sw-cms-el-custom-carousel.scss';
 
@@ -11,6 +12,7 @@ Component.register('sw-cms-el-custom-carousel', {
     ],
 
     computed: {
+        ...descriptionLines,
         carouselItems() {
             if (this.element.config && this.element.config.carouselItems && this.element.config.carouselItems.value) {
                 return this.element.config.carouselItems.value;

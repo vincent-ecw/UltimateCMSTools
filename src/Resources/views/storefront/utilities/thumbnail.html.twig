@@ -1,0 +1,21 @@
+{% sw_extends '@Storefront/storefront/utilities/thumbnail.html.twig' %}
+
+{# Preserve Shopware URL encoding, attributes, loading and theme inheritance.
+   Opt-in policy leaves other plugins and normal Shopware elements unaffected. #}
+{% block thumbnail_utility_img %}
+    {% if uctImageProfile is defined %}
+        {% set srcsetValues = [] %}
+        {% for candidate in media|uct_image_candidates(uctImageProfile) %}
+            {% set srcsetValues = srcsetValues|merge([candidate.url|sw_encode_url ~ ' ' ~ candidate.width ~ 'w']) %}
+        {% endfor %}
+        {% set attributes = attributes|merge({
+            width: media.metaData.width|default(''),
+            height: media.metaData.height|default(''),
+            'data-uct-responsive-image': 'true',
+            'data-uct-source-width': media.metaData.width|default(''),
+            'data-uct-source-height': media.metaData.height|default(''),
+            decoding: 'async'
+        }) %}
+    {% endif %}
+    {{ parent() }}
+{% endblock %}

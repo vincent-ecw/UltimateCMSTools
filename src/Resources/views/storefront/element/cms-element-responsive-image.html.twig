@@ -22,12 +22,12 @@
 
 				<picture class="responsive-image-picture">
 					{% if mediaMobile %}
-						<source media="(max-width: 576px)" srcset="{{ mediaMobile.url }}">
+						{% sw_include '@UltimateCmsTools/storefront/utilities/uct-picture-source.html.twig' with { media: mediaMobile, mediaQuery: '(max-width: 576px)', imageSizes: '100vw' } %}
 					{% endif %}
 					{% if mediaTablet %}
-						<source media="(max-width: 767px)" srcset="{{ mediaTablet.url }}">
+						{% sw_include '@UltimateCmsTools/storefront/utilities/uct-picture-source.html.twig' with { media: mediaTablet, mediaQuery: '(max-width: 767px)', imageSizes: '100vw' } %}
 					{% endif %}
-					<img src="{{ mediaDesktop.url }}" alt="{{ altText|default(mediaDesktop.translated.alt|default('')) }}" class="responsive-image-img">
+					{% sw_thumbnails 'uct-content-image' with { media: mediaDesktop, uctImageProfile: 'content', sizes: {default: '100vw'}, attributes: { alt: altText|default(mediaDesktop.translated.alt|default('')), class: 'responsive-image-img', loading: 'lazy' } } %}
 				</picture>
 
 				{% if linkUrl %}

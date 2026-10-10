@@ -32,14 +32,15 @@
                     <picture class="common-slider-picture">
                         {% for variant in [{media: item.mediaDesktop|default(null), breakpoint: 992}, {media: item.mediaTablet|default(null), breakpoint: 768}] %}
                             {% if variant.media %}
-                                {% set candidates = [] %}
-                                {% for thumbnail in variant.media.thumbnails %}
-                                    {% set candidates = candidates|merge([thumbnail.url|sw_encode_url ~ ' ' ~ thumbnail.width ~ 'w']) %}
-                                {% endfor %}
-                                <source media="(min-width: {{ variant.breakpoint }}px)" srcset="{{ candidates ? candidates|join(', ') : variant.media.url|sw_encode_url }}" sizes="100vw"{% if variant.media.metaData.width and variant.media.metaData.height %} width="{{ variant.media.metaData.width }}" height="{{ variant.media.metaData.height }}"{% endif %}>
+                                {% sw_include '@UltimateCmsTools/storefront/utilities/uct-picture-source.html.twig' with {
+                                    media: variant.media,
+                                    mediaQuery: '(min-width: ' ~ variant.breakpoint ~ 'px)',
+                                    imageSizes: '100vw'
+                                } %}
                             {% endif %}
                         {% endfor %}
                         {% sw_thumbnails 'common-slider-image' with {
+                            uctImageProfile: 'content',
                             media: fallbackMedia,
                             sizes: {default: '100vw'},
                             attributes: {

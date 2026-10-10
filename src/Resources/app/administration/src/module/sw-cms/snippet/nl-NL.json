@@ -823,6 +823,9 @@
             }
         },
         "columnConfig": {
+            "columnSelectLabel": "Selecteer kolom",
+            "columnSelectPlaceholder": "Kies een kolom om in te stellen...",
+            "clickToSelectPrompt": "Klik op een kolom in de canvasweergave of selecteer een tabblad hieronder om de eigenschappen in te stellen.",
             "tabTitle": "Kolom {index}",
             "paddingLabel": "Binnenmarge (padding)",
             "paddingPlaceholder": "bijv. 20px of 16px 24px",

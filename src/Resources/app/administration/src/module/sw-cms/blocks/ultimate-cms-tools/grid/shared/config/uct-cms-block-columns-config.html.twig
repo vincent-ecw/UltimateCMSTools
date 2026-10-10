@@ -1,16 +1,24 @@
 <div class="uct-cms-block-columns-config">
-    <!-- Column Selector Tabs if more than 1 column -->
-    <div v-if="columnCount > 1" class="uct-columns-tabs">
-        <button
-            v-for="index in columnCount"
-            :key="index"
-            type="button"
-            class="uct-column-tab-btn"
-            :class="{ 'is--active': activeColumn === index }"
-            @click="activeColumn = index"
-        >
-            {{ $t('sw-cms.columnConfig.tabTitle', { index }) }}
-        </button>
+    <!-- Quick prompt / guidance -->
+    <div v-if="columnCount > 1" class="uct-columns-prompt">
+        <span class="uct-columns-prompt-text">{{ $t('sw-cms.columnConfig.clickToSelectPrompt') }}</span>
+    </div>
+
+    <!-- Prominent Segmented Column Selector -->
+    <div v-if="columnCount > 1" class="uct-columns-selector-wrapper">
+        <label class="uct-columns-selector-label">{{ $t('sw-cms.columnConfig.columnSelectLabel') }}</label>
+        <div class="uct-columns-tabs">
+            <button
+                v-for="col in columns"
+                :key="col.id"
+                type="button"
+                class="uct-column-tab-btn"
+                :class="{ 'is--active': activeColumn === col.id }"
+                @click="activeColumn = col.id"
+            >
+                {{ col.label }}
+            </button>
+        </div>
     </div>
 
     <div class="uct-column-settings-form">
@@ -34,7 +42,7 @@
             :source="colMedia"
             :upload-tag="'uct-col-bg-' + activeColumn"
             :label="$t('sw-cms.columnConfig.bgImageLabel')"
-            :default-folder="cmsPageState?.pageEntityName || 'cms_page'"
+            :default-folder="cmsPageState.pageEntityName || 'cms_page'"
             :allow-multi-select="false"
             class="uct-config-field"
             @media-upload-remove-image="onRemoveMedia"
@@ -64,4 +72,3 @@
         />
     </div>
 </div>
-

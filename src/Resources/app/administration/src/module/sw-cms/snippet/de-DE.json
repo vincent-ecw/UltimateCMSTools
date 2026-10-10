@@ -829,6 +829,9 @@
             }
         },
         "columnConfig": {
+            "columnSelectLabel": "Spalte auswählen",
+            "columnSelectPlaceholder": "Spalte zur Bearbeitung auswählen...",
+            "clickToSelectPrompt": "Klicken Sie auf eine Spalte im Layout oder wählen Sie unten einen Reiter, um deren Eigenschaften zu bearbeiten.",
             "tabTitle": "Spalte {index}",
             "paddingLabel": "Innenabstand (Padding)",
             "paddingPlaceholder": "z.B. 20px oder 16px 24px",

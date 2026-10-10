@@ -2,9 +2,22 @@
     <div
         v-for="col in columnDefinitions"
         :key="col.index"
-        :class="['uct-grid-col', col.class, getColumnCustomClass(col.index)]"
+        :class="[
+            'uct-grid-col',
+            col.class,
+            getColumnCustomClass(col.index),
+            { 'is--column-selected': selectedColumnIndex === col.index }
+        ]"
         :style="getColumnStyles(col.index)"
+        @click="onSelectColumn(col.index)"
     >
+        <!-- Column header indicator on canvas -->
+        <div class="uct-grid-col__header">
+            <span class="uct-grid-col__header-badge">
+                {{ $t('sw-cms.columnConfig.tabTitle', { index: col.index }) }} ({{ col.label }})
+            </span>
+        </div>
+
         <div class="uct-grid-col__inner">
             <div
                 v-for="(slotItem, slotIndex) in getColumnSlots(col.index)"
@@ -62,4 +75,3 @@
         </div>
     </div>
 </div>
-

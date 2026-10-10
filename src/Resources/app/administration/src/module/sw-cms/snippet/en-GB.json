@@ -829,6 +829,9 @@
             }
         },
         "columnConfig": {
+            "columnSelectLabel": "Select Column",
+            "columnSelectPlaceholder": "Choose a column to configure...",
+            "clickToSelectPrompt": "Click on any column in the canvas or select from the tabs below to configure its settings.",
             "tabTitle": "Column {index}",
             "paddingLabel": "Inner padding",
             "paddingPlaceholder": "e.g. 20px or 16px 24px",

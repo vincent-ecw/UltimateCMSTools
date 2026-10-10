@@ -1,38 +1,70 @@
 .uct-cms-block-columns-config {
     padding: 0 4px;
 
+    .uct-columns-prompt {
+        margin-bottom: 12px;
+        padding: 8px 10px;
+        background: #f0f7ff;
+        border: 1px solid #cce5ff;
+        border-radius: 4px;
+
+        .uct-columns-prompt-text {
+            font-size: 11px;
+            color: #0b5cab;
+            line-height: 1.4;
+            display: block;
+        }
+    }
+
+    .uct-columns-selector-wrapper {
+        margin-bottom: 16px;
+
+        .uct-columns-selector-label {
+            display: block;
+            font-size: 12px;
+            font-weight: 600;
+            color: #334155;
+            margin-bottom: 6px;
+        }
+    }
+
     .uct-columns-tabs {
         display: flex;
-        flex-wrap: wrap;
-        gap: 6px;
-        margin-bottom: 16px;
-        background: #f1f5f9;
+        flex-direction: column;
+        gap: 4px;
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
         padding: 4px;
         border-radius: 6px;
 
         .uct-column-tab-btn {
-            flex: 1 1 auto;
-            min-width: 60px;
-            padding: 6px 10px;
-            background: transparent;
-            border: none;
+            width: 100%;
+            padding: 8px 12px;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
             border-radius: 4px;
             font-size: 12px;
             font-weight: 500;
-            color: #64748b;
+            color: #475569;
             cursor: pointer;
             transition: all 0.15s ease-in-out;
-            text-align: center;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
 
             &:hover {
+                background: #f1f5f9;
                 color: #0f172a;
+                border-color: #cbd5e1;
             }
 
             &.is--active {
-                background: #ffffff;
-                color: #189eff;
+                background: #189eff;
+                border-color: #189eff;
+                color: #ffffff;
                 font-weight: 600;
-                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+                box-shadow: 0 2px 4px rgba(24, 158, 255, 0.25);
             }
         }
     }
@@ -41,10 +73,12 @@
         display: flex;
         flex-direction: column;
         gap: 14px;
+        margin-top: 8px;
+        border-top: 1px solid #f1f5f9;
+        padding-top: 14px;
 
         .uct-config-field {
             margin-bottom: 0;
         }
     }
 }
-

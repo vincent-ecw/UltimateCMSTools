@@ -5,26 +5,31 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.2.61] - 2026-10-10
-
-### Fixed
-- Fixed storefront template priority: set template priority to 100 on `UltimateCmsTools` so storefront block templates override third-party plugins (such as `SschreierGridLayoutForShoppingExperiences`) and render column settings (background colors, background images, inner padding, custom CSS classes) reliably in the storefront.
-
-## [1.2.60] - 2026-10-10
-
-### Fixed
-- Fixed CMS grid column options persistence: column settings (padding, background color, image, CSS class) are now properly marked dirty on the Shopware DAL entity and persisted upon saving the page.
-- Fixed "+ Add element" stacking button visibility and stacking UX: styled the add button with proper z-index and spacing at the base of every column, ensuring items can be smoothly stacked and ordered vertically.
-- Initialized default text config and dirty state on newly added stacked column slots.
-
-## [1.2.59] - 2026-10-10
+## [2.0.0] - 2026-10-14
 
 ### Added
-- Dedicated "Page Structure" block category with 11 responsive Bootstrap grid layouts (1-column, 2-column variations 50/50, 33/67, 67/33, 25/75, 75/25, 3-column variations equal, 25/50/25, 17/66/17, 4-column equal, and 6-column equal).
-- Multi-element stacking per column: add, reorder, and delete multiple CMS elements stacked vertically within any grid column.
-- Individual column styling in the CMS sidebar: configurable inner padding, background color, background image (with mode cover/contain/auto), and custom CSS classes.
-- Modern vector preview illustrations with proportional column representations and content layout indicators.
-- Seamless compatibility to safely replace and remove `SschreierGridLayoutForShoppingExperiences`.
+- Optional Page Structure Grid builder with 11 responsive layouts, multiple CMS elements per column, column styling and keyboard controls.
+- Global “Enable new Grid builder” setting, disabled by default. Saved grids remain editable and renderable when creation is disabled.
+- Explicit migration of selected legacy/early UCT grids with a default dry run, required durable backups, type-only DAL writes, locked-page safeguards and validated rollback.
+- Grid audit, rollout/migration documentation and regression coverage.
+
+### Changed
+- New light plugin icon with modern modular content tiles in blue, mint and peach.
+- New grids use independent `uct-grid-*` block, component and template names. Legacy `grid-*` builders can remain active alongside them.
+- Use one shared catalog for layout registration, canvas proportions, previews, sidebar configuration and storefront columns.
+- Batch background media into one DAL query per CMS load and prepare validated styles outside Twig.
+
+### Fixed
+- Move stacked-element controls to the left so they no longer overlap element settings.
+- Match Column Settings bottom padding to Shopware Visibility settings (25px).
+- Preserve column settings and stacked-element order when saving layouts.
+- Isolate asynchronous uploads by block/column and handle malformed or duplicate slot ordering.
+- Prevent registry and template collisions with the Sschreier grid plugin; preserve normal theme inheritance.
+
+### Security
+- Validate CSS/image values, reject invalid/private/missing media and prevent stale URL fallback.
+- Respect CMS permissions and page locks in editing controls.
+- Expose only the global creation flag through an authenticated CMS-read API; configuration writes retain normal Shopware permissions.
 
 ## [1.2.58] - 2026-10-10
 

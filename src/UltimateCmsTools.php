@@ -6,8 +6,4 @@ use Shopware\Core\Framework\Plugin;
 
 class UltimateCmsTools extends Plugin
 {
-    public function getTemplatePriority(): int
-    {
-        return 100;
-    }
 }

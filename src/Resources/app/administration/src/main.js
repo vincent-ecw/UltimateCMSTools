@@ -1,3 +1,4 @@
+import './service/uct-grid-builder-settings.api.service';
 import './component/uct-cms-intro-outro';
 import './module/uct-custom-assets';
 import './component/uct-icon';

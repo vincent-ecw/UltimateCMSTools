@@ -1,65 +1,12 @@
 import template from './sw-cms-block-grid-base.html.twig';
 import './sw-cms-block-grid-base.scss';
 
-const columnLayouts = {
-    'grid-12': [
-        { index: 1, class: 'col-12', label: '100%' },
-    ],
-    'grid-md-6-6': [
-        { index: 1, class: 'col-12 col-md-6', label: '50%' },
-        { index: 2, class: 'col-12 col-md-6', label: '50%' },
-    ],
-    'grid-md-4-8': [
-        { index: 1, class: 'col-12 col-md-4', label: '33%' },
-        { index: 2, class: 'col-12 col-md-8', label: '67%' },
-    ],
-    'grid-md-8-4': [
-        { index: 1, class: 'col-12 col-md-8', label: '67%' },
-        { index: 2, class: 'col-12 col-md-4', label: '33%' },
-    ],
-    'grid-md-3-9': [
-        { index: 1, class: 'col-12 col-md-3', label: '25%' },
-        { index: 2, class: 'col-12 col-md-9', label: '75%' },
-    ],
-    'grid-md-9-3': [
-        { index: 1, class: 'col-12 col-md-9', label: '75%' },
-        { index: 2, class: 'col-12 col-md-3', label: '25%' },
-    ],
-    'grid-md-4-4-4': [
-        { index: 1, class: 'col-12 col-md-4', label: '33%' },
-        { index: 2, class: 'col-12 col-md-4', label: '33%' },
-        { index: 3, class: 'col-12 col-md-4', label: '33%' },
-    ],
-    'grid-md-3-6-3': [
-        { index: 1, class: 'col-12 col-md-3', label: '25%' },
-        { index: 2, class: 'col-12 col-md-6', label: '50%' },
-        { index: 3, class: 'col-12 col-md-3', label: '25%' },
-    ],
-    'grid-md-2-8-2': [
-        { index: 1, class: 'col-12 col-md-2', label: '17%' },
-        { index: 2, class: 'col-12 col-md-8', label: '66%' },
-        { index: 3, class: 'col-12 col-md-2', label: '17%' },
-    ],
-    'grid-md-3-3-3-3': [
-        { index: 1, class: 'col-12 col-md-3', label: '25%' },
-        { index: 2, class: 'col-12 col-md-3', label: '25%' },
-        { index: 3, class: 'col-12 col-md-3', label: '25%' },
-        { index: 4, class: 'col-12 col-md-3', label: '25%' },
-    ],
-    'grid-md-2-2-2-2-2-2': [
-        { index: 1, class: 'col-12 col-md-2', label: '17%' },
-        { index: 2, class: 'col-12 col-md-2', label: '17%' },
-        { index: 3, class: 'col-12 col-md-2', label: '17%' },
-        { index: 4, class: 'col-12 col-md-2', label: '17%' },
-        { index: 5, class: 'col-12 col-md-2', label: '17%' },
-        { index: 6, class: 'col-12 col-md-2', label: '17%' },
-    ],
-};
+import { getColumns } from '../layouts';
 
 export default {
     template,
 
-    inject: ['repositoryFactory'],
+    inject: ['repositoryFactory', 'acl'],
 
     props: {
         block: {
@@ -69,6 +16,10 @@ export default {
     },
 
     computed: {
+        canEdit() {
+            return this.acl.can('cms.editor') && !Shopware.Store.get('cmsPage').currentPage?.locked;
+        },
+
         slotRepository() {
             return this.repositoryFactory.create('cms_slot');
         },
@@ -78,7 +29,7 @@ export default {
         },
 
         columnDefinitions() {
-            return columnLayouts[this.block?.type] || [{ index: 1, class: 'col-12', label: '100%' }];
+            return getColumns(this.block?.type);
         },
 
         selectedColumnIndex() {
@@ -140,16 +91,16 @@ export default {
                     return (
                         s.slot === 'content' ||
                         s.slot === 'content1' ||
-                        s.slot.startsWith('content1_') ||
-                        s.slot.startsWith('content_')
+                        (s.slot || '').startsWith('content1_') ||
+                        (s.slot || '').startsWith('content_')
                     );
                 }
                 const prefix = 'content' + colIndex;
-                return s.slot === prefix || s.slot.startsWith(prefix + '_');
+                return s.slot === prefix || (s.slot || '').startsWith(prefix + '_');
             });
 
             const config = this.getColumnConfig(colIndex);
-            const slotOrder = config.slot_order || [];
+            const slotOrder = Array.isArray(config.slot_order) ? config.slot_order : [];
 
             if (slotOrder.length > 0) {
                 colSlots.sort((a, b) => {
@@ -166,8 +117,11 @@ export default {
         },
 
         addSlotToColumn(colIndex) {
+            if (!this.canEdit) {
+                return;
+            }
             const slotName =
-                (this.block.type === 'grid-12' && colIndex === 1 ? 'content_' : 'content' + colIndex + '_') +
+                (this.block.type === 'uct-grid-12' && colIndex === 1 ? 'content_' : 'content' + colIndex + '_') +
                 Shopware.Utils.createId();
 
             const newSlot = this.slotRepository.create();
@@ -208,6 +162,9 @@ export default {
         },
 
         moveSlot(colIndex, slotIndex, direction) {
+            if (!this.canEdit) {
+                return;
+            }
             const currentSlots = this.getColumnSlots(colIndex);
             const targetIndex = slotIndex + direction;
 
@@ -226,6 +183,9 @@ export default {
         },
 
         removeSlot(colIndex, slotItem) {
+            if (!this.canEdit) {
+                return;
+            }
             if (typeof this.block.slots.remove === 'function') {
                 this.block.slots.remove(slotItem.id);
             } else {

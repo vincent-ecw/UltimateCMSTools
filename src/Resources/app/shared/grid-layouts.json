@@ -1,0 +1,87 @@
+{
+    "uct-grid-12": {
+        "label": "sw-cms.blocks.ultimateCmsTools.grid12.label",
+        "widths": [
+            12
+        ]
+    },
+    "uct-grid-md-6-6": {
+        "label": "sw-cms.blocks.ultimateCmsTools.gridMd66.label",
+        "widths": [
+            6,
+            6
+        ]
+    },
+    "uct-grid-md-4-8": {
+        "label": "sw-cms.blocks.ultimateCmsTools.gridMd48.label",
+        "widths": [
+            4,
+            8
+        ]
+    },
+    "uct-grid-md-8-4": {
+        "label": "sw-cms.blocks.ultimateCmsTools.gridMd84.label",
+        "widths": [
+            8,
+            4
+        ]
+    },
+    "uct-grid-md-3-9": {
+        "label": "sw-cms.blocks.ultimateCmsTools.gridMd39.label",
+        "widths": [
+            3,
+            9
+        ]
+    },
+    "uct-grid-md-9-3": {
+        "label": "sw-cms.blocks.ultimateCmsTools.gridMd93.label",
+        "widths": [
+            9,
+            3
+        ]
+    },
+    "uct-grid-md-4-4-4": {
+        "label": "sw-cms.blocks.ultimateCmsTools.gridMd444.label",
+        "widths": [
+            4,
+            4,
+            4
+        ]
+    },
+    "uct-grid-md-3-6-3": {
+        "label": "sw-cms.blocks.ultimateCmsTools.gridMd363.label",
+        "widths": [
+            3,
+            6,
+            3
+        ]
+    },
+    "uct-grid-md-2-8-2": {
+        "label": "sw-cms.blocks.ultimateCmsTools.gridMd282.label",
+        "widths": [
+            2,
+            8,
+            2
+        ]
+    },
+    "uct-grid-md-3-3-3-3": {
+        "label": "sw-cms.blocks.ultimateCmsTools.gridMd3333.label",
+        "widths": [
+            3,
+            3,
+            3,
+            3
+        ]
+    },
+    "uct-grid-md-2-2-2-2-2-2": {
+        "label": "sw-cms.blocks.ultimateCmsTools.gridMd222222.label",
+        "widths": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+        ]
+    }
+}

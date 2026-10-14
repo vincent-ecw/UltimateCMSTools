@@ -6,55 +6,6 @@
     grid-column-gap: 20px;
     align-items: stretch;
 
-    /* 1 Column */
-    &.grid-12 {
-        grid-template-columns: 1fr;
-    }
-
-    /* 2 Columns */
-    &.grid-md-6-6 {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    &.grid-md-4-8 {
-        grid-template-columns: 4fr 8fr;
-    }
-
-    &.grid-md-8-4 {
-        grid-template-columns: 8fr 4fr;
-    }
-
-    &.grid-md-3-9 {
-        grid-template-columns: 3fr 9fr;
-    }
-
-    &.grid-md-9-3 {
-        grid-template-columns: 9fr 3fr;
-    }
-
-    /* 3 Columns */
-    &.grid-md-4-4-4 {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-
-    &.grid-md-3-6-3 {
-        grid-template-columns: 3fr 6fr 3fr;
-    }
-
-    &.grid-md-2-8-2 {
-        grid-template-columns: 2fr 8fr 2fr;
-    }
-
-    /* 4 Columns */
-    &.grid-md-3-3-3-3 {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-    }
-
-    /* 6 Columns */
-    &.grid-md-2-2-2-2-2-2 {
-        grid-template-columns: repeat(6, minmax(0, 1fr));
-    }
-
     .uct-grid-col {
         position: relative;
         box-sizing: border-box;
@@ -67,8 +18,8 @@
         cursor: pointer;
 
         &:hover {
-            border-color: #cbd5e1;
-            background-color: rgba(241, 245, 249, 0.4);
+            border-color: var(--ecw-mapped-color-border-base, var(--bs-border-color, #cbd5e1));
+            background-color: var(--ecw-mapped-color-border-select-shadow, var(--bs-primary-border-subtle, rgba(241, 245, 249, 0.4)));
 
             .uct-grid-col__header-badge {
                 opacity: 1;
@@ -76,12 +27,12 @@
         }
 
         &.is--column-selected {
-            border: 1px solid #189eff;
-            box-shadow: 0 0 0 1px rgba(24, 158, 255, 0.25);
+            border: 1px solid var(--ecw-mapped-color-cta-primarycolor, var(--bs-primary, #189eff));
+            box-shadow: 0 0 0 1px var(--ecw-mapped-color-border-select-shadow, var(--bs-primary-border-subtle, rgba(24, 158, 255, 0.25)));
 
             .uct-grid-col__header-badge {
-                background: #189eff;
-                color: #ffffff;
+                background: var(--ecw-mapped-color-cta-primarycolor, var(--bs-primary, #189eff));
+                color: var(--ecw-mapped-color-background-container, var(--bs-body-bg, #ffffff));
                 opacity: 1;
             }
         }
@@ -98,8 +49,8 @@
                 padding: 1px 6px;
                 font-size: 10px;
                 font-weight: 600;
-                color: #64748b;
-                background: rgba(241, 245, 249, 0.85);
+                color: var(--ecw-mapped-color-text-normal, var(--bs-body-color, #64748b));
+                background: var(--ecw-mapped-color-border-select-shadow, var(--bs-primary-border-subtle, rgba(241, 245, 249, 0.85)));
                 border-radius: 3px;
                 opacity: 0.7;
                 transition: all 0.15s ease-in-out;
@@ -129,14 +80,14 @@
         .uct-grid-slot-actions {
             position: absolute;
             top: 6px;
-            right: 6px;
+            left: 6px;
             z-index: 25;
             display: flex;
             align-items: center;
-            background: rgba(255, 255, 255, 0.95);
-            border: 1px solid #d1d9e0;
+            background: var(--ecw-mapped-color-background-container, var(--bs-body-bg, rgba(255, 255, 255, 0.95)));
+            border: 1px solid var(--ecw-mapped-color-border-base, var(--bs-border-color, #d1d9e0));
             border-radius: 4px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 6px var(--ecw-mapped-color-shadow, var(--bs-border-color-translucent, rgba(0, 0, 0, 0.1)));
             padding: 2px;
             gap: 2px;
             opacity: 0.85;
@@ -152,18 +103,18 @@
                 background: transparent;
                 border: none;
                 border-radius: 3px;
-                color: #52667a;
+                color: var(--ecw-mapped-color-text-normal, var(--bs-body-color, #52667a));
                 cursor: pointer;
                 transition: background-color 0.15s, color 0.15s;
 
                 &:hover:not(:disabled) {
-                    background-color: #f0f4f8;
-                    color: #189eff;
+                    background-color: var(--ecw-mapped-color-background-subtle, var(--bs-tertiary-bg, #f0f4f8));
+                    color: var(--ecw-mapped-color-cta-primarycolor, var(--bs-primary, #189eff));
                 }
 
                 &.is--danger:hover:not(:disabled) {
-                    background-color: #fde8e8;
-                    color: #de294c;
+                    background-color: var(--ecw-mapped-color-alert-error-background, var(--bs-danger-bg-subtle, #fde8e8));
+                    color: var(--ecw-mapped-color-alert-error, var(--bs-danger, #de294c));
                 }
 
                 &:disabled {
@@ -187,21 +138,21 @@
                 align-items: center;
                 gap: 6px;
                 padding: 6px 14px;
-                background: #f0f7ff;
-                border: 1px dashed #189eff;
+                background: var(--ecw-mapped-color-background-subtle, var(--bs-tertiary-bg, #f0f7ff));
+                border: 1px dashed var(--ecw-mapped-color-cta-primarycolor, var(--bs-primary, #189eff));
                 border-radius: 4px;
-                color: #189eff;
+                color: var(--ecw-mapped-color-cta-primarycolor, var(--bs-primary, #189eff));
                 font-size: 12px;
                 font-weight: 600;
                 cursor: pointer;
-                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+                box-shadow: 0 1px 3px var(--ecw-mapped-color-shadow, var(--bs-border-color-translucent, rgba(0, 0, 0, 0.05)));
                 transition: all 0.15s ease-in-out;
 
                 &:hover {
-                    background: #189eff;
-                    border-color: #189eff;
-                    color: #ffffff;
-                    box-shadow: 0 2px 6px rgba(24, 158, 255, 0.35);
+                    background: var(--ecw-mapped-color-cta-primarycolor, var(--bs-primary, #189eff));
+                    border-color: var(--ecw-mapped-color-cta-primarycolor, var(--bs-primary, #189eff));
+                    color: var(--ecw-mapped-color-background-container, var(--bs-body-bg, #ffffff));
+                    box-shadow: 0 2px 6px var(--ecw-mapped-color-border-select-shadow, var(--bs-primary-border-subtle, rgba(24, 158, 255, 0.35)));
                 }
             }
         }

@@ -1,65 +1,12 @@
 import template from './uct-cms-block-columns-config.html.twig';
 import './uct-cms-block-columns-config.scss';
 
-const columnLayouts = {
-    'grid-12': [
-        { index: 1, label: 'Column 1 (100%)' },
-    ],
-    'grid-md-6-6': [
-        { index: 1, label: 'Column 1 (50%)' },
-        { index: 2, label: 'Column 2 (50%)' },
-    ],
-    'grid-md-4-8': [
-        { index: 1, label: 'Column 1 (33%)' },
-        { index: 2, label: 'Column 2 (67%)' },
-    ],
-    'grid-md-8-4': [
-        { index: 1, label: 'Column 1 (67%)' },
-        { index: 2, label: 'Column 2 (33%)' },
-    ],
-    'grid-md-3-9': [
-        { index: 1, label: 'Column 1 (25%)' },
-        { index: 2, label: 'Column 2 (75%)' },
-    ],
-    'grid-md-9-3': [
-        { index: 1, label: 'Column 1 (75%)' },
-        { index: 2, label: 'Column 2 (25%)' },
-    ],
-    'grid-md-4-4-4': [
-        { index: 1, label: 'Column 1 (33%)' },
-        { index: 2, label: 'Column 2 (33%)' },
-        { index: 3, label: 'Column 3 (33%)' },
-    ],
-    'grid-md-3-6-3': [
-        { index: 1, label: 'Column 1 (25%)' },
-        { index: 2, label: 'Column 2 (50%)' },
-        { index: 3, label: 'Column 3 (25%)' },
-    ],
-    'grid-md-2-8-2': [
-        { index: 1, label: 'Column 1 (17%)' },
-        { index: 2, label: 'Column 2 (66%)' },
-        { index: 3, label: 'Column 3 (17%)' },
-    ],
-    'grid-md-3-3-3-3': [
-        { index: 1, label: 'Column 1 (25%)' },
-        { index: 2, label: 'Column 2 (25%)' },
-        { index: 3, label: 'Column 3 (25%)' },
-        { index: 4, label: 'Column 4 (25%)' },
-    ],
-    'grid-md-2-2-2-2-2-2': [
-        { index: 1, label: 'Column 1 (17%)' },
-        { index: 2, label: 'Column 2 (17%)' },
-        { index: 3, label: 'Column 3 (17%)' },
-        { index: 4, label: 'Column 4 (17%)' },
-        { index: 5, label: 'Column 5 (17%)' },
-        { index: 6, label: 'Column 6 (17%)' },
-    ],
-};
+import { getColumns } from '../layouts';
 
 Shopware.Component.register('uct-cms-block-columns-config', {
     template,
 
-    inject: ['repositoryFactory'],
+    inject: ['repositoryFactory', 'acl'],
 
     props: {
         block: {
@@ -75,6 +22,10 @@ Shopware.Component.register('uct-cms-block-columns-config', {
     },
 
     computed: {
+        canEdit() {
+            return this.acl.can('cms.editor') && !Shopware.Store.get('cmsPage').currentPage?.locked;
+        },
+
         mediaRepository() {
             return this.repositoryFactory.create('media');
         },
@@ -84,15 +35,10 @@ Shopware.Component.register('uct-cms-block-columns-config', {
         },
 
         columns() {
-            const list = columnLayouts[this.block?.type] || [
-                { index: 1, label: 'Column 1 (50%)' },
-                { index: 2, label: 'Column 2 (50%)' },
-            ];
-
-            return list.map((item) => ({
+            return getColumns(this.block?.type).map((item) => ({
                 id: item.index,
                 value: item.index,
-                label: this.$t('sw-cms.columnConfig.tabTitle', { index: item.index }) + ` (${item.label.split('(')[1] || ''}`,
+                label: this.$t('sw-cms.columnConfig.tabTitle', { index: item.index }) + ` (${item.label})`,
             }));
         },
 
@@ -113,7 +59,6 @@ Shopware.Component.register('uct-cms-block-columns-config', {
                 const customFields = Shopware.Utils.object.cloneDeep(this.block.customFields || {});
                 customFields.uct_selected_column = index;
                 this.block.customFields = customFields;
-                this.loadColumnMedia(index);
             },
         },
 
@@ -194,13 +139,11 @@ Shopware.Component.register('uct-cms-block-columns-config', {
         },
     },
 
-    created() {
-        this.initCustomFields();
-        this.loadColumnMedia(this.activeColumn);
-    },
-
     methods: {
         initCustomFields() {
+            if (!this.canEdit) {
+                return;
+            }
             if (!this.block.customFields || typeof this.block.customFields !== 'object' || Array.isArray(this.block.customFields)) {
                 this.block.customFields = {};
             }
@@ -216,7 +159,10 @@ Shopware.Component.register('uct-cms-block-columns-config', {
             }
         },
 
-        setColumnProp(prop, value) {
+        setColumnProp(prop, value, columnIndex = this.activeColumn) {
+            if (!this.canEdit) {
+                return;
+            }
             this.initCustomFields();
 
             const customFields = Shopware.Utils.object.cloneDeep(this.block.customFields || {});
@@ -224,7 +170,7 @@ Shopware.Component.register('uct-cms-block-columns-config', {
                 customFields.uct_columns = {};
             }
 
-            const key = 'col' + this.activeColumn;
+            const key = 'col' + columnIndex;
             if (!customFields.uct_columns[key] || typeof customFields.uct_columns[key] !== 'object' || Array.isArray(customFields.uct_columns[key])) {
                 customFields.uct_columns[key] = {};
             }
@@ -275,12 +221,13 @@ Shopware.Component.register('uct-cms-block-columns-config', {
             this.setColumnProp('backgroundMediaUrl', null);
         },
 
-        async onUploadMediaFinish({ targetId }) {
+        async onUploadMediaFinish({ targetId }, columnIndex) {
+            const blockId = this.block.id;
             try {
                 const media = await this.mediaRepository.get(targetId);
-                if (media) {
-                    this.setColumnProp('backgroundMediaId', media.id);
-                    this.setColumnProp('backgroundMediaUrl', media.url);
+                if (media && this.block.id === blockId) {
+                    this.setColumnProp('backgroundMediaId', media.id, columnIndex);
+                    this.setColumnProp('backgroundMediaUrl', media.url, columnIndex);
                     this.mediaMap = {
                         ...this.mediaMap,
                         [media.id]: media,

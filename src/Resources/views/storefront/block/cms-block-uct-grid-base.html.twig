@@ -2,25 +2,7 @@
     {% for col in columns %}
         {% set colIndex = col.index %}
         {% set colConfig = block.customFields.uct_columns['col' ~ colIndex] ?? {} %}
-        {% set colStyles = [] %}
-
-        {% if colConfig.padding %}
-            {% set colStyles = colStyles|merge(['padding: ' ~ colConfig.padding ~ ';']) %}
-        {% endif %}
-
-        {% if colConfig.backgroundColor %}
-            {% set colStyles = colStyles|merge(['background-color: ' ~ colConfig.backgroundColor ~ ';']) %}
-        {% endif %}
-
-        {% set bgMediaUrl = colConfig.backgroundMediaUrl ?? (colConfig.backgroundMediaId ? uct_media_url(colConfig.backgroundMediaId) : null) %}
-        {% if bgMediaUrl %}
-            {% set colStyles = colStyles|merge([
-                'background-image: url(\'' ~ bgMediaUrl ~ '\');',
-                'background-size: ' ~ (colConfig.backgroundMediaMode ?? 'cover') ~ ';',
-                'background-position: center;',
-                'background-repeat: no-repeat;'
-            ]) %}
-        {% endif %}
+        {% set colStyles = block.extensions.uctGrid.styles['col' ~ colIndex] ?? uct_grid_styles(colConfig) %}
 
         {% set colSlots = [] %}
         {% for el in block.slots %}
@@ -35,7 +17,7 @@
             {% set orderedSlots = [] %}
             {% for orderedSlotName in slotOrder %}
                 {% for el in colSlots %}
-                    {% if el.slot == orderedSlotName %}
+                    {% if el.slot == orderedSlotName and el not in orderedSlots %}
                         {% set orderedSlots = orderedSlots|merge([el]) %}
                     {% endif %}
                 {% endfor %}
@@ -49,7 +31,7 @@
         {% endif %}
 
         <div class="uct-grid-col {{ col.class }} {{ colConfig.cssClass ?? '' }}"
-             style="{{ colStyles|join(' ') }}">
+             style="{{ colStyles }}">
             <div class="uct-grid-col__content">
                 {% for element in colSlots %}
                     <div class="uct-grid-element" data-cms-element-id="{{ element.id }}">
@@ -62,4 +44,3 @@
         </div>
     {% endfor %}
 </div>
-

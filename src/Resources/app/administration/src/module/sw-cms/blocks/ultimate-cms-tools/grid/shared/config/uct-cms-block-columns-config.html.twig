@@ -24,6 +24,7 @@
     <div class="uct-column-settings-form">
         <!-- Inner Padding -->
         <mt-text-field
+            :disabled="!canEdit"
             v-model="colPadding"
             :label="$t('sw-cms.columnConfig.paddingLabel')"
             :placeholder="$t('sw-cms.columnConfig.paddingPlaceholder')"
@@ -32,6 +33,7 @@
 
         <!-- Background Color -->
         <mt-colorpicker
+            :disabled="!canEdit"
             v-model="colBgColor"
             :label="$t('sw-cms.columnConfig.bgColorLabel')"
             class="uct-config-field"
@@ -39,8 +41,10 @@
 
         <!-- Background Image -->
         <sw-media-compact-upload-v2
+            :disabled="!canEdit"
+            :key="block.id + '-' + activeColumn"
             :source="colMedia"
-            :upload-tag="'uct-col-bg-' + activeColumn"
+            :upload-tag="'uct-col-bg-' + block.id + '-' + activeColumn"
             :label="$t('sw-cms.columnConfig.bgImageLabel')"
             :default-folder="cmsPageState.pageEntityName || 'cms_page'"
             :allow-multi-select="false"
@@ -49,13 +53,16 @@
             @selection-change="onSelectMedia"
         />
         <sw-upload-listener
-            :upload-tag="'uct-col-bg-' + activeColumn"
+            v-for="column in columns"
+            :key="block.id + '-' + column.id"
+            :upload-tag="'uct-col-bg-' + block.id + '-' + column.id"
             auto-upload
-            @media-upload-finish="onUploadMediaFinish"
+            @media-upload-finish="onUploadMediaFinish($event, column.id)"
         />
 
         <!-- Background Image Mode -->
         <mt-select
+            :disabled="!canEdit"
             v-if="hasBackgroundImage"
             v-model="colBgMode"
             :label="$t('sw-cms.columnConfig.bgModeLabel')"
@@ -65,6 +72,7 @@
 
         <!-- Custom CSS Class -->
         <mt-text-field
+            :disabled="!canEdit"
             v-model="colCssClass"
             :label="$t('sw-cms.columnConfig.cssClassLabel')"
             :placeholder="$t('sw-cms.columnConfig.cssClassPlaceholder')"

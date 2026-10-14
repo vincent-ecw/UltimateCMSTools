@@ -1,0 +1,85 @@
+<div class="uct-cms-block-grid row" :class="block.type" :style="{ gridTemplateColumns: columnDefinitions.map(col => 'minmax(0, ' + col.width + 'fr)').join(' ') }">
+    <div
+        v-for="col in columnDefinitions"
+        :key="col.index"
+        :class="[
+            'uct-grid-col',
+            col.class,
+            getColumnCustomClass(col.index),
+            { 'is--column-selected': selectedColumnIndex === col.index }
+        ]"
+        :style="getColumnStyles(col.index)"
+        @click="onSelectColumn(col.index)"
+        @keydown.enter.self.prevent="onSelectColumn(col.index)"
+        @keydown.space.self.prevent="onSelectColumn(col.index)"
+        role="group"
+        tabindex="0"
+        :aria-label="$t('sw-cms.columnConfig.tabTitle', { index: col.index })"
+    >
+        <!-- Column header indicator on canvas -->
+        <div class="uct-grid-col__header">
+            <span class="uct-grid-col__header-badge">
+                {{ $t('sw-cms.columnConfig.tabTitle', { index: col.index }) }} ({{ col.label }})
+            </span>
+        </div>
+
+        <div class="uct-grid-col__inner">
+            <div
+                v-for="(slotItem, slotIndex) in getColumnSlots(col.index)"
+                :key="slotItem.id || slotItem.slot"
+                class="uct-grid-slot-wrapper"
+            >
+                <div
+                    v-if="canEdit && isActive && getColumnSlots(col.index).length > 1"
+                    class="uct-grid-slot-actions"
+                >
+                    <button
+                        type="button"
+                        class="uct-grid-slot-action-btn"
+                        :disabled="slotIndex === 0"
+                        :aria-label="$t('sw-cms.columnConfig.moveUp')"
+                        :title="$t('sw-cms.columnConfig.moveUp')"
+                        @click.stop="moveSlot(col.index, slotIndex, -1)"
+                    >
+                        <mt-icon name="regular-chevron-up" size="12" />
+                    </button>
+                    <button
+                        type="button"
+                        class="uct-grid-slot-action-btn"
+                        :disabled="slotIndex === getColumnSlots(col.index).length - 1"
+                        :aria-label="$t('sw-cms.columnConfig.moveDown')"
+                        :title="$t('sw-cms.columnConfig.moveDown')"
+                        @click.stop="moveSlot(col.index, slotIndex, 1)"
+                    >
+                        <mt-icon name="regular-chevron-down" size="12" />
+                    </button>
+                    <button
+                        type="button"
+                        class="uct-grid-slot-action-btn is--danger"
+                        :aria-label="$t('sw-cms.columnConfig.removeElement')"
+                        :title="$t('sw-cms.columnConfig.removeElement')"
+                        @click.stop="removeSlot(col.index, slotItem)"
+                    >
+                        <mt-icon name="regular-trash" size="12" />
+                    </button>
+                </div>
+
+                <slot :name="slotItem.slot"></slot>
+            </div>
+
+            <div
+                v-if="canEdit && isActive"
+                class="uct-grid-add-element"
+            >
+                <button
+                    type="button"
+                    class="uct-grid-add-element__btn"
+                    @click.stop="addSlotToColumn(col.index)"
+                >
+                    <mt-icon name="regular-plus" size="12" />
+                    <span>{{ $t('sw-cms.columnConfig.addElement') }}</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

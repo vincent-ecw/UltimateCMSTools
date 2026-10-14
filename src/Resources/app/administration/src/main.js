@@ -1,3 +1,4 @@
+import './service/uct-grid-builder-settings.api.service';
 import './component/uct-cms-intro-outro';
 import './module/uct-custom-assets';
 import './component/uct-icon';
@@ -57,3 +58,5 @@ Shopware.Locale.register('nl-NL', nlNL);
 
 import './component/uct-surrounding-text-preview';
 import './module/sw-cms/component/sw-cms-slot';
+import './module/sw-cms/blocks/ultimate-cms-tools/grid';
+import './module/sw-cms/component/sw-cms-sidebar';

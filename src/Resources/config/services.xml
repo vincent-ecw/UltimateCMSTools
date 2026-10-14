@@ -5,6 +5,18 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
+        <service id="VincentBourgonje\UltimateCmsTools\Controller\GridBuilderSettingsController" public="true">
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService" />
+            <tag name="controller.service_arguments" />
+        </service>
+        <service id="VincentBourgonje\UltimateCmsTools\Core\GridMigration">
+            <argument type="service" id="cms_block.repository" />
+            <argument type="service" id="VincentBourgonje\UltimateCmsTools\Core\GridLayouts" />
+        </service>
+        <service id="VincentBourgonje\UltimateCmsTools\Command\GridMigrationCommand">
+            <argument type="service" id="VincentBourgonje\UltimateCmsTools\Core\GridMigration" />
+            <tag name="console.command" />
+        </service>
         <service id="VincentBourgonje\UltimateCmsTools\Subscriber\CustomAssetsAccessSubscriber">
             <argument type="service" id="request_stack" />
             <argument type="service" id="system_config.repository" />
@@ -25,6 +37,20 @@
             <argument type="service" id="VincentBourgonje\UltimateCmsTools\Core\MediaImageSourceBuilder" />
             <tag name="twig.extension" />
         </service>
+        <service id="VincentBourgonje\UltimateCmsTools\Core\GridLayouts" />
+        <service id="VincentBourgonje\UltimateCmsTools\Core\GridColumnStyles" />
+        <service id="VincentBourgonje\UltimateCmsTools\Twig\GridExtension">
+            <argument type="service" id="VincentBourgonje\UltimateCmsTools\Core\GridLayouts" />
+            <argument type="service" id="VincentBourgonje\UltimateCmsTools\Core\GridColumnStyles" />
+            <tag name="twig.extension" />
+        </service>
+        <service id="VincentBourgonje\UltimateCmsTools\Subscriber\GridColumnsSubscriber">
+            <argument type="service" id="media.repository" />
+            <argument type="service" id="VincentBourgonje\UltimateCmsTools\Core\GridLayouts" />
+            <argument type="service" id="VincentBourgonje\UltimateCmsTools\Core\GridColumnStyles" />
+            <tag name="kernel.event_subscriber" />
+        </service>
+
         <service id="VincentBourgonje\UltimateCmsTools\Twig\BundledIconExtension">
             <tag name="twig.extension" />
         </service>

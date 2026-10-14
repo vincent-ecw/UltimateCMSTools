@@ -1,0 +1,16 @@
+{% block sw_cms_sidebar_block_layout_settings_content %}
+    {% parent %}
+
+    <sw-sidebar-collapse
+        v-if="uctIsGridBlock(selectedBlock)"
+        :expand-on-loading="true"
+    >
+        <template #header>
+            <span>{{ $t('sw-cms.sidebar.contentMenu.uctColumnSettings') }}</span>
+        </template>
+        <template #content>
+            <uct-cms-block-columns-config :block="selectedBlock" />
+        </template>
+    </sw-sidebar-collapse>
+{% endblock %}
+

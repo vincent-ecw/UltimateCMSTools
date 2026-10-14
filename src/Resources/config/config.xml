@@ -15,4 +15,19 @@
             <max>1000</max>
         </input-field>
     </card>
+    <card>
+        <title>Grid builder</title>
+        <title lang="de-DE">Grid-Builder</title>
+        <title lang="nl-NL">Gridbouwer</title>
+        <input-field type="bool">
+            <name>enableGridBuilder</name>
+            <label>Enable new Grid builder</label>
+            <label lang="de-DE">Neuen Grid-Builder aktivieren</label>
+            <label lang="nl-NL">Nieuwe gridbouwer inschakelen</label>
+            <helpText>Set globally (All sales channels). Allows adding new Ultimate CMS Tools grids. Saved grids remain editable and visible when disabled. Legacy grids are unaffected. Reopen the layout editor after changing this setting.</helpText>
+            <helpText lang="de-DE">Global (Alle Verkaufskanäle) einstellen. Erlaubt neue Ultimate CMS Tools Grids. Gespeicherte Grids bleiben bei Deaktivierung bearbeitbar und sichtbar. Legacy-Grids bleiben unverändert. Layout-Editor nach Änderungen neu öffnen.</helpText>
+            <helpText lang="nl-NL">Stel dit globaal in (Alle verkoopkanalen). Maakt nieuwe Ultimate CMS Tools-grids beschikbaar. Opgeslagen grids blijven bewerkbaar en zichtbaar wanneer uitgeschakeld. Legacy-grids blijven ongewijzigd. Open de layouteditor opnieuw na een wijziging.</helpText>
+            <defaultValue>false</defaultValue>
+        </input-field>
+    </card>
 </config>

@@ -781,6 +781,71 @@
                 },
                 "relatedProducts": {
                     "label": "Gerelateerde producten"
+                },
+                "grid12": {
+                    "label": "1 Kolom (Volledige breedte)"
+                },
+                "gridMd66": {
+                    "label": "2 Kolommen (50% / 50%)"
+                },
+                "gridMd48": {
+                    "label": "2 Kolommen (33% / 67%)"
+                },
+                "gridMd84": {
+                    "label": "2 Kolommen (67% / 33%)"
+                },
+                "gridMd39": {
+                    "label": "2 Kolommen (25% / 75%)"
+                },
+                "gridMd93": {
+                    "label": "2 Kolommen (75% / 25%)"
+                },
+                "gridMd444": {
+                    "label": "3 Kolommen (Gelijk)"
+                },
+                "gridMd363": {
+                    "label": "3 Kolommen (25% / 50% / 25%)"
+                },
+                "gridMd282": {
+                    "label": "3 Kolommen (17% / 66% / 17%)"
+                },
+                "gridMd3333": {
+                    "label": "4 Kolommen (Gelijk)"
+                },
+                "gridMd222222": {
+                    "label": "6 Kolommen (Gelijk)"
+                }
+            }
+        },
+        "sidebar": {
+            "contentMenu": {
+                "uctColumnSettings": "Kolominstellingen"
+            }
+        },
+        "columnConfig": {
+            "columnSelectLabel": "Selecteer kolom",
+            "columnSelectPlaceholder": "Kies een kolom om in te stellen...",
+            "clickToSelectPrompt": "Klik op een kolom in de canvasweergave of selecteer een tabblad hieronder om de eigenschappen in te stellen.",
+            "tabTitle": "Kolom {index}",
+            "paddingLabel": "Binnenmarge (padding)",
+            "paddingPlaceholder": "bijv. 20px of 16px 24px",
+            "bgColorLabel": "Achtergrondkleur",
+            "bgImageLabel": "Achtergrondafbeelding",
+            "bgModeLabel": "Achtergrond weergavemodus",
+            "bgModeCover": "Vullend (Cover)",
+            "bgModeContain": "Passend (Contain)",
+            "bgModeAuto": "Automatisch (Auto)",
+            "cssClassLabel": "CSS-klasse",
+            "cssClassPlaceholder": "bijv. custom-column-card",
+            "addElement": "Element toevoegen",
+            "moveUp": "Omhoog verplaatsen",
+            "moveDown": "Omlaag verplaatsen",
+            "removeElement": "Element verwijderen"
+        },
+        "detail": {
+            "label": {
+                "blockCategory": {
+                    "page-structure": "Paginastructuur"
                 }
             }
         },
@@ -809,7 +874,8 @@
             "detail": {
                 "label": {
                     "blockCategory": {
-                        "ultimate-cms-tools": "Ultimate CMS Tools"
+                        "ultimate-cms-tools": "Ultimate CMS Tools",
+                        "page-structure": "Paginastructuur"
                     }
                 }
             }

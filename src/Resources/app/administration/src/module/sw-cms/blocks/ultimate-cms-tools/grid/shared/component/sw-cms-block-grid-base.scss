@@ -1,0 +1,160 @@
+.uct-cms-block-grid {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    display: grid;
+    grid-column-gap: 20px;
+    align-items: stretch;
+
+    .uct-grid-col {
+        position: relative;
+        box-sizing: border-box;
+        transition: all 0.2s ease-in-out;
+        min-height: 80px;
+        min-width: 0; /* Prevents overflow in grid items */
+        border: 1px dashed transparent;
+        border-radius: 4px;
+        padding-top: 24px;
+        cursor: pointer;
+
+        &:hover {
+            border-color: var(--ecw-mapped-color-border-base, var(--bs-border-color, #cbd5e1));
+            background-color: var(--ecw-mapped-color-border-select-shadow, var(--bs-primary-border-subtle, rgba(241, 245, 249, 0.4)));
+
+            .uct-grid-col__header-badge {
+                opacity: 1;
+            }
+        }
+
+        &.is--column-selected {
+            border: 1px solid var(--ecw-mapped-color-cta-primarycolor, var(--bs-primary, #189eff));
+            box-shadow: 0 0 0 1px var(--ecw-mapped-color-border-select-shadow, var(--bs-primary-border-subtle, rgba(24, 158, 255, 0.25)));
+
+            .uct-grid-col__header-badge {
+                background: var(--ecw-mapped-color-cta-primarycolor, var(--bs-primary, #189eff));
+                color: var(--ecw-mapped-color-background-container, var(--bs-body-bg, #ffffff));
+                opacity: 1;
+            }
+        }
+
+        &__header {
+            position: absolute;
+            top: 2px;
+            left: 4px;
+            z-index: 20;
+            pointer-events: none;
+
+            &-badge {
+                display: inline-block;
+                padding: 1px 6px;
+                font-size: 10px;
+                font-weight: 600;
+                color: var(--ecw-mapped-color-text-normal, var(--bs-body-color, #64748b));
+                background: var(--ecw-mapped-color-border-select-shadow, var(--bs-primary-border-subtle, rgba(241, 245, 249, 0.85)));
+                border-radius: 3px;
+                opacity: 0.7;
+                transition: all 0.15s ease-in-out;
+            }
+        }
+
+        &__inner {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            position: relative;
+            cursor: default;
+        }
+
+        .uct-grid-slot-wrapper {
+            position: relative;
+            width: 100%;
+
+            &:hover .uct-grid-slot-actions {
+                opacity: 1;
+                pointer-events: auto;
+            }
+        }
+
+        .uct-grid-slot-actions {
+            position: absolute;
+            top: 6px;
+            left: 6px;
+            z-index: 25;
+            display: flex;
+            align-items: center;
+            background: var(--ecw-mapped-color-background-container, var(--bs-body-bg, rgba(255, 255, 255, 0.95)));
+            border: 1px solid var(--ecw-mapped-color-border-base, var(--bs-border-color, #d1d9e0));
+            border-radius: 4px;
+            box-shadow: 0 2px 6px var(--ecw-mapped-color-shadow, var(--bs-border-color-translucent, rgba(0, 0, 0, 0.1)));
+            padding: 2px;
+            gap: 2px;
+            opacity: 0.85;
+            transition: opacity 0.15s ease-in-out;
+
+            .uct-grid-slot-action-btn {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                width: 22px;
+                height: 22px;
+                padding: 0;
+                background: transparent;
+                border: none;
+                border-radius: 3px;
+                color: var(--ecw-mapped-color-text-normal, var(--bs-body-color, #52667a));
+                cursor: pointer;
+                transition: background-color 0.15s, color 0.15s;
+
+                &:hover:not(:disabled) {
+                    background-color: var(--ecw-mapped-color-background-subtle, var(--bs-tertiary-bg, #f0f4f8));
+                    color: var(--ecw-mapped-color-cta-primarycolor, var(--bs-primary, #189eff));
+                }
+
+                &.is--danger:hover:not(:disabled) {
+                    background-color: var(--ecw-mapped-color-alert-error-background, var(--bs-danger-bg-subtle, #fde8e8));
+                    color: var(--ecw-mapped-color-alert-error, var(--bs-danger, #de294c));
+                }
+
+                &:disabled {
+                    opacity: 0.35;
+                    cursor: not-allowed;
+                }
+            }
+        }
+
+        .uct-grid-add-element {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 0;
+            margin-top: auto;
+            position: relative;
+            z-index: 25;
+
+            &__btn {
+                display: inline-flex;
+                align-items: center;
+                gap: 6px;
+                padding: 6px 14px;
+                background: var(--ecw-mapped-color-background-subtle, var(--bs-tertiary-bg, #f0f7ff));
+                border: 1px dashed var(--ecw-mapped-color-cta-primarycolor, var(--bs-primary, #189eff));
+                border-radius: 4px;
+                color: var(--ecw-mapped-color-cta-primarycolor, var(--bs-primary, #189eff));
+                font-size: 12px;
+                font-weight: 600;
+                cursor: pointer;
+                box-shadow: 0 1px 3px var(--ecw-mapped-color-shadow, var(--bs-border-color-translucent, rgba(0, 0, 0, 0.05)));
+                transition: all 0.15s ease-in-out;
+
+                &:hover {
+                    background: var(--ecw-mapped-color-cta-primarycolor, var(--bs-primary, #189eff));
+                    border-color: var(--ecw-mapped-color-cta-primarycolor, var(--bs-primary, #189eff));
+                    color: var(--ecw-mapped-color-background-container, var(--bs-body-bg, #ffffff));
+                    box-shadow: 0 2px 6px var(--ecw-mapped-color-border-select-shadow, var(--bs-primary-border-subtle, rgba(24, 158, 255, 0.35)));
+                }
+            }
+        }
+    }
+}

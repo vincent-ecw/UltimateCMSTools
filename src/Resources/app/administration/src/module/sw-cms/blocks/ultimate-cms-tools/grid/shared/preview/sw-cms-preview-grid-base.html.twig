@@ -1,0 +1,18 @@
+<div class="uct-cms-preview-grid" :class="'uct-preview-' + blockType">
+    <svg viewBox="0 0 240 130" xmlns="http://www.w3.org/2000/svg" class="uct-preview-svg" aria-hidden="true">
+        <rect x="4" y="4" width="232" height="122" rx="8"
+              fill="var(--ecw-mapped-color-background-subtle, var(--bs-tertiary-bg, #f8fafc))"
+              stroke="var(--ecw-mapped-color-border-base, var(--bs-border-color, #e2e8f0))" />
+        <g v-for="col in previewColumns" :key="col.index">
+            <rect :x="col.x" y="14" :width="col.previewWidth" height="102" rx="4"
+                  fill="var(--ecw-mapped-color-background-container, var(--bs-body-bg, #eef4fa))"
+                  stroke="var(--ecw-mapped-color-border-base, var(--bs-border-color, #cbd5e1))" />
+            <rect :x="col.x + 5" y="26" :width="Math.max(2, col.previewWidth - 10)" height="7" rx="2"
+                  fill="var(--ecw-mapped-color-text-meta, var(--bs-secondary-color, #94a3b8))" />
+            <rect :x="col.x + 5" y="42" :width="Math.max(2, col.previewWidth - 10)" height="5" rx="2"
+                  fill="var(--ecw-mapped-color-border-base, var(--bs-border-color, #cbd5e1))" />
+            <rect :x="col.x + 5" y="57" :width="Math.max(2, col.previewWidth - 10)" height="44" rx="3"
+                  fill="var(--ecw-mapped-color-cta-primarycolor, var(--bs-primary, #3b82f6))" opacity="0.25" />
+        </g>
+    </svg>
+</div>

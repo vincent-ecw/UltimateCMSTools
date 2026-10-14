@@ -1,6 +1,10 @@
 # Ultimate CMS Tools
 
+<img src="src/Resources/config/plugin.png" alt="Ultimate CMS Tools icon" width="96" height="96" />
+
 A collection of CMS blocks and elements that enhance Shopware's Shopping Experiences with features that are essential for modern e-commerce page building.
+
+Version **2.0.0** introduces the optional Grid builder with independent names for coexistence with legacy grids. See the [migration guide](docs/GRID-MIGRATION.md) before upgrading early grid development versions.
 
 ## Table of Contents
 
@@ -28,6 +32,7 @@ A collection of CMS blocks and elements that enhance Shopware's Shopping Experie
   - [20. Related Products](#20-related-products)
   - [21. Single Product](#21-single-product)
   - [22. Alert Message](#22-alert-message)
+  - [23. Page Structure Grid Blocks](#23-page-structure-grid-blocks)
 - [Section Settings Enhancements](#section-settings-enhancements)
 - [Design Token Color System](#design-token-color-system)
 - [Development and Compilation](#development-and-compilation)
@@ -552,6 +557,44 @@ Add **Alert message** from the **Ultimate CMS Tools** block category, or select 
 - Icons and close buttons are vertically centered alongside the message, including multiline messages.
 - **Allow visitors to close the message:** Disabled by default. When enabled, a keyboard-accessible close button removes only that alert until the next page load.
 - **Colors:** Uses `--ecw-mapped-color-alerts-{type}-{border|background|text}` from `style/variables-shopware-legacy.css`. Falls back to Bootstrap `--bs-{type}-border-subtle`, `--bs-{type}-bg-subtle`, and `--bs-{type}-text-emphasis`, then fixed colors. Error maps to Bootstrap danger. Editor previews share these styles.
+
+### 23. Page Structure Grid Blocks
+
+See [Grid migration and coexistence](docs/GRID-MIGRATION.md) for rollout instructions and [Grid audit notes](docs/GRID-AUDIT.md) for verification.
+
+Enable **Grid builder → Enable new Grid builder** in the plugin configuration with **All sales channels** selected. This global setting defaults to off and controls new block picker choices. Saved grids continue to render and can still be edited when it is off. Reopen the editor after changing it.
+
+The **Page Structure** block category provides 11 flexible Bootstrap-based grid arrangements:
+
+1. **1 Column:** Full width (`uct-grid-12`)
+2. **2 Columns (50% / 50%):** Equal halves (`uct-grid-md-6-6`)
+3. **2 Columns (33% / 67%):** One-third and two-thirds (`uct-grid-md-4-8`)
+4. **2 Columns (67% / 33%):** Two-thirds and one-third (`uct-grid-md-8-4`)
+5. **2 Columns (25% / 75%):** Narrow left and wide right (`uct-grid-md-3-9`)
+6. **2 Columns (75% / 25%):** Wide left and narrow right (`uct-grid-md-9-3`)
+7. **3 Columns (Equal):** Three equal thirds (`uct-grid-md-4-4-4`)
+8. **3 Columns (25% / 50% / 25%):** Narrow sides with prominent center (`uct-grid-md-3-6-3`)
+9. **3 Columns (17% / 66% / 17%):** Slim sidebars and wide center content (`uct-grid-md-2-8-2`)
+10. **4 Columns (Equal):** Four equal quarters (`uct-grid-md-3-3-3-3`)
+11. **6 Columns (Equal):** Six equal columns (`uct-grid-md-2-2-2-2-2-2`)
+
+#### Key Capabilities
+
+- **Dedicated "Page Structure" Category:** Easily discovered in the CMS block sidebar instead of mixed under Text.
+- **Multi-Element Stacking Per Column:** Within any column, click **+ Add element** to stack multiple CMS elements vertically. Move elements up/down or remove elements with quick-action buttons directly on the canvas.
+- **Editor controls:** Stacked-element move/delete controls appear on the left; Column Settings uses the same 25px bottom padding as Visibility settings.
+- **Safe backgrounds:** A CMS subscriber resolves distinct media IDs in one DAL search per CMS load, prepares validated column styles and excludes invalid IDs, private or missing media and stale URL fallbacks. Twig does not query media. Padding supports CSS units and functions such as calc() and var(); image URLs must be HTTP(S) or root-relative.
+- **Shared layouts:** All 11 arrangements are defined in `src/Resources/app/shared/grid-layouts.json`. Registration, canvas proportions, column labels, previews, sidebar detection and storefront columns read that catalog.
+- **Keyboard support:** Focus a canvas column and press Enter or Space to select it. Add, move and remove buttons support normal keyboard activation.
+- **Independent builders:** New grids use `uct-grid-*` types and components; Sschreier keeps `grid-*`. Each owns its templates and normal theme inheritance. Both can coexist, including on one layout.
+- **Individual Column Properties:** Select any grid block and open the **Column Settings** accordion in the sidebar to configure per-column styling:
+  - **Inner padding:** e.g. `20px` or `1rem 1.5rem`.
+  - **Background color:** Colorpicker for solid background tint.
+  - **Background image:** Upload or select from media with automatic URL resolution.
+  - **Background image mode:** Choose between `Cover`, `Contain`, or `Auto`.
+  - **CSS class:** Add custom class names to specific columns.
+- **Modern Vector Preview Illustrations:** Sleek SVG previews in the sidebar showcasing accurate column proportions and content layout structures.
+- **Explicit migration:** Convert selected legacy or early UltimateCmsTools blocks using `uct:grid:migrate`. The command previews changes by default and changes only block types when applied. Content, slot IDs and configuration remain intact. Existing shared names are never automatically taken over.
 
 ## Section Settings Enhancements
 

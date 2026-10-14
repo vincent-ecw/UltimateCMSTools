@@ -1,0 +1,82 @@
+<div class="uct-cms-block-columns-config">
+    <!-- Quick prompt / guidance -->
+    <div v-if="columnCount > 1" class="uct-columns-prompt">
+        <span class="uct-columns-prompt-text">{{ $t('sw-cms.columnConfig.clickToSelectPrompt') }}</span>
+    </div>
+
+    <!-- Prominent Segmented Column Selector -->
+    <div v-if="columnCount > 1" class="uct-columns-selector-wrapper">
+        <label class="uct-columns-selector-label">{{ $t('sw-cms.columnConfig.columnSelectLabel') }}</label>
+        <div class="uct-columns-tabs">
+            <button
+                v-for="col in columns"
+                :key="col.id"
+                type="button"
+                class="uct-column-tab-btn"
+                :class="{ 'is--active': activeColumn === col.id }"
+                @click="activeColumn = col.id"
+            >
+                {{ col.label }}
+            </button>
+        </div>
+    </div>
+
+    <div class="uct-column-settings-form">
+        <!-- Inner Padding -->
+        <mt-text-field
+            :disabled="!canEdit"
+            v-model="colPadding"
+            :label="$t('sw-cms.columnConfig.paddingLabel')"
+            :placeholder="$t('sw-cms.columnConfig.paddingPlaceholder')"
+            class="uct-config-field"
+        />
+
+        <!-- Background Color -->
+        <mt-colorpicker
+            :disabled="!canEdit"
+            v-model="colBgColor"
+            :label="$t('sw-cms.columnConfig.bgColorLabel')"
+            class="uct-config-field"
+        />
+
+        <!-- Background Image -->
+        <sw-media-compact-upload-v2
+            :disabled="!canEdit"
+            :key="block.id + '-' + activeColumn"
+            :source="colMedia"
+            :upload-tag="'uct-col-bg-' + block.id + '-' + activeColumn"
+            :label="$t('sw-cms.columnConfig.bgImageLabel')"
+            :default-folder="cmsPageState.pageEntityName || 'cms_page'"
+            :allow-multi-select="false"
+            class="uct-config-field"
+            @media-upload-remove-image="onRemoveMedia"
+            @selection-change="onSelectMedia"
+        />
+        <sw-upload-listener
+            v-for="column in columns"
+            :key="block.id + '-' + column.id"
+            :upload-tag="'uct-col-bg-' + block.id + '-' + column.id"
+            auto-upload
+            @media-upload-finish="onUploadMediaFinish($event, column.id)"
+        />
+
+        <!-- Background Image Mode -->
+        <mt-select
+            :disabled="!canEdit"
+            v-if="hasBackgroundImage"
+            v-model="colBgMode"
+            :label="$t('sw-cms.columnConfig.bgModeLabel')"
+            :options="bgModeOptions"
+            class="uct-config-field"
+        />
+
+        <!-- Custom CSS Class -->
+        <mt-text-field
+            :disabled="!canEdit"
+            v-model="colCssClass"
+            :label="$t('sw-cms.columnConfig.cssClassLabel')"
+            :placeholder="$t('sw-cms.columnConfig.cssClassPlaceholder')"
+            class="uct-config-field"
+        />
+    </div>
+</div>

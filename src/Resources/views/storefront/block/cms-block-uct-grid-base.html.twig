@@ -1,0 +1,46 @@
+<div class="cms-block-grid uct-grid-row row">
+    {% for col in columns %}
+        {% set colIndex = col.index %}
+        {% set colConfig = block.customFields.uct_columns['col' ~ colIndex] ?? {} %}
+        {% set colStyles = block.extensions.uctGrid.styles['col' ~ colIndex] ?? uct_grid_styles(colConfig) %}
+
+        {% set colSlots = [] %}
+        {% for el in block.slots %}
+            {% if (colIndex == 1 and (el.slot == 'content' or el.slot == 'content1' or el.slot starts with 'content1_' or el.slot starts with 'content_'))
+               or (colIndex > 1 and (el.slot == ('content' ~ colIndex) or el.slot starts with ('content' ~ colIndex ~ '_'))) %}
+                {% set colSlots = colSlots|merge([el]) %}
+            {% endif %}
+        {% endfor %}
+
+        {% set slotOrder = colConfig.slot_order ?? [] %}
+        {% if slotOrder|length > 0 %}
+            {% set orderedSlots = [] %}
+            {% for orderedSlotName in slotOrder %}
+                {% for el in colSlots %}
+                    {% if el.slot == orderedSlotName and el not in orderedSlots %}
+                        {% set orderedSlots = orderedSlots|merge([el]) %}
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+            {% for el in colSlots %}
+                {% if el.slot not in slotOrder %}
+                    {% set orderedSlots = orderedSlots|merge([el]) %}
+                {% endif %}
+            {% endfor %}
+            {% set colSlots = orderedSlots %}
+        {% endif %}
+
+        <div class="uct-grid-col {{ col.class }} {{ colConfig.cssClass ?? '' }}"
+             style="{{ colStyles }}">
+            <div class="uct-grid-col__content">
+                {% for element in colSlots %}
+                    <div class="uct-grid-element" data-cms-element-id="{{ element.id }}">
+                        {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ ".html.twig" ignore missing with {
+                            element: element
+                        } %}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endfor %}
+</div>

@@ -4,6 +4,8 @@
 
 A collection of CMS blocks and elements that enhance Shopware's Shopping Experiences with features that are essential for modern e-commerce page building.
 
+Version **2.0.1** fixes standard Shopware image rendering inside grids, including unequal column widths.
+
 Version **2.0.0** introduces the optional Grid builder with independent names for coexistence with legacy grids. See the [migration guide](docs/GRID-MIGRATION.md) before upgrading early grid development versions.
 
 ## Table of Contents

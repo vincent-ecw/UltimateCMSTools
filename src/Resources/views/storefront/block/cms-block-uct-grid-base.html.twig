@@ -1,5 +1,5 @@
 <div class="cms-block-grid uct-grid-row row">
-    {% for col in columns %}
+    {% for col in gridColumns %}
         {% set colIndex = col.index %}
         {% set colConfig = block.customFields.uct_columns['col' ~ colIndex] ?? {} %}
         {% set colStyles = block.extensions.uctGrid.styles['col' ~ colIndex] ?? uct_grid_styles(colConfig) %}
@@ -36,7 +36,8 @@
                 {% for element in colSlots %}
                     <div class="uct-grid-element" data-cms-element-id="{{ element.id }}">
                         {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ ".html.twig" ignore missing with {
-                            element: element
+                            element: element,
+                            columns: 12 / col.width
                         } %}
                     </div>
                 {% endfor %}
